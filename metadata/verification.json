@@ -1,0 +1,28 @@
+{
+  "verified_at": "2026-10-21T19:03:02+08:00",
+  "repositories": 7,
+  "branch_snapshots": 8,
+  "source_files": 985,
+  "source_bytes": 826964749,
+  "content_and_permissions": "matched source Git blob IDs and executable modes",
+  "release_assets": [
+    {
+      "tag": "developer-handoff-2026-10-14-19a6c98",
+      "file": "archive/releases/developer-handoff-2026-10-14-19a6c98/fathompeak-developer-2026-10-14-19a6c98.zip",
+      "bytes": 28140882,
+      "sha256": "f523bd9d6fa7c694c99279af00909b4a9a2a6cb304fb2355ee5cf25c7beb5355",
+      "source_url": "https://github.com/xanthiawang/fathompeak-site/releases/tag/developer-handoff-2026-10-14-19a6c98"
+    },
+    {
+      "tag": "developer-handoff-2026-10-14-b177160",
+      "file": "archive/releases/developer-handoff-2026-10-14-b177160/fathompeak-developer-2026-10-14-b177160.zip",
+      "bytes": 28077912,
+      "sha256": "dcfcda3f8d3e801cea40c14834941cb1a75a016184f3a8430d54e0c56a4e9c7c",
+      "source_url": "https://github.com/xanthiawang/fathompeak-site/releases/tag/developer-handoff-2026-10-14-b177160"
+    }
+  ],
+  "potential_sensitive_files": [],
+  "original_repositories_modified": false,
+  "existing_website_urls_changed": false,
+  "pages_enabled_for_consolidated_repo": false
+}

@@ -1,0 +1,110 @@
+{
+  "recorded_at": "2026-10-21T19:03:02+08:00",
+  "method": "Public GitHub branch snapshots; original repository histories and websites retained.",
+  "sources": [
+    {
+      "repository": "xanthiawang/fathompeak-site",
+      "url": "https://github.com/xanthiawang/fathompeak-site",
+      "visibility": "public",
+      "branch": "main",
+      "source_commit": "b075a6182574370e7129dc690a52e24cdc16c8f5",
+      "source_tree": "8ebac39cfb78506af0950851590757a5571e2dd8",
+      "folder": "projects/website",
+      "role": "active",
+      "file_count": 144,
+      "bytes": 53433284,
+      "source_commit_url": "https://github.com/xanthiawang/fathompeak-site/tree/b075a6182574370e7129dc690a52e24cdc16c8f5"
+    },
+    {
+      "repository": "xanthiawang/fathompeak-ui-kit",
+      "url": "https://github.com/xanthiawang/fathompeak-ui-kit",
+      "visibility": "public",
+      "branch": "main",
+      "source_commit": "b03cbbe64490caba633c55f776c18d29fc23a2b3",
+      "source_tree": "c8ab010eeb5ba39db2c1c011f685778afb0eb776",
+      "folder": "projects/visual-materials",
+      "role": "active",
+      "file_count": 422,
+      "bytes": 595374051,
+      "source_commit_url": "https://github.com/xanthiawang/fathompeak-ui-kit/tree/b03cbbe64490caba633c55f776c18d29fc23a2b3"
+    },
+    {
+      "repository": "xanthiawang/fathompeak-handoff",
+      "url": "https://github.com/xanthiawang/fathompeak-handoff",
+      "visibility": "public",
+      "branch": "main",
+      "source_commit": "23c78290dcf77d120f6265d96d13754eb1e47b85",
+      "source_tree": "401c5be4680ab4a7d4b7b04fa3d348396249843c",
+      "folder": "projects/developer-handoff",
+      "role": "active",
+      "file_count": 180,
+      "bytes": 110138431,
+      "source_commit_url": "https://github.com/xanthiawang/fathompeak-handoff/tree/23c78290dcf77d120f6265d96d13754eb1e47b85"
+    },
+    {
+      "repository": "xanthiawang/fathompeak-discarded-draft",
+      "url": "https://github.com/xanthiawang/fathompeak-discarded-draft",
+      "visibility": "public",
+      "branch": "main",
+      "source_commit": "e520d8a9b6ddb8db44639394a7e2c9ccbc31de42",
+      "source_tree": "94389c72dd7887d5437ca50ab0912cc00d65d092",
+      "folder": "archive/early-website",
+      "role": "historical",
+      "file_count": 60,
+      "bytes": 13350367,
+      "source_commit_url": "https://github.com/xanthiawang/fathompeak-discarded-draft/tree/e520d8a9b6ddb8db44639394a7e2c9ccbc31de42"
+    },
+    {
+      "repository": "xanthiawang/fathompeak-energy-draft",
+      "url": "https://github.com/xanthiawang/fathompeak-energy-draft",
+      "visibility": "public",
+      "branch": "main",
+      "source_commit": "2ca5e375bf3a616851b7f97708ed5d40e8fd89c4",
+      "source_tree": "4b1bb905d6ff6e647157b0e0eb725798fe85ef9d",
+      "folder": "archive/energy-draft",
+      "role": "historical",
+      "file_count": 5,
+      "bytes": 94919,
+      "source_commit_url": "https://github.com/xanthiawang/fathompeak-energy-draft/tree/2ca5e375bf3a616851b7f97708ed5d40e8fd89c4"
+    },
+    {
+      "repository": "xanthiawang/fathompeak-pine-draft",
+      "url": "https://github.com/xanthiawang/fathompeak-pine-draft",
+      "visibility": "public",
+      "branch": "main",
+      "source_commit": "c523ef4e2b171683df7e46af8fa1e45b816ce429",
+      "source_tree": "0c8ee4a6b6adf6c3a95bf8950ccad352c6fd13cd",
+      "folder": "archive/pine-draft",
+      "role": "historical",
+      "file_count": 5,
+      "bytes": 119300,
+      "source_commit_url": "https://github.com/xanthiawang/fathompeak-pine-draft/tree/c523ef4e2b171683df7e46af8fa1e45b816ce429"
+    },
+    {
+      "repository": "xanthiawang/fathompeak-purple-draft",
+      "url": "https://github.com/xanthiawang/fathompeak-purple-draft",
+      "visibility": "public",
+      "branch": "main",
+      "source_commit": "a4f1bb209aa890bb504b30abdd52d052bbdc18a2",
+      "source_tree": "00e003c1c6d2e6a6484038c36c248b9916bbbb24",
+      "folder": "archive/purple-draft",
+      "role": "historical",
+      "file_count": 5,
+      "bytes": 94883,
+      "source_commit_url": "https://github.com/xanthiawang/fathompeak-purple-draft/tree/a4f1bb209aa890bb504b30abdd52d052bbdc18a2"
+    },
+    {
+      "repository": "xanthiawang/fathompeak-site",
+      "url": "https://github.com/xanthiawang/fathompeak-site",
+      "visibility": "public",
+      "branch": "codex/logo-svg-monochrome-20261018",
+      "source_commit": "63242109c797cbf8ac35eab45cc6be107329b3f0",
+      "source_tree": "6e44ebbe45edf9eb21c6e01c8f41e8b47d6a42d1",
+      "folder": "archive/branches/website-logo-exploration",
+      "role": "historical-branch",
+      "file_count": 164,
+      "bytes": 54359514,
+      "source_commit_url": "https://github.com/xanthiawang/fathompeak-site/tree/63242109c797cbf8ac35eab45cc6be107329b3f0"
+    }
+  ]
+}
