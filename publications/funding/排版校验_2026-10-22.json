@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-22",
+  "status": "published_review_draft",
+  "source_sha256": "d50077335cdcc6d1d887e90b2e01d4ca4afa72aa6d23804c58d8f9304c405556",
+  "source_blocks": 25,
+  "retained_blocks": 24,
+  "sections": 3,
+  "funding_uses": 4,
+  "illustrations": 3,
+  "source_changes": [
+    {
+      "source_index": 0,
+      "source": "沐仞科技完成XXXX万元天使轮融资",
+      "rendered": "沐仞科技完成天使轮融资",
+      "reason": "沿用已确认内部稿处理：未确定金额、机构及合作信息保留为待确认。"
+    },
+    {
+      "source_index": 1,
+      "source": "近日，北京沐仞科技有限公司（以下简称“沐仞科技”）宣布完成【XXXX】万元天使轮融资。本轮融资由【领投机构】领投，【跟投机构】跟投，【其他参与方】参与。",
+      "rendered": "近日，北京沐仞科技有限公司（以下简称“沐仞科技”）宣布完成天使轮融资。本轮融资金额为【待确认】，由【领投机构待确认】领投，【跟投机构待确认】跟投，【其他参与方待确认】参与。",
+      "reason": "沿用已确认内部稿处理：未确定金额、机构及合作信息保留为待确认。"
+    },
+    {
+      "source_index": 9,
+      "source": "目前，沐仞科技正与【能源企业、算力基础设施合作伙伴等】推进相关项目合作，并围绕【具体模型或客户应用场景】开展推理服务测试与业务验证。",
+      "rendered": "目前，沐仞科技正与【能源及基础设施合作伙伴待确认】推进相关项目合作，并围绕【模型及客户应用场景待确认】开展推理服务测试与业务验证。",
+      "reason": "沿用已确认内部稿处理：未确定金额、机构及合作信息保留为待确认。"
+    },
+    {
+      "source_index": 17,
+      "source": "【如投资方愿意提供公开评价，可在此加入投资机构代表对团队、技术路线及市场前景的简短评价。】",
+      "rendered": null,
+      "reason": "未提供投资方评价；仅列为审阅事项，不编造引语。"
+    }
+  ],
+  "all_retained_blocks_match": true,
+  "style": "Black/ivory copperplate and coarse halftone collage; morning blue, pale blue and muted violet.",
+  "fonts": "DM Sans / Noto Sans SC; approved v31 logo outlines",
+  "no_funding_fact_box": true,
+  "no_actual_deal_terms_added": true,
+  "mobile_qr_104px_decodes": true,
+  "publication_url": "https://xanthiawang.github.io/fathompeak/materials/funding/",
+  "financing_information_pending": true
+}

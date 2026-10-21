@@ -1,0 +1,16 @@
+{
+  "tool": "built-in imagegen",
+  "date": "2026-10-22",
+  "style": "Black and ivory engraving / halftone collage with brand morning blue, pale blue and muted violet. User supplied three style references.",
+  "assets": [
+    {
+      "asset": "energy-engraving-20261022.png",
+      "prompt": "Use case: ads-marketing. Original horizontal 16:9 conceptual editorial artwork for a green-energy and AI-computing company. Use the supplied images ONLY as references for visual language, never copy their figures or exact scenes. High contrast black-and-ivory copperplate engraving, coarse halftone screenprint and xerox print collage, tactile paper grain, flat cut-paper morning-blue #2F63B8 accents and a little muted deep violet #4E3F66, pale blue #A9C3E8. Composition: monumental stone steps run diagonally through a rocky landscape toward a quiet abstract industrial colonnade with geometric GPU-server cabinets integrated into it. Small solar arrays and distant wind turbines ground the energy subject. A few blue printed bands in the steps imply a path between energy and computation. Strong editorial depth, architectural linework, bold silhouettes and broad flat blue paper fields, warm ivory highlights. Wide scenic composition fills the canvas; a narrow clean white margin may remain. NO people, no lettering, no title, no numbers, no logos, no investment imagery, no cash, no certificates, no chart, no UI, no neon, no gradients, no glossy 3D, no photographic facilities. This is an imaginative print collage, never a photograph or evidence of company-built facilities. No text space reservation, no embedded marketing copy; this will appear below a separately typeset article title."
+    },
+    {
+      "asset": "team-art-engraving-20261022.png",
+      "prompt": "Use case: illustration-story. Create an original horizontal 16:9 editorial collage, inspired by the supplied style reference images but with different composition and subject. Rough black-and-ivory engraved linework and halftone photocopy grain, flat morning-blue #2F63B8 cut-paper geometries, pale blue #A9C3E8 and tiny deep muted violet #4E3F66 accent; crisp ivory paper texture. At the bottom, three stylized anonymous human silhouettes and several engraved hands around a worktable examining a small GPU module and a simple architectural model of an energy-side compute node. Figures are unidentifiable allegories, NOT a realistic staff photograph; no face likenesses. Behind them, an original broad blue-and-ivory repeating geometric network pattern made of offset rectangles and lines, not a company logo and not cubic OpenAI logos. Collaged stone arch fragments at the sides, strong negative shapes, uneven printed ink, tactile vintage newsletter illustration. The scene communicates research and teamwork, not a financing transaction. Entire artwork wide and horizontal, balanced readable silhouettes. No text, no letters, no logo, no numbers, no chart, no annotations, no money, no trophy, no photo realism, no 3D rendering, no soft gradients. White or cream paper at the outer edges. Distinct original editorial print composition."
+    }
+  ],
+  "composition": "Opening and team art kept free of labels and logos. Closing card layers approved v31 logo paths, exact brand type outlines, existing official QR and contact information over original concept art."
+}
