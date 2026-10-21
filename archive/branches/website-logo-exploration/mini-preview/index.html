@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <title>沐仞 · 小程序 UI 预览</title>
+  <link rel="icon" href="../art/share/favicon.svg">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500&family=Noto+Sans+SC:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="styles.css?v=acct7-20261018">
+</head>
+<body>
+  <header class="review-header">
+    <a class="wordmark" href="../" aria-label="沐仞官网">FathomPeak<span>沐仞科技</span></a>
+    <span class="review-label">微信小程序 · 交互设计预览</span>
+    <a class="spec-link" href="../design/palette-type.html" target="_blank" rel="noopener">色卡与字体规范 ↗</a>
+  </header>
+  <main class="review-layout">
+    <aside class="review-navigation" aria-label="设计评审工具">
+
+      <h1>让每一枚<br>Token，更值。</h1>
+      <p class="review-intro">低价模型 API 与 Token 采购。<br>选模型、买额度、接入你的应用。</p>
+      <div class="role-control"><label for="review-role">查看身份</label><select id="review-role"><option value="personal">个人用户</option><option value="admin">企业管理员</option><option value="member">企业成员</option></select></div>
+      <nav id="review-pages" aria-label="预览页面"></nav>
+      <p class="review-note">此处切换仅供设计评审。<br>实际产品沿用个人 / 企业独立登录。</p>
+    </aside>
+    <section class="device-stage" aria-label="小程序界面">
+      <div class="device">
+        <header class="mini-header"><button class="mini-brand" data-nav="home" aria-label="返回首页">沐仞<span>FathomPeak</span></button><div class="mini-tools"><button data-action="menu" aria-label="打开更多选项">•••</button><i></i><button data-action="about" aria-label="关于此预览"><span class="mini-circle"></span></button></div></header>
+        <div class="screen" id="screen" tabindex="-1"></div>
+        <nav class="tab-bar" id="tab-bar" aria-label="小程序主导航"></nav>
+      </div>
+      <p class="device-caption">新账户场景预览 · 数据服务尚未接入</p>
+    </section>
+    <aside class="design-context" aria-label="当前页面设计说明">
+      <div class="context-head"><span class="section-number" id="page-number">01</span><span>页面设计</span></div>
+      <h2 id="context-title">从需求出发</h2><p id="context-copy"></p>
+      <div id="context-flow" class="context-flow"></div>
+      <div class="design-rule"><h3>熟悉的色彩与质感</h3><div class="swatches"><span style="--swatch:#2F63B8" title="晨蓝 #2F63B8"></span><span style="--swatch:#3D314F" title="暮紫 #3D314F"></span><span style="--swatch:#212021" title="炭黑 #212021"></span><span style="--swatch:#F8F8F8" title="纸白 #F8F8F8"></span></div><p>常规字重衬线标题 · 无衬线正文<br>等宽数字与标签 · 暮紫细边线</p><p class="small">现有排线插画与缓慢树影，<br>延续官网的视觉语言。</p></div>
+      <p class="scope-note">目录沿用官网 2026-10-13 快照。可体验选型、充值意向与接入配置；当前不创建密钥、不调用模型、不支付。</p>
+    </aside>
+  </main>
+  <dialog id="sheet" class="sheet" aria-labelledby="sheet-title"><div class="sheet-content" id="sheet-content"></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <script type="module" src="app.js?v=acct-20261018"></script>
+</body>
+</html>

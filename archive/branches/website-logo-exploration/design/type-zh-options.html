@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>中文标题方案</title>
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Noto+Sans+SC:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@chinese-fonts/jhlst@3.0.0/dist/京華老宋体v2_002/result.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@chinese-fonts/hwmct@3.0.0/dist/汇文明朝体/result.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@chinese-fonts/jxzk@3.0.0/dist/江西拙楷/result.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@chinese-fonts/zkxw@3.0.0/dist/站酷小薇LOGO体_猫啃网/result.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@chinese-fonts/ysbth@3.0.0/dist/优设标题黑/result.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap">
+<style>
+:root{--paper:#F8F8F8;--card:#fff;--ink:#000;--ink70:rgba(0,0,0,.7);--ink50:rgba(0,0,0,.5);--line:rgba(0,0,0,.08);--accent:#2F63B8;--peak:#4E3F66;
+  --serif:"Fraunces","Noto Serif SC","Songti SC",serif;--sans:"DM Sans","Noto Sans SC","PingFang SC",sans-serif;--mono:"DM Mono",ui-monospace,monospace}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.6 var(--sans)}
+.wrap{max-width:1120px;margin:0 auto;padding:40px 20px 80px}
+.k{font:400 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink50)}
+.intro h1{font:400 34px/1.15 var(--serif);letter-spacing:-.02em;margin:6px 0 10px}
+.intro p{color:var(--ink70);max-width:70ch;margin:6px 0}
+.opt{margin-top:56px;padding-top:28px;border-top:1px solid var(--line)}
+.opt>.k{display:block;margin-bottom:6px}
+.opt>h2.t{font:500 20px var(--sans);margin:0 0 4px}
+.opt>p.why{color:var(--ink70);margin:0 0 22px;max-width:70ch;font-size:15px}
+.stage{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:44px 40px 36px;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.d{font:400 52px/1.1 var(--serif);letter-spacing:-.03em;text-align:center;margin:0 0 6px}
+.lead{text-align:center;color:var(--ink70);margin:0 auto 30px;max-width:46ch;font-size:15px}
+.row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:30px}
+.card{border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.card .k{display:block;margin-bottom:4px}
+.card h3{font:500 20px/1.3 var(--serif);letter-spacing:-.01em;margin:0 0 4px}
+.card p{margin:0;font-size:14px;color:var(--ink70)}
+.h2{font:400 28px/1.2 var(--serif);letter-spacing:-.02em;margin:18px 0 0}
+@media (max-width:800px){.row{grid-template-columns:1fr}.d{font-size:34px}.stage{padding:30px 18px}}
+
+/* 方案 A：手绘笔触。关键词下面一笔晨蓝，像编辑在稿子上划的重点 */
+.mk{position:relative;white-space:nowrap;z-index:0}
+.mk::after{content:"";position:absolute;z-index:-1;left:-.06em;right:-.06em;bottom:-.02em;height:.42em;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 9.5C34 6.2 76 4.6 122 4.9C150 5.1 176 6.1 197 7.6C199.4 7.8 199.6 10.9 197.2 11.1C170 13 140 12.4 108 12.2C72 12 38 12.9 5 13.6C1.6 13.7 0.6 9.8 3 9.5Z' fill='%232F63B8'/%3E%3C/svg%3E") no-repeat center/100% 100%;opacity:.5}
+.mk.ink::after{opacity:.9;height:.12em;bottom:-.1em}
+
+/* 方案 B：印章。每个大标题前一枚「仞」字小印，暮紫底纸白字，微微转一点角度 */
+.seal{display:inline-grid;place-items:center;width:.86em;height:.86em;margin-right:.22em;vertical-align:.06em;background:var(--peak);color:#F8F8F8;border-radius:.1em;font:700 .6em/1 "Noto Serif SC","Songti SC",serif;transform:rotate(-4deg);letter-spacing:0}
+.seal.sm{width:.9em;height:.9em;font-size:.62em}
+
+/* 字体候选 */
+.fonts{display:grid;gap:14px}
+.fs{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 26px;display:grid;grid-template-columns:200px 1fr;gap:6px 28px;align-items:center}
+.fs .meta b{display:block;font:500 16px var(--sans)}
+.fs .meta span{display:block;font-size:13px;color:var(--ink50);line-height:1.5}
+.fs .a{font-size:44px;line-height:1.15;letter-spacing:-.01em}
+.fs .b{font:400 28px/1.2 var(--serif);letter-spacing:-.02em;margin-top:6px}
+.fs .b i{font-style:normal;font-size:1.25em}
+@media (max-width:800px){.fs{grid-template-columns:1fr}.fs .a{font-size:32px}}
+.f-jh{font-family:"KingHwa_OldSong",serif}.f-hw{font-family:"Huiwen-mincho",serif}.f-wk{font-family:"LXGW WenKai",serif}
+.f-zk{font-family:"jiangxizhuokai",serif}.f-xw{font-family:"xiaowei",sans-serif}.f-ys{font-family:"YouSheBiaoTiHei",sans-serif}.f-ms{font-family:"Ma Shan Zheng",cursive}
+/* 方案 C：首字放大，同一套衬线 */
+.cap{font-size:1.45em;font-weight:700;line-height:.9;margin-right:.02em;vertical-align:-.04em}
+/* 方案 D：关键词换晨蓝 */
+.blue{color:var(--accent)}
+/* 方案 E：首字空心 */
+.hollow{color:transparent;-webkit-text-stroke:1.6px var(--accent);font-weight:700;font-size:1.2em;line-height:.9;margin-right:.03em}
+.h2 .hollow{-webkit-text-stroke-width:1.1px}
+/* 方案 F：英文手写小眉题，和英文版同一只手 */
+@font-face{font-family:"HandLatin";src:url("../fonts/hand-pinyonscript-subset.woff2") format("woff2");font-display:swap}
+.eb{display:block;font:400 30px/1 "HandLatin",cursive;color:var(--accent);opacity:.8;margin-bottom:2px}
+.d .eb{font-size:38px;margin-bottom:6px}
+.card .eb{font-size:22px}
+.reco{background:#EEF3FB;border-radius:14px;padding:18px 22px;margin-top:26px}
+.reco b{font-weight:500}
+.reco p{margin:4px 0;color:var(--ink70)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="intro">
+    <span class="k">中文标题方案 · 2026-10-13 · 企业采购与海外服务页</span>
+    <h1>中文标题：七款字体，七种做法</h1>
+    <p>线上中文版不动，这一页只是候选。上半部分换一批更耐看的中文字体（老宋、明朝、楷体、标题黑），下半部分是不靠换字体的做法：笔触、印章、首字放大、关键词变色、空心首字、英文手写眉题。都用企业页的真实标题演示。</p>
+  </div>
+
+  <section class="opt">
+    <span class="k">方案 A</span>
+    <h2 class="t">手绘笔触：每个标题挑一个关键词，下面一笔晨蓝</h2>
+    <p class="why">像编辑在稿子上划重点。笔触是一张手绘的 SVG，全站只用这一笔，颜色是晨蓝 50% 透明，字还是原来的衬线。每个标题划哪个词需要人工选，一页四五处。</p>
+    <div class="stage">
+      <div class="d">企业采购与<span class="mk">海外服务</span></div>
+      <p class="lead">面向企业、高校、科研机构及渠道平台，说清应用场景和用量，先测试，再报价采购。</p>
+      <div class="row">
+        <div class="card"><span class="k">企业与机构采购</span><h3>按 <span class="mk">Token 用量</span>计费</h3><p>提供应用场景、模型需求、预期用量与样例负载。</p></div>
+        <div class="card"><span class="k">渠道商与平台方</span><h3>应用平台与<span class="mk">渠道分发</span></h3><p>面向自有应用与渠道分发，价格与结算按协议执行。</p></div>
+        <div class="card"><span class="k">词元出海</span><h3>合规地用上<span class="mk">中国模型</span></h3><p>出海运营主体持中央网信办词元出海业务批复。</p></div>
+      </div>
+      <div class="h2">个人账号与<span class="mk">企业账号</span></div>
+      <div class="h2">从需求确认到<span class="mk">接入交付</span></div>
+    </div>
+  </section>
+
+  <section class="opt">
+    <span class="k">方案 B</span>
+    <h2 class="t">印章：页面大标题前一枚「仞」字小印</h2>
+    <p class="why">中文排版的传统签名方式，相当于 Every 把 logo 的手写 E 用到每个标题上。只放在页面大标题和区块标题，卡片不放；不需要逐个挑词，新标题自动有。正式版建议请人刻一枚真印扫描成 SVG，这里先用宋体粗字示意。</p>
+    <div class="stage">
+      <div class="d"><span class="seal">仞</span>企业采购与海外服务</div>
+      <p class="lead">面向企业、高校、科研机构及渠道平台，说清应用场景和用量，先测试，再报价采购。</p>
+      <div class="row">
+        <div class="card"><span class="k">企业与机构采购</span><h3>按 Token 用量计费</h3><p>提供应用场景、模型需求、预期用量与样例负载。</p></div>
+        <div class="card"><span class="k">渠道商与平台方</span><h3>应用平台与渠道分发</h3><p>面向自有应用与渠道分发，价格与结算按协议执行。</p></div>
+        <div class="card"><span class="k">词元出海</span><h3>合规地用上中国模型</h3><p>出海运营主体持中央网信办词元出海业务批复。</p></div>
+      </div>
+      <div class="h2"><span class="seal sm">仞</span>个人账号与企业账号</div>
+      <div class="h2"><span class="seal sm">仞</span>从需求确认到接入交付</div>
+    </div>
+  </section>
+
+  <section class="opt">
+    <span class="k">方案 A + B</span>
+    <h2 class="t">印章标页面，笔触标重点</h2>
+    <p class="why">页面大标题用印章，区块与卡片标题用笔触。两种痕迹各管一层，信息层级更清楚，但每页的「手的痕迹」变多，要克制使用。</p>
+    <div class="stage">
+      <div class="d"><span class="seal">仞</span>企业采购与海外服务</div>
+      <p class="lead">面向企业、高校、科研机构及渠道平台，说清应用场景和用量，先测试，再报价采购。</p>
+      <div class="row">
+        <div class="card"><span class="k">企业与机构采购</span><h3>按 <span class="mk">Token 用量</span>计费</h3><p>提供应用场景、模型需求、预期用量与样例负载。</p></div>
+        <div class="card"><span class="k">渠道商与平台方</span><h3>应用平台与<span class="mk">渠道分发</span></h3><p>面向自有应用与渠道分发，价格与结算按协议执行。</p></div>
+        <div class="card"><span class="k">词元出海</span><h3>合规地用上<span class="mk">中国模型</span></h3><p>出海运营主体持中央网信办词元出海业务批复。</p></div>
+      </div>
+      <div class="h2">个人账号与<span class="mk">企业账号</span></div>
+      <div class="h2">从需求确认到<span class="mk">接入交付</span></div>
+    </div>
+  </section>
+
+  <section class="opt">
+    <span class="k">字体候选</span>
+    <h2 class="t">七款可免费商用的中文字体</h2>
+    <p class="why">每款两行：第一行整句换成这款字体，第二行只把首字换成它、其余保持现在的衬线（类似 Every 只换首字母）。字体都是开源或作者声明免费商用的，正式上线前再逐一核对授权原文；整套中文字体有几 MB，上线要按字切片加载。</p>
+    <div class="fonts">
+      <div class="fs"><div class="meta"><b>京華老宋体</b><span>老派铅字宋，横细竖粗、有墨点，最像「印出来」的。免费商用</span></div><div><div class="a f-jh">企业采购与海外服务</div><div class="b"><i class="f-jh">个</i>人账号与企业账号 · <i class="f-jh">从</i>需求确认到接入交付</div></div></div>
+      <div class="fs"><div class="meta"><b>汇文明朝体</b><span>日式明朝味的宋体，比思源宋更有骨相、更瘦。免费商用</span></div><div><div class="a f-hw">企业采购与海外服务</div><div class="b"><i class="f-hw">个</i>人账号与企业账号 · <i class="f-hw">从</i>需求确认到接入交付</div></div></div>
+      <div class="fs"><div class="meta"><b>霞鹜文楷</b><span>清爽的楷体，读起来像手写但不潦草。SIL OFL</span></div><div><div class="a f-wk">企业采购与海外服务</div><div class="b"><i class="f-wk">个</i>人账号与企业账号 · <i class="f-wk">从</i>需求确认到接入交付</div></div></div>
+      <div class="fs"><div class="meta"><b>江西拙楷</b><span>笨拙一点的楷书，手感最重。免费商用</span></div><div><div class="a f-zk">企业采购与海外服务</div><div class="b"><i class="f-zk">个</i>人账号与企业账号 · <i class="f-zk">从</i>需求确认到接入交付</div></div></div>
+      <div class="fs"><div class="meta"><b>站酷小薇 LOGO 体</b><span>细长的标题字，有设计感。免费商用</span></div><div><div class="a f-xw">企业采购与海外服务</div><div class="b"><i class="f-xw">个</i>人账号与企业账号 · <i class="f-xw">从</i>需求确认到接入交付</div></div></div>
+      <div class="fs"><div class="meta"><b>优设标题黑</b><span>粗斜的标题黑，冲击力强，偏营销海报。免费商用</span></div><div><div class="a f-ys">企业采购与海外服务</div><div class="b"><i class="f-ys">个</i>人账号与企业账号 · <i class="f-ys">从</i>需求确认到接入交付</div></div></div>
+      <div class="fs"><div class="meta"><b>马善政毛笔楷书</b><span>真毛笔楷书，最接近「手写」。SIL OFL</span></div><div><div class="a f-ms">企业采购与海外服务</div><div class="b"><i class="f-ms">个</i>人账号与企业账号 · <i class="f-ms">从</i>需求确认到接入交付</div></div></div>
+    </div>
+  </section>
+
+  <section class="opt">
+    <span class="k">方案 C</span>
+    <h2 class="t">首字放大：同一套衬线，第一个字大一号、加粗</h2>
+    <p class="why">不引入新字体，最稳。效果接近西文的首字下沉，但中文方块字放大后容易显得笨，只适合页面大标题。</p>
+    <div class="stage">
+      <div class="d"><span class="cap">企</span>业采购与海外服务</div>
+      <p class="lead">面向企业、高校、科研机构及渠道平台，说清应用场景和用量，先测试，再报价采购。</p>
+      <div class="row">
+        <div class="card"><span class="k">企业与机构采购</span><h3>按 Token 用量计费</h3><p>提供应用场景、模型需求、预期用量与样例负载。</p></div>
+        <div class="card"><span class="k">渠道商与平台方</span><h3>应用平台与渠道分发</h3><p>面向自有应用与渠道分发，价格与结算按协议执行。</p></div>
+        <div class="card"><span class="k">词元出海</span><h3>合规地用上中国模型</h3><p>出海运营主体持中央网信办词元出海业务批复。</p></div>
+      </div>
+      <div class="h2"><span class="cap">个</span>人账号与企业账号</div>
+      <div class="h2"><span class="cap">从</span>需求确认到接入交付</div>
+    </div>
+  </section>
+
+  <section class="opt">
+    <span class="k">方案 D</span>
+    <h2 class="t">关键词变晨蓝：和方案 A 一样挑词，但只换颜色</h2>
+    <p class="why">最克制，读起来像重点标注。缺点是和链接颜色接近，按钮、链接要和它拉开。</p>
+    <div class="stage">
+      <div class="d">企业采购与<span class="blue">海外服务</span></div>
+      <p class="lead">面向企业、高校、科研机构及渠道平台，说清应用场景和用量，先测试，再报价采购。</p>
+      <div class="row">
+        <div class="card"><span class="k">企业与机构采购</span><h3>按 <span class="blue">Token 用量</span>计费</h3><p>提供应用场景、模型需求、预期用量与样例负载。</p></div>
+        <div class="card"><span class="k">渠道商与平台方</span><h3>应用平台与<span class="blue">渠道分发</span></h3><p>面向自有应用与渠道分发，价格与结算按协议执行。</p></div>
+        <div class="card"><span class="k">词元出海</span><h3>合规地用上<span class="blue">中国模型</span></h3><p>出海运营主体持中央网信办词元出海业务批复。</p></div>
+      </div>
+      <div class="h2">个人账号与<span class="blue">企业账号</span></div>
+      <div class="h2">从需求确认到<span class="blue">接入交付</span></div>
+    </div>
+  </section>
+
+  <section class="opt">
+    <span class="k">方案 E</span>
+    <h2 class="t">空心首字：首字只描边</h2>
+    <p class="why">有现代感，和网站的线框风格一致；小字号时描边会糊，所以卡片标题不做。</p>
+    <div class="stage">
+      <div class="d"><span class="hollow">企</span>业采购与海外服务</div>
+      <p class="lead">面向企业、高校、科研机构及渠道平台，说清应用场景和用量，先测试，再报价采购。</p>
+      <div class="row">
+        <div class="card"><span class="k">企业与机构采购</span><h3>按 Token 用量计费</h3><p>提供应用场景、模型需求、预期用量与样例负载。</p></div>
+        <div class="card"><span class="k">渠道商与平台方</span><h3>应用平台与渠道分发</h3><p>面向自有应用与渠道分发，价格与结算按协议执行。</p></div>
+        <div class="card"><span class="k">词元出海</span><h3>合规地用上中国模型</h3><p>出海运营主体持中央网信办词元出海业务批复。</p></div>
+      </div>
+      <div class="h2"><span class="hollow">个</span>人账号与企业账号</div>
+      <div class="h2"><span class="hollow">从</span>需求确认到接入交付</div>
+    </div>
+  </section>
+
+  <section class="opt">
+    <span class="k">方案 F</span>
+    <h2 class="t">英文手写眉题：中文标题上方一行英文手写体</h2>
+    <p class="why">用的就是英文版首字母那款手写体，中英文两版共用「同一只手」。中文字体完全不动，手写感交给英文去承担；眉题取英文版对应标题；「应用平台与渠道分发」「从需求确认到接入交付」英文版还没翻译，这里两句是新拟的，上线时一起补进英文版。</p>
+    <div class="stage">
+      <div class="d"><span class="eb">Enterprise procurement</span>企业采购与海外服务</div>
+      <p class="lead">面向企业、高校、科研机构及渠道平台，说清应用场景和用量，先测试，再报价采购。</p>
+      <div class="row">
+        <div class="card"><span class="k">企业与机构采购</span><h3><span class="eb">Billed per token</span>按 Token 用量计费</h3><p>提供应用场景、模型需求、预期用量与样例负载。</p></div>
+        <div class="card"><span class="k">渠道商与平台方</span><h3><span class="eb">Apps &amp; channels</span>应用平台与渠道分发</h3><p>面向自有应用与渠道分发，价格与结算按协议执行。</p></div>
+        <div class="card"><span class="k">词元出海</span><h3><span class="eb">Compliant access to Chinese models</span>合规地用上中国模型</h3><p>出海运营主体持中央网信办词元出海业务批复。</p></div>
+      </div>
+      <div class="h2"><span class="eb">Personal vs enterprise accounts</span>个人账号与企业账号</div>
+      <div class="h2"><span class="eb">From brief to delivery</span>从需求确认到接入交付</div>
+    </div>
+  </section>
+
+  <section class="opt">
+    <span class="k">方案 G</span>
+    <h2 class="t">定制手写：请人写「沐仞」和几个高频字</h2>
+    <p class="why">Every 的手写字母是专门画的，不是现成字体，所以好看。中文要达到同样效果，最可靠的是请书法或字体设计师手写「沐仞」两字做 logo 字标，再写十来个页面大标题的首字，扫描成 SVG 放进网站。成本是一次外包，好处是独一份；这一步需要公司决定，页面上暂不做演示。</p>
+  </section>
+
+  <div class="reco">
+    <p><b>我的建议</b></p>
+    <p>先上 <b>方案 F</b>：零字体风险，中英两版气质统一，改动只是在大标题上方加一行英文。</p>
+    <p>如果还想让中文本身有手感，再配一个 <b>京華老宋体</b> 或 <b>霞鹜文楷</b>，只用在页面大标题的首字（字体候选第二行的做法），区块和卡片标题不动。</p>
+    <p>长期看 <b>方案 G</b>（定制手写）最接近 Every。</p>
+  </div>
+</div>
+</body>
+</html>

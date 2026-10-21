@@ -1,0 +1,115 @@
+import {catalog, selectedModel, priceCondition, endpoint, estimateNumber, estimateCosts, costLabel} from './catalog.js?v=d40-20261018';
+import {icons} from './icons.js';
+export const icon = (name) => icons[name] || icons.play;
+export const escapeHTML = (value) => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+export const roles = {personal:'个人账户', admin:'企业管理员', member:'企业成员'};
+export const tasks = {ask:['自由问答','从一个问题，开始新的思路。'],write:['写作与改写','把想法写清楚，让表达更自然。'],summary:['文本总结','粘贴长文本，整理重点与脉络。'],translate:['翻译','让表达跨越语言。']};
+export const pageInfo = {
+ home:['01','从价格，到接入','模型与 Token 是销售主线。先选模型、核对计费，再充值并接入自己的工具。体验帮助选型，购买后在 API 接入中完成配置。',['查看模型参考价','核对适用价格与条件','充值并配置 API']],
+ estimate:['01','先算清，再充值','用量与单价分开输入。历史输出参考与手填公开价测算分开展示，完整价格表接入前不生成成交报价。',['选择模型与预计用量','核对价格来源与折后预算','充值后按实际用量计费']],
+ model:['01','价格，逐项看清','区分历史目录参考价、当前适用价与折扣。未配置价格不推算，充值金额不换算成固定 Token 数。',['确认模型与计费项','充值账户额度','继续 API 接入']],
+ api:['02','把额度用进应用','API Key、接入地址与模型名称组成交付入口。未连接账户时不生成密钥，也不展示虚假的可用状态。',['创建并安全保存 Key','配置地址与模型','首次调用后核对用量']],
+ connect:['02','接入，有明确下一步','按现有官网 OpenAI 兼容文档展示参数。API Key 在真实账户创建后获取，当前只复制非敏感配置。',['选择接入模型','配置工具或应用','核对请求与消费记录']],
+ work:['03','试用，为了选型','在线试用用于体验模型，作为 API 采购的辅助入口。保留模型意向与本设备草稿，不伪造响应。',['确认模型','输入测试内容','接入自己的应用']],
+ purchase:['03','充值调用额度','购买统一账户额度，所选模型只是接入意向。个人与企业均享公开价 4 折起，按模型实际用量扣费。',['填写充值金额','核对账户与计费规则','到账后创建 API Key']],
+ confirm:['03','核对采购归属','确认金额与账户，清楚区分充值和模型消费。支付服务未接入时不能承诺到账或可调用。',['确认充值信息','支付后确认到账','进入 API 配置']],
+ billing:['04','资金与用量，分别记','充值订单记录资金变化；调用明细记录 Token 和费用。二者共享账本，保留各自的查询入口。',['余额与充值','Token 用量与费用','订单及发票']],
+ orders:['04','充值订单','查询支付、到账及售后；每次 API 请求记录在调用明细，不重复生成充值订单。',['筛选订单状态','确认到账','处理售后']],
+ usage:['04','调用明细','按模型、调用来源查看 Token 和实际费用；没有账户数据时展示未连接状态。',['确认账户归属','筛选调用来源','核对 Token 与扣费']],
+ account:['04','个人与企业，各有归属','余额、用量账单、订单发票和企业管理集中在此。企业成员不出现无权限的充值操作。',['账户与企业','优惠与采购咨询','帮助与安全']],
+ team:['06','团队额度管理','管理员配置成员、额度和可用模型。当前未接入真实组织，保留准确的未连接状态。',['核对组织','分配权限与额度','查看调用账单']],
+ service:['07','按 Token 使用模型','解释账户额度、模型计费和 API 接入的关系；基础设施业务通过企业咨询承接。',['充值账户额度','通过 API 或在线试用调用','按实际 Token 结算']]
+};
+const art = (name, extra='') => `<span class="art art-${name} ${extra}" aria-hidden="true"></span>`;
+const row = (name,title,desc,attrs) => `<button class="task-row" ${attrs}><span class="icon-tile">${icon(name)}</span><span><strong>${title}</strong><small>${desc}</small></span><span class="arrow" aria-hidden="true">›</span></button>`;
+const menu = (name,title,attrs,hint='') => `<button class="menu-row" ${attrs}>${icon(name)}<span>${title}</span>${hint?`<span class="hint">${hint}</span>`:''}<span class="arrow" aria-hidden="true">›</span></button>`;
+const account = (s) => `<div class="account-line"><span class="account-kind">${icon(s.role==='personal'?'acct':'members')}${roles[s.role]}</span><button class="icon-btn" data-action="notifications" aria-label="通知">${icon('ad-alerts')}</button></div>`;
+const back = (title='home',label='返回') => `<div class="back-row"><button data-nav="${title}">← ${label}</button><span>沐仞 · AI 服务</span></div>`;
+const empty = (name,title,desc,button='') => `<div class="empty">${art(name)}<h2>${title}</h2><p>${desc}</p>${button}</div>`;
+const purchaseAction = (s,text='购买额度') => s.role==='member'?`<button class="text-button" data-action="admin-help">联系管理员 →</button>`:`<button class="text-button" data-nav="purchase">${text} →</button>`;
+
+
+// Explicit design scenario requested by the product owner, not a fetched balance.
+const balancePreview = s => s.role==='member'?'—':'0.00';
+const walletBody = s => `<div><span class="balance-label">${s.role==='member'?'企业分配额度':'账户余额'}</span><div class="wallet-amount"><span>¥</span>${balancePreview(s)}</div></div>${s.role==='member'?'<button class="secondary" data-action="admin-help">联系管理员 →</button>':'<button class="primary recharge-cta" data-nav="purchase">立即充值 <span aria-hidden="true">↗</span></button>'}`;
+const wallet = s => `<section class="wallet-panel" aria-label="账户余额与充值">${walletBody(s)}</section>`;
+const benefits = () => `<section class="benefit-grid" aria-label="新用户与教育权益"><button class="benefit-card welcome-benefit" data-action="welcome-gift"><span class="benefit-title">注册礼包 <small>方案预览</small></span><strong><span>¥</span>68 <small>试用券</small></strong><span class="benefit-link">了解新用户礼包 <span aria-hidden="true">↗</span></span></button><button class="benefit-card education-benefit" data-action="education"><span class="benefit-title">教育优惠 ${icon('acct')}</span><p>学生、教师<br>与实验室专享</p><span class="benefit-link">查看认证与优惠 <span aria-hidden="true">↗</span></span></button></section>`;
+
+export function modelRows(s) {
+ const q=(s.query||'').trim().toLowerCase();
+ const list=catalog.filter(m=>(s.vendor==='全部'||m.vendor===s.vendor)&&(!q||(m.name+' '+m.vendor).toLowerCase().includes(q)));
+ return list.length?list.map(m=>`<button class="model-row" data-model="${m.id}"><span class="model-title">${m.name}<small>${m.vendor} · ${m.type.join(' / ')}</small></span><span class="model-price"><b>¥${m.mkt.toFixed(2)}</b><small>输出 / 百万 Token</small></span><span class="model-condition">${priceCondition(m)}</span><span class="model-arrow" aria-hidden="true">↗</span></button>`).join(''):'<div class="empty subtle"><h2>没有匹配的模型</h2><p>试试其他名称，或清除筛选条件。</p><button class="secondary" data-action="reset-models">清除筛选</button></div>';
+}
+function home(s) {
+ return `<section class="hero api-hero hero-wallet ${s.paused?'paused':''}" aria-label="模型 API 与账户余额"><div class="ambient" aria-hidden="true"></div><h1>更低的成本，<br>接入你的 AI。</h1><p>主流模型 API · 按 Token 计费<br>个人与企业，公开价 <b class="discount"><span>4</span> 折起</b><br><button class="text-button" data-action="pricing-help">计费说明 ↗</button></p>${art('key')}<div class="hero-balance">${walletBody(s)}</div></section>
+ ${benefits()}
+ <button class="quiet-card trail-card estimate-entry" data-action="estimate"><span><span class="entry-title">充值前，先算算费用</span><span class="entry-desc">选模型、填预计用量，对比公开价和折后预算。</span><span class="entry-link">开始测算 →</span></span>${art('tag')}</button>
+ <div class="section-head" id="market-heading"><h2>模型市场</h2></div>
+ <label class="search-field">${icon('models')}<input type="search" id="model-search" placeholder="搜索模型或厂商" aria-label="搜索模型或厂商" value="${escapeHTML(s.query||'')}"></label>
+ <div class="pills vendor-pills" aria-label="模型厂商">${['全部',...new Set(catalog.map(m=>m.vendor))].map(v=>`<button data-vendor="${v}" aria-pressed="${s.vendor===v}">${v}</button>`).join('')}</div>
+ <p class="catalog-note">官网目录 · 2026-10-13 快照<br>以下为输出参考价，当前适用价与可用性待确认。</p><div class="model-list" id="model-list">${modelRows(s)}</div>
+ <div class="quiet-card trail-card"><div><h3>用量较大？单独报价。</h3><p>企业与团队按模型、用量和服务要求采购。</p><button class="text-button" data-action="sales">咨询企业采购 →</button></div>${art('sign')}</div>
+ <div class="menu-group">${menu('play','在线试用模型','data-nav="work"','辅助选型')}${menu('orders','Token 与计费说明','data-nav="service"')}</div>`;
+}
+function model(s) {
+ const m=selectedModel(s);
+ if(!m)return `${back()}<h1 class="page-title">先选一个模型</h1><button class="primary" data-nav="home">查看模型市场</button>`;
+ return `${back('home','模型市场')}<h1 class="page-title model-heading">${m.name}</h1><p class="page-subtitle">${m.vendor} · ${m.type.join(' / ')} · 目录上下文 ${m.ctx}</p><div class="price-panel"><span>输出参考价</span><div><b class="mono">¥${m.mkt.toFixed(2)}</b><small>/ 百万 Token</small></div><p>${priceCondition(m)} · 2026-10-13</p></div><button class="secondary full" data-action="estimate">算算这个模型的费用 →</button><p class="model-description">${m.desc}</p><dl class="detail-list"><div><dt>当前适用输出价</dt><dd>折扣单价待同步</dd></div><div><dt>输入 / 缓存单价</dt><dd>待接入完整价格表</dd></div><div><dt>适用折扣</dt><dd>个人与企业均享 4 折起</dd></div><div><dt>当前可调用状态</dt><dd>待服务确认</dd></div></dl><div class="notice">充值到统一账户余额，按调用时适用价格扣费。选择此模型不代表购买该模型专属套餐。</div><div class="purchase-footer">${s.role==='member'?'<button class="primary full" data-action="admin-help">联系管理员分配额度</button>':'<button class="primary full" data-nav="purchase">充值并接入此模型 →</button>'}<button class="text-button full" data-nav="connect">已有额度？查看 API 配置 →</button></div><div class="menu-group">${menu('play','在线试用此模型','data-nav="work"')}${menu('members','咨询企业报价','data-action="sales"')}</div><p class="input-note">来源：官网模型目录快照。参考价不是当前订单报价。</p>`;
+}
+export function estimateResult(s) {
+ const e=s.estimate,m=catalog.find(m=>m.id===e.modelId),result=m?estimateCosts(e):null;
+ const output=estimateNumber(e.output);
+ return `<section class="estimate-result" aria-label="费用对比"><h2>同模型，算算能省多少</h2><p class="input-note">${result?'按你填写的公开单价测算 · 未核验':'补齐用量与官方单价后，显示折后预算。'}</p><dl class="estimate-comparison"><div><dt>公开价预算</dt><dd>${result?costLabel(result.publicCost):'—'}</dd></div><div class="estimate-discount"><dt>沐仞 4 折预算</dt><dd>${result?costLabel(result.discountCost):'—'}</dd></div><div><dt>预计节省</dt><dd>${result?costLabel(result.saving):'—'}</dd></div></dl><p class="input-note">按最低 4 折估算，实际折扣以模型与用量为准。这里是预算测算，不是成交报价；不含缓存、阶梯计价及附加费用，也未抵扣试用券。</p></section>
+ ${m?`<details class="estimate-reference"><summary>查看历史输出参考</summary><p>${m.name} · ${m.seen}<br>${priceCondition(m)} · ¥${m.mkt.toFixed(2)} / 百万 Token</p><p>历史输出小计：<strong>${output===null?'—':costLabel(output*m.mkt)}</strong><br>仅输出部分，不含输入；不代表总费用或当前售价，未再叠加折扣。</p></details>`:''}`;
+}
+function estimate(s) {
+ const e=s.estimate;
+ const field=(key,label,placeholder)=>`<label class="form-field" for="estimate-${key}">${label}<input id="estimate-${key}" data-estimate="${key}" inputmode="decimal" autocomplete="off" maxlength="13" placeholder="${placeholder}" value="${escapeHTML(e[key])}" aria-describedby="estimate-help estimate-error"></label>`;
+ return `${back(s.estimateFrom||'home',({model:'模型详情',account:'我的'})[s.estimateFrom]||'模型市场')}<h1 class="page-title">算算费用</h1><p class="page-subtitle">选一个模型，看看预计花多少、能省多少。</p>
+ <form id="estimate-form" novalidate><label class="form-field" for="estimate-model">选择模型<select id="estimate-model" aria-label="选择模型"><option value="">请选择模型</option>${catalog.map(m=>`<option value="${m.id}" ${m.id===e.modelId?'selected':''}>${m.name}</option>`).join('')}</select></label>
+ <fieldset class="estimate-fields"><legend>预计用量 <span>百万 Token</span></legend><div class="estimate-inputs">${field('input','输入用量','填写输入量')}${field('output','输出用量','填写输出量')}</div><p class="input-note">1 = 100 万 Token；没有该项用量时填写 0。</p></fieldset>
+ <details class="estimate-rates" ${e.inputRate||e.outputRate?'open':''}><summary>填写官方单价 <span>价格表待同步</span></summary><p class="input-note">已有单价？填写同一模型、同一计费档的官方公开价，单位为人民币元 / 百万 Token。不会把历史目录价再次打折。</p><div class="estimate-inputs">${field('inputRate','输入单价','元 / 百万 Token')}${field('outputRate','输出单价','元 / 百万 Token')}</div></details>
+ <p class="input-note" id="estimate-help">支持非负数字，最多 6 位整数与 6 位小数；用量为 0 的项目可不填单价。</p><p class="field-error" id="estimate-error" role="alert"></p><button class="secondary full" type="submit">计算费用</button></form>
+ <div id="estimate-result" aria-live="polite" aria-atomic="true">${estimateResult(s)}</div><div class="estimate-footer">${s.role==='member'?'<button class="primary full" data-action="admin-help">联系管理员分配额度</button>':'<button class="primary recharge-cta full" data-nav="purchase">立即充值 →</button>'}<button class="text-button full" data-action="pricing-help">查看计费说明</button><p class="input-note">充值到统一账户余额，测算金额不会自动填入订单。</p></div>`;
+}
+function api(s) {
+ const m=selectedModel(s);
+ return `${account(s)}<h1 class="page-title">API 接入</h1><p class="page-subtitle">把模型能力，接入你自己的工具和应用。</p>${wallet(s)}<div class="section-head"><h2>我的 API Key</h2><button class="text-button" data-action="create-key">创建 Key ＋</button></div><div class="quiet-card key-empty">${art('key')}<h3>连接账户后，管理你的 Key</h3><p>密钥列表尚未读取。完整 Key 仅在真实创建时显示，请妥善保存。</p><button class="primary" data-action="create-key">创建 API Key</button></div><div class="section-head"><h2>接入准备</h2></div><div class="setup-steps"><div><b>01</b><span>充值调用额度<small>按模型实际 Token 用量扣费</small></span></div><div><b>02</b><span>创建 API Key<small>用于调用鉴权，额度属于账户</small></span></div><div><b>03</b><span>配置地址与模型<small>${m?m.name:'选择模型后查看接入参数'}</small></span></div></div><button class="secondary full" data-nav="connect">查看接入配置 →</button><div class="menu-group">${menu('models','选择接入模型','data-action="pick-model"',m?'已选模型':'')}${menu('play','在线试用','data-nav="work"')}${menu('orders','接入文档','data-action="api-docs"')}</div>`;
+}
+function connect(s) {
+ const m=selectedModel(s);
+ return `${back('api','API 接入')}<h1 class="page-title">接入你的应用</h1><p class="page-subtitle">OpenAI 兼容配置 · 地址、密钥、模型，三项完成接入准备。</p><div class="config-card"><label>Base URL</label><code>${endpoint}</code><button class="text-button" data-copy="endpoint">复制地址</button></div><div class="config-card"><label>API Key</label><p>在真实账户创建后获取。此预览不生成密钥。</p><button class="text-button" data-action="create-key">创建 Key →</button></div><div class="config-card"><label>模型名称</label><code>${m?m.name:'尚未选择模型'}</code><div class="config-actions">${m?'<button class="text-button" data-copy="model">复制模型名</button>':''}<button class="text-button" data-action="pick-model">${m?'更换':'选择'}模型</button></div></div><div class="section-head"><h2>用在哪里</h2></div><div class="pills" aria-label="接入方式"><button data-client="tool" aria-pressed="${s.client==='tool'}">客户端工具</button><button data-client="code" aria-pressed="${s.client==='code'}">自己的应用</button></div>${s.client==='code'?`<div class="quiet-card"><h3>服务端配置</h3><p>将 Base URL 和模型名称写入应用配置；真实 API Key 存入服务端环境变量，避免放进网页或小程序前端。</p><button class="text-button" data-action="api-docs">查看调用示例 →</button></div>`:`<div class="quiet-card"><h3>支持自定义 API 的客户端</h3><p>官网列有 Cherry Studio、Lobe Chat、DeepChat 等接入指引。添加 OpenAI 兼容服务商，再填写上述三项；菜单和兼容性以具体版本为准。</p><button class="text-button" data-action="api-docs">查看客户端教程 →</button></div>`}<p class="input-note">配置来自现有官网文档。当前未做在线调用验证；模型能否调用以账户开通范围为准。</p><button class="text-button full" data-nav="billing">接入后，查看用量账单 →</button>`;
+}
+function billing(s) {
+ return `${back('account','我的')}<h1 class="page-title">用量账单</h1><p class="page-subtitle">充值、Token 消耗与费用，在这里核对。</p><div class="balance-card"><div class="label">${s.role==='member'?'企业分配额度':'账户余额'} · ¥</div><div class="amount">${s.role==='member'?'—':'¥0.00'}</div><div class="foot">${purchaseAction(s,'充值购买')}</div></div><div class="summary-grid"><div><small>本月 Token</small><b>—</b><p>等待调用记录</p></div><div><small>本月消费 · ¥</small><b>—</b><p>等待结算记录</p></div></div><div class="menu-group">${menu('usage','调用明细','data-nav="usage"','Token 与费用')}${menu('orders','充值订单','data-nav="orders"','支付与到账')}${menu('bill','发票与售后','data-action="order-help"')}</div><div class="notice">充值订单记录资金入账；调用明细按模型记录输入、输出 Token 与实际扣费。</div><div class="section-head"><h2>模型消费</h2></div><div class="empty subtle"><h2>连接账户后查看</h2><p>这里将按模型汇总真实调用量与费用。</p><button class="secondary" data-nav="api">前往 API 接入</button></div>`;
+}
+function work(s) {
+ const [name,description]=tasks[s.task]; const m=selectedModel(s);
+ return `${account(s)}<h1 class="page-title">体验模型</h1><p class="page-subtitle">先体验模型，再接入应用。${m?m.name:description}</p><div class="pills" aria-label="任务类型">${Object.entries(tasks).map(([id,t])=>`<button data-task="${id}" aria-pressed="${id===s.task}">${t[0]}</button>`).join('')}</div>
+ <div class="composer-card"><label class="composer-label" for="task-input"><span>${name} · 输入内容</span><span class="mono" id="input-count">${Array.from(s.draft).length}</span></label><textarea id="task-input" placeholder="${s.task==='summary'?'粘贴需要总结的文本…':s.task==='write'?'写下想表达的内容，或粘贴需要修改的文字…':s.task==='translate'?'粘贴需要翻译的文本，并说明目标语言…':'写下你的问题，或尚未成形的想法…'}">${escapeHTML(s.draft)}</textarea><div class="composer-bottom"><button class="model-trigger" data-action="pick-model">${icon('models')}${m?m.name:'选择模型'} <span aria-hidden="true">⌄</span></button><button class="send-button" data-action="send" aria-label="开始任务">↑</button></div></div>
+ <div class="draft-meta"><span id="draft-status">${s.draft?'已恢复本设备草稿':'草稿仅保存在本设备'}</span><button data-action="clear-draft">清除草稿</button></div>
+ <div class="balance-strip"><div><span class="balance-label">${roles[s.role]} · 可用额度</span><span class="balance-value">${s.role==='member'?'—':'¥0.00'}</span></div>${purchaseAction(s,'补充额度')}</div>
+ <div class="section-head"><h2>任务记录</h2><span class="muted">属于当前账户</span></div><div class="empty subtle"><span class="icon-tile">${icon('play')}</span><h2>从第一个问题开始</h2><p>完成的任务和结果会保留在这里，<br>随时回来，接着往下想。</p></div>`;
+}
+function purchase(s) {
+ if(s.role==='member')return `${back('account')}<h1 class="page-title">企业额度</h1>${empty('key','由管理员统一分配','请联系企业管理员补充或调整你的可用额度。','<button class="primary" data-action="admin-help">联系管理员</button>')}`;
+ return `${back(s.from||'home')}<h1 class="page-title">充值 Token 调用额度</h1><p class="page-subtitle">充值至账户余额，按模型实际 Token 用量扣费。</p><div class="steps"><b>01 填写金额</b><span>02 核对信息</span><span>03 支付与到账</span></div>
+ <div class="balance-card"><div class="label">${roles[s.role]} · 可用额度</div><div class="amount">${s.role==='member'?'—':'¥0.00'}</div>${art('tag')}</div>
+ <form id="amount-form" novalidate><label class="field-label" for="amount">购买金额</label><div class="amount-input"><span aria-hidden="true">¥</span><input id="amount" name="amount" inputmode="decimal" autocomplete="off" placeholder="填写金额" value="${escapeHTML(s.amount)}" aria-describedby="amount-help amount-error"></div><p class="input-note" id="amount-help">人民币账户余额；不同模型单价不同，不换算成固定 Token 数。</p><p class="field-error" id="amount-error" role="alert"></p><dl class="detail-list"><div><dt>购买归属</dt><dd>${roles[s.role]}</dd></div><div><dt>接入意向</dt><dd>${selectedModel(s)?.name||'稍后选择模型'}</dd></div><div><dt>适用价格</dt><dd>公开价 4 折起 · 单价待同步</dd></div><div><dt>额度与有效期</dt><dd>待商品规则配置</dd></div></dl><div class="purchase-footer"><button class="primary full" type="submit">下一步，核对信息 <span aria-hidden="true">→</span></button><p class="small">此预览不会创建订单或发起扣款。</p></div></form>`;
+}
+function confirm(s){
+ return `${back('purchase','修改金额')}<h1 class="page-title">确认购买信息</h1><p class="page-subtitle">确认归属账户，再继续下一步。</p><div class="steps"><span>01 填写金额</span><b>02 核对信息</b><span>03 支付与到账</span></div><div class="quiet-card"><span class="muted small">本次填写金额</span><div class="page-title mono">¥${escapeHTML(s.amount)}</div><span class="small muted">购买意向，尚未生成订单</span></div><dl class="detail-list"><div><dt>归属账户</dt><dd>${roles[s.role]}</dd></div><div><dt>购买内容</dt><dd>账户调用额度</dd></div><div><dt>接入意向</dt><dd>${selectedModel(s)?.name||'稍后选择模型'}</dd></div><div><dt>模型单价与折扣</dt><dd>折扣单价待同步</dd></div><div><dt>有效期与退款规则</dt><dd>待配置</dd></div><div><dt>支付方式</dt><dd>待支付服务开通</dd></div></dl><div class="notice">正式商品和支付服务就绪后，才能确认实付金额并支付。当前填写内容不会成为真实订单。</div><div class="purchase-footer"><button class="primary full" disabled>支付暂未开通</button><button class="text-button full" data-nav="connect">先查看 API 接入配置 →</button></div>`;
+}
+function orders(s){
+ return `${back('account','我的')}<h1 class="page-title">充值订单</h1><p class="page-subtitle">购买、到账与售后，都有迹可循。</p><div class="pills" aria-label="订单状态">${['全部','待支付','处理中','已完成','退款'].map(f=>`<button data-filter="${f}" aria-pressed="${s.filter===f}">${f}</button>`).join('')}</div>${empty('tag',s.filter==='全部'?'你的订单，会在这里':'暂无'+s.filter+'订单','接入账户后，在这里查看真实购买记录、到账状态与售后进度。',s.role==='member'?'<button class="secondary" data-nav="api">API 接入</button>':'<button class="primary" data-nav="purchase">了解购买额度 →</button>')}<div class="menu-group">${menu('usage','查看 AI 消费明细','data-nav="usage"')}${menu('sec','订单与售后帮助','data-action="order-help"')}</div>`;
+}
+function accountView(s){
+ return `<section class="account-hero" aria-label="账户概览"><div class="account-art" aria-hidden="true"></div><div class="profile"><div class="avatar" aria-hidden="true">沐</div><div><h1>${roles[s.role]}</h1><p>${s.role==='personal'?'个人使用，独立管理。':s.role==='admin'?'企业服务，统一管理。':'专注任务，额度由企业分配。'}</p></div></div><div class="hero-balance">${walletBody(s)}</div></section>${benefits()}<div class="menu-group">${menu('usage','用量账单','data-nav="billing"','Token 与费用')}${menu('bill','算算费用','data-action="estimate"','充值前预估')}${menu('orders','充值订单','data-nav="orders"')}${menu('bill','发票与售后','data-action="order-help"')}${s.role==='admin'?menu('members','成员与额度','data-nav="team"'):''}${s.role==='member'?menu('members','我的企业额度','data-action="admin-help"'):''}${menu('keys','API 接入','data-nav="api"')}</div><div class="menu-group">${menu('sec','账户与安全','data-action="account-help"')}${menu('members','企业采购与合作','data-action="sales"')}${menu('play','帮助与联系','data-action="help"')}${menu('batch','了解沐仞','data-action="about"')}</div><p class="input-note" style="text-align:center;margin-top:24px">${s.role==='personal'?'个人与企业使用独立登录入口。':'当前页面仅呈现企业账户信息。'}</p>`;
+}
+function team(s){
+ if(s.role!=='admin')return `${back('account')}<h1 class="page-title">团队管理</h1>${empty('key','需要管理员权限','成员与额度由企业管理员统一管理。','<button class="secondary" data-nav="account">返回我的账户</button>')}`;
+ return `${back('account','我的账户')}<h1 class="page-title">团队，共同向前。</h1><p class="page-subtitle">统一管理成员，让每一份额度各得其所。</p><div class="summary-grid"><div><small>企业可用额度</small><b>—</b><p>等待账户连接</p></div><div><small>已加入成员</small><b>—</b><p>等待成员数据</p></div></div><div class="section-head"><h2>成员与权限</h2><button class="text-button" data-action="invite">邀请成员 ＋</button></div><label class="search-field"><span aria-hidden="true">⌕</span><input id="member-search" type="search" placeholder="查找姓名或工作邮箱" aria-label="查找成员"></label><div id="member-empty">${empty('boxes','在这里，组建团队','接入企业账户后，成员、角色与可用额度会显示在这里。','<button class="secondary" data-action="invite">查看邀请方式 →</button>')}</div><div class="notice">成员可使用分配额度。购买、调整限额与停用成员由管理员操作；个人消费独立记账。</div>`;
+}
+function usage(s){return `${back('billing','用量账单')}<h1 class="page-title">调用明细</h1><p class="page-subtitle">${roles[s.role]} · 逐模型核对 Token 与费用。</p><div class="pills" aria-label="消费记录类型">${['全部','API 调用','在线试用'].map(f=>`<button data-usage-filter="${f}" aria-pressed="${s.usageFilter===f}">${f}</button>`).join('')}</div><div class="notice">账户尚未连接，尚未读取${s.usageFilter==='全部'?'调用':s.usageFilter}记录。</div>${empty('book','每次调用，都有记录','接入后显示模型、输入与输出 Token、实际费用及结算状态。','<button class="primary" data-nav="api">前往 API 接入 →</button>')}<p class="input-note">充值记录在充值订单页查看。在线试用的计费规则以正式服务为准。</p>`;}
+function service(s){return `${back()}<h1 class="page-title">买额度，用模型。</h1><p class="page-subtitle">通过沐仞 API，将模型能力接入自己的应用；也可以在线试用。</p><dl class="detail-list"><div><dt>购买内容</dt><dd>模型调用额度</dd></div><div><dt>调用凭证</dt><dd>账户下创建的 API Key</dd></div><div><dt>计费方式</dt><dd>按输入、输出等实际用量</dd></div><div><dt>适用折扣</dt><dd>个人与企业均享 4 折起</dd></div></dl><div class="notice">同一充值金额可消耗的 Token 数因模型、输入/输出比例与适用价格不同而变化。</div><div class="purchase-footer"><button class="primary full" data-nav="home">查看模型与价格 →</button></div><div class="section-head"><h2>企业与基础设施</h2></div><div class="menu-group">${menu('members','企业 Token 采购','data-action="sales"')}${menu('batch','算电协同群智基座','data-action="sales"')}${menu('models','FPTM 词元一体机','data-action="sales"')}${menu('home','能源与算力节点合作','data-action="sales"')}</div>`;}
+export function renderPage(s){const views={home,model,estimate,api,connect,billing,work,purchase,confirm,orders,account:accountView,team,usage,service};return `<article class="page">${(views[s.page]||home)(s)}</article>`;}

@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-18",
+  "brand": "FathomPeak 沐仞科技",
+  "typeface_choice": "Selected technology wordmark only",
+  "checks": [
+    {
+      "file": "overview.svg",
+      "chinese_lockups_updated": 3,
+      "symbol_and_gradients_unchanged": true,
+      "english_outlines_unchanged": true,
+      "embedded_images": 0
+    },
+    {
+      "file": "primary.svg",
+      "chinese_lockups_updated": 1,
+      "symbol_and_gradients_unchanged": true,
+      "english_outlines_unchanged": true,
+      "embedded_images": 0
+    },
+    {
+      "file": "circle.svg",
+      "chinese_lockups_updated": 1,
+      "symbol_and_gradients_unchanged": true,
+      "english_outlines_unchanged": true,
+      "embedded_images": 0
+    },
+    {
+      "file": "square.svg",
+      "chinese_lockups_updated": 1,
+      "symbol_and_gradients_unchanged": true,
+      "english_outlines_unchanged": true,
+      "embedded_images": 0
+    },
+    {
+      "file": "symbol.svg",
+      "chinese_lockups_updated": 0,
+      "symbol_and_gradients_unchanged": true,
+      "english_outlines_unchanged": true,
+      "embedded_images": 0
+    }
+  ]
+}

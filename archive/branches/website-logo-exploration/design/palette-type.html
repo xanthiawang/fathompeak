@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>沐仞 · 色卡与文字设计交付</title>
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<style>
+:root{--paper:#F8F8F8;--paper-2:#F3F1EA;--card:#FFFFFF;--ink:#000000;--ink-85:rgba(0,0,0,.85);--ink-70:rgba(0,0,0,.7);--ink-50:rgba(0,0,0,.5);--ink-30:rgba(0,0,0,.3);--line:rgba(0,0,0,.08);--line-2:rgba(0,0,0,.05);
+--accent:#2F63B8;--accent-fill:#5284D7;--accent-soft:#DCE7F7;--accent-tint:#EEF3FB;--peak:#4E3F66;--peak-soft:#EAE4F0;
+--field-1:#A9C3E8;--field-2:#E3ECF8;--field-3:#EBCFC4;--field-4:#D6CBDD;--hz-1:#5284D7;--hz-2:#B7A8A3;--hz-2b:#3D314F;--hz-3:#212021;--hz-haze:#E8D4CC;
+--serif:"Fraunces","Noto Serif SC","Songti SC",serif;--sans:"DM Sans","Noto Sans SC","PingFang SC",system-ui,sans-serif;--mono:"DM Mono","SF Mono",ui-monospace,monospace}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#F8F8F8}} :root[data-theme="dark"]{--paper:#F8F8F8}
+*{box-sizing:border-box} html,body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.6 var(--sans)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px 90px}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,5vw,56px);letter-spacing:-.03em;line-height:1.08;margin:80px 0 10px;font-variation-settings:"opsz" 144}
+h2{font-family:var(--serif);font-weight:400;font-size:30px;letter-spacing:-.02em;margin:64px 0 10px}
+h3{font-family:var(--serif);font-weight:500;font-size:19px;margin:0 0 6px;letter-spacing:-.01em}
+p{margin:6px 0;color:var(--ink-70)} .lead{font-size:18px;color:var(--ink);max-width:64ch}
+.k{font:400 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-50)}
+.mono{font-family:var(--mono)}
+.hero{position:relative;height:420px;border-radius:16px;overflow:hidden;background:var(--hz-3);margin-top:22px}
+.hero .field{position:absolute;inset:0;background:radial-gradient(circle at 50% calc(130px + 60vw),var(--hz-3) 0,var(--hz-3) calc(60vw - 1px),var(--hz-2b) calc(60vw + 16px),#7A6071 calc(60vw + 34px),#A88E92 calc(60vw + 52px),var(--hz-2) calc(60vw + 66px),#D9C0B9 calc(60vw + 84px),#E9DCD8 calc(60vw + 100px),#CFD9E4 calc(60vw + 118px),#9DBBE4 calc(60vw + 142px),#6F9CE0 calc(60vw + 175px),var(--hz-1) calc(60vw + 230px),#4A7CD3 calc(60vw + 700px))}
+.hero .t{position:absolute;left:24px;right:24px;top:190px;text-align:center;color:#fff;font-family:var(--serif);font-size:30px;letter-spacing:-.02em}
+.hero .s{position:absolute;left:24px;right:24px;top:240px;text-align:center;color:#fff;font-family:var(--serif);font-size:18px}
+.hero .curve{position:absolute;left:-10%;width:120%;bottom:0;height:90px;background:var(--paper);border-radius:50% 50% 0 0/100% 100% 0 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:14px}
+.sw{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.sw .c{height:88px} .sw .bd{padding:10px 12px 12px} .sw .n{font-weight:500;font-size:14px} .sw .h{font:400 12px var(--mono);color:var(--ink-70)} .sw .u{font-size:12px;color:var(--ink-50);margin-top:4px}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top} th{font-weight:500;background:var(--paper-2);font-size:12.5px}
+.ok{color:#1F6E3A;font-family:var(--mono)} .warn{color:#8A4B00;font-family:var(--mono)}
+.ramp{height:56px;border-radius:12px;margin-top:10px;border:1px solid var(--line)}
+.type{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin-top:14px}
+.type .row{display:grid;grid-template-columns:230px 1fr;gap:18px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line-2)} .type .row:last-child{border-bottom:0}
+.type .spec{font:400 12px/1.6 var(--mono);color:var(--ink-50)}
+.d1{font-family:var(--serif);font-size:56px;letter-spacing:-.03em;line-height:1.08;font-variation-settings:"opsz" 144}
+.d2{font-family:var(--serif);font-size:38px;letter-spacing:-.025em;line-height:1.15}
+.d3{font-family:var(--serif);font-size:28px;letter-spacing:-.02em}
+.d4{font-family:var(--serif);font-size:20px;font-weight:500;letter-spacing:-.01em}
+.b1{font-size:17px;line-height:1.6} .b2{font-size:15px;line-height:1.55} .b3{font-size:13px;color:var(--ink-70)}
+.lab{font:400 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-50)}
+.num{font:400 15px var(--mono)}
+.btn{display:inline-flex;align-items:center;height:45px;padding:0 32px;border-radius:999px;background:#000;color:#fff;font:500 16px var(--sans);margin-right:10px} .btn.lg{height:56px;font-size:18px;padding:0 40px} .btn.gray{background:rgba(235,235,235,.7);color:#000}
+.pill{display:inline-flex;align-items:center;gap:28px;height:52px;padding:0 24px 0 6px;background:#F8F8F8;border:1px solid rgba(0,0,0,.08);border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.06),0 0 2px rgba(0,0,0,.04);font-size:16px} .pill i{width:40px;height:40px;border-radius:12px;display:inline-block;background:#000;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M3 20 10 6l4 7 3-4 4 11z'/></svg>") center/22px no-repeat;-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M3 20 10 6l4 7 3-4 4 11z'/></svg>") center/22px no-repeat}
+pre{background:#141416;color:#E8E6DF;border-radius:12px;padding:16px 18px;font:400 12.5px/1.65 var(--mono);overflow-x:auto}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px} @media (max-width:800px){.two{grid-template-columns:1fr} .type .row{grid-template-columns:1fr}}
+.note{font-size:13px;color:var(--ink-50)}
+
+@font-face{font-family:HandLatin;src:url('../fonts/hand-pinyonscript-subset.woff2') format('woff2');font-display:swap}
+a{color:var(--accent);text-underline-offset:4px}.links{display:flex;gap:12px 22px;flex-wrap:wrap;margin:20px 0}.status{border-left:3px solid #3D314F;padding:12px 18px;background:#EAE4F0;color:#3D314F}.hand::first-letter{font-family:HandLatin,var(--serif);font-size:1.3em}.demo{padding:28px;border-radius:24px;background:linear-gradient(105deg,#2F63B8,#3D314F 66%,#212021)}.demo-card{padding:24px;border-radius:20px;background:linear-gradient(165deg,rgba(255,255,255,.83),rgba(255,255,255,.91));border:1px solid rgba(255,255,255,.62);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 12px 36px -24px rgba(61,49,79,.42)}.demo-card p{color:rgba(0,0,0,.7)}.icon-demo{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:12px;background:rgba(61,49,79,.075);box-shadow:inset 0 0 0 1px rgba(61,49,79,.16);color:#4E3F66}.badge{background:#3D314F;color:#fff;border-radius:99px;padding:0 7px;font:400 11px/18px var(--mono)}.table-scroll{overflow:auto}td code{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere}.d1{font-size:clamp(30px,5vw,56px)}.type .row>*{min-width:0}.wrap{overflow-wrap:anywhere}@media(max-width:600px){h1{margin-top:40px}.type{padding:16px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.demo{padding:14px}.demo-card{padding:18px}}@media print{h1{margin-top:0}h2{break-after:avoid}.sw,.type,.demo{break-inside:avoid}.wrap{padding:0}.links{font-size:12px}}
+</style></head><body><main class="wrap">
+<p class="k" style="margin-top:32px">FathomPeak · Design handoff · 2026-10-14</p>
+<h1>色卡与文字设计交付</h1>
+<p class="lead">以当前官网与后台实现为准：纸白底、晨蓝强调，后台采用暮紫与炭黑层次；衬线标题、无衬线正文、等宽数字。</p>
+<nav class="links"><a href="#colors">色卡</a><a href="#console">后台组件</a><a href="#type">字体与字号</a><a href="#motion">插画与动效</a><a href="#tokens">开发 token</a><a href="https://github.com/xanthiawang/fathompeak-site/blob/main/design/DESIGN_HANDOFF.md">可编辑设计交接文档 ↗</a><a href="../#console-preview">后台预览 ↗</a></nav>
+<p class="status">本页已按运行源码 34297f8 核对并更新。10 月 13 日的 PDF / PPT 是历史设计快照；其中旧首屏坐标、浅色后台和统一字号表不作为当前实现依据。已包含后台共用设计规范及最新独立中英文切换；完整页面清单见设计交接文档。实际动态背景请看后台预览。</p>
+<h2 id="colors">01 / 品牌色卡</h2><p>沿用晨昏蓝色卡。浅色雾用于局部衬底；后台重点使用晨蓝 #2F63B8、暮紫 #3D314F、炭黑 #212021。合作方 logo 保留原色。</p>
+<span class="k">基底</span>
+<div class="grid">
+  <div class="sw"><div class="c" style="background:#F8F8F8;border-bottom:1px solid var(--line)"></div><div class="bd"><div class="n">纸白</div><div class="h">#F8F8F8</div><div class="u">页面底色、导航胶囊</div></div></div>
+  <div class="sw"><div class="c" style="background:#F3F1EA"></div><div class="bd"><div class="n">暖纸</div><div class="h">#F3F1EA</div><div class="u">官网说明块；后台表头使用深色渐变</div></div></div>
+  <div class="sw"><div class="c" style="background:#FFFFFF;border-bottom:1px solid var(--line)"></div><div class="bd"><div class="n">卡白</div><div class="h">#FFFFFF</div><div class="u">卡片、表格、表单</div></div></div>
+  <div class="sw"><div class="c" style="background:#000"></div><div class="bd"><div class="n">墨</div><div class="h">#000000 · 85% · 70% · 50% · 30%</div><div class="u">官网正文与层级；后台正文为 #212021</div></div></div>
+</div>
+
+<span class="k" style="display:block;margin-top:22px">强调与状态</span>
+<div class="grid">
+  <div class="sw"><div class="c" style="background:#2F63B8"></div><div class="bd"><div class="n">晨蓝 · 文字</div><div class="h">#2F63B8</div><div class="u">链接、强调文字、曲线</div></div></div>
+  <div class="sw"><div class="c" style="background:#5284D7"></div><div class="bd"><div class="n">晨蓝 · 填充</div><div class="h">#5284D7</div><div class="u">图形填充与天空，不用于小字号白字背景</div></div></div>
+  <div class="sw"><div class="c" style="background:#DCE7F7"></div><div class="bd"><div class="n">晨蓝 · 软</div><div class="h">#DCE7F7</div><div class="u">窗口高亮、图表区域</div></div></div>
+  <div class="sw"><div class="c" style="background:#EEF3FB"></div><div class="bd"><div class="n">晨蓝 · 淡</div><div class="h">#EEF3FB</div><div class="u">卡片封面底、提示底</div></div></div>
+  <div class="sw"><div class="c" style="background:#4E3F66"></div><div class="bd"><div class="n">暮紫 · 功能</div><div class="h">#4E3F66</div><div class="u">状态与后台功能 icon；后台选中态使用晨蓝</div></div></div>
+  <div class="sw"><div class="c" style="background:#EAE4F0"></div><div class="bd"><div class="n">暮紫 · 软</div><div class="h">#EAE4F0</div><div class="u">窗口标签底</div></div></div>
+</div>
+
+<span class="k" style="display:block;margin-top:22px">首屏地平线</span>
+<div class="grid">
+  <div class="sw"><div class="c" style="background:#5284D7"></div><div class="bd"><div class="n">天空</div><div class="h">#5284D7</div><div class="u">弧线以上</div></div></div>
+  <div class="sw"><div class="c" style="background:#B7A8A3"></div><div class="bd"><div class="n">霞</div><div class="h">#B7A8A3</div><div class="u">弧线外缘的霞光带</div></div></div>
+  <div class="sw"><div class="c" style="background:#3D314F"></div><div class="bd"><div class="n">暮</div><div class="h">#3D314F</div><div class="u">霞与黑之间</div></div></div>
+  <div class="sw"><div class="c" style="background:#212021"></div><div class="bd"><div class="n">炭</div><div class="h">#212021</div><div class="u">地平线暗部、后台正文及深色渐变</div></div></div>
+  <div class="sw"><div class="c" style="background:#E8D4CC"></div><div class="bd"><div class="n">霞光</div><div class="h">#E8D4CC</div><div class="u">地平线光晕；具体参数按页面选择器核对</div></div></div>
+</div>
+<div class="ramp" style="background:linear-gradient(90deg,#212021 0%,#3D314F 18%,#7A6071 28%,#A88E92 36%,#B7A8A3 42%,#D9C0B9 50%,#E9DCD8 58%,#CFD9E4 66%,#9DBBE4 76%,#6F9CE0 86%,#5284D7 100%)"></div>
+<p class="note">地平线渐变的色标顺序（由圆心向外）。此处是色标展示；插画内部可以使用不规则拼贴色片。</p>
+
+<span class="k" style="display:block;margin-top:22px">内页色雾（企业页等浅色首屏）</span>
+<div class="grid">
+  <div class="sw"><div class="c" style="background:#A9C3E8"></div><div class="bd"><div class="n">雾 1</div><div class="h">#A9C3E8</div></div></div>
+  <div class="sw"><div class="c" style="background:#E3ECF8"></div><div class="bd"><div class="n">雾 2</div><div class="h">#E3ECF8</div></div></div>
+  <div class="sw"><div class="c" style="background:#EBCFC4"></div><div class="bd"><div class="n">雾 3</div><div class="h">#EBCFC4</div></div></div>
+  <div class="sw"><div class="c" style="background:#D6CBDD"></div><div class="bd"><div class="n">雾 4</div><div class="h">#D6CBDD</div></div></div>
+</div>
+<div class="ramp" style="background:radial-gradient(60% 55% at 20% 20%,#A9C3E8,transparent 70%),radial-gradient(50% 50% at 80% 25%,#EBCFC4,transparent 70%),radial-gradient(45% 45% at 55% 70%,#D6CBDD,transparent 72%),radial-gradient(70% 60% at 50% 100%,#E3ECF8,transparent 70%),#F8F8F8;filter:blur(6px)"></div>
+
+<span class="k" style="display:block;margin-top:22px">组件色</span>
+<div class="grid">
+  <div class="sw"><div class="c" style="background:#000"></div><div class="bd"><div class="n">主按钮</div><div class="h">#000000 · 悬停 #424242</div><div class="u">黑胶囊，悬停只变灰，不抬升</div></div></div>
+  <div class="sw"><div class="c" style="background:rgba(235,235,235,.7);border-bottom:1px solid var(--line)"></div><div class="bd"><div class="n">次按钮</div><div class="h">rgba(235,235,235,.7)</div><div class="u">半透明浅灰胶囊</div></div></div>
+  <div class="sw"><div class="c" style="background:#141416"></div><div class="bd"><div class="n">代码块</div><div class="h">#141416 · 文字 #E8E6DF</div><div class="u">文档代码块；后台表头也使用深色</div></div></div>
+</div>
+<p class="note">全站只有浅色主题，不做深色模式；系统深色设置下也保持白底。</p>
+
+
+<h2 id="console">02 / 后台边框、透明度与 icon</h2>
+<p>透明度作用于填充和边线，不对整张卡片设置 opacity；文字保持独立对比度。API Key 区域有单独覆盖样式。</p>
+<div class="demo"><div class="demo-card"><h3 class="hand" style="font-size:32px;font-weight:400">API Key</h3><p>白色半透明面板承接品牌深色背景。实际页面使用树影底图。</p><span class="icon-demo"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-label="钥匙图标"><circle cx="8" cy="15" r="5"/><path d="m12 11 8-8m-3 3 3 3"/></svg></span> <span class="badge">2</span></div></div>
+<div class="table-scroll"><table><tr><th>组件 / 选择器</th><th>当前代码参数</th></tr>
+<tr><td>普通边线 / --line、--frame</td><td>暮紫 rgba(61,49,79,.14)；卡片框 rgba(61,49,79,.22)，1px</td></tr>
+<tr><td>筛选与搜索 / .bt-sel、.bt-q</td><td>白 86%；圆角 999px；blur 12px；阴影 0 2px 8px 黑 6% + 0 0 2px 黑 4%</td></tr>
+<tr><td>API Key 场景筛选条</td><td>白 91%；边线白 58%；覆盖通用筛选条样式</td></tr>
+<tr><td>API Key 空状态卡</td><td>165° 白 83% → 白 91%；边线白 62%；圆角 20px；内高光白 80% + 0 12px 36px -24px 暮紫 42%；无 backdrop blur</td></tr>
+<tr><td>普通提示卡 / .bt-card</td><td>白 60%，悬停 78%；暮紫 22% 边线；圆角 16px；阴影 0 1px 2px 黑 2.5% + 0 10px 24px -16px 紫 12%</td></tr>
+<tr><td>学习卡 / .bt-lc</td><td>白 66%，悬停 94%；圆角 16px；图片区使用蓝 6.5–7.5%、暮紫 6.5%、炭黑 6% 底</td></tr>
+<tr><td>功能 icon</td><td>#4E3F66；导航选中/悬停 #2F63B8；导航及指定卡片线宽 1.3。右栏底暮紫 7.5%，内描边 16%，36px 方框 / 12px 圆角，17px 图标</td></tr>
+<tr><td>计数徽标与动态点</td><td>徽标 #3D314F + 白字；动态点 #4E3F66 / opacity .8</td></tr>
+<tr><td>表头 / --band-x</td><td>105° #2F63B8 0% → #3D314F 66% → #212021 100%；白字 94%</td></tr></table></div>
+<h2 id="type">03 / 字体与文字层级</h2>
+<table><tr><th>用途</th><th>字体及加载</th></tr><tr><td>标题</td><td>Fraunces（本地 WOFF2）→ Noto Serif SC（Google Fonts）→ Songti SC / STSong</td></tr><tr><td>正文与 UI</td><td>DM Sans（本地）→ Noto Sans SC（Google Fonts）→ PingFang SC / Hiragino Sans GB</td></tr><tr><td>数字与代码</td><td>DM Mono（本地）→ Menlo / monospace；首页额外提供中文回退</td></tr><tr><td>花体首字母</td><td>HandLatin：fonts/hand-pinyonscript-subset.woff2。仅装饰拉丁标题首字母，不用于正文或中文</td></tr></table>
+<div class="type"><div class="row"><div class="spec">首页主标题 · clamp(28px,3.2vw,40px) / 400<br>Fraunces · 字距 −.025em</div><div class="d2" style="font-size:clamp(28px,3.2vw,40px)">主流模型 × 异构算力</div></div>
+<div class="row"><div class="spec">后台 H1 · 40px / 1.12 / 400<br>≤760px：30px · 字距 −.025em</div><div class="hand" style="font:400 40px/1.12 var(--serif)">API Key</div></div>
+<div class="row"><div class="spec">后台 H2 · 28px / 1.2 / 400<br>≤760px：24px · 字距 −.02em</div><div class="d3">订单与产地卡</div></div>
+<div class="row"><div class="spec">后台空状态标题 · 24px / 1.25 / 400</div><div style="font:400 24px/1.25 var(--serif)">创建你的第一个 API Key</div></div>
+<div class="row"><div class="spec">后台正文 · 15px / 1.55 / 400<br>说明常用墨 70%</div><div class="b2">一个 Key 可调用目录里的全部模型。</div></div>
+<div class="row"><div class="spec">后台表头 · 11px / 400<br>DM Mono · 字距 .08em</div><div class="lab">名称 · 输出参考价 · 请求</div></div></div>
+<p>英文衬线标题按 applyLang() 的名单及字号判断添加花体首字母，首字母为 1.3em；后台中英文模式下以拉丁字母开头的衬线标题也适用。首页案例卡标题和分组标题明确取消花体，区块大标题保留。</p>
+<p>字号按页面和断点区分，以上为当前关键选择器；不要用旧文档 56 / 38 / 28 / 20 的统一梯度覆盖全站。中文字体依赖外网，无法加载时回退系统字体。</p>
+<h2 id="motion">04 / 插画与动态背景</h2>
+<p>插画采用黑白排线、版画质感主体，搭配不规则品牌深色色片，透明边缘融入卡片；功能 icon 继续使用轻量 SVG 线条。素材为 PNG / WebP，不是分层 PSD。</p>
+<p>API Key 背景采用蓝色树影底图，模糊 7px；树影 10 秒、光层 13 秒往返循环，负延迟 −4 / −5 秒。仅在场景可见、标签页可见且未暂停时播放；尊重 prefers-reduced-motion，提供暂停按钮。</p>
+<nav class="links"><a href="../art/backgrounds/api-key-dapple-blue_2026-10-14.png">树影 PNG 源素材</a><a href="../art/console/engraved-dark-atlas_2026-10-14.webp">后台插画图集</a><a href="../#console-preview">查看实际动态</a></nav>
+<h2 id="tokens">05 / 后台开发 token</h2><p>以下摘自 index.html 的 .bt 作用域。保留作用域；API Key 场景、普通卡片、学习卡分别还有覆盖规则，详见上表。</p><pre>.bt {
+--paper:#F8F8F8; --card:#fff; --ink:#212021; --ink-85:rgba(0,0,0,.85); --ink-70:rgba(0,0,0,.7); --ink-50:rgba(0,0,0,.5); --ink-30:rgba(0,0,0,.3); --line:rgba(61,49,79,.14); --line-2:rgba(61,49,79,.08);
+  --blue-1:#2F63B8; --blue-2:#5284D7; --mist-1:#A9C3E8; --mist-2:#E3ECF8; --dusk-1:#4E3F66; --lav:#D6CBDD; --blush-1:#EBCFC4; --blush-2:#E8D4CC;
+  --wash:linear-gradient(155deg,rgba(47,99,184,.16),rgba(61,49,79,.09) 54%,rgba(33,32,33,.025) 78%,#F8F8F8);
+  --band:linear-gradient(135deg,rgba(47,99,184,.10),rgba(61,49,79,.08));
+  --band-x:linear-gradient(105deg,#2F63B8 0%,#3D314F 66%,#212021 100%);
+  --frame:rgba(61,49,79,.22); --icon:#4E3F66; --icon-active:#2F63B8;
+  --glass:rgba(255,255,255,.86); --glass-line:var(--frame); --dia-sh:0 2px 8px rgba(0,0,0,.06),0 0 2px rgba(0,0,0,.04); --dia-sh2:0 6px 20px rgba(0,0,0,.08),0 0 2px rgba(0,0,0,.05); --glass-sh:var(--dia-sh);
+  --hi:#3D314F; --hi-ink:#fff; --gray-btn:rgba(61,49,79,.07);
+  --ease:cubic-bezier(.4,0,.2,1); --out:cubic-bezier(.22,1,.36,1);
+}</pre>
+<h2>06 / 文档与版本</h2><nav class="links"><a href="https://github.com/xanthiawang/fathompeak-site/blob/main/design/DESIGN_HANDOFF.md">当前设计交接 · Markdown</a><a href="https://github.com/xanthiawang/fathompeak-site/blob/main/DEVELOPER_HANDOFF.md">开发运行与接入说明</a><a href="https://github.com/xanthiawang/fathompeak-site/edit/main/design/palette-type.html">编辑本页</a><a href="handoff-deck.pdf">历史 PDF · 2026-10-13</a><a href="handoff-deck.pptx">历史可编辑 PPT · 2026-10-13</a></nav><p class="note">在线文档随 main 更新；Git 提交历史保留旧版。旧 b177160 源码包保留为历史快照；请从 <a href="https://github.com/xanthiawang/fathompeak-site/releases/latest">最新交付包</a> 下载包含控制台语言切换与当前设计说明的版本。</p>
+</main></body></html>
