@@ -1,0 +1,39 @@
+/* 沐仞 UI 色值（线上 c5c5450，2026-10-16）。官网用 :root，后台在 .bt 里覆盖了墨色与线色。 */
+:root{
+  /* 基底 */
+  --paper:#F8F8F8;  /* 页面底色（官网与后台） */
+  --paper-2:#F3F1EA;  /* 暖纸，少量区块 */
+  --card:#FFFFFF;  /* 卡片 */
+  --ink:#000000;  /* 官网标题与正文 */
+  /* 晨蓝 · 强调 */
+  --accent:#2F63B8;  /* 链接文字、导航当前态、表头色带起点；不做大面积平涂 */
+  --accent-fill:#5284D7;  /* 小面积填充点缀（圆点、状态） */
+  --accent-soft:#DCE7F7;  /* 浅底 */
+  --accent-tint:#EEF3FB;  /* 更浅的底 */
+  /* 暮紫 · 深色搭配 */
+  --peak-soft:#EAE4F0;  /* 紫色浅底 */
+  /* 雾色 · 晨昏过渡 */
+  --field-1:#A9C3E8;  /* 雾蓝 */
+  --field-2:#E3ECF8;  /* 晨雾 */
+  --field-3:#EBCFC4;  /* 暖粉 */
+  --field-4:#D6CBDD;  /* 淡紫 */
+  --hz-haze:#E8D4CC;  /* 暮霭 */
+  --hz-2:#B7A8A3;  /* 灰褐 */
+  --hz-2b:#3D314F; --peak:#4E3F66; --hz-3:#212021;
+  --ink-85:rgba(0,0,0,.85); --ink-70:rgba(0,0,0,.7); --ink-50:rgba(0,0,0,.5); --ink-30:rgba(0,0,0,.3);
+  --line:rgba(0,0,0,.08); --line-2:rgba(0,0,0,.05); --gray-btn:rgba(235,235,235,.7);
+  --wash-soft:linear-gradient(120deg,#E3ECF8 0%,#ECE6F1 52%,#F6E9E2 100%);
+  --serif:"Fraunces","Noto Serif SC","Songti SC","STSong",Georgia,serif;
+  --sans:"DM Sans","Noto Sans SC","PingFang SC","Hiragino Sans GB",system-ui,sans-serif;
+  --mono:"DM Mono","IBM Plex Mono",Menlo,monospace;
+  --r10:10px; --r12:12px; --r16:16px; --r20:20px; --r24:24px; --r30:30px; --pill:999px;
+  --shadow:0 2px 8px rgba(0,0,0,.06),0 0 2px rgba(0,0,0,.04);
+  --ease:cubic-bezier(.4,0,.2,1); --ease-out:cubic-bezier(.22,1,.36,1);
+}
+.bt{  /* 后台 */
+  --ink:#212021; --line:rgba(61,49,79,.14); --line-2:rgba(61,49,79,.08); --frame:rgba(61,49,79,.22);
+  --icon:#4E3F66; --icon-active:#2F63B8; --glass:rgba(255,255,255,.86); --hi:#3D314F; --gray-btn:rgba(61,49,79,.07);
+  --wash:linear-gradient(155deg,rgba(47,99,184,.16),rgba(61,49,79,.09) 54%,rgba(33,32,33,.025) 78%,#F8F8F8);
+  --band:linear-gradient(135deg,rgba(47,99,184,.10),rgba(61,49,79,.08));
+  --band-x:linear-gradient(105deg,#2F63B8 0%,#3D314F 66%,#212021 100%);
+}
