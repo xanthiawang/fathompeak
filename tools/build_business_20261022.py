@@ -16,6 +16,7 @@ TITLE='沐仞科技｜绿色算力部署与模型 API 服务，开放合作'
 ZIP='fathompeak-business-20261022.zip'
 FONT=None
 SOURCE=None
+SPLIT_AFTER=['构建面向全球的分布式AI算力网络，','共同建设算力节点，']
 
 @lru_cache(maxsize=4)
 def face(weight):
@@ -65,6 +66,25 @@ def cards():
     s+=raster('wechat-qr.png',1396,388,286,286)+txt('扫码关注沐仞科技',1540,708,25,anchor='middle')
     svg('closing',850,s)
 
+def relationship():
+    """Two operating sides; scheduling is a separate coordinating layer."""
+    data=base64.b64encode((A/'relationship-art.png').read_bytes()).decode()
+    s=f'<defs><image id="plate" href="data:image/png;base64,{data}" width="1774" height="887"/><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9" fill="none" stroke="#2F63B8" stroke-width="1.7"/></marker></defs>'
+    s+=txt('算电协同调度',900,110,72,600,anchor='middle')
+    s+=txt('设备负载 · 发电量 · 电价 · 网络延迟',900,205,52,fill='#555555',anchor='middle')
+    s+='<g fill="none" stroke="#2F63B8" stroke-width="4" stroke-dasharray="13 11" marker-end="url(#arrow)"><path d="M900 250V285H390V335"/><path d="M900 285H1410V335"/></g>'
+    s+=txt('后厂 · 词元工厂',390,425,60,600,anchor='middle')
+    s+=txt('前店 · 模型服务平台',1410,425,60,600,anchor='middle')
+    s+='<svg x="0" y="430" width="780" height="780" viewBox="0 0 887 887"><use href="#plate"/></svg><svg x="1020" y="430" width="780" height="780" viewBox="887 0 887 887"><use href="#plate"/></svg>'
+    s+='<path d="M810 825H990" fill="none" stroke="#2F63B8" stroke-width="5" marker-end="url(#arrow)"/>'
+    s+=txt('词元',900,780,52,anchor='middle')
+    s+=txt('电站绿电 · GPU 部署',390,1230,52,anchor='middle')
+    s+=txt('API 接入 · 用量结算',1410,1230,52,anchor='middle')
+    s+='<path d="M1410 1270V1320H900V1390" fill="none" stroke="#2F63B8" stroke-width="5" marker-end="url(#arrow)"/>'
+    s+=txt('模型服务',1150,1388,48,fill='#2F63B8',anchor='middle')
+    s+=txt('企业 / 开发者 / 科研机构',900,1510,64,600,anchor='middle')
+    svg('relationship',1580,s)
+
 def blocks():
     lines=[x.strip() for x in SOURCE.read_text().splitlines() if x.strip() and x.strip()!='\u200b']
     items=[];changes=[];bullet=False
@@ -75,6 +95,7 @@ def blocks():
         if i==0:t=TITLE
         if t.startswith('合作咨询：'):t='合作咨询： fathompeak@163.com'
         if t.startswith('官方网站：'):t='官方网站： www.fathompeak.cn'
+        for stop in SPLIT_AFTER:t=t.replace(stop,stop[:-1]+'。')
         if t!=original:changes.append({'source':original,'rendered':t})
         kind='title' if i==0 else 'section' if re.match(r'^[一二三四五六七]、',t) else 'subheading' if t in subs or re.match(r'^[123]\. ',t) else 'minor' if t.startswith(('Tapestrix：','NetWeaver：','第一，','第二，','第三，')) or t=='算电协同调度系统' else 'li' if bullet else 'paragraph'
         items.append({'kind':kind,'text':t,'source':original});bullet=False
@@ -84,7 +105,7 @@ def inline(t):
     s=html.escape(t)
     if t.startswith('官方网站：'):return '官方网站： <a href="https://www.fathompeak.cn/">www.fathompeak.cn</a>'
     if t.startswith('合作咨询：'):return '合作咨询： <a href="mailto:fathompeak@163.com">fathompeak@163.com</a>'
-    for phrase in ['AI基础设施、算电协同与分布式算力网络','前店后厂','设备部署、技术运营与算力资源协同合作','高效、可靠、具有成本竞争力']:
+    for phrase in ['AI基础设施、算电协同与分布式算力网络','前店后厂','设备部署、技术运营与算力资源协同合作','高效、可靠、具有成本竞争力','GPU计算设备部署、算力节点建设及技术运营服务','模型API接入、服务管理、用量统计与费用结算','由合作方投资相关设备','企业、开发者和科研机构','正在光伏、海上风电等新能源场景推进算电协同试点']:
         s=s.replace(phrase,'<strong>'+phrase+'</strong>')
     return s
 
@@ -105,13 +126,14 @@ def fonts(items):
     dest=A/'fonts';dest.mkdir(exist_ok=True)
     src=ROOT/'projects/visual-materials/09_公众号视觉/2026-10-20/article-compute-energy/assets/fonts'
     for name in ['DM-Sans.ttf','dmsans-OFL.txt','notosanssc-OFL.txt']:shutil.copy2(src/name,dest/name)
-    chars=''.join(x['text'] for x in items)+TITLE+'阅读复制图文正文已完成合作服务'
+    chars=''.join(x['text'] for x in items)+TITLE+'阅读复制图文正文已完成合作服务前店后厂业务关系与协同方向示意项目仍在持续推进与验证'
     for weight,name in [(400,'NotoSansSC-Regular.woff2'),(600,'NotoSansSC-Semibold.woff2')]:
         f=instantiateVariableFont(TTFont(FONT),{'wght':weight},inplace=True);sub=subset.Subsetter();sub.populate(text=chars);sub.subset(f);f.flavor='woff2';f.save(dest/name)
 
 def page(items,changes):
     chunks=['<header class="brandline"><img src="assets/symbol.svg" alt="沐仞科技标志"><img class="en" src="assets/wordmark-en.svg" alt="FATHOMPEAK"><img class="zh" src="assets/wordmark-zh.svg" alt="沐仞科技"></header>'];md=[];inlist=False;contact=False;current_section=''
-    for b in items:
+    splits=[]
+    for source_index,b in enumerate(items):
         t=b['text'];kind=b['kind']
         if inlist and kind!='li':chunks.append('</ul>');inlist=False
         if kind=='section':current_section=t
@@ -121,26 +143,46 @@ def page(items,changes):
         tag={'section':'h2','subheading':'h3','minor':'h4' if current_section.startswith('一、') else 'h3','li':'li'}.get(kind,'p')
         if kind=='li' and not inlist:chunks.append('<ul>');inlist=True
         anchor=f' id="section-{len([x for x in items[:items.index(b)+1] if x["kind"]=="section"])}"' if kind=='section' else ''
-        chunks.append(f'<{tag}{anchor}>{inline(t)}</{tag}>')
-        md+= [('## ' if kind=='section' else '### ' if kind=='subheading' else '#### ' if kind=='minor' else '- ' if kind=='li' else '')+t,'']
+        parts=[t]
+        if tag=='p':
+            for stop in SPLIT_AFTER:
+                boundary=stop[:-1]+'。'
+                if boundary in t:
+                    left,right=t.split(boundary,1);parts=[left+boundary,right];splits.append(source_index)
+        for part in parts:
+            chunks.append(f'<{tag}{anchor} data-source-block="{source_index}">{inline(part)}</{tag}>')
+            md+= [('## ' if kind=='section' else '### ' if kind=='subheading' else '#### ' if kind=='minor' else '- ' if kind=='li' else '')+part,'']
         if t=='沐仞科技围绕AI基础设施建设、算电协同调度和模型推理服务，开展三项核心业务。':
             chunks.append('<figure><img src="assets/business-stamps.png" alt="三枚复古邮票依次呈现词元工厂、协同调度和模型API"><figcaption>三项核心业务 · 概念插图</figcaption></figure>');md+=['![三项核心业务](assets/business-stamps.png)','']
+        if t=='公司通过统一服务入口连接客户需求与分布式计算资源，逐步形成从能源侧算力部署到模型服务交付的完整业务体系。':
+            chunks.append('<figure id="business-relationship"><img src="assets/relationship.png" alt="前店后厂关系示意：算电协同调度共同考虑设备负载、发电量、电价和网络延迟，协调电站侧词元工厂与模型服务平台，平台通过模型服务连接企业、开发者和科研机构。"><figcaption>前店后厂 · 业务关系与协同方向示意，项目仍在持续推进与验证。</figcaption></figure>');md+=['![前店后厂业务关系与协同方向示意](assets/relationship.png)','']
     if inlist:chunks.append('</ul>')
     if contact:chunks.append('</section>')
     chunks.append('<figure class="closing"><img src="assets/closing.png" alt="沐仞科技合作联系卡：官网、商务邮箱与官方公众号二维码"></figure>');md+=['![合作联系卡](assets/closing.png)','']
-    gallery=''.join(f'<div><img src="assets/{name}.png" alt="{label}" loading="lazy"><h3>{label}</h3><a href="assets/{name}.png" download>下载 PNG</a><a href="assets/{name}.svg" download>下载 SVG</a></div>' for name,label in [('opening','开篇 · 晨蓝版画'),('business-stamps','正文 · 三项业务邮票'),('closing','结尾 · 合作联系卡')])
+    gallery=''.join(f'<div><img src="assets/{name}.png" alt="{label}" loading="lazy"><h3>{label}</h3><a href="assets/{name}.png" download>下载 PNG</a><a href="assets/{name}.svg" download>下载 SVG</a></div>' for name,label in [('opening','开篇 · 晨蓝版画'),('business-stamps','正文 · 三项业务邮票'),('relationship','正文 · 前店后厂关系图'),('closing','结尾 · 合作联系卡')])
     result=f'<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>{html.escape(TITLE)}</title><style>{CSS}</style></head><body><div class="toolbar"><a class="back" href="../../">项目与素材</a><button id="copy-rich" type="button">复制图文</button><button id="copy-text" type="button">复制纯文字</button><a href="{ZIP}" download>下载全文与配图</a><span class="status" id="copy-status" role="status" aria-live="polite"></span></div><main><article class="article" id="reading">'+''.join(chunks)+f'</article><section class="downloads"><h2>正文与配图下载</h2><p><a href="正文_排版稿_2026-10-22.md" download>下载 Markdown 正文</a>　<a href="正文_排版稿_2026-10-22.txt" download>下载纯文字</a></p><div class="asset-list">{gallery}</div><p class="note">配图为业务方向的概念表达。正文沿用提供的原稿，标题和联系信息已更新。</p></section></main><script>{JS}</script></body></html>'
     (OUT/'index.html').write_text(result)
     (OUT/'正文_排版稿_2026-10-22.md').write_text('\n'.join(md))
-    (OUT/'正文_排版稿_2026-10-22.txt').write_text('\n\n'.join(('• ' if b['kind']=='li' else '')+b['text'] for b in items)+'\n')
+    plain=[]
+    for b in items:
+        t=b['text']
+        for stop in SPLIT_AFTER:t=t.replace(stop[:-1]+'。',stop[:-1]+'。\n\n')
+        plain.append(('• ' if b['kind']=='li' else '')+t)
+    (OUT/'正文_排版稿_2026-10-22.txt').write_text('\n\n'.join(plain)+'\n')
     (OUT/'README.md').write_text('# 沐仞科技 · 业务与合作介绍\n\n'+TITLE+'\n\n打开 index.html 阅读、复制图文或下载素材。正文七章及顺序保留，仅更新标题并补充已在现有物料使用的官网与商务邮箱。\n\n- 正文为 DM Sans / Noto Sans SC；Logo 为已确认的 v31 路径字标。\n- assets/opening.png / .svg：1800 × 1013，晨蓝版画山景与居中文字。\n- assets/business-stamps.png / .svg：1800 × 900，三项业务邮票拼贴。\n- assets/closing.png / .svg：1800 × 850，合作联系卡与公众号二维码。\n- 图像底稿由内置 imagegen 生成；精确中文由原品牌字体转曲叠加，Logo 与二维码沿用批准的原文件。SVG 的图案、文字路径与图像分层，可在矢量工具中编辑。\n- generation-prompts.json 保存原始生图提示词。概念插图不代表已经建成的设施或部署规模。\n- 官网：https://www.fathompeak.cn/\n- 商务合作：fathompeak@163.com\n')
     dom=H.fromstring(result);body=dom.get_element_by_id('reading');actual=[e.text_content() for e in body.xpath('.//h1|.//h2|.//h3|.//h4|.//p|.//li')]
-    assert len(actual)==len(items),(len(actual),len(items))
-    for b,t in zip(items,actual):assert re.sub(r'\s','',b['text'])==re.sub(r'\s','',t),(b,t)
+    # H1 is rendered separately; join split paragraphs by their source block.
+    assert actual[0]==items[0]['text']
+    for i,b in enumerate(items[1:],1):
+        nodes=body.xpath(f'.//*[@data-source-block="{i}"]')
+        t=''.join(e.text_content() for e in nodes)
+        assert re.sub(r'\s','',b['text'])==re.sub(r'\s','',t),(b,t)
+    assert len(actual)==len(items)+len(splits)
     assert len(body.xpath('.//h2'))==7
     assert '[待补充' not in body.text_content()
     for img in dom.xpath('//img'):assert (OUT/img.get('src')).is_file(),img.get('src')
-    (OUT/'排版校验_2026-10-22.json').write_text(json.dumps({'title':TITLE,'source_sha256':hashlib.sha256(SOURCE.read_bytes()).hexdigest(),'sections':7,'content_blocks':len(items),'all_rendered_blocks_match':True,'allowed_changes':changes,'illustrations':3,'source_share_tokens_published':False},ensure_ascii=False,indent=2)+'\n')
+    readme=OUT/'README.md';readme.write_text(readme.read_text().replace('仅更新标题并补充已在现有物料使用的官网与商务邮箱。','更新标题和联系信息；两处长句以句号断开并拆段，内容含义保持。').replace('- assets/closing.png','- assets/relationship.png / .svg：1800 × 1580，前店后厂业务关系与协同方向示意。\n- assets/closing.png'))
+    (OUT/'排版校验_2026-10-22.json').write_text(json.dumps({'title':TITLE,'source_sha256':hashlib.sha256(SOURCE.read_bytes()).hexdigest(),'sections':7,'content_blocks':len(items),'rendered_blocks':len(actual),'split_source_blocks':splits,'all_rendered_blocks_match':True,'allowed_changes':changes,'illustrations':4,'source_share_tokens_published':False},ensure_ascii=False,indent=2)+'\n')
 
 def package():
     with zipfile.ZipFile(OUT/ZIP,'w',zipfile.ZIP_DEFLATED) as z:
@@ -154,8 +196,8 @@ def package():
 def main():
     global FONT,SOURCE
     p=argparse.ArgumentParser();p.add_argument('--font',type=Path,required=True);p.add_argument('--source',type=Path,required=True);args=p.parse_args();FONT=args.font;SOURCE=args.source
-    items,changes=blocks();fonts(items);cards();page(items,changes);package()
-    logging.info('Business article built: %s sections, %s source-faithful blocks and three brand visuals.',7,len(items))
+    items,changes=blocks();fonts(items);cards();relationship();page(items,changes);package()
+    logging.info('Business article built: %s sections, %s source-faithful blocks and four brand visuals.',7,len(items))
 
 if __name__=='__main__':
     logging.basicConfig(level=logging.INFO,format='%(levelname)s: %(message)s');logging.getLogger('fontTools').setLevel(logging.WARNING)
