@@ -1,0 +1,65 @@
+{
+  "source": "https://admin.fathompeak.cn/token-market",
+  "capturedOn": "2026-10-12",
+  "provenance": "2026-10-12 浏览器 DOM 读取的现网模型市场展示；仅为页面显示记录，未独立验证模型能力、厂商价格或沐仞成交报价。",
+  "priceKind": "现网显示的市场参考价",
+  "unit": "CNY / 百万输出 Token",
+  "models": [
+    {
+      "id": "deepseek-v4-flash",
+      "name": "DeepSeek-V4-Flash",
+      "provider": "DeepSeek",
+      "category": "Chat",
+      "contextDisplay": "1M",
+      "marketReferenceOutputPrice": 4.5
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "name": "DeepSeek-V4-Pro",
+      "provider": "DeepSeek",
+      "category": "Reasoning",
+      "contextDisplay": "1M",
+      "marketReferenceOutputPrice": 13.5
+    },
+    {
+      "id": "qwen3-8-flash",
+      "name": "Qwen3.8-Flash",
+      "provider": "Alibaba",
+      "category": "Chat",
+      "contextDisplay": "1M",
+      "marketReferenceOutputPrice": 2.7
+    },
+    {
+      "id": "glm-5-3-flash",
+      "name": "GLM-5.3-Flash",
+      "provider": "Zhipu",
+      "category": "Chat",
+      "contextDisplay": "1M",
+      "marketReferenceOutputPrice": 2.8
+    },
+    {
+      "id": "glm-5-3",
+      "name": "GLM-5.3",
+      "provider": "Zhipu",
+      "category": "Reasoning",
+      "contextDisplay": "1M",
+      "marketReferenceOutputPrice": 28.0
+    },
+    {
+      "id": "minimax-m2-7",
+      "name": "MiniMax-M2.7",
+      "provider": "MiniMax",
+      "category": "Chat",
+      "contextDisplay": "1M",
+      "marketReferenceOutputPrice": 8.4
+    },
+    {
+      "id": "minimax-m3",
+      "name": "MiniMax-M3",
+      "provider": "MiniMax",
+      "category": "Reasoning",
+      "contextDisplay": "1M",
+      "marketReferenceOutputPrice": 8.4
+    }
+  ]
+}

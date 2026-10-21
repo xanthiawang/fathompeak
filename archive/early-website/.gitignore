@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.DS_Store
+.env
+.env.*
+*.log
+research/*.otf
+research/*.pbm
+.build/
+research/*.ttf
+.codex-finalizer/
+
+pages/
+collateral/
+public/downloads/fathompeak-standalone.html

@@ -1,0 +1,30 @@
+[
+  {
+    "version": 6,
+    "original_backup": "27b9e42b3b26f0ce@v6",
+    "original_sha256": "9adbb09bf80410093c29d7f1a897fd80bd4e8caa7eb36a357c89ef1af563d22a",
+    "original_bytes": 117463,
+    "publication_change": "Add explicit UTF-8 charset, select original light theme as in supplied screenshots, and add URL selection for original color schemes; original.html is byte-identical."
+  },
+  {
+    "version": 17,
+    "original_backup": "27b9e42b3b26f0ce@v17",
+    "original_sha256": "ca76c13469bf0ecbc2b87922dbe6a13f370e11f1e8f7ebd5d5442cef248a4a9e",
+    "original_bytes": 189177,
+    "publication_change": "Add explicit UTF-8 charset, select original light theme as in supplied screenshots, and add URL selection for original color schemes; original.html is byte-identical."
+  },
+  {
+    "version": 23,
+    "original_backup": "27b9e42b3b26f0ce@v23",
+    "original_sha256": "89272187f1797b7ab5284b2e93cdb20bc993f3ccdcf2ec96d370a9b05fb9a646",
+    "original_bytes": 207178,
+    "publication_change": "Add explicit UTF-8 charset, select original light theme as in supplied screenshots, and add URL selection for original color schemes; original.html is byte-identical."
+  },
+  {
+    "version": 5,
+    "original_backup": "27b9e42b3b26f0ce@v5",
+    "original_sha256": "f9f4bc366a9a11cd25e7bee52e011e6162daf2cd809ff6e3fd14e0fe19ac4b2b",
+    "original_bytes": 93048,
+    "publication_change": "Add explicit UTF-8 charset, select original light theme as in supplied screenshots, and add URL selection for original color schemes; original.html is byte-identical."
+  }
+]

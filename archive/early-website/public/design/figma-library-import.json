@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-12",
+  "primitive": {
+    "deep": "#032126",
+    "surface": "#183134",
+    "paper": "#E8ECE9",
+    "sage": "#D0DDD5",
+    "sageMid": "#A6BFB0",
+    "cyan": "#74DBF1",
+    "secondary": "#204045"
+  },
+  "semantic": {
+    "light": {
+      "background": "#E8ECE9",
+      "text": "#032126",
+      "surface": "#D0DDD5",
+      "border": "#afbfba",
+      "controlBorder": "#69827B"
+    },
+    "dark": {
+      "background": "#032126",
+      "text": "#E8ECE9",
+      "surface": "#183134",
+      "border": "#48656a",
+      "controlBorder": "#789A9B"
+    }
+  },
+  "spacing": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24,
+    32,
+    40,
+    48,
+    64,
+    80
+  ],
+  "radius": 0,
+  "typography": {
+    "sans": "Plus Jakarta Sans",
+    "chinese": "Noto Sans SC",
+    "mono": "IBM Plex Mono"
+  },
+  "motion": {
+    "navMs": 150,
+    "buttonMs": 300,
+    "drawerMs": 250,
+    "accordionMs": 200,
+    "heroEnterMs": 900,
+    "reduce": "no animation or transition"
+  },
+  "source": "https://wurldtech.com/",
+  "breakpoints": [
+    800,
+    1100
+  ],
+  "functional": {
+    "errorLight": "#8C3D26",
+    "errorDark": "#F4BCA7",
+    "hover": "#A7E7F4",
+    "pressed": "#55B4C8"
+  }
+}
