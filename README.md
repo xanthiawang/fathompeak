@@ -60,9 +60,11 @@ fathompeak/
 
 本次整理日期：**2026-10-21**。只导入原本已公开的 GitHub 内容。各目录保留来源版本的文件内容、文件名、可执行权限、许可证和署名。
 
-用户已确认移除七个旧仓库，仅保留本仓库。旧仓库将在统一入口部署验证后删除；旧仓库网址与原 GitHub Pages 地址随之停用。删除前已在本地完成七个仓库的全部分支、标签、Git bundle 和 Release 附件备份。
+用户已确认移除七个旧仓库，仅保留本仓库。七个旧仓库已于 2026-10-21 在统一入口部署验证后删除；旧仓库网址与原 GitHub Pages 地址已停用。删除前已在本地完成七个仓库的全部分支、标签、Git bundle 和 Release 附件备份。
 
 后续维护从本仓库开始。`projects/` 保留导入时的公开源文件；部署脚本只在构建输出中改写旧链接，原始来源文件哈希仍可核对。
+
+迁移完成记录见 [旧仓库移除记录](metadata/repository-retirement.json)。来源清单中的旧仓库 URL 仅表示导入时的来源，不再作为现用链接。
 
 逐项来源与版本见 [来源清单](metadata/source-repositories.json)，逐文件版本见 [文件清单](metadata/source-files.json)，核对结果见 [整理验收](metadata/verification.json)。
 

@@ -1,0 +1,46 @@
+{
+  "completed_at": "2026-10-21T19:45:34.170423",
+  "consolidated_repository": "https://github.com/xanthiawang/fathompeak",
+  "pages_url": "https://xanthiawang.github.io/fathompeak/",
+  "retired_repositories": [
+    {
+      "repository": "xanthiawang/fathompeak-site",
+      "confirmed_http_status": 404,
+      "git_backup_sha256": "0b5ea1418fe2061e56a413e6befc9bc97fd8762e1a7907b1d8d354b95dd4e551"
+    },
+    {
+      "repository": "xanthiawang/fathompeak-ui-kit",
+      "confirmed_http_status": 404,
+      "git_backup_sha256": "113b55fa732d04ec348375a2118d5739badecbe65bbe7d7cbf440c95ba883b8d"
+    },
+    {
+      "repository": "xanthiawang/fathompeak-handoff",
+      "confirmed_http_status": 404,
+      "git_backup_sha256": "35671eddc6d1e802fc479df12e19b433fa1afa07423970aee8a9c091224ee730"
+    },
+    {
+      "repository": "xanthiawang/fathompeak-discarded-draft",
+      "confirmed_http_status": 404,
+      "git_backup_sha256": "525d77c7d48a0cf3ce09cac768bcf0dca76dc24f11af4edec0d1aa3f36435136"
+    },
+    {
+      "repository": "xanthiawang/fathompeak-energy-draft",
+      "confirmed_http_status": 404,
+      "git_backup_sha256": "9c0af98101f0369108771d059a526c866d0c9d1ef7cbea97431ea7c8454098c0"
+    },
+    {
+      "repository": "xanthiawang/fathompeak-pine-draft",
+      "confirmed_http_status": 404,
+      "git_backup_sha256": "63c282dab35696717544fce0f6206e50592b4728a23ecd2f818f82476d1313ec"
+    },
+    {
+      "repository": "xanthiawang/fathompeak-purple-draft",
+      "confirmed_http_status": 404,
+      "git_backup_sha256": "3ad582d4a3013c3ec400d9bc35bbd9cbb04e44b4ada490f4be3920ef218adb89"
+    }
+  ],
+  "public_sites_verified": 13,
+  "source_snapshots_preserved": true,
+  "link_rewrites_only_in_published_output": true,
+  "old_urls_retired": true
+}

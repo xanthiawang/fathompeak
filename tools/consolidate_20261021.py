@@ -86,6 +86,10 @@ def verify():
  findings=credential_findings()
  releases=release_records()
  record={'verified_at':datetime.now(ZoneInfo('Asia/Shanghai')).isoformat(timespec='seconds'),'repositories':len({x['repository'] for x in sources}),'branch_snapshots':len(sources),'source_files':len(files),'source_bytes':sum(x['bytes'] for x in files),'content_and_permissions':'matched source Git blob IDs and executable modes','release_assets':releases,'potential_sensitive_files':findings,'original_repositories_modified':False,'existing_website_urls_changed':False,'pages_enabled_for_consolidated_repo':False}
+ retirement_file=ROOT/'metadata/repository-retirement.json'
+ if retirement_file.exists():
+  retirement=json.loads(retirement_file.read_text())
+  record.update({'original_repositories_modified':True,'original_repositories_deleted':len(retirement['retired_repositories']),'existing_website_urls_changed':True,'pages_enabled_for_consolidated_repo':True,'unified_pages_url':retirement['pages_url'],'retirement_record':'metadata/repository-retirement.json'})
  write_json(ROOT/'metadata/verification.json',record)
  if findings:raise RuntimeError('Review potential sensitive files before publishing: '+', '.join(findings))
  logging.info('Verified %s repositories, %s branch snapshots, %s source files and %s release archives.',record['repositories'],record['branch_snapshots'],record['source_files'],len(releases))

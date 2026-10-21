@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-10-21T19:40:40+08:00",
+  "verified_at": "2026-10-21T19:47:30+08:00",
   "repositories": 7,
   "branch_snapshots": 8,
   "source_files": 985,
@@ -22,7 +22,10 @@
     }
   ],
   "potential_sensitive_files": [],
-  "original_repositories_modified": false,
-  "existing_website_urls_changed": false,
-  "pages_enabled_for_consolidated_repo": false
+  "original_repositories_modified": true,
+  "existing_website_urls_changed": true,
+  "pages_enabled_for_consolidated_repo": true,
+  "original_repositories_deleted": 7,
+  "unified_pages_url": "https://xanthiawang.github.io/fathompeak/",
+  "retirement_record": "metadata/repository-retirement.json"
 }
