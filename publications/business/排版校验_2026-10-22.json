@@ -1,0 +1,23 @@
+{
+  "title": "沐仞科技｜绿色算力部署与模型 API 服务，开放合作",
+  "source_sha256": "2d3e1577793b5297a1ff71ccc7175fea66880596ef40b299919e78497f9bac45",
+  "sections": 7,
+  "content_blocks": 103,
+  "all_rendered_blocks_match": true,
+  "allowed_changes": [
+    {
+      "source": "关于沐仞科技｜FathomPeak",
+      "rendered": "沐仞科技｜绿色算力部署与模型 API 服务，开放合作"
+    },
+    {
+      "source": "合作咨询： [待补充企业邮箱]",
+      "rendered": "合作咨询： fathompeak@163.com"
+    },
+    {
+      "source": "官方网站： [待补充]",
+      "rendered": "官方网站： www.fathompeak.cn"
+    }
+  ],
+  "illustrations": 3,
+  "source_share_tokens_published": false
+}

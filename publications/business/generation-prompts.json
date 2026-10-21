@@ -1,0 +1,16 @@
+{
+  "tool": "built-in imagegen",
+  "generated_on": "2026-10-22",
+  "assets": [
+    {
+      "asset": "business_landscape",
+      "prompt": "Use case: ads-marketing. Create an elegant original horizontal 16:9 editorial illustration for FathomPeak, a green energy and AI infrastructure company. Style: single-ink morning-blue #2F63B8 copperplate engraving and stippled risograph print on clean white paper, like an understated literary technology newsletter; fine imperfect hand-drawn contour lines and halftone grain. A panoramic geological landscape with rolling ridges and distant mountains, sparse tiny solar panels at far lower left and two wind turbines far lower right, a delicate cable contour traveling through the foreground rock strata. Abstract conceptual scenery, not a photograph or depiction of company facilities. Composition: top 40 percent and central upper area mostly clean pure white for later deterministic text overlay, blue engraved terrain concentrated in lower half and the far side edges. No typography, no letters, no logo, no captions, no frame, no browser UI, no QR code, no gradients, no watercolor, no oil paint, no heavy dark rectangle. Calm white-dominant print composition, precise blue lines and generous negative space. Landscape only; designer will add the title and thin window outline separately.",
+      "tool": "built-in imagegen"
+    },
+    {
+      "asset": "business_stamps",
+      "prompt": "Use case: ads-marketing. Create an original horizontal editorial collage showing exactly three tall vintage postage stamps, equal visual importance, sitting side by side on a clean warm-white paper background, entirely visible with generous outer margins. Worn paper, authentic scalloped perforated cream edges, subtle letterpress texture, fine halftone dots, archive print grain, faint abstract dark postmark arcs with absolutely NO numbers or text. This is a style-led conceptual illustration for green energy and AI collaboration, not data or existing deployments. Left stamp: morning blue #2F63B8 colored field, cream engraved solar panel and small wind turbine, evoking an energy-side token factory. Middle stamp: pale blue #DCE9FF field with graphite engraved GPU module/circuit board and fine curved cables, evoking coordinated computing; do not use retro monitor. Right stamp: deep muted violet #3D314F field with cream engraved globe and a few connected abstract nodes, evoking model API services. Every stamp leaves its top 22 percent completely empty for later added exact Chinese labels. No typography, no lettering, no title, no brand marks, no denomination, no frames outside the three stamp borders, no extra fourth stamp, no chart, no cartoon, no neon, no shiny 3D rendering, no oil paint. Tactile vintage editorial postage collage. Image aspect approximately 2:1, all stamp edges fully contained, crisp enough for high resolution print.",
+      "tool": "built-in imagegen"
+    }
+  ]
+}

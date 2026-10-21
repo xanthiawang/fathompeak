@@ -29,6 +29,11 @@ def main():
     changes=[]
     for source, destination in PROJECTS.items():
         shutil.copytree(ROOT/'projects'/source, out/destination, symlinks=False)
+    # New approved articles live outside the frozen imported snapshots.
+    publications=ROOT/'publications'
+    if publications.is_dir():
+        for article in publications.iterdir():
+            if article.is_dir():shutil.copytree(article,out/'materials'/article.name,ignore=shutil.ignore_patterns('source','__pycache__'))
     shutil.copytree(ROOT/'archive/releases',out/'archive/releases')
     for file in sorted(out.rglob('*')):
         if not file.is_file() or file.suffix not in TEXT or file.stat().st_size>=3*1024*1024:continue

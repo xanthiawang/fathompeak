@@ -16,6 +16,10 @@
 
 公司官网：[www.fathompeak.cn](https://www.fathompeak.cn/)
 
+## 业务与合作介绍
+
+[阅读与下载](https://xanthiawang.github.io/fathompeak/materials/business/)：绿色算力部署与模型 API 服务，开放合作。正文七个章节保留，配套晨蓝版画开篇、业务邮票拼贴与合作联系卡。
+
 ## 常用素材
 
 - [现用 Logo 与字标](projects/visual-materials/05_品牌标识/现用/官方logo_2026-10-18/)
