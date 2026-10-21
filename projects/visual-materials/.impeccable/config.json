@@ -1,0 +1,26 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "fraunces",
+        "files": [
+          "09_公众号视觉/2026-10-20/every-v2/index.html"
+        ],
+        "createdAt": "2026-10-20T06:19:40.319Z",
+        "reason": "User explicitly requires the established website brand font Fraunces; retain brand typography."
+      },
+      {
+        "rule": "overused-font",
+        "value": "fraunces",
+        "files": [
+          "09_公众号视觉/2026-10-20/article-compute-energy/index.html"
+        ],
+        "createdAt": "2026-10-20T06:59:14.513Z",
+        "reason": "User requires the established website brand typography; Fraunces remains the approved title face."
+      }
+    ]
+  }
+}

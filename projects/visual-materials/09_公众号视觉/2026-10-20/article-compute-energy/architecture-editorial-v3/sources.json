@@ -1,0 +1,57 @@
+{
+  "source": "FathomPeak_BP_9.15.pptx",
+  "sha256": "c1bb9abb2cbaacae870f1c4d569f8f300d0cdaa020fcb9a1be0cb80c7ba80eee",
+  "reviewed_on": "2026-10-20",
+  "reviewed_pages": [
+    14,
+    15,
+    17,
+    20,
+    21,
+    22,
+    23
+  ],
+  "read_method": "PPTX text extraction plus rendered inspection of architecture pages",
+  "figures": [
+    {
+      "file": "01_算电协同整体架构",
+      "pages": [
+        14,
+        20,
+        21,
+        22,
+        23
+      ]
+    },
+    {
+      "file": "02_NetWeaver联合调度架构",
+      "pages": [
+        17
+      ]
+    },
+    {
+      "file": "03_Tapestrix运行时调度架构",
+      "pages": [
+        15,
+        21
+      ]
+    }
+  ],
+  "reference_articles": {
+    "qLRAsPGzhPaNVx1oL-FHGQ": "unreadable",
+    "MDZm5cMzwxGJpHU38Racag": "unreadable"
+  },
+  "imagegen": {
+    "mode": "built-in",
+    "prompts": "generation-prompts.json",
+    "assets": [
+      "assets/01-supply.png",
+      "assets/02-network.png",
+      "assets/03-runtime.png",
+      "assets/00-hero.png"
+    ],
+    "direct_text_alternative": "assets/direct-text-comparison.png",
+    "review": "Primary labels typeset deterministically. Direct-text alternative has correct main English labels but includes tiny pseudo UI text and is retained only for visual comparison."
+  },
+  "edition": "Every-inspired editorial functional summaries"
+}

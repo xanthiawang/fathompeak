@@ -1,0 +1,50 @@
+{
+  "original_sha256": "383aef1da5813f913e8e8b5b45998ca2fa565305d286281f430576a7a0cc729d",
+  "figures": [
+    {
+      "index": 1,
+      "title": "一次交付的三类约束",
+      "file": "01_一次交付的三类约束",
+      "after_paragraph_start": "这背后，计算设备、供电条件与网络传输需要共同优化。",
+      "caption": "图 1｜电力、设备与网络共同影响模型服务交付。关系示意，不表示性能测量结果。"
+    },
+    {
+      "index": 2,
+      "title": "算电协同整体架构",
+      "file": "architecture-editorial-v3/01_算电协同整体架构",
+      "after_paragraph_start": "围绕这一思路，我们推进“前店后厂”方案。",
+      "caption": "图 2｜依据 BP 第 14、20–23 页重绘：前店后厂、三个智能体与运行反馈。箭头表示功能关系。"
+    },
+    {
+      "index": 3,
+      "title": "Tapestrix运行时调度架构",
+      "file": "architecture-editorial-v3/03_Tapestrix运行时调度架构",
+      "after_paragraph_start": "在计算侧，Tapestrix 处理模型与设备之间的映射，",
+      "caption": "图 3｜依据 BP 第 15 页重绘：Tapestrix 从请求、性能图谱与运行时控制器，到多卡并行和单卡共享。"
+    },
+    {
+      "index": 4,
+      "title": "NetWeaver联合调度架构",
+      "file": "architecture-editorial-v3/02_NetWeaver联合调度架构",
+      "after_paragraph_start": "在这个基础上，我们还构建了以分布式通信为基础的网络调度架构。",
+      "caption": "图 4｜依据 BP 第 17 页重绘：NetWeaver 的任务画像、TransElect 联合调度、执行与反馈。"
+    },
+    {
+      "index": 5,
+      "title": "三类现场部署形态",
+      "file": "05_三类现场部署形态",
+      "after_paragraph_start": "那么，这种统一调度如何形成新的供给方式？",
+      "caption": "图 5｜正文提及的三类部署形态。插画不代表已定型设备外观、实物照片或已完成的项目。"
+    },
+    {
+      "index": 6,
+      "title": "词元供给与运行反馈闭环",
+      "file": "06_词元供给与运行反馈闭环",
+      "after_paragraph_start": "再往后，则是我们希望构建的全球分布式算网。",
+      "caption": "图 6｜能源、执行、交易与反馈构成供给闭环；反馈回到调度，再影响下一轮任务安排。"
+    }
+  ],
+  "reference_article_counts": "unverified: both requested URLs returned HTTP 403",
+  "architecture_source": "architecture-editorial-v3/sources.json",
+  "source_file": "正文_用户修订稿_v2_2026-10-20.md"
+}

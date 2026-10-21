@@ -1,0 +1,17 @@
+# Selected image source
+
+Generated with built-in ImageGen; selected by the user on 2026-10-14.
+
+Original: /Users/zixin/.codex/generated_images/01a1355e-cf8e-77c0-ac71-eeaf68fedff5/exec-fe52f7cc-79f8-4aac-8b73-2910f908653a.png
+
+Use case: ads-marketing. Deliver ONE finished vertical art-directed brand visual, portrait 2:3, no mockup device, no webpage controls, no panel labels.
+Brand: 沐仞科技, full English name FathomPeak Tech. Brand idea: 栉风沐雨，登高万仞. Premium contemporary AI infrastructure brand; editorial art direction, not Chinese traditional art.
+Strict brand palette: dawn blue #5284D7, deep blue #2F63B8, pale blue #DCE7F7, dusk purple #4E3F66 and #3D314F, warm pale peach #E8D4CC, charcoal #212021, warm paper #F3F1EA. Multiple palette colors are essential. No green, bright red, yellow, teal or cyan.
+Typography: refined editorial serif in the family of Fraunces, not bold generic Times. English wordmark must read exactly "FathomPeak Tech"; permit a graceful calligraphic capital P within FathomPeak while all other letters remain restrained Roman serif, as an original custom wordmark. Chinese must read exactly "沐仞科技" in elegant contemporary Songti / Noto Serif SC, not brush calligraphy. Keep the Chinese and English coordinated. Accurate Chinese characters. Bottom motto exactly "栉风沐雨，登高万仞". No other copy, no Every/THESIS/Gemini words, no date, no UI buttons.
+Direction C: ENGRAVED COLLABORATION / ASCENT.
+The supplied reference is a STYLE REFERENCE for a pale flat background, exquisite black-and-white engraved human/mechanical hands, strong editorial serif typography and one calligraphic letter. Create an original vertical composition with these same design principles.
+Background: clean mist-blue #DCE7F7 paper with slight paper grain; a large quiet dusk-lilac #EAE4F0 field enters the bottom third, an extremely restrained pale peach paper offset. No dark 3D stone, no glowing star, no generic gradient blob.
+Upper-left composition, generous margins: "沐仞科技" small in coordinated Songti, and below a large beautifully typeset original "FathomPeak Tech" wordmark in charcoal #212021, the P a graceful calligraphic serif accent, Tech on a clearly subordinate line if needed. Beneath it the motto split intentionally into two large lines, exact Chinese "栉风沐雨，" then "登高万仞". The second line is dusk purple #4E3F66, first line charcoal, so typography has deliberate multiple colors rather than uniformly black. Large type plus generous breathing room.
+Lower 55%: a masterful vintage scientific copperplate engraving of TWO anatomically plausible hands clasping in a helping-up gesture. One HUMAN forearm reaches upward from lower-left; a precision MECHANICAL hand/forearm reaches diagonally down from upper-right. Firm, generous clasp, neither squeezing nor broken wrists; five fingers on each, no extra limbs. Detailed fine crosshatching, expressive line-weight, white/pale paper highlights, black ink, two small dawn-blue accents in mechanical joints. Do not make photoreal flesh or a smooth chrome robot. It should feel like an archival engraved illustration repurposed in a contemporary design studio.
+A very fine abstract ascending contour line may sit low behind the hands, reinforcing upward direction. Keep background quiet and graphic. No additional labels or explanatory slogans. The whole page must feel as disciplined and premium as the provided reference, using our brand typography and colors.
+
