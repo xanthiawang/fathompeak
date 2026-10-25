@@ -86,6 +86,6 @@ format:
 
 本次官方仅追加生成1条，实扣70即梦积分；移动侧控制台显示费用5.0094，但结算币种尚未核实。两平台单位不同，不做价格倍数比较。
 
-[下载报告、两条原片和抽帧完整包](https://xanthiawang.github.io/fathompeak/materials/seedance-comparison/downloads/seedance-comparison-20261025.zip)
+[下载报告、两条原片和抽帧完整包](https://xanthiawang.github.io/fathompeak/materials/seedance-comparison/downloads/seedance-comparison-20261025.zip){download="seedance-comparison-20261025.zip"}
 
 <small>报告更新：2026-10-25。仅发布测试结果及生成媒体。</small>
