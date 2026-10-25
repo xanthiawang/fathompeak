@@ -1,0 +1,132 @@
+{
+  "test_id": "T05_15s_pick_place",
+  "common_prompt": "写实风格，15秒单镜头，固定机位，中景完整看清机器人的双手和桌面。明亮的维修室中，同一个浅灰色维修机器人站在工作台后方。桌面画面左侧有一个红色立方体，画面右侧有一个蓝色浅托盘。0到3秒，机器人双手平放桌面；3到7秒，机器人用右手拿起红色立方体并轻轻抬起；7到11秒，把同一个立方体移到蓝色托盘内并松手；11到15秒，右手回到桌面，机器人面向镜头。最后清晰自然的中文男声说：物品已经归位，测试完成。全程保持同一个机器人、同一个立方体和托盘，不切镜、不增加人物或物品、无字幕，背景安静。",
+  "common_parameters": {
+    "model_family": "Seedance 2.0 standard",
+    "resolution": "720p",
+    "ratio": "16:9",
+    "duration": 15,
+    "count_per_channel": 1,
+    "references": []
+  },
+  "exact_prompt_match": true,
+  "submissions_per_channel": 1,
+  "submission_gap_seconds": 17.541689,
+  "mobile": {
+    "submitted_at": "2026-10-25T15:54:19.259311+08:00",
+    "first_observed_success_at": "2026-10-25T16:01:33.541557+08:00",
+    "first_observed_success_seconds": 434.28112416598015,
+    "last_observed_not_success_seconds": 428.05751841602614,
+    "task_creation_response_seconds": 1.5033699580235407,
+    "provider_created_to_updated_seconds": 428,
+    "download_started_at": "2026-10-25T16:01:33.542540+08:00",
+    "download_completed_at": "2026-10-25T16:03:37.310209+08:00",
+    "download_seconds": 123.767669,
+    "submit_to_download_complete_seconds": 558.050898,
+    "provider_internal_pure_inference_seconds": null,
+    "completion_tokens": 324900,
+    "displayed_charge": 14.9454,
+    "displayed_currency": "$; settlement currency not independently verified",
+    "approved_max_display_balance_units": 20,
+    "within_approved_budget": true,
+    "dashboard_service_performance_seconds": 436.21,
+    "transient_poll_http_errors": 1,
+    "generation_retries": 0,
+    "media": {
+      "width": 1280,
+      "height": 720,
+      "container_duration_seconds": 15.07,
+      "decoded_frames": 361,
+      "full_decode_exit_code": 0,
+      "bytes": 3437626,
+      "sha256": "8c0b55fb3e6a0567c59eae47f025d1c872b4fba97f48a2d4801f724e0135e477"
+    }
+  },
+  "official": {
+    "submitted_at": "2026-10-25T07:54:36.801Z",
+    "first_observed_success_at": "2026-10-25T08:01:06.570Z",
+    "first_observed_success_seconds": 389.769,
+    "last_observed_not_success_seconds": 290.685,
+    "provider_internal_pure_inference_seconds": null,
+    "credits_deducted": 210,
+    "approved_max_credits": 210,
+    "generation_retries": 0,
+    "download_seconds": null,
+    "download_timing_limit": "Manual navigation before download; no comparable automated download duration was measured",
+    "media": {
+      "width": 1280,
+      "height": 720,
+      "container_duration_seconds": 15.07,
+      "decoded_frames": 361,
+      "full_decode_exit_code": 0,
+      "bytes": 8218088,
+      "sha256": "de0d8194e69f2a68ea92857537f4d42e9a01d1b766f0fb3eed8339794aed8a2b"
+    }
+  },
+  "asr": {
+    "移动": {
+      "T05_移动_原声_16k.wav": {
+        "text": "物品已经归位测试完成",
+        "exact_normalized_text_match": true
+      },
+      "T05_移动_末段11-15秒_16k.wav": {
+        "text": "物品已经归位测试完成",
+        "exact_normalized_text_match": true
+      }
+    },
+    "官方": {
+      "T05_官方_原声_16k.wav": {
+        "text": "物品已经归位 测试完成",
+        "exact_normalized_text_match": true
+      },
+      "T05_官方_末段11-15秒_16k.wav": {
+        "text": "物品已经归位 测试完成",
+        "exact_normalized_text_match": true
+      }
+    }
+  },
+  "observations": {
+    "both": [
+      "拿起、抬起、移入蓝托盘、松手、右手回桌的主序列可见",
+      "抽帧中机器人、红方块与蓝托盘保持可辨识，未见明显复制、消失或切镜",
+      "全片及11–15秒末段ASR均识别出指定完整台词"
+    ],
+    "timing_deviations": [
+      "官方1.0秒时右手已离开初始平放姿态；移动2.0秒时也已起手，均早于0–3秒静止要求",
+      "移动10.0秒抽帧右手已回桌；官方11.5秒抽帧右手回桌。指定回桌时间为11–15秒，移动较早。"
+    ]
+  },
+  "limits": [
+    "连续逐帧手指与抓握接触物理细节",
+    "人工听感、音色自然度和准确发声起止点",
+    "精确动作起止时间（当前为0.5秒采样）",
+    "总体质量、长期平均速度、并发稳定性、真实上游身份"
+  ],
+  "assets": [
+    {
+      "file": "media/mobile-seedance2-15s-20261025.mp4",
+      "bytes": 3437626,
+      "sha256": "8c0b55fb3e6a0567c59eae47f025d1c872b4fba97f48a2d4801f724e0135e477"
+    },
+    {
+      "file": "media/official-seedance2-15s-20261025.mp4",
+      "bytes": 8218088,
+      "sha256": "de0d8194e69f2a68ea92857537f4d42e9a01d1b766f0fb3eed8339794aed8a2b"
+    },
+    {
+      "file": "images/t05-keyframes.jpg",
+      "bytes": 868222,
+      "sha256": "23b09c414ffe9cc784d7e1ae3f4de3708309d52a90efeef2654920be04435beb"
+    },
+    {
+      "file": "images/t05-mobile-contact.jpg",
+      "bytes": 745646,
+      "sha256": "bfecce79d4d5bb9b0708b1ca1e0399fe64f22e08270bd9d65412a22d63e7774f"
+    },
+    {
+      "file": "images/t05-official-contact.jpg",
+      "bytes": 786707,
+      "sha256": "9b5b6fc8dceb02938d05f61308b080f8878da6082ec99e7fcf89fcc46099196c"
+    }
+  ]
+}
