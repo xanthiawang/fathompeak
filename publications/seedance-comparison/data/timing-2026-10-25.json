@@ -1,0 +1,62 @@
+{
+  "published_on": "2026-10-25",
+  "timezone": "Asia/Shanghai",
+  "common_parameters": {
+    "model_family": "Seedance 2.0",
+    "resolution": "720p",
+    "ratio": "16:9",
+    "duration_seconds": 5,
+    "samples_per_channel": 1,
+    "text_only": true,
+    "prompt_exact_match": true
+  },
+  "mobile": {
+    "submitted_at": "2026-10-23T12:48:56.850+08:00",
+    "first_observed_success_at": "2026-10-23T12:51:41.543+08:00",
+    "submission_to_first_observed_success_seconds": 164.692863,
+    "task_creation_http_response_seconds": 2.6799260420084465,
+    "provider_created_to_updated_seconds": 156,
+    "provider_internal_pure_inference_seconds": null
+  },
+  "official": {
+    "submitted_at": "2026-10-25T15:14:16.760+08:00",
+    "first_observed_success_at": "2026-10-25T15:21:08.136+08:00",
+    "submission_to_first_observed_success_seconds": 411.376,
+    "provider_internal_pure_inference_seconds": null,
+    "deducted_credits": 70
+  },
+  "observed_wait_difference_seconds": 246.683137,
+  "official_to_mobile_observed_wait_ratio": 2.4978374442370344,
+  "limits": [
+    "跨日期各1次；非同时负载与固定种子测试",
+    "包含队列及轮询观察延迟；无法拆分纯推理时间",
+    "视频成功和模型标签不构成供应商真实上游的身份认证"
+  ],
+  "assets": [
+    {
+      "file": "media/mobile-seedance2-20261023.mp4",
+      "bytes": 1295009,
+      "sha256": "99ff5fe8d2c28782c3d4795ca0fd5d884d4d103c86fb195d4ba23373c11e2818"
+    },
+    {
+      "file": "media/official-seedance2-20261025.mp4",
+      "bytes": 2839057,
+      "sha256": "82d6747d1e387620b9f475137cb93cfe3d238a67af230aa8128de2a83811e1b3"
+    },
+    {
+      "file": "images/contact-sheet.jpg",
+      "bytes": 409469,
+      "sha256": "ee0e9c7cd929e5ad7fd88e36c8f96ea5739f5448cef0f7636e1b4cd79e790791"
+    },
+    {
+      "file": "images/mobile-4-5s.png",
+      "bytes": 457378,
+      "sha256": "7daa660c227e49ab2cdecb671dc0ab887ffc980f09e88bdfbe140d89a36c8749"
+    },
+    {
+      "file": "images/official-4-5s.png",
+      "bytes": 605870,
+      "sha256": "80893022de52fa8882225b0a922757344287260cdbbde58505c7c93424edb5bf"
+    }
+  ]
+}

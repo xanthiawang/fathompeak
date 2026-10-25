@@ -28,6 +28,10 @@
 - [招聘图文与配图](https://xanthiawang.github.io/fathompeak/materials/recruitment/)
 - [央视报道图文与配图](https://xanthiawang.github.io/fathompeak/materials/cctv/)
 
+## 测试报告
+
+[Seedance 2.0 移动供应商与官方对照](https://xanthiawang.github.io/fathompeak/materials/seedance-comparison/)：两条原片、抽帧和真实计时记录，保留样本与计时口径限制。
+
 ## 历史归档
 
 以下目录只保留历史方案，不代表现行品牌或官网版本。
