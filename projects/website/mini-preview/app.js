@@ -1,5 +1,5 @@
 import {catalog, selectedModel, endpoint, emptyEstimate, estimateNumber, estimateCosts} from './catalog.js?v=d40-20261018';
-import {icon,escapeHTML,roles,pageInfo,renderPage,modelRows,estimateResult} from './views.js?v=oasis3-20261027';
+import {icon,escapeHTML,roles,pageInfo,renderPage,modelRows,estimateResult} from './views.js?v=oasis5-20261027';
 const $=selector=>document.querySelector(selector);
 const screen=$('#screen'), sheet=$('#sheet');
 const storageKey=role=>`fathompeak-mini-ui-20261018-draft-${role}`;
