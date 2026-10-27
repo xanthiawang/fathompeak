@@ -127,29 +127,56 @@ input::placeholder,textarea::placeholder,.amount-input input::placeholder{color:
 .mini-brand span img{height:8px;width:auto;display:block}
 .wordmark img{height:15px;width:auto;display:block}
 
-/* 邀请裂变（2026-10-27） */
-.invite-card{position:relative;overflow:hidden;background:linear-gradient(105deg,var(--blue),var(--dusk) 66%,var(--ink));color:white;border:1px solid rgba(255,255,255,.62);border-radius:16px;padding:23px;margin:20px 0}
-.invite-card .label{font-size:12px;opacity:.88}
-.invite-card h1{font:400 28px/1.3 var(--serif);margin:12px 0 10px;color:white}
-.invite-card p{font-size:13px;line-height:1.6;color:rgba(255,255,255,.88);max-width:78%}
-.invite-card .art{position:absolute;width:135px;right:-14px;bottom:8px;opacity:.4}
-.invite-card> :not(.art){position:relative;z-index:1}
-.invite-reward{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);background:white;border-radius:16px;margin:0 0 18px}
-.invite-reward>div{padding:16px;text-align:center}
-.invite-reward>div+div{border-left:1px solid var(--line)}
-.invite-reward small{font-size:12px;color:var(--muted)}
-.invite-reward b{font:400 24px var(--mono);display:block;margin-top:6px;color:var(--dusk)}
-.share-card{border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,#fff,rgba(82,132,215,.06));padding:16px;margin:0 0 20px}
-.share-head{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--dusk)}
+/* 邀请裂变与绿洲（2026-10-27，沿用账户页晨昏渐变、白玻璃、蚀刻插画） */
+.tree-sprite{display:block;width:72px;aspect-ratio:1;background:url('../art/oasis/oasis-growth_2026-10-27.webp') var(--col) 0/500% 200% no-repeat;filter:drop-shadow(0 4px 3px rgba(62,57,38,.10))}
+.tree-sprite.co{background-position-y:100%}
+.invite-strip{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;margin-top:10px;border:1px solid var(--line);border-radius:16px;padding:14px 12px 14px 14px;text-align:left;color:var(--dusk);background:linear-gradient(100deg,rgba(220,231,247,.7),rgba(227,220,230,.55) 60%,rgba(235,221,224,.5))}
+.invite-strip>span{display:flex;flex-direction:column;gap:6px;min-width:0}
+.invite-strip strong{font:400 30px/1 var(--serif);color:var(--dusk)}
+.invite-strip strong span{font-size:16px;margin-right:2px}.invite-strip strong small{font:400 12px var(--sans);color:var(--muted);margin-left:4px}
+.invite-strip .tree-sprite{width:84px;flex:none;margin:-8px -4px -10px 0}
+.invite-card{position:relative;isolation:isolate;overflow:hidden;margin:4px 0 16px;padding:22px 18px 20px;border-radius:20px;border:1px solid rgba(255,255,255,.62);background:linear-gradient(170deg,#DCE7F7 0%,#E3DCE6 60%,#EBDDE0 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 12px 36px -24px rgba(61,49,79,.42);color:var(--ink)}
+.invite-card .label{font:400 12px/1.6 var(--mono);letter-spacing:.06em;color:var(--muted)}
+.invite-card h1{font:400 28px/1.32 var(--serif);letter-spacing:-.03em;margin:10px 0}
+.invite-card p{font-size:13px;line-height:1.7;color:var(--dusk);max-width:64%}
+.invite-art{position:absolute;top:0;right:0;bottom:0;width:58%;z-index:-1;background:url('../art/oasis/oasis-camp_2026-10-27.webp') 70% 70%/cover no-repeat;-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.5) 30%,#000 60%);mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.5) 30%,#000 60%);opacity:.9}
+.invite-reward{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);background:rgba(255,255,255,.75);box-shadow:var(--shadow);border-radius:16px;margin:0 0 18px}
+.invite-reward>div{padding:16px;text-align:center}.invite-reward>div+div{border-left:1px solid var(--line)}
+.invite-reward small{font:400 12px/1.6 var(--mono);letter-spacing:.06em;color:var(--muted)}
+.invite-reward b{font:400 26px var(--serif);display:block;margin-top:6px;color:var(--dusk)}
+.summary-link{width:100%;text-align:left;color:inherit}
+.share-card{position:relative;isolation:isolate;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.75);box-shadow:var(--shadow);padding:16px;margin:0 0 20px}
+.share-card>.tree-sprite{position:absolute;right:-6px;top:-4px;width:70px;opacity:.9;z-index:-1}
+.share-head{display:flex;justify-content:space-between;align-items:center;font:400 12px/1.6 var(--mono);letter-spacing:.04em;color:var(--dusk);padding-right:56px}
 .share-stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:12px}
-.share-stats>div+div{border-left:1px solid var(--line);padding-left:12px}
+.share-stats>*{text-align:left;color:inherit;padding:0}.share-stats>*+*{border-left:1px solid var(--line);padding-left:12px}
 .share-stats small{font-size:11px;color:var(--muted)}
 .share-stats b{font:400 22px var(--mono);display:block;margin:4px 0}
 .share-stats p{font-size:11px;color:var(--muted)}
-.poster{border-radius:16px;padding:22px;margin:14px 0;background:linear-gradient(160deg,var(--blue),var(--dusk) 70%,var(--ink));color:white;text-align:center}
-.poster-brand{font:400 12px var(--mono);opacity:.8}
-.poster b{display:block;font:400 22px/1.4 var(--serif);margin:14px 0 8px}
-.poster p{font-size:13px;line-height:1.6;color:rgba(255,255,255,.9)}
-.poster-code{width:96px;height:96px;margin:16px auto 8px;border-radius:50%;background:white;box-shadow:inset 0 0 0 10px white,inset 0 0 0 12px var(--dusk)}
-.poster small{font-size:11px;opacity:.8}
+.poster{position:relative;overflow:hidden;border-radius:18px;margin:14px 0;background:linear-gradient(170deg,#DCE7F7 0%,#E3DCE6 60%,#EBDDE0 100%);border:1px solid var(--line);color:var(--ink);text-align:left}
+.poster-scene{height:150px;background:url('../art/oasis/oasis-revived_2026-10-27.webp') 50% 62%/cover no-repeat;-webkit-mask-image:linear-gradient(180deg,#000 60%,transparent);mask-image:linear-gradient(180deg,#000 60%,transparent)}
+.poster-brand{display:block;font:400 11px var(--mono);letter-spacing:.06em;color:var(--muted);padding:0 18px}
+.poster b{display:block;font:400 22px/1.4 var(--serif);margin:6px 18px 8px}
+.poster p{font-size:13px;line-height:1.6;color:var(--dusk);padding:0 18px}
+.poster-foot{display:flex;align-items:center;gap:12px;margin:16px 18px 18px;padding-top:14px;border-top:1px solid var(--line)}
+.poster-code{width:64px;height:64px;flex:none;border-radius:50%;background:white;box-shadow:inset 0 0 0 7px white,inset 0 0 0 8px var(--frame),var(--shadow)}
+.poster small{font-size:12px;line-height:1.6;color:var(--muted)}
 .rule-list{margin:8px 0 0 18px;padding:0;display:grid;gap:8px;font-size:14px;color:var(--ink)}
+.oasis-scene{position:relative;aspect-ratio:1;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.62);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 12px 36px -24px rgba(61,49,79,.42);background:#f5f1e9 center/cover no-repeat;margin:18px 0 12px;transition:background-image .8s}
+.oasis-withered{background-image:url('../art/oasis/oasis-withered_2026-10-27.webp')}
+.oasis-camp{background-image:url('../art/oasis/oasis-camp_2026-10-27.webp')}
+.oasis-revived{background-image:url('../art/oasis/oasis-revived_2026-10-27.webp')}
+.oasis-slot{position:absolute;transform:translate(-50%,-86%);display:flex;flex-direction:column;align-items:center}
+.slot-a{left:32.4%;top:67.6%}.slot-b{left:74.9%;top:46.3%}
+.oasis-slot .tree-sprite{width:120px}.slot-b .tree-sprite{width:132px}
+.slot-tag{margin-top:-4px;padding:3px 8px;border-radius:99px;background:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.7);font:400 11px var(--sans);color:var(--dusk);white-space:nowrap;box-shadow:var(--shadow)}
+.energy-ball{position:absolute;left:var(--x);top:var(--y);z-index:3;width:48px;height:52px;border-radius:24px;border:1px solid rgba(47,99,184,.35);background:rgba(255,255,255,.86);color:var(--blue);font:400 16px var(--mono);box-shadow:0 0 22px rgba(82,132,215,.35);animation:energy-float 3s ease-in-out infinite;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1}
+.energy-ball small{font:400 10px var(--sans);color:var(--muted)}
+.energy-ball:nth-child(2){animation-delay:-1s}.energy-ball:nth-child(3){animation-delay:-2s}
+@keyframes energy-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@media(prefers-reduced-motion:reduce){.energy-ball{animation:none}}
+.oasis-progress{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.75);box-shadow:var(--shadow)}
+.oasis-progress>div:first-child{display:flex;flex-direction:column}.oasis-progress b{font:400 20px var(--serif);color:var(--dusk)}
+.oasis-progress .dots{display:flex;gap:6px}.oasis-progress .dots i{width:10px;height:10px;border-radius:50%;background:var(--soft);box-shadow:inset 0 0 0 1px var(--line)}.oasis-progress .dots i.on{background:var(--blue-fill);box-shadow:none}
+.oasis-slot.grown .tree-sprite{width:92px}
+.oasis-slot.grown{z-index:1}
