@@ -1,5 +1,6 @@
 // SVGs reused from the current website console; stroke width follows brand rules.
 export const icons = {
+  "leaf": "<svg viewBox=\"0 0 20 20\" aria-hidden=\"true\"><path d=\"M16.5 3.5C9 3.5 4 7.5 4 12.5c0 1.6.6 2.9 1.5 3.9C6.5 17.4 7.9 18 9.5 18c5 0 7-6.5 7-14.5Z M4.5 17.5C7 13.5 10 10 13.5 7\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg>",
   "home": "<svg viewBox=\"0 0 20 20\" aria-hidden=\"true\"><path d=\"M3.5 9 10 3.5 16.5 9v7.5h-4.5v-4.5h-4v4.5H3.5Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linejoin=\"round\"/></svg>",
   "models": "<svg viewBox=\"0 0 20 20\" aria-hidden=\"true\"><path d=\"M10 2.5 16.5 6v8L10 17.5 3.5 14V6Z M3.5 6 10 9.5 16.5 6 M10 9.5v8\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linejoin=\"round\"/></svg>",
   "play": "<svg viewBox=\"0 0 20 20\" aria-hidden=\"true\"><path d=\"M4 4h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H9l-4 3v-3H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linejoin=\"round\"/></svg>",

@@ -1,5 +1,5 @@
 import {catalog, selectedModel, endpoint, emptyEstimate, estimateNumber, estimateCosts} from './catalog.js?v=d40-20261018';
-import {icon,escapeHTML,roles,pageInfo,renderPage,modelRows,estimateResult} from './views.js?v=oasis-20261027';
+import {icon,escapeHTML,roles,pageInfo,renderPage,modelRows,estimateResult} from './views.js?v=oasis3-20261027';
 const $=selector=>document.querySelector(selector);
 const screen=$('#screen'), sheet=$('#sheet');
 const storageKey=role=>`fathompeak-mini-ui-20261018-draft-${role}`;
@@ -89,8 +89,9 @@ const actions={
  close:closeSheet,
  'key-created'(){closeSheet();toast('API Key 已创建，请妥善保存。');},
  'gift-claimed'(){state.giftClaimed=true;state.oasis.pending+=1;state.oasis.source.push('礼包');closeSheet();render({focus:false});toast('试用券已放入账户，绿洲多了 1 份能量。');},
+ 'oasis-share'(){const o=state.oasis,sc=o.trees>=2?'revived':o.trees>=1?'camp':'withered';openSheet('分享我的绿洲',`<div class="poster oasis-share"><div class="poster-scene oasis-${sc}"></div><span class="poster-brand">沐仞 · FathomPeak</span><b>${o.trees?`我在沐仞种下了 ${o.trees} 棵树`:'我在沐仞种下了一颗种子'}</b><p>每一次绿电调用，都让绿洲多一点生机。${state.role==='member'?'':'<br>来和我合种，你我各得 ¥20 试用券。'}</p><div class="poster-foot"><div class="poster-code" aria-label="小程序码"></div><small>微信扫码<br>进入沐仞小程序</small></div></div>`,`<button class="primary full" data-action="poster-saved">保存到相册</button>${state.role==='member'?'':'<button class="secondary full" data-action="invite-share">发给微信好友</button>'}`);},
  'collect-energy'(){const o=state.oasis;if(!o.pending)return;o.pending-=1;o.source.shift();o.energy+=1;const top=screen.scrollTop;if(o.energy>=4){o.energy=4;render({focus:false});screen.scrollTop=top;setTimeout(()=>{o.trees+=1;o.energy=0;render({focus:false});screen.scrollTop=top;toast(o.trees===1?'第一棵树长成了，绿洲开始复苏。':'又长成一棵树，绿洲更茂盛了。');},900);return;}render({focus:false});screen.scrollTop=top;toast(['种子发芽了。','长成树苗了。','长成一棵小树了。'][o.energy-1]||'收到 1 份能量。');},
- 'invite-share'(){state.oasis.cotree=true;toast('已发给好友。好友首次调用后，合种的树就会发芽。');},
+ 'invite-share'(){state.oasis.cotree=true;if(sheet.open)closeSheet();if(state.page==='oasis'){const top=screen.scrollTop;render({focus:false});screen.scrollTop=top;}toast('已发给好友。好友首次调用后，合种的树就会发芽。');},
  'invite-poster'(){openSheet('邀请海报','<div class="poster"><div class="poster-scene"></div><span class="poster-brand">沐仞 · FathomPeak</span><b>一起用，一起种一棵树</b><p>主流模型 API，公开价 4 折起。<br>注册实名并首次调用，你我各得 ¥20 试用券。</p><div class="poster-foot"><div class="poster-code" aria-label="小程序码"></div><small>微信扫码<br>进入沐仞小程序</small></div></div>','<button class="primary full" data-action="poster-saved">保存到相册</button><button class="secondary full" data-action="close">返回</button>');},
  'poster-saved'(){closeSheet();toast('海报已保存到相册。');},
  'referrer'(){openSheet('成为推荐官','<p>面向技术博主、AI 社群和合作伙伴。好友每次消费，你持续获得代金券返还，返还比例按合作约定。</p><dl class="detail-list"><div><dt>返还形式</dt><dd>代金券，抵扣模型调用</dd></div><div><dt>返还周期</dt><dd>好友注册后 12 个月</dd></div></dl>','<button class="primary full" data-action="referrer-applied">申请成为推荐官</button>');},
