@@ -180,3 +180,4 @@ input::placeholder,textarea::placeholder,.amount-input input::placeholder{color:
 .oasis-progress .dots{display:flex;gap:6px}.oasis-progress .dots i{width:10px;height:10px;border-radius:50%;background:var(--soft);box-shadow:inset 0 0 0 1px var(--line)}.oasis-progress .dots i.on{background:var(--blue-fill);box-shadow:none}
 .oasis-slot.grown .tree-sprite{width:92px}
 .oasis-slot.grown{z-index:1}
+.purchase-footer{display:grid;gap:10px}
