@@ -126,3 +126,30 @@ input::placeholder,textarea::placeholder,.amount-input input::placeholder{color:
 /* 新 logo（2026-10-19）：英文换成 FATHOMPEAK 转曲字标，字高与原文字接近 */
 .mini-brand span img{height:8px;width:auto;display:block}
 .wordmark img{height:15px;width:auto;display:block}
+
+/* 邀请裂变（2026-10-27） */
+.invite-card{position:relative;overflow:hidden;background:linear-gradient(105deg,var(--blue),var(--dusk) 66%,var(--ink));color:white;border:1px solid rgba(255,255,255,.62);border-radius:16px;padding:23px;margin:20px 0}
+.invite-card .label{font-size:12px;opacity:.88}
+.invite-card h1{font:400 28px/1.3 var(--serif);margin:12px 0 10px;color:white}
+.invite-card p{font-size:13px;line-height:1.6;color:rgba(255,255,255,.88);max-width:78%}
+.invite-card .art{position:absolute;width:135px;right:-14px;bottom:8px;opacity:.4}
+.invite-card> :not(.art){position:relative;z-index:1}
+.invite-reward{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);background:white;border-radius:16px;margin:0 0 18px}
+.invite-reward>div{padding:16px;text-align:center}
+.invite-reward>div+div{border-left:1px solid var(--line)}
+.invite-reward small{font-size:12px;color:var(--muted)}
+.invite-reward b{font:400 24px var(--mono);display:block;margin-top:6px;color:var(--dusk)}
+.share-card{border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,#fff,rgba(82,132,215,.06));padding:16px;margin:0 0 20px}
+.share-head{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--dusk)}
+.share-stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:12px}
+.share-stats>div+div{border-left:1px solid var(--line);padding-left:12px}
+.share-stats small{font-size:11px;color:var(--muted)}
+.share-stats b{font:400 22px var(--mono);display:block;margin:4px 0}
+.share-stats p{font-size:11px;color:var(--muted)}
+.poster{border-radius:16px;padding:22px;margin:14px 0;background:linear-gradient(160deg,var(--blue),var(--dusk) 70%,var(--ink));color:white;text-align:center}
+.poster-brand{font:400 12px var(--mono);opacity:.8}
+.poster b{display:block;font:400 22px/1.4 var(--serif);margin:14px 0 8px}
+.poster p{font-size:13px;line-height:1.6;color:rgba(255,255,255,.9)}
+.poster-code{width:96px;height:96px;margin:16px auto 8px;border-radius:50%;background:white;box-shadow:inset 0 0 0 10px white,inset 0 0 0 12px var(--dusk)}
+.poster small{font-size:11px;opacity:.8}
+.rule-list{margin:8px 0 0 18px;padding:0;display:grid;gap:8px;font-size:14px;color:var(--ink)}

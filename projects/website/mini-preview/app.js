@@ -1,9 +1,9 @@
 import {catalog, selectedModel, endpoint, emptyEstimate, estimateNumber, estimateCosts} from './catalog.js?v=d40-20261018';
-import {icon,escapeHTML,roles,pageInfo,renderPage,modelRows,estimateResult} from './views.js?v=clean-20261027';
+import {icon,escapeHTML,roles,pageInfo,renderPage,modelRows,estimateResult} from './views.js?v=invite-20261027';
 const $=selector=>document.querySelector(selector);
 const screen=$('#screen'), sheet=$('#sheet');
 const storageKey=role=>`fathompeak-mini-ui-20261018-draft-${role}`;
-const state={page:'home',role:'personal',task:'ask',draft:'',amount:'',from:'home',filter:'全部',usageFilter:'全部',paused:false,modelId:'',query:'',vendor:'全部',client:'tool',keyName:'',estimate:emptyEstimate(),estimateFrom:'home'};
+const state={giftClaimed:false,page:'home',role:'personal',task:'ask',draft:'',amount:'',from:'home',filter:'全部',usageFilter:'全部',paused:false,modelId:'',query:'',vendor:'全部',client:'tool',keyName:'',estimate:emptyEstimate(),estimateFrom:'home'};
 let toastTimer,focusBeforeDialog;
 function toast(message){const el=$('#toast');el.textContent=message;el.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>{el.hidden=true},3200);}
 function readDraft(){try{const value=JSON.parse(localStorage.getItem(storageKey(state.role))||'null');state.draft=typeof value?.text==='string'?value.text:'';state.task=['ask','write','summary','translate'].includes(value?.task)?value.task:'ask';}catch(error){state.draft='';console.warn('Unable to restore local draft',error);toast('无法读取本设备草稿。');}}
@@ -14,11 +14,11 @@ sheet.addEventListener('close',()=>{if(focusBeforeDialog?.isConnected)focusBefor
 sheet.addEventListener('click',event=>{if(event.target===sheet){const r=sheet.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)closeSheet();}});
 function saveIntent(){try{sessionStorage.setItem('fp-mini-intent-'+state.role,JSON.stringify({modelId:state.modelId,amount:state.amount}));}catch(error){console.warn('Unable to retain preview selection',error);}}
 function readIntent(){try{const v=JSON.parse(sessionStorage.getItem('fp-mini-intent-'+state.role)||'null');state.modelId=catalog.some(m=>m.id===v?.modelId)?v.modelId:'';state.amount=typeof v?.amount==='string'?v.amount:'';}catch(error){state.modelId='';state.amount='';console.warn('Unable to restore preview selection',error);}}
-const reviewPages=[['home','模型市场'],['estimate','算算费用'],['api','API 接入'],['work','体验'],['account','我的'],['billing','用量账单'],['purchase','充值购买'],['team','企业管理']];
+const reviewPages=[['home','模型市场'],['estimate','算算费用'],['api','API 接入'],['work','体验'],['account','我的'],['invite','邀请好友'],['billing','用量账单'],['purchase','充值购买'],['team','企业管理']];
 const navPages=[['home','models','模型市场'],['api','keys','API 接入'],['work','play','体验'],['account','acct','我的']];
 function render({focus=true}={}){
  screen.innerHTML=renderPage(state);screen.scrollTop=0;
- const tab=['model','service','estimate'].includes(state.page)?'home':state.page==='connect'?'api':['purchase','confirm','orders','usage','billing','team'].includes(state.page)?'account':state.page;
+ const tab=['model','service','estimate'].includes(state.page)?'home':state.page==='connect'?'api':['purchase','confirm','orders','usage','billing','team','invite'].includes(state.page)?'account':state.page;
  $('#tab-bar').innerHTML=navPages.map(([id,ic,label])=>`<button data-nav="${id}" ${id===tab?'aria-current="page"':''}>${icon(ic)}<span>${label}</span></button>`).join('');
  $('#review-pages').innerHTML=reviewPages.map(([id,label],i)=>`<button data-review-page="${id}" ${id===state.page||(id==='purchase'&&state.page==='confirm')?'aria-current="page"':''}><span class="mono">0${i+1}</span>${label}</button>`).join('');
  const info=pageInfo[state.page]||pageInfo.home;$('#page-number').textContent=info[0];$('#context-title').textContent=info[1];$('#context-copy').textContent=info[2];$('#context-flow').innerHTML=info[3].map((step,i)=>`<div><span>0${i+1}</span>${step}</div>`).join('');
@@ -88,11 +88,18 @@ const actions={
  'api-docs'(){openSheet('接入文档','<p>查看鉴权、模型参数和客户端配置。</p>','<button class="primary full" data-copy-link="api">复制 API 文档链接</button>');},
  close:closeSheet,
  'key-created'(){closeSheet();toast('API Key 已创建，请妥善保存。');},
- 'gift-claimed'(){closeSheet();toast('试用券已放入账户。');},
+ 'gift-claimed'(){state.giftClaimed=true;closeSheet();render({focus:false});toast('试用券已放入账户。邀请好友，双方再各得 ¥20。');},
+ 'invite-share'(){toast('已打开微信好友列表。');},
+ 'invite-poster'(){openSheet('邀请海报','<div class="poster"><span class="poster-brand">沐仞 · FathomPeak</span><b>一起用，一起种一棵树</b><p>主流模型 API，公开价 4 折起。<br>注册实名并首次调用，你我各得 ¥20 试用券。</p><div class="poster-code" aria-label="小程序码"></div><small>微信扫码，进入沐仞小程序</small></div>','<button class="primary full" data-action="poster-saved">保存到相册</button><button class="secondary full" data-action="close">返回</button>');},
+ 'poster-saved'(){closeSheet();toast('海报已保存到相册。');},
+ 'referrer'(){openSheet('成为推荐官','<p>面向技术博主、AI 社群和合作伙伴。好友每次消费，你持续获得代金券返还，返还比例按合作约定。</p><dl class="detail-list"><div><dt>返还形式</dt><dd>代金券，抵扣模型调用</dd></div><div><dt>返还周期</dt><dd>好友注册后 12 个月</dd></div></dl>','<button class="primary full" data-action="referrer-applied">申请成为推荐官</button>');},
+ 'referrer-applied'(){closeSheet();toast('申请已提交，我们会尽快联系你。');},
+ 'invite-rules'(){openSheet('活动规则','<ul class="rule-list"><li>好友完成实名并首次调用后，双方各得 ¥20 试用券。</li><li>试用券只抵扣模型调用，不可提现或转让。</li><li>同一实名、同一设备只计一次。</li><li>邀请人数不限。</li></ul>','<button class="secondary full" data-action="close">知道了</button>');},
+ 'share-month'(){toast('已生成本月绿电账单卡片。');},
  'invite-sent'(){closeSheet();toast('邀请已发送。');},
  motion(){state.paused=!state.paused;$('.hero')?.classList.toggle('paused',state.paused);if(state.page==='account'){const top=screen.scrollTop;render({focus:false});screen.scrollTop=top;}toast(state.paused?'首页背景动态已暂停。':'首页背景动态已开启。');},
  models(){actions['pick-model']();},
- send(){if(!selectedModel(state)){actions['pick-model']();return;}if(!state.draft.trim()){toast('先写下你的问题或需要处理的文本。');$('#task-input').focus();return;}saveDraft();openSheet('余额不足','<p>充值后即可在线试用这个模型，按实际 Token 用量计费。</p>',`<button class="primary full" data-action="close">回到输入</button>${state.role==='member'?'<button class="secondary full" data-action="admin-help">了解企业额度</button>':'<button class="secondary full" data-nav="purchase">查看购买流程 →</button>'}`);},
+ send(){if(!selectedModel(state)){actions['pick-model']();return;}if(!state.draft.trim()){toast('先写下你的问题或需要处理的文本。');$('#task-input').focus();return;}saveDraft();openSheet('余额不足','<p>充值后即可在线试用这个模型，按实际 Token 用量计费。</p>',`<button class="primary full" data-action="close">回到输入</button>${state.role==='member'?'<button class="secondary full" data-action="admin-help">了解企业额度</button>':'<button class="secondary full" data-nav="purchase">查看购买流程 →</button><button class="secondary full" data-nav="invite">邀请好友，双方各得 ¥20</button>'}`);},
  'clear-draft'(){if(!state.draft){toast('当前没有草稿。');return;}openSheet('清除草稿？','<p>清除后无法恢复。</p>','<button class="primary full" data-action="close">保留草稿</button><button class="secondary full" data-action="confirm-clear">确认清除</button>');},
  'confirm-clear'(){state.draft='';saveDraft();closeSheet();render();toast('草稿已清除。');},
  notifications(){openSheet('通知','<p>暂无新通知。到账、任务进度和额度提醒会显示在这里。</p>','<button class="secondary full" data-action="close">知道了</button>');},
