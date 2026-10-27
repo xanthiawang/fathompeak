@@ -201,3 +201,5 @@ input::placeholder,textarea::placeholder,.amount-input input::placeholder{color:
 .oasis-card .oasis-thumb{width:118px;height:118px;aspect-ratio:auto;align-self:center}
 .oasis-card strong{font-family:var(--serif);font-style:normal;font-weight:400;font-variant-numeric:lining-nums tabular-nums;font-optical-sizing:auto;font-variation-settings:"opsz" 144;letter-spacing:-.02em;font-size:28px;line-height:1.4}
 .oasis-card strong>small{font:400 13px var(--sans);letter-spacing:0}
+.oasis-thumb{position:relative}
+.thumb-tag{position:absolute;left:6px;bottom:6px;padding:3px 8px;border-radius:99px;background:rgba(255,255,255,.9);font:400 11px var(--sans);color:var(--blue);white-space:nowrap;box-shadow:var(--shadow)}
