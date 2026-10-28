@@ -219,3 +219,7 @@ input::placeholder,textarea::placeholder,.amount-input input::placeholder{color:
 .wx-phone{font:400 26px var(--serif);color:var(--dusk);margin:16px 0 4px;letter-spacing:.02em}.wx-phone small{display:block;font:400 12px var(--sans);color:var(--muted);margin-top:4px}
 .login-note{text-align:center;margin-top:10px}
 .wx-auth .text-button{margin-top:6px}
+/* logo 字标按官方 v31（2026-10-28）：中文用「沐仞科技」字标图，不用字体打字 */
+.mini-brand{align-items:center}
+.mini-brand .mb-zh{height:16px;width:auto;display:block}
+.wordmark span img.wm-zh{height:15px;width:auto;display:block}
