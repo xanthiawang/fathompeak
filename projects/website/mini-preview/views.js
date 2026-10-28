@@ -11,7 +11,7 @@ export const pageInfo = {
  api:['02','把额度用进应用','API Key、接入地址与模型名称组成交付入口。未连接账户时不生成密钥，也不展示虚假的可用状态。',['创建并安全保存 Key','配置地址与模型','首次调用后核对用量']],
  connect:['02','接入，有明确下一步','按现有官网 OpenAI 兼容文档展示参数。API Key 在真实账户创建后获取，当前只复制非敏感配置。',['选择接入模型','配置工具或应用','核对请求与消费记录']],
  work:['03','试用，为了选型','在线试用用于体验模型，作为 API 采购的辅助入口。保留模型意向与本设备草稿，不伪造响应。',['确认模型','输入测试内容','接入自己的应用']],
- login:['05','登录：先认人，再绑微信','微信只做快捷登录，不单独建号。先用微信手机号快速验证，或手机号 / 邮箱验证码，找到已有账号，再把当前微信绑上去。三种结果：手机号已注册就绑定原账号；新手机号就建号并绑定；手机号的账号已绑别的微信，就提示用验证码登录后换绑。',['验证手机号或邮箱','找到或新建账号','绑定当前微信']],
+ login:['05','登录：先认人，再绑微信','所有账号都必须绑定手机号。微信只做快捷登录，不单独建号。先用微信手机号快速验证，或手机号 / 邮箱验证码，找到已有账号，再把当前微信绑上去。三种结果：手机号已注册就绑定原账号；新手机号就建号并绑定；手机号的账号已绑别的微信，就提示用验证码登录后换绑。',['验证手机号或邮箱','找到或新建账号','绑定当前微信']],
  'login-code':['05','验证码登录','用户拒绝微信手机号授权、或当初用邮箱注册时走这里。验证通过同样绑定当前微信；GitHub 用户需先在网页端绑定手机号或邮箱。',['输入手机号或邮箱','验证码校验','绑定当前微信']],
  security:['05','一个账号，多种登录','手机号、邮箱、微信、GitHub 都挂在同一个账号下。每种方式只能绑一个账号，至少保留一种；GitHub 只能在网页端授权绑定。',['查看已绑定方式','绑定或更换','至少保留一种']],
  oasis:['04','我的绿洲','调用模型时冒出能量，收满 4 份长成一棵树，绿洲从枯地逐步复苏。邀请好友合种是第二个坑位，好友首次调用后双方各得 ¥20。',['调用产生能量','收能量种树','邀请好友合种']],
@@ -133,19 +133,19 @@ function login(s){
  const org=s.loginTab==='org';
  return `<section class="account-hero login-hero" aria-label="登录"><div class="account-art" aria-hidden="true"></div><div class="profile"><div class="avatar" aria-hidden="true">沐</div><div><h1>登录沐仞</h1><p>网页端和小程序，<br>用的是同一个沐仞账号。</p></div></div></section>
  <div class="seg" role="tablist" aria-label="登录类型"><button role="tab" data-login-tab="personal" aria-selected="${!org}">个人登录</button><button role="tab" data-login-tab="org" aria-selected="${org}">企业登录</button></div>
- ${org?`${codeField('org-email','工作邮箱','管理员为你添加的工作邮箱')}${agree(s)}<div class="purchase-footer"><button class="primary full" data-action="org-login">登录企业账号</button></div><p class="input-note">企业账号由管理员开通，请使用管理员添加的工作邮箱登录。</p><button class="text-button" data-action="sales">还没有企业账号？申请开通 →</button>`
- :`<div class="purchase-footer"><button class="primary full" data-action="wx-phone">${icon('wechat')} 手机号快捷登录</button><button class="secondary full" data-nav="login-code">其他方式登录</button></div>${agree(s)}
- <p class="input-note login-note">未注册过的手机号，验证后将自动创建沐仞账号。</p><div class="quiet-card login-rule"><h3>在网页端注册过？</h3><p>用注册时的手机号或邮箱登录，账号、余额和 API Key 自动同步，不会重复注册。用 GitHub 注册的，请先在网页端绑定手机号或邮箱。</p></div>`}`;
+ ${org?`${codeField('org-email','工作邮箱','管理员为你添加的工作邮箱')}${agree(s)}<div class="purchase-footer"><button class="primary full" data-action="org-login">登录企业账号</button></div><p class="input-note">企业账号由管理员开通，请使用管理员添加的工作邮箱登录。首次登录需绑定手机号。</p><button class="text-button" data-action="sales">还没有企业账号？申请开通 →</button>`
+ :`<div class="purchase-footer"><button class="primary full" data-action="wx-phone">${icon('wechat')} 微信快捷登录</button><button class="secondary full" data-nav="login-code">其他方式登录</button></div>${agree(s)}
+ <p class="input-note login-note">登录需绑定手机号。未注册过的手机号，验证后将自动创建沐仞账号。</p><div class="quiet-card login-rule"><h3>在网页端注册过？</h3><p>用注册时的手机号或邮箱登录，账号、余额和 API Key 自动同步，不会重复注册。用 GitHub 注册的，请先在网页端绑定手机号或邮箱。</p></div>`}`;
 }
 function loginCode(s){
- return `${back('login','返回')}<h1 class="page-title">验证码登录</h1><p class="page-subtitle">支持手机号或邮箱。</p>${codeField('login-id','手机号 / 邮箱','请输入手机号或邮箱')}${agree(s)}<div class="purchase-footer"><button class="primary full" data-action="code-login">登录</button></div><p class="input-note">未注册过的手机号或邮箱，验证后将自动创建沐仞账号。登录后当前微信自动绑定，下次可直接登录。</p>`;
+ return `${back('login','返回')}<h1 class="page-title">验证码登录</h1><p class="page-subtitle">支持手机号或邮箱。邮箱登录后，需绑定手机号。</p>${codeField('login-id','手机号 / 邮箱','请输入手机号或邮箱')}${agree(s)}<div class="purchase-footer"><button class="primary full" data-action="code-login">登录</button></div><p class="input-note">未注册过的手机号或邮箱，验证后将自动创建沐仞账号。登录后当前微信自动绑定，下次可直接登录。</p>`;
 }
 function security(s){
  const b=s.binds;
  const row=(ic,name,val,act)=>`<div class="bind-row">${icon(ic)}<span><strong>${name}</strong><small>${val}</small></span>${act}</div>`;
  return `${back('account','我的')}<h1 class="page-title">账号与安全</h1><p class="page-subtitle">以下方式均可登录当前沐仞账号。</p>
  <div class="menu-group bind-list">${row('phone','手机号',b.phone?'已绑定 '+b.phone:'未绑定',`<button class="text-button" data-action="bind" data-bind="phone">${b.phone?'更换':'去绑定'}</button>`)}${row('wechat','微信',b.wechat?'已绑定':'未绑定',b.wechat?'<button class="text-button" data-action="unbind-wechat">解除绑定</button>':'<button class="text-button" data-action="bind-wechat">去绑定</button>')}${row('mail','邮箱',b.email?'已绑定 '+b.email:'未绑定',`<button class="text-button" data-action="bind" data-bind="email">${b.email?'更换':'去绑定'}</button>`)}${row('github','GitHub',b.github?'已绑定':'仅支持在网页端绑定','<button class="text-button" data-copy-link="console">复制网页地址</button>')}</div>
- <p class="input-note">每个手机号、邮箱、微信只能绑定一个沐仞账号。请至少保留一种登录方式。</p>
+ <p class="input-note">每个手机号、邮箱、微信只能绑定一个沐仞账号。手机号为必须绑定项，只能更换，不能解除。</p>
  <div class="purchase-footer"><button class="secondary full" data-action="logout">退出登录</button></div>`;
 }
 function invite(s){
