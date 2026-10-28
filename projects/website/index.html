@@ -1466,6 +1466,27 @@ html.sup-mark .sup-new{outline:2px dashed #2F63B8;outline-offset:3px;border-radi
 </style>
 
 <style id="sup-xp-css">
+/* 单模型对话直接在页面上（2026-10-28） */
+.xp.flat[data-mode="chat"] .xp-bg{height:0}
+.xp.flat[data-mode="chat"] .xp-h2{color:var(--ink);text-shadow:none;font-size:26px}
+.xp.flat[data-mode="chat"] .xp-stage{max-width:880px;padding:28px 24px 0}
+.xp.flat[data-mode="chat"] .xp-cols{display:block}
+.xp.flat[data-mode="chat"] .xp-box{position:sticky;bottom:16px;z-index:5;width:100%}
+.xp.flat[data-mode="chat"] .xp-note{margin:0 0 16px}
+.xp[data-mode="chat"] .xp-hbtn{top:20px;right:124px}
+@media (max-width:720px){.xp[data-mode="chat"] .xp-hbtn{top:12px;right:110px;padding:0 12px}.xp[data-mode="chat"] .xp-hbtn span{display:none}}
+.xf{display:flex;flex-direction:column;gap:28px;padding:12px 0 24px;min-height:calc(100vh - 330px)}
+.xf-u{align-self:flex-end;max-width:78%;padding:10px 16px;border-radius:18px;background:var(--gray-btn,#efeef0);color:var(--ink);font:400 15px/1.65 var(--sans);white-space:pre-wrap;word-break:break-word}
+.xf-a{display:grid;gap:8px;max-width:100%}
+.xf-who{display:flex;align-items:center;gap:8px;font:500 13px var(--sans);color:var(--ink-50)}
+.xf-t{font:400 16px/1.8 var(--sans);color:var(--ink);white-space:pre-wrap;word-break:break-word}
+.xf-act{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px}
+.xf-act button{appearance:none;border:0;background:transparent;width:30px;height:30px;border-radius:8px;display:inline-grid;place-items:center;color:var(--ink-50);cursor:pointer}
+.xf-act button:hover{background:rgba(61,49,79,.07);color:var(--ink)}
+.xf-act svg{width:16px;height:16px}
+.xf-met{font:400 11px var(--mono);letter-spacing:.04em;color:var(--ink-50)}
+.xf-met b{font-weight:400;color:var(--ink-70)}
+
 /* 体验中心历史对话（2026-10-28） */
 .xp-hbtn{position:absolute;top:76px;right:40px;z-index:3;height:38px;padding:0 16px 0 13px;font-size:13px}
 .xp-hbtn svg{width:16px;height:16px}
@@ -5910,7 +5931,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     var bud=$('#supBud'); if(bud) bud.addEventListener('submit',function(e){e.preventDefault(); toast('预算提醒接入后即可生效。')});
   })();
 
-  (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"历史对话": "History", "搜索对话": "Search chats", "今天": "Today", "昨天": "Yesterday", "近 7 天": "Previous 7 days", "更早": "Earlier", "删除": "Delete", "确认删除": "Confirm delete", "删除这条对话": "Delete this chat", "已删除": "Deleted", "最近对话": "Recent", "全部 →": "All →", "关闭": "Close", "没有找到相关对话": "No matching chats", "对话记录只保存在你的账号里，可以随时删除。": "Chats are saved to your account only. You can delete them anytime.", "还没有历史对话。": "No chats yet.", "发送第一个问题后，对话会保存在这里。": "Your chats will be saved here after you send the first question."});  /* 体验中心历史对话英文 */
+  (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"已复制":"Copied","重新生成":"Regenerate","已重新生成":"Regenerated","复制失败，请手动选择文字":"Copy failed. Select the text manually.","历史对话":"History", "搜索对话": "Search chats", "今天": "Today", "昨天": "Yesterday", "近 7 天": "Previous 7 days", "更早": "Earlier", "删除": "Delete", "确认删除": "Confirm delete", "删除这条对话": "Delete this chat", "已删除": "Deleted", "最近对话": "Recent", "全部 →": "All →", "关闭": "Close", "没有找到相关对话": "No matching chats", "对话记录只保存在你的账号里，可以随时删除。": "Chats are saved to your account only. You can delete them anytime.", "还没有历史对话。": "No chats yet.", "发送第一个问题后，对话会保存在这里。": "Your chats will be saved here after you send the first question."});  /* 体验中心历史对话英文 */
   /* ======== 体验中心（2026-10-14 第二版） ======== */
   (function(){
     var xp=$('#xp'); if(!xp) return;
@@ -5956,7 +5977,12 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     $$('#xpTabs .bt-chip').forEach(function(b){b.addEventListener('click',function(){cat=b.getAttribute('data-c'); $$('#xpTabs .bt-chip').forEach(function(x){var on=x===b; x.classList.toggle('on',on); x.setAttribute('aria-pressed',String(on))}); cards()})});
     function bj(){return new Date(Date.now()+(new Date().getTimezoneOffset()+480)*6e4)}
     function msg(r){return '<div class="xp-m '+(r.u?'u':'a')+'">'+esc(r.t)+'</div>'}
-    function cols(){var c=$('#xpCols'); if(xp.getAttribute('data-mode')!=='chat'){c.innerHTML=''; return}
+    function cols(){var c=$('#xpCols'); xp.classList.toggle('flat',sel.length===1); if(xp.getAttribute('data-mode')!=='chat'){c.innerHTML=''; return}
+      if(sel.length===1){var m1=mm(sel[0]), h1=hist[0]||[], last=-1; h1.forEach(function(r,k){if(!r.u) last=k}); c.className='xp-cols n1';
+        c.innerHTML='<div class="xf">'+h1.map(function(r,k){return r.u?'<div class="xf-u">'+esc(r.t)+'</div>':'<div class="xf-a"><div class="xf-who">'+vlogo(m1.vendor,16)+esc(m1.name)+'</div><div class="xf-t">'+esc(r.t)+'</div><div class="xf-act"><button type="button" data-cpy="'+k+'" aria-label="复制" title="复制"><svg viewBox=\"0 0 20 20\" aria-hidden=\"true\"><rect x=\"6.5\" y=\"6.5\" width=\"10\" height=\"10\" rx=\"2\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"/><path d=\"M13.5 6.5v-2a1.5 1.5 0 0 0-1.5-1.5H5A1.5 1.5 0 0 0 3.5 4.5V12A1.5 1.5 0 0 0 5 13.5h1.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"/></svg></button>'+(k===last?'<button type="button" data-regen aria-label="重新生成" title="重新生成"><svg viewBox=\"0 0 20 20\" aria-hidden=\"true\"><path d=\"M16 10a6 6 0 1 1-1.8-4.3M16 3.5v3.5h-3.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button>':'')+'<span class="xf-met">首字时延 <b>--</b> · 速度 <b>--</b> · 词元 <b>--</b> · 费用 <b>--</b></span></div></div>'}).join('')+'</div>';
+        $$('#xpCols [data-cpy]').forEach(function(b){b.addEventListener('click',function(){var t=(hist[0][+b.getAttribute('data-cpy')]||{}).t||''; try{navigator.clipboard.writeText(t).then(function(){toast('已复制')},function(){toast('复制失败，请手动选择文字')})}catch(e){toast('复制失败，请手动选择文字')}})});
+        var rg=$('#xpCols [data-regen]'); if(rg) rg.addEventListener('click',function(){var h=hist[0], i=h.length-1; if(i<0||h[i].u) return; h[i]={u:0,t:h[i].t}; hsync(); cols(); toast('已重新生成')});
+        window.scrollTo({top:document.documentElement.scrollHeight}); return}
       c.className='xp-cols n'+sel.length;
       c.innerHTML=sel.map(function(id,i){var m=mm(id); return '<article class="xp-col"><header>'+vlogo(m.vendor,18)+'<b>'+esc(m.name)+'</b><span class="bt-tag g">'+m.type.join(' · ')+'</span><span class="xp-node">节点 · 自动调度</span></header>'+
         '<div class="xp-msgs">'+(hist[i]||[]).map(msg).join('')+'</div>'+
