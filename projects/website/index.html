@@ -1522,7 +1522,9 @@ html.sup-mark .sup-new{outline:2px dashed #2F63B8;outline-offset:3px;border-radi
 .xp:not([data-mode="chat"]) .xp-top{padding-right:0;margin-top:-56px}
 @media (max-width:1100px){.xp:not([data-mode="chat"]) .xp-top{margin-top:0}}
 @media (max-width:720px){.xp-top{padding-right:96px}.xp-hbtn span{display:none}.xp-hbtn{padding:0 12px}}
-.xp-hist{position:fixed;top:64px;right:12px;bottom:12px;width:min(340px,calc(100vw - 24px));z-index:300;display:flex;flex-direction:column;gap:12px;padding:18px 16px 14px;border-radius:20px;border:1px solid var(--glass-line,rgba(255,255,255,.6));background:rgba(255,255,255,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 24px 60px -24px rgba(33,32,33,.35)}
+.xp-hist{position:fixed;top:0;right:0;bottom:0;width:300px;z-index:25;display:flex;flex-direction:column;gap:12px;padding:72px 16px 14px;border-left:1px solid rgba(61,49,79,.10);background:#F8F8F8}
+.xp.hopen{padding-right:300px}
+@media (max-width:1100px){.xp-hist{top:64px;right:12px;bottom:12px;width:min(340px,calc(100vw - 24px));z-index:300;padding:18px 16px 14px;border:1px solid var(--glass-line,rgba(255,255,255,.6));border-radius:20px;background:rgba(255,255,255,.96);box-shadow:0 24px 60px -24px rgba(33,32,33,.35)}.xp.hopen{padding-right:0}}
 .xp-hist[hidden]{display:none}
 .xp-hh{display:flex;align-items:center;justify-content:space-between}.xp-hh b{font:400 22px/1.2 var(--serif);color:var(--ink)}
 .xp-hx{appearance:none;border:0;background:transparent;font-size:22px;line-height:1;width:32px;height:32px;border-radius:50%;color:var(--ink-50,#6d6872);cursor:pointer}.xp-hx:hover{background:rgba(61,49,79,.07)}
@@ -6075,10 +6077,11 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     function hrender(){var q=($('#xpHQ').value||'').trim().toLowerCase(), list=hload().filter(function(c){return !q||(c.title+' '+JSON.stringify(c.hist||[])).toLowerCase().indexOf(q)>=0}), g='', out='';
       list.forEach(function(c){var gg=hgroup(c.up||c.at); if(gg!==g){g=gg; out+='<div class="xp-hg">'+gg+'</div>'} out+='<div class="xp-hi'+(c.id===curId?' on':'')+'"><button class="xp-ho" type="button" data-open="'+c.id+'"><b>'+esc(c.title)+'</b><span>'+(c.models||[]).map(function(m){return esc(mm(m).name)}).join(' · ')+' · '+hwhen(c.up||c.at)+'</span></button><button class="xp-hd" type="button" data-del="'+c.id+'" aria-label="删除这条对话">删除</button></div>'});
       $('#xpHL').innerHTML=out||'<p class="xp-he">'+(q?'没有找到相关对话':'还没有历史对话。<br>发送第一个问题后，对话会保存在这里。')+'</p>';
-      $$('#xpHL [data-open]').forEach(function(b){b.addEventListener('click',function(){hopen(b.getAttribute('data-open')); hclose()})});
+      $$('#xpHL [data-open]').forEach(function(b){b.addEventListener('click',function(){hopen(b.getAttribute('data-open')); if(hdock()) hrender(); else hclose()})});
       $$('#xpHL [data-del]').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation(); if(!b.classList.contains('sure')){$$('#xpHL .xp-hd.sure').forEach(function(x){x.classList.remove('sure'); x.textContent='删除'}); b.classList.add('sure'); b.textContent='确认删除'; return}
         var id=b.getAttribute('data-del'); hsave(hload().filter(function(x){return x.id!==id})); if(id===curId){curId=null; hcur(null); hist=sel.map(function(){return []}); xp.setAttribute('data-mode','empty'); cols()} hrender(); recent(); toast('已删除')})}) }
-    function hclose(){$('#xpHist').hidden=true; $('#xpHistB').setAttribute('aria-expanded','false')}
+    function hclose(){$('#xpHist').hidden=true; xp.classList.remove('hopen'); $('#xpHistB').setAttribute('aria-expanded','false')}
+    function hdock(){return window.matchMedia('(min-width:1101px)').matches}
     function recent(){var r=$('#xpRecent'), list=hload().slice(0,3); if(!list.length||xp.getAttribute('data-mode')==='chat'){r.hidden=true; r.innerHTML=''; return} r.hidden=false;
       r.innerHTML='<span class="k">最近对话</span>'+list.map(function(c){return '<button class="xp-rc" type="button" data-open="'+c.id+'" title="'+esc(c.title)+'">'+esc(c.title)+'</button>'}).join('')+'<button class="xp-ra" type="button" data-all>全部 →</button>';
       $$('#xpRecent [data-open]').forEach(function(b){b.addEventListener('click',function(){hopen(b.getAttribute('data-open'))})}); $('#xpRecent [data-all]').addEventListener('click',function(e){e.stopPropagation(); $('#xpHistB').click()}) }
@@ -6137,10 +6140,10 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       hsync(); $('#xpQ').value=''; cols(); code(); recent()});
     $('#xpQ').addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault(); box.requestSubmit()}});
     $('#xpNew').addEventListener('click',function(){hist=sel.map(function(){return []}); curId=null; hcur(null); xp.setAttribute('data-mode','empty'); cols(); recent(); $('#xpQ').focus()});
-    $('#xpHistB').addEventListener('click',function(e){e.stopPropagation(); var open=$('#xpHist').hidden; if(!open){hclose(); return} $('#xpHQ').value=''; hrender(); $('#xpHist').hidden=false; this.setAttribute('aria-expanded','true'); $('#xpHQ').focus()});
+    $('#xpHistB').addEventListener('click',function(e){e.stopPropagation(); var open=$('#xpHist').hidden; if(!open){hclose(); return} $('#xpHQ').value=''; hrender(); $('#xpHist').hidden=false; xp.classList.add('hopen'); this.setAttribute('aria-expanded','true'); $('#xpHQ').focus()});
     $('#xpHistX').addEventListener('click',hclose); $('#xpHQ').addEventListener('input',hrender);
     $('#xpHist').addEventListener('click',function(e){e.stopPropagation()});
-    document.addEventListener('click',function(){if(!$('#xpHist').hidden) hclose()});
+    document.addEventListener('click',function(){if(!$('#xpHist').hidden&&!hdock()) hclose()});
     document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!$('#xpHist').hidden){hclose(); $('#xpHistB').focus()}});
     window.supPlaySet=function(id){if(!byId[id]) return; sel=[id]; hist=[[]]; curId=null; hcur(null); xp.setAttribute('data-mode','empty'); pills(); cols(); chips(); code(); recent()};
     window.__xpRecent=recent;
