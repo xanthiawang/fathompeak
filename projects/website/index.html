@@ -1473,8 +1473,6 @@ html.sup-mark .sup-new{outline:2px dashed #2F63B8;outline-offset:3px;border-radi
 .xp.flat[data-mode="chat"] .xp-cols{display:block}
 .xp.flat[data-mode="chat"] .xp-box{position:sticky;bottom:16px;z-index:5;width:100%}
 .xp.flat[data-mode="chat"] .xp-note{margin:0 0 16px}
-.xp[data-mode="chat"] .xp-hbtn{top:20px;right:124px}
-@media (max-width:720px){.xp[data-mode="chat"] .xp-hbtn{top:12px;right:110px;padding:0 12px}.xp[data-mode="chat"] .xp-hbtn span{display:none}}
 .xf{display:flex;flex-direction:column;gap:28px;padding:12px 0 24px;min-height:calc(100vh - 330px)}
 .xf-u{align-self:flex-end;max-width:78%;padding:10px 16px;border-radius:18px;background:var(--gray-btn,#efeef0);color:var(--ink);font:400 15px/1.65 var(--sans);white-space:pre-wrap;word-break:break-word}
 .xf-a{display:grid;gap:8px;max-width:100%}
@@ -1488,8 +1486,14 @@ html.sup-mark .sup-new{outline:2px dashed #2F63B8;outline-offset:3px;border-radi
 .xf-met b{font-weight:400;color:var(--ink-70)}
 
 /* 体验中心历史对话（2026-10-28） */
-.xp-hbtn{position:absolute;top:76px;right:40px;z-index:3;height:38px;padding:0 16px 0 13px;font-size:13px}
+
+.xp-hbtn{margin-left:auto;height:38px;padding:0 16px 0 13px;font-size:13px}
 .xp-hbtn svg{width:16px;height:16px}
+.xp-top{display:flex!important;flex-wrap:wrap;align-items:center;padding-right:100px}
+.xp:not([data-mode="chat"]) .xp-top .xp-h2,.xp:not([data-mode="chat"]) #xpNew{display:none}
+.xp:not([data-mode="chat"]) .xp-top{padding-right:0;margin-top:-56px}
+@media (max-width:1100px){.xp:not([data-mode="chat"]) .xp-top{margin-top:0}}
+@media (max-width:720px){.xp-top{padding-right:96px}.xp-hbtn span{display:none}.xp-hbtn{padding:0 12px}}
 .xp-hist{position:fixed;top:64px;right:12px;bottom:12px;width:min(340px,calc(100vw - 24px));z-index:300;display:flex;flex-direction:column;gap:12px;padding:18px 16px 14px;border-radius:20px;border:1px solid var(--glass-line,rgba(255,255,255,.6));background:rgba(255,255,255,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 24px 60px -24px rgba(33,32,33,.35)}
 .xp-hist[hidden]{display:none}
 .xp-hh{display:flex;align-items:center;justify-content:space-between}.xp-hh b{font:400 22px/1.2 var(--serif);color:var(--ink)}
@@ -1510,7 +1514,7 @@ html.sup-mark .sup-new{outline:2px dashed #2F63B8;outline-offset:3px;border-radi
 .xp-recent .k{font:400 12px var(--mono,monospace);letter-spacing:.06em;color:var(--ink-50,#6d6872);margin-right:2px}
 .xp-rc{appearance:none;max-width:240px;height:34px;padding:0 14px;border-radius:999px;border:1px solid rgba(61,49,79,.12);background:rgba(255,255,255,.7);font:400 13px var(--sans);color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
 .xp-rc:hover{background:#fff}.xp-ra{appearance:none;border:0;background:transparent;font:500 13px var(--sans);color:var(--blue,#2F63B8);cursor:pointer;padding:0 6px}
-@media (max-width:720px){.xp-hbtn{top:64px;right:16px}}
+
 
 /* 体验中心（2026-10-14 第二版）：铺满工作区；晨蓝树影光 + 白玻璃输入框 + 模型快捷胶囊 + 模板卡；配色、字体沿用控制台 */
 .cs-p[data-p="play"]{padding:0!important}
@@ -3253,7 +3257,6 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       </div>
       <div class="cs-p" data-p="play">
         <div class="xp" id="xp" data-mode="empty">
-          <button class="bt-btn xp-hbtn" type="button" id="xpHistB" aria-expanded="false" aria-controls="xpHist"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 10a6.5 6.5 0 1 0 2-4.7M3.5 3.5v3h3M10 6.5V10l2.5 1.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>历史对话</span></button>
           <aside class="xp-hist" id="xpHist" aria-label="历史对话" hidden><div class="xp-hh"><b>历史对话</b><button class="xp-hx" type="button" id="xpHistX" aria-label="关闭">×</button></div><input class="in xp-hq" type="search" id="xpHQ" placeholder="搜索对话" aria-label="搜索对话" autocomplete="off" spellcheck="false"><div class="xp-hl" id="xpHL"></div><p class="xp-hn">对话记录只保存在你的账号里，可以随时删除。</p></aside>
           <div class="xp-bg" aria-hidden="true"><div class="bt-key-light"></div></div>
           <div class="xp-stage">
@@ -3261,7 +3264,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
               <a class="xp-news" href="#changelog"><span class="xp-newk">新</span><span>模型目录收录 7 个模型</span><span aria-hidden="true">→</span></a>
               <h1 class="xp-h">今天想试哪个模型？</h1>
             </div>
-            <div class="xp-top"><h1 class="xp-h2">体验中心</h1><button class="bt-btn" type="button" id="xpNew">新对话</button></div>
+            <div class="xp-top"><h1 class="xp-h2">体验中心</h1><button class="bt-btn" type="button" id="xpNew">新对话</button><button class="bt-btn xp-hbtn" type="button" id="xpHistB" aria-expanded="false" aria-controls="xpHist"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 10a6.5 6.5 0 1 0 2-4.7M3.5 3.5v3h3M10 6.5V10l2.5 1.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>历史对话</span></button></div>
             <div class="xp-cols" id="xpCols"></div>
             <form class="xp-box" id="xpBox" novalidate>
               <textarea id="xpQ" rows="3" placeholder="输入问题，或从下面选一个模板" aria-label="输入问题"></textarea>
