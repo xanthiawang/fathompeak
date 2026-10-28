@@ -11,6 +11,9 @@ export const pageInfo = {
  api:['02','把额度用进应用','API Key、接入地址与模型名称组成交付入口。未连接账户时不生成密钥，也不展示虚假的可用状态。',['创建并安全保存 Key','配置地址与模型','首次调用后核对用量']],
  connect:['02','接入，有明确下一步','按现有官网 OpenAI 兼容文档展示参数。API Key 在真实账户创建后获取，当前只复制非敏感配置。',['选择接入模型','配置工具或应用','核对请求与消费记录']],
  work:['03','试用，为了选型','在线试用用于体验模型，作为 API 采购的辅助入口。保留模型意向与本设备草稿，不伪造响应。',['确认模型','输入测试内容','接入自己的应用']],
+ login:['05','登录：先认人，再绑微信','微信只做快捷登录，不单独建号。先用微信手机号快速验证，或手机号 / 邮箱验证码，找到已有账号，再把当前微信绑上去。三种结果：手机号已注册就绑定原账号；新手机号就建号并绑定；手机号的账号已绑别的微信，就提示用验证码登录后换绑。',['验证手机号或邮箱','找到或新建账号','绑定当前微信']],
+ 'login-code':['05','验证码登录','用户拒绝微信手机号授权、或当初用邮箱注册时走这里。验证通过同样绑定当前微信；GitHub 用户需先在网页端绑定手机号或邮箱。',['输入手机号或邮箱','验证码校验','绑定当前微信']],
+ security:['05','一个账号，多种登录','手机号、邮箱、微信、GitHub 都挂在同一个账号下。每种方式只能绑一个账号，至少保留一种；GitHub 只能在网页端授权绑定。',['查看已绑定方式','绑定或更换','至少保留一种']],
  oasis:['04','我的绿洲','调用模型时冒出能量，收满 4 份长成一棵树，绿洲从枯地逐步复苏。邀请好友合种是第二个坑位，好友首次调用后双方各得 ¥20。',['调用产生能量','收能量种树','邀请好友合种']],
  invite:['04','邀请好友','好友实名并完成首次调用后，双方各得 ¥20 代金券。奖励挂在注册、实名、调用这些真实行为上，不挂在分享动作上，避开微信诱导分享规则。',['发送邀请','好友实名注册','首次调用后双方到账']],
  purchase:['03','充值调用额度','购买统一账户额度，所选模型只是接入意向。个人与企业均享公开价 4 折起，按模型实际用量扣费。',['填写充值金额','核对账户与计费规则','到账后创建 API Key']],
@@ -111,7 +114,7 @@ function orders(s){
  return `${back('account','我的')}<h1 class="page-title">充值订单</h1><p class="page-subtitle">购买、到账与售后，都有迹可循。</p><div class="pills" aria-label="订单状态">${['全部','待支付','处理中','已完成','退款'].map(f=>`<button data-filter="${f}" aria-pressed="${s.filter===f}">${f}</button>`).join('')}</div>${empty('tag',s.filter==='全部'?'你的订单，会在这里':'暂无'+s.filter+'订单','充值后，在这里查看购买记录、到账状态与售后进度。',s.role==='member'?'<button class="secondary" data-nav="api">API 接入</button>':'<button class="primary" data-nav="purchase">去充值 →</button>')}<div class="menu-group">${menu('usage','查看 AI 消费明细','data-nav="usage"')}${menu('sec','订单与售后帮助','data-action="order-help"')}</div>`;
 }
 function accountView(s){
- return `<section class="account-hero" aria-label="账户概览"><div class="account-art" aria-hidden="true"></div><div class="profile"><div class="avatar" aria-hidden="true">沐</div><div><h1>${roles[s.role]}</h1><p>${s.role==='personal'?'个人使用，独立管理。':s.role==='admin'?'企业服务，统一管理。':'专注任务，额度由企业分配。'}</p></div></div><div class="hero-balance">${walletBody(s)}</div></section>${benefits(s)}${oasisCard(s)}<div class="menu-group">${s.role!=='member'?menu('members','邀请好友','data-nav="invite"','双方各得 ¥20'):''}${menu('usage','用量账单','data-nav="billing"','Token 与费用')}${menu('bill','算算费用','data-action="estimate"','充值前预估')}${menu('orders','充值订单','data-nav="orders"')}${menu('bill','发票与售后','data-action="order-help"')}${s.role==='admin'?menu('members','成员与额度','data-nav="team"'):''}${s.role==='member'?menu('members','我的企业额度','data-action="admin-help"'):''}${menu('keys','API 接入','data-nav="api"')}</div><div class="menu-group">${menu('sec','账户与安全','data-action="account-help"')}${menu('members','企业采购与合作','data-action="sales"')}${menu('play','帮助与联系','data-action="help"')}</div><div class="menu-group">${menu('models','服务说明','data-nav="service"')}${menu('home','首页背景动态','data-action="motion"',s.paused?'已暂停':'播放中')}${menu('batch','关于沐仞','data-action="about"')}</div><p class="input-note" style="text-align:center;margin-top:24px">${s.role==='personal'?'个人与企业使用独立登录入口。':'当前页面仅呈现企业账户信息。'}</p>`;
+ return `<section class="account-hero" aria-label="账户概览"><div class="account-art" aria-hidden="true"></div><div class="profile"><div class="avatar" aria-hidden="true">沐</div><div><h1>${roles[s.role]}</h1><p>${s.role==='personal'?'个人使用，独立管理。':s.role==='admin'?'企业服务，统一管理。':'专注任务，额度由企业分配。'}</p></div></div><div class="hero-balance">${walletBody(s)}</div></section>${benefits(s)}${oasisCard(s)}<div class="menu-group">${s.role!=='member'?menu('members','邀请好友','data-nav="invite"','双方各得 ¥20'):''}${menu('usage','用量账单','data-nav="billing"','Token 与费用')}${menu('bill','算算费用','data-action="estimate"','充值前预估')}${menu('orders','充值订单','data-nav="orders"')}${menu('bill','发票与售后','data-action="order-help"')}${s.role==='admin'?menu('members','成员与额度','data-nav="team"'):''}${s.role==='member'?menu('members','我的企业额度','data-action="admin-help"'):''}${menu('keys','API 接入','data-nav="api"')}</div><div class="menu-group">${menu('sec','账户与安全','data-nav="security"',s.binds.wechat?'手机号 · 微信':'手机号')}${menu('members','企业采购与合作','data-action="sales"')}${menu('play','帮助与联系','data-action="help"')}</div><div class="menu-group">${menu('models','服务说明','data-nav="service"')}${menu('home','首页背景动态','data-action="motion"',s.paused?'已暂停':'播放中')}${menu('batch','关于沐仞','data-action="about"')}</div><p class="input-note" style="text-align:center;margin-top:24px">${s.role==='personal'?'个人与企业使用独立登录入口。':'当前页面仅呈现企业账户信息。'}</p>`;
 }
 function oasis(s){
  const o=s.oasis, stage=Math.min(o.energy,4), scene=sceneOf(o);
@@ -123,6 +126,28 @@ function oasis(s){
  <div class="summary-grid"><div><small>已种下</small><b>${o.trees}</b><p>棵树</p></div><div><small>与好友合种</small><b>${o.cotree?1:0}</b><p>棵树</p></div></div>
  <div class="section-head"><h2>能量从哪里来</h2></div><div class="setup-steps"><div><b>01</b><span>调用模型<small>每次用绿电 Token 调用，绿洲里会冒出能量</small></span></div><div><b>02</b><span>收满 4 份<small>种子长成一棵树，绿洲随之复苏</small></span></div><div><b>03</b><span>邀请好友合种<small>好友首次调用后，双方各得 ¥20 代金券</small></span></div></div>
  <div class="purchase-footer">${s.role==='member'?'':'<button class="primary full" data-nav="invite">邀请好友合种</button>'}<button class="secondary full" data-action="oasis-share">生成分享卡</button><button class="text-button full" data-nav="work">去调用模型 →</button></div>`;
+}
+const agree = (s) => `<label class="agree"><input type="checkbox" id="login-agree" ${s.agree?'checked':''}><span>我已阅读并同意《用户服务协议》和《隐私政策》</span></label>`;
+const codeField = (id,label,ph) => `<label class="form-field">${label}<input id="${id}" placeholder="${ph}" autocomplete="username"></label><label class="form-field">验证码<span class="code-row"><input id="${id}-code" inputmode="numeric" maxlength="6" placeholder="6 位验证码" autocomplete="one-time-code"><button class="text-button" data-action="send-code">获取验证码</button></span></label>`;
+function login(s){
+ const org=s.loginTab==='org';
+ return `<section class="account-hero login-hero" aria-label="登录"><div class="account-art" aria-hidden="true"></div><div class="profile"><div class="avatar" aria-hidden="true">沐</div><div><h1>登录沐仞</h1><p>手机号、邮箱、微信、GitHub，<br>登录的都是同一个账号。</p></div></div></section>
+ <div class="seg" role="tablist" aria-label="登录类型"><button role="tab" data-login-tab="personal" aria-selected="${!org}">个人登录</button><button role="tab" data-login-tab="org" aria-selected="${org}">企业登录</button></div>
+ ${org?`${codeField('org-email','工作邮箱','管理员为你添加的工作邮箱')}${agree(s)}<div class="purchase-footer"><button class="primary full" data-action="org-login">登录企业账号</button></div><p class="input-note">企业账号由管理员添加，不能在这里注册。</p><button class="text-button" data-action="sales">还没有企业账号？申请开通 →</button>`
+ :`<div class="purchase-footer"><button class="primary full" data-action="wx-phone">${icon('wechat')} 微信手机号快捷登录</button><button class="secondary full" data-nav="login-code">手机号或邮箱验证码登录</button></div>${agree(s)}
+ <div class="quiet-card login-rule"><h3>已经有沐仞账号？</h3><p>用注册时的手机号或邮箱登录，会直接找到原账号，并把这个微信绑定上去。余额、API Key 和绿洲都还在，不会多出一个新账号。</p></div>
+ <p class="input-note">GitHub 注册的账号，请先在网页控制台绑定手机号或邮箱，再回来登录。</p>`}`;
+}
+function loginCode(s){
+ return `${back('login','返回')}<h1 class="page-title">验证码登录</h1><p class="page-subtitle">输入注册沐仞时用的手机号或邮箱。</p>${codeField('login-id','手机号或邮箱','手机号或邮箱')}${agree(s)}<div class="purchase-footer"><button class="primary full" data-action="code-login">登录</button></div><p class="input-note">验证通过后，当前微信会绑定到这个账号，下次直接进入。没有注册过的手机号或邮箱，会新建一个个人账号。</p>`;
+}
+function security(s){
+ const b=s.binds;
+ const row=(ic,name,val,act)=>`<div class="bind-row">${icon(ic)}<span><strong>${name}</strong><small>${val}</small></span>${act}</div>`;
+ return `${back('account','我的')}<h1 class="page-title">账户与安全</h1><p class="page-subtitle">下面这些方式，登录的都是同一个沐仞账号。</p>
+ <div class="menu-group bind-list">${row('phone','手机号',b.phone||'未绑定',`<button class="text-button" data-action="bind" data-bind="phone">${b.phone?'更换':'绑定'}</button>`)}${row('wechat','微信',b.wechat?'已绑定当前微信':'未绑定',b.wechat?'<button class="text-button" data-action="unbind-wechat">解绑</button>':'<button class="text-button" data-action="bind-wechat">绑定当前微信</button>')}${row('mail','邮箱',b.email||'未绑定',`<button class="text-button" data-action="bind" data-bind="email">${b.email?'更换':'绑定'}</button>`)}${row('github','GitHub',b.github||'未绑定','<button class="text-button" data-copy-link="console">去网页端绑定</button>')}</div>
+ <p class="input-note">一个手机号、一个邮箱、一个微信，各自只能绑定一个沐仞账号。至少保留一种登录方式。</p>
+ <div class="purchase-footer"><button class="secondary full" data-action="logout">退出登录</button></div>`;
 }
 function invite(s){
  if(s.role==='member')return `${back('account','我的')}<h1 class="page-title">邀请好友</h1>${empty('key','企业成员不参与邀请奖励','企业成员使用企业分配的额度，邀请奖励发放到个人账户。','<button class="secondary" data-nav="account">返回我的</button>')}`;
@@ -140,4 +165,4 @@ function team(s){
 }
 function usage(s){return `${back('billing','用量账单')}<h1 class="page-title">调用明细</h1><p class="page-subtitle">${roles[s.role]} · 逐模型核对 Token 与费用。</p><div class="pills" aria-label="消费记录类型">${['全部','API 调用','在线试用'].map(f=>`<button data-usage-filter="${f}" aria-pressed="${s.usageFilter===f}">${f}</button>`).join('')}</div>${empty('book','每次调用，都有记录','每次调用后显示模型、输入与输出 Token、实际费用及结算状态。','<button class="primary" data-nav="api">前往 API 接入 →</button>')}<p class="input-note">充值记录在充值订单页查看。</p>`;}
 function service(s){return `${back()}<h1 class="page-title">买额度，用模型。</h1><p class="page-subtitle">通过沐仞 API，将模型能力接入自己的应用；也可以在线试用。</p><dl class="detail-list"><div><dt>购买内容</dt><dd>模型调用额度</dd></div><div><dt>调用凭证</dt><dd>账户下创建的 API Key</dd></div><div><dt>计费方式</dt><dd>按输入、输出等实际用量</dd></div><div><dt>适用折扣</dt><dd>个人与企业均享 4 折起</dd></div></dl><div class="notice">同一充值金额可消耗的 Token 数因模型、输入/输出比例与适用价格不同而变化。</div><div class="purchase-footer"><button class="primary full" data-nav="home">查看模型与价格 →</button></div><div class="section-head"><h2>企业与基础设施</h2></div><div class="menu-group">${menu('members','企业 Token 采购','data-action="sales"')}${menu('batch','算电协同群智基座','data-action="sales"')}${menu('models','FPTM 词元一体机','data-action="sales"')}${menu('home','能源与算力节点合作','data-action="sales"')}</div>`;}
-export function renderPage(s){const views={home,model,estimate,api,connect,billing,work,purchase,confirm,orders,account:accountView,team,usage,service,invite,oasis};return `<article class="page">${(views[s.page]||home)(s)}</article>`;}
+export function renderPage(s){const views={home,model,estimate,api,connect,billing,work,purchase,confirm,orders,account:accountView,team,usage,service,invite,oasis,login,'login-code':loginCode,security};return `<article class="page">${(views[s.page]||home)(s)}</article>`;}

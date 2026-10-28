@@ -1,9 +1,9 @@
 import {catalog, selectedModel, endpoint, emptyEstimate, estimateNumber, estimateCosts} from './catalog.js?v=d40-20261018';
-import {icon,escapeHTML,roles,pageInfo,renderPage,modelRows,estimateResult} from './views.js?v=oasis7-20261027';
+import {icon,escapeHTML,roles,pageInfo,renderPage,modelRows,estimateResult} from './views.js?v=login-20261028';
 const $=selector=>document.querySelector(selector);
 const screen=$('#screen'), sheet=$('#sheet');
 const storageKey=role=>`fathompeak-mini-ui-20261018-draft-${role}`;
-const state={giftClaimed:false,oasis:{energy:0,pending:3,trees:0,cotree:false,source:['新人','新人','新人']},page:'home',role:'personal',task:'ask',draft:'',amount:'',from:'home',filter:'全部',usageFilter:'全部',paused:false,modelId:'',query:'',vendor:'全部',client:'tool',keyName:'',estimate:emptyEstimate(),estimateFrom:'home'};
+const state={auth:'in',loginTab:'personal',agree:false,loginScenario:'existing',binds:{phone:'138****8000',wechat:true,email:'',github:''},bindType:'',giftClaimed:false,oasis:{energy:0,pending:3,trees:0,cotree:false,source:['新人','新人','新人']},page:'home',role:'personal',task:'ask',draft:'',amount:'',from:'home',filter:'全部',usageFilter:'全部',paused:false,modelId:'',query:'',vendor:'全部',client:'tool',keyName:'',estimate:emptyEstimate(),estimateFrom:'home'};
 let toastTimer,focusBeforeDialog;
 function toast(message){const el=$('#toast');el.textContent=message;el.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>{el.hidden=true},3200);}
 function readDraft(){try{const value=JSON.parse(localStorage.getItem(storageKey(state.role))||'null');state.draft=typeof value?.text==='string'?value.text:'';state.task=['ask','write','summary','translate'].includes(value?.task)?value.task:'ask';}catch(error){state.draft='';console.warn('Unable to restore local draft',error);toast('无法读取本设备草稿。');}}
@@ -14,19 +14,20 @@ sheet.addEventListener('close',()=>{if(focusBeforeDialog?.isConnected)focusBefor
 sheet.addEventListener('click',event=>{if(event.target===sheet){const r=sheet.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)closeSheet();}});
 function saveIntent(){try{sessionStorage.setItem('fp-mini-intent-'+state.role,JSON.stringify({modelId:state.modelId,amount:state.amount}));}catch(error){console.warn('Unable to retain preview selection',error);}}
 function readIntent(){try{const v=JSON.parse(sessionStorage.getItem('fp-mini-intent-'+state.role)||'null');state.modelId=catalog.some(m=>m.id===v?.modelId)?v.modelId:'';state.amount=typeof v?.amount==='string'?v.amount:'';}catch(error){state.modelId='';state.amount='';console.warn('Unable to restore preview selection',error);}}
-const reviewPages=[['home','模型市场'],['estimate','算算费用'],['api','API 接入'],['work','体验'],['account','我的'],['invite','邀请好友'],['oasis','我的绿洲'],['billing','用量账单'],['purchase','充值购买'],['team','企业管理']];
+const reviewPages=[['home','模型市场'],['estimate','算算费用'],['api','API 接入'],['work','体验'],['account','我的'],['invite','邀请好友'],['oasis','我的绿洲'],['login','登录与绑定'],['billing','用量账单'],['purchase','充值购买'],['team','企业管理']];
 const navPages=[['home','models','模型市场'],['api','keys','API 接入'],['work','play','体验'],['account','acct','我的']];
 function render({focus=true}={}){
  screen.innerHTML=renderPage(state);screen.scrollTop=0;
- const tab=['model','service','estimate'].includes(state.page)?'home':state.page==='connect'?'api':['purchase','confirm','orders','usage','billing','team','invite','oasis'].includes(state.page)?'account':state.page;
+ const tab=['model','service','estimate'].includes(state.page)?'home':state.page==='connect'?'api':['purchase','confirm','orders','usage','billing','team','invite','oasis','login','login-code','security'].includes(state.page)?'account':state.page;
  $('#tab-bar').innerHTML=navPages.map(([id,ic,label])=>`<button data-nav="${id}" ${id===tab?'aria-current="page"':''}>${icon(ic)}<span>${label}</span></button>`).join('');
  $('#review-pages').innerHTML=reviewPages.map(([id,label],i)=>`<button data-review-page="${id}" ${id===state.page||(id==='purchase'&&state.page==='confirm')?'aria-current="page"':''}><span class="mono">0${i+1}</span>${label}</button>`).join('');
  const info=pageInfo[state.page]||pageInfo.home;$('#page-number').textContent=info[0];$('#context-title').textContent=info[1];$('#context-copy').textContent=info[2];$('#context-flow').innerHTML=info[3].map((step,i)=>`<div><span>0${i+1}</span>${step}</div>`).join('');
  if(focus)screen.focus({preventScroll:true});
 }
-function navigate(page){if(!(page in pageInfo))return;if(page==='purchase'&&state.page!=='confirm')state.from=state.page;state.page=page;render();}
+function navigate(page){if(!(page in pageInfo))return;if(state.auth==='out'&&['account','billing','api','connect','orders','usage','team','invite','oasis','security','purchase'].includes(page))page='login';if(page==='purchase'&&state.page!=='confirm')state.from=state.page;state.page=page;render();}
 function setRole(role){if(!(role in roles))return;saveDraft();state.role=role;state.amount='';state.modelId='';state.keyName='';state.estimate=emptyEstimate();state.estimateFrom='home';readIntent();state.filter='全部';state.usageFilter='全部';state.query='';state.vendor='全部';readDraft();$('#review-role').value=role;state.page='home';render();}
 $('#review-role').addEventListener('change',event=>setRole(event.target.value));
+$('#review-login')?.addEventListener('change',event=>{state.loginScenario=event.target.value;state.auth='out';state.agree=false;state.loginTab='personal';navigate('login');});
 document.addEventListener('visibilitychange',()=>document.body.classList.toggle('page-hidden',document.hidden));
 const toHalfWidth=v=>v.replace(/[\uFF10-\uFF19]/g,c=>String.fromCharCode(c.charCodeAt(0)-0xFEE0)).replace(/[\uFF0E\u3002]/g,'.');
 const normalizeNumberInput=el=>{const v=toHalfWidth(el.value);if(v!==el.value){const pos=el.selectionStart;el.value=v;try{el.setSelectionRange(pos,pos);}catch(e){}}return v;};
@@ -40,6 +41,7 @@ document.addEventListener('input',event=>{
  if(event.target.id==='member-search'){const q=event.target.value.trim();$('#member-empty').innerHTML=q?`<div class="empty subtle"><h2>暂无匹配的成员记录</h2><p>换个姓名或工作邮箱试试。</p></div>`:renderPage({...state,page:'team'}).match(/<div id="member-empty">([\s\S]*?)<\/div><div class="notice">/)[1];}
 });
 document.addEventListener('change',event=>{
+ if(event.target.id==='login-agree'){state.agree=event.target.checked;return;}
  if(event.target.id==='estimate-model'){
   state.estimate={...state.estimate,modelId:event.target.value,inputRate:'',outputRate:''};
   state.modelId=event.target.value;saveIntent();
@@ -90,6 +92,20 @@ const actions={
  'key-created'(){closeSheet();toast('API Key 已创建，请妥善保存。');},
  'gift-claimed'(){state.giftClaimed=true;state.oasis.pending+=1;state.oasis.source.push('礼包');closeSheet();render({focus:false});toast('试用券已放入账户，绿洲多了 1 份能量。');},
  'oasis-share'(){const o=state.oasis,sc=o.trees>=2?'revived':o.trees>=1?'camp':'withered';openSheet('分享我的绿洲',`<div class="poster oasis-share"><div class="poster-scene oasis-${sc}"></div><span class="poster-brand">沐仞 · FathomPeak</span><b>${o.trees?`我在沐仞种下了 ${o.trees} 棵树`:'我在沐仞种下了一颗种子'}</b><p>每一次绿电调用，都让绿洲多一点生机。${state.role==='member'?'':'<br>来和我合种，你我各得 ¥20 代金券。'}</p><div class="poster-foot"><div class="poster-code" aria-label="小程序码"></div><small>微信扫码<br>进入沐仞小程序</small></div></div>`,`<button class="primary full" data-action="poster-saved">保存到相册</button>${state.role==='member'?'':'<button class="secondary full" data-action="invite-share">发给微信好友</button>'}`);},
+ 'wx-phone'(){if(!state.agree){toast('请先阅读并同意用户服务协议和隐私政策。');return;}openSheet('微信授权','<div class="wx-auth"><p><b>沐仞</b> 申请获取你的手机号</p><div class="wx-phone">138****8000<small>微信绑定的手机号</small></div></div>','<button class="primary full" data-action="wx-allow">允许</button><button class="secondary full" data-action="wx-deny">拒绝</button>');},
+ 'wx-deny'(){closeSheet();navigate('login-code');toast('也可以用手机号或邮箱验证码登录。');},
+ 'wx-allow'(){const sc=state.loginScenario;if(sc==='conflict'){openSheet('这个手机号已绑定其他微信','<p>手机号 138****8000 的沐仞账号，已经绑定了另一个微信。一个账号只能绑定一个微信，所以这里不会新建账号。</p><p>请用手机号验证码登录，再到「账户与安全」里换绑成当前微信。</p>','<button class="primary full" data-nav="login-code">用验证码登录</button><button class="secondary full" data-action="close">取消</button>');return;}state.binds={...state.binds,phone:'138****8000',wechat:true};if(sc==='new'){openSheet('欢迎来到沐仞','<p>已用手机号 138****8000 创建个人账号，并绑定当前微信。下次打开小程序直接登录。</p><p>新用户可以领取 ¥68 注册礼包。</p>','<button class="primary full" data-action="login-done">进入沐仞</button>');return;}openSheet('找到你的沐仞账号','<p>手机号 138****8000 已经注册过沐仞。当前微信已绑定到这个账号，下次打开小程序直接登录。</p><dl class="detail-list"><div><dt>账号类型</dt><dd>个人账户</dd></div><div><dt>可用登录方式</dt><dd>手机号 · 微信</dd></div><div><dt>余额与 API Key</dt><dd>保留在原账号</dd></div></dl>','<button class="primary full" data-action="login-done">进入沐仞</button>');},
+ 'send-code'(btn){if(btn){btn.disabled=true;let n=60;btn.textContent=n+' 秒后重发';const t=setInterval(()=>{n--;if(n<=0||!btn.isConnected){clearInterval(t);btn.disabled=false;btn.textContent='获取验证码';return;}btn.textContent=n+' 秒后重发';},1000);}toast('验证码已发送。');},
+ 'code-login'(){const id=($('#login-id')?.value||'').trim(),code=($('#login-id-code')?.value||'').trim();if(!/^1\d{10}$/.test(id)&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(id)){toast('请输入正确的手机号或邮箱。');$('#login-id')?.focus();return;}if(!/^\d{6}$/.test(code)){toast('请输入 6 位验证码。');$('#login-id-code')?.focus();return;}if(!state.agree){toast('请先阅读并同意用户服务协议和隐私政策。');return;}const isMail=id.includes('@');const shown=isMail?id.replace(/^(.).*(@.*)$/,'$1***$2'):id.replace(/^(\d{3})\d{4}(\d{4})$/,'$1****$2');state.binds={...state.binds,wechat:true,...(isMail?{email:shown}:{phone:shown})};openSheet('已登录','<p>已登录 '+shown+'。当前微信已绑定到这个账号，下次打开小程序直接进入。</p>','<button class="primary full" data-action="login-done">进入沐仞</button>');},
+ 'org-login'(){const id=($('#org-email')?.value||'').trim(),code=($('#org-email-code')?.value||'').trim();if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(id)){toast('请输入工作邮箱。');$('#org-email')?.focus();return;}if(!/^\d{6}$/.test(code)){toast('请输入 6 位验证码。');$('#org-email-code')?.focus();return;}if(!state.agree){toast('请先阅读并同意用户服务协议和隐私政策。');return;}state.auth='in';setRole('member');toast('已登录企业账号。');},
+ 'login-done'(){closeSheet();state.auth='in';navigate('home');toast('已登录。');},
+ logout(){openSheet('退出登录？','<p>退出后，下次打开小程序需要重新登录。</p>','<button class="primary full" data-action="close">取消</button><button class="secondary full" data-action="confirm-logout">退出登录</button>');},
+ 'confirm-logout'(){closeSheet();state.auth='out';state.agree=false;navigate('login');},
+ 'unbind-wechat'(){if(!state.binds.phone&&!state.binds.email){toast('至少要保留一种登录方式。');return;}openSheet('解绑微信？','<p>解绑后，在小程序里需要用手机号或邮箱验证码登录。</p>','<button class="primary full" data-action="close">取消</button><button class="secondary full" data-action="confirm-unbind">解绑</button>');},
+ 'confirm-unbind'(){closeSheet();state.binds={...state.binds,wechat:false};render({focus:false});toast('已解绑微信。');},
+ bind(btn){const t=btn?.dataset?.bind||'phone';state.bindType=t;const label=t==='phone'?'手机号':'邮箱';openSheet((state.binds[t]?'更换':'绑定')+label,`<label class="form-field">${label}<input id="bind-id" placeholder="${t==='phone'?'11 位手机号':'常用邮箱'}"></label><label class="form-field">验证码<span class="code-row"><input id="bind-code" inputmode="numeric" maxlength="6" placeholder="6 位验证码"><button class="text-button" data-action="send-code">获取验证码</button></span></label><p class="small muted">已经绑定其他沐仞账号的${label}，不能再绑定到这个账号。</p>`,'<button class="primary full" data-action="bind-done">确认</button>');},
+ 'bind-done'(){const t=state.bindType,id=($('#bind-id')?.value||'').trim(),code=($('#bind-code')?.value||'').trim();const ok=t==='phone'?/^1\d{10}$/.test(id):/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(id);if(!ok){toast(t==='phone'?'请输入正确的手机号。':'请输入正确的邮箱。');return;}if(!/^\d{6}$/.test(code)){toast('请输入 6 位验证码。');return;}const shown=t==='phone'?id.replace(/^(\d{3})\d{4}(\d{4})$/,'$1****$2'):id.replace(/^(.).*(@.*)$/,'$1***$2');state.binds={...state.binds,[t]:shown};closeSheet();render({focus:false});toast('已绑定。');},
+ 'bind-wechat'(){state.binds={...state.binds,wechat:true};render({focus:false});toast('已绑定当前微信。');},
  'collect-energy'(){const o=state.oasis;if(!o.pending)return;o.pending-=1;o.source.shift();o.energy+=1;const top=screen.scrollTop;if(o.energy>=4){o.energy=4;render({focus:false});screen.scrollTop=top;setTimeout(()=>{o.trees+=1;o.energy=0;render({focus:false});screen.scrollTop=top;toast(o.trees===1?'第一棵树长成了，绿洲开始复苏。':'又长成一棵树，绿洲更茂盛了。');},900);return;}render({focus:false});screen.scrollTop=top;toast(['种子发芽了。','长成树苗了。','长成一棵小树了。'][o.energy-1]||'收到 1 份能量。');},
  'invite-share'(){state.oasis.cotree=true;if(sheet.open)closeSheet();if(state.page==='oasis'){const top=screen.scrollTop;render({focus:false});screen.scrollTop=top;}toast('已发给好友。好友首次调用后，合种的树就会发芽。');},
  'invite-poster'(){openSheet('邀请海报','<div class="poster"><div class="poster-scene"></div><span class="poster-brand">沐仞 · FathomPeak</span><b>一起用，一起种一棵树</b><p>主流模型 API，公开价 4 折起。<br>注册实名并首次调用，你我各得 ¥20 代金券。</p><div class="poster-foot"><div class="poster-code" aria-label="小程序码"></div><small>微信扫码<br>进入沐仞小程序</small></div></div>','<button class="primary full" data-action="poster-saved">保存到相册</button><button class="secondary full" data-action="close">返回</button>');},
@@ -125,9 +141,10 @@ document.addEventListener('click',async event=>{
  if(button.dataset.copy){const text=button.dataset.copy==='endpoint'?endpoint:selectedModel(state)?.name;if(!text)return;try{await navigator.clipboard.writeText(text);toast('已复制'+(button.dataset.copy==='endpoint'?'接入地址':'模型名称'));}catch(error){toast('未能复制，请手动选择配置文本。');}return;}
  if(button.dataset.nav){if(sheet.open)closeSheet();navigate(button.dataset.nav);return;}
  if(button.dataset.reviewPage){const page=button.dataset.reviewPage;if(page==='team'&&state.role!=='admin')setRole('admin');if(page==='estimate')state.estimateFrom='home';navigate(page);return;}
+ if(button.dataset.loginTab){state.loginTab=button.dataset.loginTab;render({focus:false});return;}
  if(button.dataset.task){state.task=button.dataset.task;saveDraft();state.page='work';render();return;}
  if(button.dataset.filter){state.filter=button.dataset.filter;render();return;}
  if(button.dataset.usageFilter){state.usageFilter=button.dataset.usageFilter;render();return;}
- if(button.dataset.action){const action=button.dataset.action;if(sheet.open&&!['close','confirm-clear'].includes(action))closeSheet();actions[action]?.();}
+ if(button.dataset.action){const action=button.dataset.action;if(sheet.open&&!['close','confirm-clear','send-code'].includes(action))closeSheet();actions[action]?.(button);}
 });
 readIntent();readDraft();render({focus:false});

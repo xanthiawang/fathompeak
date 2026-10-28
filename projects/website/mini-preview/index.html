@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500&family=Noto+Sans+SC:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="styles.css?v=oasis6-20261027">
+  <link rel="stylesheet" href="styles.css?v=login-20261028">
 </head>
 <body>
   <header class="review-header">
@@ -23,7 +23,7 @@
 
       <h1>让每一枚<br>Token，更值。</h1>
       <p class="review-intro">低价模型 API 与 Token 采购。<br>选模型、买额度、接入你的应用。</p>
-      <div class="role-control"><label for="review-role">查看身份</label><select id="review-role"><option value="personal">个人用户</option><option value="admin">企业管理员</option><option value="member">企业成员</option></select></div>
+      <div class="role-control"><label for="review-role">查看身份</label><select id="review-role"><option value="personal">个人用户</option><option value="admin">企业管理员</option><option value="member">企业成员</option></select></div><div class="role-control"><label for="review-login">登录场景</label><select id="review-login"><option value="existing">手机号已注册过</option><option value="new">新用户</option><option value="conflict">手机号已绑定别的微信</option></select></div>
       <nav id="review-pages" aria-label="预览页面"></nav>
       <p class="review-note">此处切换仅供设计评审。<br>实际产品沿用个人 / 企业独立登录。</p>
     </aside>
@@ -45,6 +45,6 @@
   </main>
   <dialog id="sheet" class="sheet" aria-labelledby="sheet-title"><div class="sheet-content" id="sheet-content"></div></dialog>
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
-  <script type="module" src="app.js?v=oasis7-20261027"></script>
+  <script type="module" src="app.js?v=login-20261028"></script>
 </body>
 </html>
