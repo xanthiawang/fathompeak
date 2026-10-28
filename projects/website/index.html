@@ -3009,7 +3009,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
               <div class="ac-f" id="acPhoneField"><label for="acPhone">手机号</label><div class="ac-phone"><span aria-hidden="true">+86</span><input class="in" id="acPhone" type="tel" name="phone" inputmode="tel" autocomplete="tel-national" placeholder="请输入手机号" aria-label="中国大陆手机号，区号 +86" maxlength="11" required></div></div>
               <div class="ac-f" id="acEmailField" hidden><label for="acEmail">邮箱</label><input class="in" id="acEmail" type="email" name="email" autocomplete="email" autocapitalize="none" spellcheck="false" placeholder="请输入已绑定的邮箱" disabled aria-describedby="acEmailHint"><p class="ac-help" id="acEmailHint">使用已绑定账户的邮箱登录。</p></div>
               <div class="ac-f" id="acCodeField"><label for="acCode">验证码</label><div class="ac-code"><input class="in" id="acCode" name="code" inputmode="numeric" autocomplete="one-time-code" placeholder="请输入验证码" maxlength="6" required><button class="ac-send" id="acSend" type="button">获取验证码</button></div></div>
-              <div class="ac-f" id="acPwField" hidden><label for="acPw">密码</label><input class="in" id="acPw" name="password" type="password" autocomplete="current-password" placeholder="请输入密码" disabled></div>
+              <div class="ac-f" id="acPwField" hidden><label for="acPw">密码</label><input class="in" id="acPw" name="password" type="password" autocomplete="current-password" placeholder="请输入密码" disabled><p class="ac-help" id="acPwHint">用验证码注册的账户默认没有密码，登录后可在「安全与访问」设置。</p></div>
               <p class="ac-help ac-pwsw"><button class="ac-inl" type="button" id="acPwSw">用密码登录</button></p>
             </div>
             <div class="ac-cross" id="acCrossP" role="status" hidden><span>这个手机号 / 邮箱有企业账号。企业成员请用企业登录。</span><button class="ac-inl" type="button" data-cross="o">去企业登录 →</button></div>
@@ -3017,6 +3017,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
             <p class="ac-msg" id="acLoginMsg" role="alert"></p>
             <button class="btn black full" id="acContinue" type="submit">登录 / 注册</button>
             <p class="ac-help ac-first" id="acFirst">未注册的手机号验证后将自动创建个人账户。企业成员请用<button class="ac-inl" type="button" data-to-tab="o">企业登录</button>。</p>
+            <p class="ac-help ac-first" id="acFirstPw" hidden>新用户请用验证码登录，验证后自动创建个人账户。</p>
           </form>
           <div class="ac-or" aria-hidden="true"><span>或</span></div>
           <button class="ac-provider" type="button" data-provider="wechat"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M9 3C4.6 3 1 5.8 1 9.3c0 2 1.2 3.8 3.1 5l-.7 2.4 2.8-1.4c.9.3 1.8.4 2.8.4h.4A6.2 6.2 0 0 1 8.5 12c0-3.1 2.9-5.6 6.6-5.8C13.8 4.3 11.6 3 9 3Zm-2.8 4a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm5.6 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/><path fill="currentColor" d="M16 7.5c-3.8 0-7 2.4-7 5.5s3.2 5.5 7 5.5c.8 0 1.6-.1 2.4-.3l2.5 1.3-.6-2.1C22 16.4 23 14.8 23 13c0-3.1-3.2-5.5-7-5.5Zm-2.3 3.2a.8.8 0 1 1 0 1.6.8.8 0 0 1 0-1.6Zm4.6 0a.8.8 0 1 1 0 1.6.8.8 0 0 1 0-1.6Z"/></svg><span>微信登录</span></button>
@@ -4067,13 +4068,14 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       <div class="cs-p" data-p="sec">
         <div class="cs-hd"><div><h2>安全与访问</h2><p>登录密码、两步验证、通行密钥和访问令牌。</p></div></div>
         <ul class="cs-sl">
-          <li><div><b>修改密码</b><p>建议定期更换，不要与其他网站共用。</p></div><button class="btn gray sm" type="button" data-sx aria-controls="csPwF" aria-expanded="false">修改</button>
+          <li><div><b>登录密码</b><p id="csPwD">还没有设置。设置后可以用手机号或邮箱加密码登录，验证码登录照常可用。</p><span class="cs-st" id="csPwSt">未设置</span></div><button class="btn gray sm" type="button" id="csPwB" data-sx aria-controls="csPwF" aria-expanded="false">设置密码</button>
             <form class="cs-sx" id="csPwF" hidden novalidate>
-              <div class="cs-f"><label for="csPw0">当前密码</label><input class="in" id="csPw0" name="pw0" type="password" autocomplete="off"></div>
-              <div class="cs-f"><label for="csPw1">新密码</label><input class="in" id="csPw1" name="pw1" type="password" autocomplete="off"><p class="cs-help">至少 8 位。</p></div>
-              <div class="cs-f"><label for="csPw2">确认新密码</label><input class="in" id="csPw2" name="pw2" type="password" autocomplete="off"></div>
+              <div class="cs-f" id="csPwCurF"><label for="csPw0">当前密码</label><input class="in" id="csPw0" name="pw0" type="password" autocomplete="current-password"><p class="cs-help"><button class="ac-inl" type="button" id="csPwFg">忘了当前密码？用验证码验证</button></p></div>
+              <div class="cs-f" id="csPwCodeF" hidden><label for="csPwC">验证码</label><div class="ac-code"><input class="in" id="csPwC" name="code" inputmode="numeric" autocomplete="one-time-code" placeholder="请输入验证码" maxlength="6" disabled><button class="ac-send" id="csPwSend" type="button">获取验证码</button></div><p class="cs-help"><span>验证码发送到</span> <span class="mono" id="csPwTo"></span></p></div>
+              <div class="cs-f"><label for="csPw1">新密码</label><input class="in" id="csPw1" name="pw1" type="password" autocomplete="new-password"><p class="cs-help">至少 8 位，同时包含字母和数字，不能包含手机号。</p></div>
+              <div class="cs-f"><label for="csPw2">确认新密码</label><input class="in" id="csPw2" name="pw2" type="password" autocomplete="new-password"></div>
               <p class="ac-msg" id="csPwMsg" role="alert"></p>
-              <div class="cs-acts"><button class="btn black sm" type="submit">保存新密码</button><button class="btn gray sm" type="button" data-sx-close>取消</button></div>
+              <div class="cs-acts"><button class="btn black sm" type="submit" id="csPwOk">保存密码</button><button class="btn gray sm" type="button" data-sx-close>取消</button></div>
             </form></li>
           <li><div><b>两步验证（TOTP）</b><p>登录时除密码外，还要输入身份验证器应用生成的 6 位动态码。</p><span class="cs-st">未开启</span></div><button class="btn gray sm" type="button" data-sx aria-controls="csTotpF" aria-expanded="false">开启</button>
             <form class="cs-sx" id="csTotpF" hidden novalidate>
@@ -4739,11 +4741,11 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
   var authForm=$('#acLogin'),authMethod='phone',authLocale=null;
   function clearAuthError(){say($('#acLoginMsg'),'');$('#acService').hidden=true;Array.prototype.forEach.call(authForm.querySelectorAll('[aria-invalid]'),function(f){f.removeAttribute('aria-invalid');var ids=(f.getAttribute('aria-describedby')||'').split(/\s+/).filter(function(id){return id&&id!=='acLoginMsg'});if(ids.length)f.setAttribute('aria-describedby',ids.join(' '));else f.removeAttribute('aria-describedby')})}
   function authError(field,message){clearAuthError();say($('#acLoginMsg'),message);field.setAttribute('aria-invalid','true');field.setAttribute('aria-describedby',((field.getAttribute('aria-describedby')||'')+' acLoginMsg').trim());field.focus()}
-  function setAuthMethod(method){authMethod=method;clearAuthError();$('#acCode').value='';var phone=method==='phone';$('#acPhoneField').hidden=!phone;$('#acEmailField').hidden=phone;$('#acPhone').disabled=!phone;$('#acPhone').required=phone;$('#acEmail').disabled=phone;$('#acEmail').required=!phone;$$('[data-auth-method]').forEach(function(b){var on=b.dataset.authMethod===method;b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1});$('#acCredentials').setAttribute('aria-labelledby',phone?'acPhoneTab':'acEmailTab');$('#acContinue').textContent=(authPw||(!phone&&authLocale==='zh'))?'登录':'登录 / 注册';$('#acFirst').hidden=!phone&&authLocale==='zh'}
+  function setAuthMethod(method){authMethod=method;clearAuthError();$('#acCode').value='';var phone=method==='phone';$('#acPhoneField').hidden=!phone;$('#acEmailField').hidden=phone;$('#acPhone').disabled=!phone;$('#acPhone').required=phone;$('#acEmail').disabled=phone;$('#acEmail').required=!phone;$$('[data-auth-method]').forEach(function(b){var on=b.dataset.authMethod===method;b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1});$('#acCredentials').setAttribute('aria-labelledby',phone?'acPhoneTab':'acEmailTab');$('#acContinue').textContent=(!phone&&authLocale==='zh')?'登录':'登录 / 注册';$('#acFirst').hidden=authPw||(!phone&&authLocale==='zh');$('#acFirstPw').hidden=!authPw||(!phone&&authLocale==='zh')}
   /* 英文版（10-21 定）：只留邮箱 + 验证码，不放手机号 / 微信 / Google，保留 GitHub；中文版不变 */
   function syncAuthLocale(){var next=lang==='en'?'en':'zh';if(next===authLocale)return;authLocale=next;authForm.reset();var domestic=next==='zh';setAuthPw(false);setAuthMethod(domestic?'phone':'email');$('#acDomestic').hidden=false;$('#acDomestic .ac-methods').hidden=!domestic;$('#acDomestic [data-provider="wechat"]').hidden=!domestic;$('#acEmailHint').hidden=!domestic;/* 英文版保留 GitHub（Google 国内解决不了，10-22 定）：表单下方「or」+ GitHub */$('#acInternational').hidden=domestic;$('#acInternational [data-provider="google"]').hidden=true;$('#acInternational .ac-auth-legal').hidden=true}
   function requireAuthConsent(){if(!$('#acAgree').checked){authError($('#acAgree'),'请先阅读并同意用户服务协议和隐私政策。');return false}return true}
-  var authPw=false; function setAuthPw(on){authPw=on;clearAuthError();$('#acCodeField').hidden=on;$('#acPwField').hidden=!on;$('#acPw').disabled=!on;$('#acCode').disabled=on;$('#acPw').value='';$('#acPwSw').textContent=on?'忘记密码？用验证码登录':'用密码登录';$('#acContinue').textContent=(on||(authMethod!=='phone'&&authLocale==='zh'))?'登录':'登录 / 注册';if(on)$('#acPw').focus()}
+  var authPw=false; function setAuthPw(on){authPw=on;clearAuthError();$('#acCodeField').hidden=on;$('#acPwField').hidden=!on;$('#acPw').disabled=!on;$('#acCode').disabled=on;$('#acPw').value='';$('#acPwSw').textContent=on?'忘了或没设置过密码？用验证码登录':'用密码登录';$('#acContinue').textContent=(authMethod!=='phone'&&authLocale==='zh')?'登录':'登录 / 注册';$('#acFirst').hidden=on||(authMethod!=='phone'&&authLocale==='zh');$('#acFirstPw').hidden=!on||(authMethod!=='phone'&&authLocale==='zh');if(on)$('#acPw').focus()}
   $('#acPwSw').addEventListener('click',function(){setAuthPw(!authPw)});
   function authIdentifier(){var field=$(authMethod==='phone'?'#acPhone':'#acEmail'),value=field.value.trim();if(authMethod==='phone'?!/^1[3-9]\d{9}$/.test(value):!MAIL.test(value)){authError(field,authMethod==='phone'?'请输入 11 位中国大陆手机号。':'请输入有效的邮箱地址。');return null}return value}
   function authUnavailable(kind){clearAuthError();var zh={password:'密码登录尚未开通。如需开通账户，请联系我们。',phone:'短信登录尚未开通。如需开通账户，请联系我们。',email:'邮箱登录尚未开通。如需开通账户，请联系我们。',wechat:'微信登录尚未开通。如需开通账户，请联系我们。',google:'Google 登录尚未开通。如需开通账户，请联系我们。',github:'GitHub 登录尚未开通。如需开通账户，请联系我们。'};var en={email:'Email sign-in is not available yet. Contact us to set up an account.',password:'Password sign-in is not available yet. Contact us to set up an account.',google:'Google sign-in is not available yet. Contact us to set up an account.',github:'GitHub sign-in is not available yet. Contact us to set up an account.'};$('#acServiceText').textContent=authLocale==='en'?en[kind]:zh[kind];$('#acService').hidden=false;$('#acService').focus()}
@@ -4751,7 +4753,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
   $('.ac-methods').addEventListener('keydown',function(e){if(['ArrowLeft','ArrowRight','Home','End'].indexOf(e.key)<0)return;e.preventDefault();var next=e.key==='Home'?'phone':e.key==='End'?'email':authMethod==='phone'?'email':'phone';setAuthMethod(next);$('#'+(next==='phone'?'acPhoneTab':'acEmailTab')).focus()});
   authForm.addEventListener('input',clearAuthError);
   $('#acSend').addEventListener('click',function(){if(!authIdentifier()||!requireAuthConsent())return;if(window.supCountdown){window.supCountdown(this);if(window.supProtoTip)window.supProtoTip();return}authUnavailable(authMethod)});
-  authForm.addEventListener('submit',function(e){e.preventDefault();if(!authIdentifier()||!requireAuthConsent())return;if(authPw){if(!$('#acPw').value){authError($('#acPw'),'请输入密码。');return}}else if(!/^\d{6}$/.test($('#acCode').value.trim())){authError($('#acCode'),'请输入 6 位验证码。');return}if(window.supLogin){var _pw=$('#acPw'); if(_pw) _pw.value=''; window.supLogin('personal',$(authMethod==='phone'?'#acPhone':'#acEmail').value.trim());return}$('#acPw').value='';authUnavailable(authPw?'password':authMethod)});
+  authForm.addEventListener('submit',function(e){e.preventDefault();if(!authIdentifier()||!requireAuthConsent())return;if(authPw){if(!$('#acPw').value){authError($('#acPw'),'请输入密码。');return}}else if(!/^\d{6}$/.test($('#acCode').value.trim())){authError($('#acCode'),'请输入 6 位验证码。');return}if(window.supLogin){var _pw=$('#acPw'); if(_pw) _pw.value=''; var _wasPw=authPw; window.supLogin('personal',$(authMethod==='phone'?'#acPhone':'#acEmail').value.trim()); if(me) me.pwSet=_wasPw; return}$('#acPw').value='';authUnavailable(authPw?'password':authMethod)});
   $$('[data-provider]').forEach(function(b){b.addEventListener('click',function(){var provider=b.dataset.provider;if(provider==='wechat'){if(authLocale!=='zh'||!requireAuthConsent())return}else if(authLocale!=='en')return;authUnavailable(provider)})});
 
   /* 控制台（2026-10-14 按原平台模块补齐：使用 = 概览 / API Key / 使用日志 / 订单；账户 = 钱包 / 个人资料 / 安全与访问）
@@ -4811,7 +4813,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
   }
   ['#csLt','#csLm','#csLk'].forEach(function(id){$(id).addEventListener('change',renderLogs)});
 
-  function renderConsole(){ if(!me) return;
+  function renderConsole(){ if(!me) return; pwRow();
     if(!me.uid){me.uid=rnd('0123456789',6).replace(/^0/,'1');persist()}
     if(!me.aff){me.aff=rnd(ALNUM,6);persist()}
     $('#csMail').textContent=me.email; $('#csMail2').textContent=me.email; $('#csType').textContent=TYPE[me.type]; $('#csType2').textContent=TYPE[me.type];
@@ -4884,11 +4886,21 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
   $$('[data-sx]').forEach(function(b){b.addEventListener('click',function(){var p=$('#'+b.getAttribute('aria-controls'));if(!p.hidden)return sxClose(p);p.hidden=false;b.setAttribute('aria-expanded','true');var f=$('input',p);if(f)f.focus()})});
   $$('[data-sx-close]').forEach(function(b){b.addEventListener('click',function(){sxClose(b.closest('.cs-sx'))})});
   $$('.cs-sl form').forEach(function(f){f.addEventListener('input',function(){clearAccountError(f)})});
-  $('#csPwF').addEventListener('submit',function(e){e.preventDefault();var f=this;
-    if(!f.pw0.value) return accountError(f,f.pw0,'请输入当前密码。');
-    if(f.pw1.value.length<8) return accountError(f,f.pw1,'新密码至少 8 位。');
-    if(f.pw1.value!==f.pw2.value) return accountError(f,f.pw2,'两次输入的新密码不一致。');
-    sxClose(f);toast('修改密码接入后即可使用。')});
+  /* 登录密码（2026-10-28）：登录即注册的账户默认没有密码。未设置 → 用验证码验证后设置；已设置 → 用当前密码修改，忘了可改用验证码 */
+  var pwByCode=false;
+  function pwMask(){if(me.phone)return me.phone.replace(/^(\d{3})\d{4}(\d{4})$/,'$1****$2');var m=me.email||'',i=m.indexOf('@');return i>0?m.charAt(0)+'***'+m.slice(i):m}
+  function pwMode(code){var f=$('#csPwF');pwByCode=code;$('#csPwCurF').hidden=code;$('#csPwCodeF').hidden=!code;f.pw0.disabled=code;f.code.disabled=!code;$('#csPwTo').textContent=pwMask();clearAccountError(f)}
+  function pwRow(){var on=!!me.pwSet,st=$('#csPwSt');$('#csPwD').textContent=on?'已设置。建议定期更换，不要与其他网站共用。':'还没有设置。设置后可以用手机号或邮箱加密码登录，验证码登录照常可用。';st.textContent=on?'已设置':'未设置';st.className='cs-st'+(on?' ok':'');$('#csPwB').textContent=on?'修改':'设置密码';$('#csPwOk').textContent=on?'保存新密码':'保存密码';pwMode(!on)}
+  $('#csPwB').addEventListener('click',function(){if($('#csPwF').hidden)return;pwMode(!me.pwSet);(pwByCode?$('#csPwC'):$('#csPw0')).focus()});
+  $('#csPwFg').addEventListener('click',function(){pwMode(true);$('#csPwC').focus()});
+  $('#csPwSend').addEventListener('click',function(){if(window.supCountdown){window.supCountdown(this);if(window.supProtoTip)window.supProtoTip();return}toast('验证码服务接入后即可使用。')});
+  $('#csPwF').addEventListener('submit',function(e){e.preventDefault();var f=this,pw=f.pw1.value,was=!!me.pwSet;
+    if(pwByCode){if(!/^\d{6}$/.test(f.code.value.trim())) return accountError(f,f.code,'请输入 6 位验证码。')}
+    else if(!f.pw0.value) return accountError(f,f.pw0,'请输入当前密码。');
+    if(pw.length<8||!/[A-Za-z]/.test(pw)||!/\d/.test(pw)) return accountError(f,f.pw1,'新密码至少 8 位，并同时包含字母和数字。');
+    if(me.phone&&pw.indexOf(me.phone)>=0) return accountError(f,f.pw1,'新密码不能包含手机号。');
+    if(pw!==f.pw2.value) return accountError(f,f.pw2,'两次输入的新密码不一致。');
+    me.pwSet=true;persist();sxClose(f);pwRow();toast(was?'密码已修改。':'密码已设置，下次可以用密码登录。')});
   $('#csTotpF').addEventListener('submit',function(e){e.preventDefault();var f=this;
     if(!/^\d{6}$/.test(f.code.value.trim())) return accountError(f,f.code,'请输入 6 位数字验证码。');
     sxClose(f);toast('两步验证接入后即可开启。')});
@@ -5757,6 +5769,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
   (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"抬头默认为合同签约主体。": "Defaults to the party named in your contract."});  /* 企业不做认证 */
   (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"微信扫一扫": "Scan with WeChat"});
   Object.assign(I18N,{"请输入已绑定的邮箱": "Enter your email", "未注册的手机号验证后将自动创建个人账户。企业成员请用": "An unregistered email creates a personal account after verification. Company members, use ", "这个手机号 / 邮箱有企业账号。企业成员请用企业登录。": "This email has a business account. Company members, use business sign-in.", "欢迎来到沐仞": "Welcome to FathomPeak"}); /* 英文版登录页词条（10-21） */  /* 公众号二维码 */
+  (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"用验证码注册的账户默认没有密码，登录后可在「安全与访问」设置。": "Accounts created with a verification code have no password until you set one in Security & access.", "忘了或没设置过密码？用验证码登录": "Forgot or never set a password? Sign in with a code", "新用户请用验证码登录，验证后自动创建个人账户。": "New here? Sign in with a code. Your personal account is created after verification.", "登录密码": "Password", "还没有设置。设置后可以用手机号或邮箱加密码登录，验证码登录照常可用。": "Not set yet. Once set, you can sign in with your phone or email and password. Code sign-in keeps working.", "已设置。建议定期更换，不要与其他网站共用。": "Set. Change it from time to time and don’t reuse it on other sites.", "未设置": "Not set", "已设置": "Set", "设置密码": "Set password", "保存密码": "Save password", "保存新密码": "Save new password", "忘了当前密码？用验证码验证": "Forgot your current password? Verify with a code instead", "验证码发送到": "Code goes to", "至少 8 位，同时包含字母和数字，不能包含手机号。": "At least 8 characters, with both letters and numbers. Must not contain your phone number.", "新密码至少 8 位，并同时包含字母和数字。": "Use at least 8 characters, with both letters and numbers.", "新密码不能包含手机号。": "The new password must not contain your phone number.", "请输入 6 位验证码。": "Enter the 6-digit code.", "密码已修改。": "Password changed.", "密码已设置，下次可以用密码登录。": "Password set. You can sign in with it next time.", "验证码服务接入后即可使用。": "Verification codes will work once the service is connected."});  /* 登录密码设置 */
   syncAuthLocale(); applyLang();
 
   /* ---------- 接口参考（#api，2026-10-14）：内容取自沐仞模型平台的 OpenAPI 文档（/openapi/ai-model.json），
