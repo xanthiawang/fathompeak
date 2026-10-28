@@ -1466,6 +1466,31 @@ html.sup-mark .sup-new{outline:2px dashed #2F63B8;outline-offset:3px;border-radi
 </style>
 
 <style id="sup-xp-css">
+/* 体验中心历史对话（2026-10-28） */
+.xp-hbtn{position:absolute;top:76px;right:40px;z-index:3;height:38px;padding:0 16px 0 13px;font-size:13px}
+.xp-hbtn svg{width:16px;height:16px}
+.xp-hist{position:fixed;top:64px;right:12px;bottom:12px;width:min(340px,calc(100vw - 24px));z-index:300;display:flex;flex-direction:column;gap:12px;padding:18px 16px 14px;border-radius:20px;border:1px solid var(--glass-line,rgba(255,255,255,.6));background:rgba(255,255,255,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 24px 60px -24px rgba(33,32,33,.35)}
+.xp-hist[hidden]{display:none}
+.xp-hh{display:flex;align-items:center;justify-content:space-between}.xp-hh b{font:400 22px/1.2 var(--serif);color:var(--ink)}
+.xp-hx{appearance:none;border:0;background:transparent;font-size:22px;line-height:1;width:32px;height:32px;border-radius:50%;color:var(--ink-50,#6d6872);cursor:pointer}.xp-hx:hover{background:rgba(61,49,79,.07)}
+.xp-hq{width:100%;height:40px;padding:0 14px;border-radius:12px;border:1px solid rgba(61,49,79,.16);background:#fff;font:400 14px var(--sans);color:var(--ink);box-sizing:border-box}
+.xp-hl{flex:1;overflow:auto;display:grid;align-content:start;gap:2px;margin:0 -6px;padding:0 6px}
+.xp-hg{font:400 12px/1.6 var(--mono,monospace);letter-spacing:.06em;color:var(--ink-50,#6d6872);margin:12px 0 4px}
+.xp-hi{display:flex;align-items:center;gap:6px;border-radius:12px}.xp-hi:hover,.xp-hi.on{background:rgba(47,99,184,.07)}
+.xp-ho{appearance:none;flex:1;min-width:0;text-align:left;border:0;background:transparent;padding:9px 10px;cursor:pointer;display:grid;gap:2px}
+.xp-ho b{font:500 14px/1.4 var(--sans);color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.xp-ho span{font:400 12px/1.5 var(--sans);color:var(--ink-50,#6d6872);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.xp-hd{appearance:none;border:0;background:transparent;font:400 12px var(--sans);color:var(--ink-50,#6d6872);padding:6px 8px;border-radius:8px;cursor:pointer;opacity:0;white-space:nowrap}
+.xp-hi:hover .xp-hd,.xp-hi.on .xp-hd,.xp-hd:focus-visible,.xp-hd.sure{opacity:1}.xp-hd.sure{color:#B3261E;background:rgba(179,38,30,.08)}
+.xp-he{font:400 13px/1.7 var(--sans);color:var(--ink-50,#6d6872);padding:24px 6px;text-align:center}
+.xp-hn{font:400 12px/1.6 var(--sans);color:var(--ink-50,#6d6872);margin:0;border-top:1px solid rgba(61,49,79,.1);padding-top:10px}
+.xp-recent{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;max-width:940px;justify-self:center}
+.xp-recent[hidden]{display:none}
+.xp-recent .k{font:400 12px var(--mono,monospace);letter-spacing:.06em;color:var(--ink-50,#6d6872);margin-right:2px}
+.xp-rc{appearance:none;max-width:240px;height:34px;padding:0 14px;border-radius:999px;border:1px solid rgba(61,49,79,.12);background:rgba(255,255,255,.7);font:400 13px var(--sans);color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
+.xp-rc:hover{background:#fff}.xp-ra{appearance:none;border:0;background:transparent;font:500 13px var(--sans);color:var(--blue,#2F63B8);cursor:pointer;padding:0 6px}
+@media (max-width:720px){.xp-hbtn{top:64px;right:16px}}
+
 /* 体验中心（2026-10-14 第二版）：铺满工作区；晨蓝树影光 + 白玻璃输入框 + 模型快捷胶囊 + 模板卡；配色、字体沿用控制台 */
 .cs-p[data-p="play"]{padding:0!important}
 .xp{position:relative;isolation:isolate;min-height:100vh}
@@ -3207,6 +3232,8 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       </div>
       <div class="cs-p" data-p="play">
         <div class="xp" id="xp" data-mode="empty">
+          <button class="bt-btn xp-hbtn" type="button" id="xpHistB" aria-expanded="false" aria-controls="xpHist"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 10a6.5 6.5 0 1 0 2-4.7M3.5 3.5v3h3M10 6.5V10l2.5 1.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>历史对话</span></button>
+          <aside class="xp-hist" id="xpHist" aria-label="历史对话" hidden><div class="xp-hh"><b>历史对话</b><button class="xp-hx" type="button" id="xpHistX" aria-label="关闭">×</button></div><input class="in xp-hq" type="search" id="xpHQ" placeholder="搜索对话" aria-label="搜索对话" autocomplete="off" spellcheck="false"><div class="xp-hl" id="xpHL"></div><p class="xp-hn">对话记录只保存在你的账号里，可以随时删除。</p></aside>
           <div class="xp-bg" aria-hidden="true"><div class="bt-key-light"></div></div>
           <div class="xp-stage">
             <div class="xp-intro">
@@ -3239,6 +3266,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
             </form>
             <div class="code pre xp-code" id="xpCode" hidden><button class="cp" data-copy>复制</button><span id="xpCodeT"></span></div>
             <div class="xp-chips" id="xpChips" role="group" aria-label="快速选择模型"></div>
+            <div class="xp-recent" id="xpRecent" hidden></div>
             <div class="xp-tpl">
               <div class="xp-tabs" id="xpTabs" role="group" aria-label="模板分类"><button class="bt-chip on" type="button" data-c="全部" aria-pressed="true">全部</button><button class="bt-chip" type="button" data-c="写作" aria-pressed="false">写作</button><button class="bt-chip" type="button" data-c="编程" aria-pressed="false">编程</button><button class="bt-chip" type="button" data-c="翻译" aria-pressed="false">翻译</button><button class="bt-chip" type="button" data-c="分析" aria-pressed="false">分析</button><button class="bt-chip" type="button" data-c="客服" aria-pressed="false">客服</button></div>
               <div class="xp-cards" id="xpCards"></div>
@@ -5882,11 +5910,31 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     var bud=$('#supBud'); if(bud) bud.addEventListener('submit',function(e){e.preventDefault(); toast('预算提醒接入后即可生效。')});
   })();
 
+  (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"历史对话": "History", "搜索对话": "Search chats", "今天": "Today", "昨天": "Yesterday", "近 7 天": "Previous 7 days", "更早": "Earlier", "删除": "Delete", "确认删除": "Confirm delete", "删除这条对话": "Delete this chat", "已删除": "Deleted", "最近对话": "Recent", "全部 →": "All →", "关闭": "Close", "没有找到相关对话": "No matching chats", "对话记录只保存在你的账号里，可以随时删除。": "Chats are saved to your account only. You can delete them anytime.", "还没有历史对话。": "No chats yet.", "发送第一个问题后，对话会保存在这里。": "Your chats will be saved here after you send the first question."});  /* 体验中心历史对话英文 */
   /* ======== 体验中心（2026-10-14 第二版） ======== */
   (function(){
     var xp=$('#xp'); if(!xp) return;
     var TPL=[["写作", "写一篇产品发布稿", "为一款面向开发者的大模型 API 平台写一篇 300 字的产品发布稿，语气专业、简洁。", "glm-5-3", "sign"], ["写作", "把文案改得更口语", "把下面这段话改得更口语、更短，保留原意：\n", "glm-5-3-flash", "tag"], ["编程", "解释一段代码", "逐行解释下面这段代码在做什么，并指出可能的 bug：\n", "deepseek-v4-pro", "boxes"], ["编程", "写单元测试", "为下面这个函数写 pytest 单元测试，覆盖边界情况：\n", "deepseek-v4-flash", "key"], ["翻译", "中英互译，保留术语", "把下面的中文翻译成英文，专业术语前后一致，最后列出术语表：\n", "qwen3-8-flash", "book"], ["分析", "总结长文要点", "用 5 条要点总结下面这篇文章，每条不超过 30 字：\n", "minimax-m3", "book"], ["分析", "从数据里找规律", "下面是一组表格数据，找出 3 个最值得注意的变化，并解释可能的原因：\n", "glm-5-3", "solar"], ["客服", "写一段客服回复", "客户说充值后余额没到账。写一段礼貌、清楚的回复，说明怎么查和下一步：\n", "minimax-m2-7", "tag"]];
-    var sel=['glm-5-3-flash'], hist=[[]], box=$('#xpBox'), slot=0, cat='全部';
+    var sel=['glm-5-3-flash'], hist=[[]], box=$('#xpBox'), slot=0, cat='全部', curId=null;
+    /* 历史对话（2026-10-28）：原型按账号存在本机浏览器；正式版改为服务端接口，见 docs/backend/PLAYGROUND_HISTORY_2026-10-28.md */
+    function hkey(){var u=window.__me&&window.__me(); return 'fp-xp-convs:'+((u&&(u.email||u.phone))||'preview')}
+    function hload(){try{var v=JSON.parse(localStorage.getItem(hkey())||'[]'); return Array.isArray(v)?v:[]}catch(e){return []}}
+    function hsave(list){try{localStorage.setItem(hkey(),JSON.stringify(list.slice(0,100)))}catch(e){}}
+    function hcur(id){try{if(id)sessionStorage.setItem('fp-xp-cur',id);else sessionStorage.removeItem('fp-xp-cur')}catch(e){}}
+    function hsync(){if(!curId) return; var list=hload(), c=list.filter(function(x){return x.id===curId})[0]; if(!c) return; c.models=sel.slice(); c.hist=JSON.parse(JSON.stringify(hist)); c.up=Date.now(); list=[c].concat(list.filter(function(x){return x!==c})); hsave(list)}
+    function hwhen(t){var d=new Date(t), n=new Date(), p=function(v){return (v<10?'0':'')+v}, day=Math.floor((new Date(n.getFullYear(),n.getMonth(),n.getDate())-new Date(d.getFullYear(),d.getMonth(),d.getDate()))/864e5); return day===0?p(d.getHours())+':'+p(d.getMinutes()):(d.getMonth()+1)+'-'+p(d.getDate())}
+    function hgroup(t){var d=new Date(t), n=new Date(), day=Math.floor((new Date(n.getFullYear(),n.getMonth(),n.getDate())-new Date(d.getFullYear(),d.getMonth(),d.getDate()))/864e5); return day<=0?'今天':day===1?'昨天':day<7?'近 7 天':'更早'}
+    function hopen(id){var c=hload().filter(function(x){return x.id===id})[0]; if(!c) return false; sel=(c.models||[]).filter(function(m){return byId[m]}); if(!sel.length) sel=['glm-5-3-flash']; hist=sel.map(function(m,i){return (c.hist&&c.hist[i])||[]}); curId=c.id; hcur(c.id); xp.setAttribute('data-mode','chat'); pills(); cols(); chips(); code(); recent(); return true}
+    function hrender(){var q=($('#xpHQ').value||'').trim().toLowerCase(), list=hload().filter(function(c){return !q||(c.title+' '+JSON.stringify(c.hist||[])).toLowerCase().indexOf(q)>=0}), g='', out='';
+      list.forEach(function(c){var gg=hgroup(c.up||c.at); if(gg!==g){g=gg; out+='<div class="xp-hg">'+gg+'</div>'} out+='<div class="xp-hi'+(c.id===curId?' on':'')+'"><button class="xp-ho" type="button" data-open="'+c.id+'"><b>'+esc(c.title)+'</b><span>'+(c.models||[]).map(function(m){return esc(mm(m).name)}).join(' · ')+' · '+hwhen(c.up||c.at)+'</span></button><button class="xp-hd" type="button" data-del="'+c.id+'" aria-label="删除这条对话">删除</button></div>'});
+      $('#xpHL').innerHTML=out||'<p class="xp-he">'+(q?'没有找到相关对话':'还没有历史对话。<br>发送第一个问题后，对话会保存在这里。')+'</p>';
+      $$('#xpHL [data-open]').forEach(function(b){b.addEventListener('click',function(){hopen(b.getAttribute('data-open')); hclose()})});
+      $$('#xpHL [data-del]').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation(); if(!b.classList.contains('sure')){$$('#xpHL .xp-hd.sure').forEach(function(x){x.classList.remove('sure'); x.textContent='删除'}); b.classList.add('sure'); b.textContent='确认删除'; return}
+        var id=b.getAttribute('data-del'); hsave(hload().filter(function(x){return x.id!==id})); if(id===curId){curId=null; hcur(null); hist=sel.map(function(){return []}); xp.setAttribute('data-mode','empty'); cols()} hrender(); recent(); toast('已删除')})}) }
+    function hclose(){$('#xpHist').hidden=true; $('#xpHistB').setAttribute('aria-expanded','false')}
+    function recent(){var r=$('#xpRecent'), list=hload().slice(0,3); if(!list.length||xp.getAttribute('data-mode')==='chat'){r.hidden=true; r.innerHTML=''; return} r.hidden=false;
+      r.innerHTML='<span class="k">最近对话</span>'+list.map(function(c){return '<button class="xp-rc" type="button" data-open="'+c.id+'" title="'+esc(c.title)+'">'+esc(c.title)+'</button>'}).join('')+'<button class="xp-ra" type="button" data-all>全部 →</button>';
+      $$('#xpRecent [data-open]').forEach(function(b){b.addEventListener('click',function(){hopen(b.getAttribute('data-open'))})}); $('#xpRecent [data-all]').addEventListener('click',function(e){e.stopPropagation(); $('#xpHistB').click()}) }
     var CH='<svg class="ch" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     function mm(id){return byId[id]||M[0]}
     function reasoning(){return sel.some(function(id){return mm(id).type.indexOf('推理')>=0})}
@@ -5895,7 +5943,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       $('#xpPills').innerHTML=sel.map(function(id,i){var m=mm(id); return '<span class="xp-pill"><button type="button" data-slot="'+i+'" aria-haspopup="listbox" aria-label="更换模型 '+esc(m.name)+'">'+vlogo(m.vendor,16)+'<span>'+esc(m.name)+'</span>'+CH+'</button>'+(sel.length>1?'<button class="xp-x" type="button" data-rm="'+i+'" aria-label="移除这个模型">×</button>':'')+'</span>'}).join('');
       $('#xpAdd').hidden=sel.length>=3; $('#xpBudW').hidden=!reasoning();
       $$('#xpPills [data-slot]').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation(); var open=$('#xpMPop').hidden||slot!==+b.getAttribute('data-slot'); closePop(); if(!open) return; slot=+b.getAttribute('data-slot'); $('#xpMQ').value=''; mlist(); $('#xpMPop').hidden=false; $('#xpMQ').focus()})});
-      $$('#xpPills [data-rm]').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation(); var i=+b.getAttribute('data-rm'); sel.splice(i,1); hist.splice(i,1); pills(); cols(); chips(); code()})}) }
+      $$('#xpPills [data-rm]').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation(); var i=+b.getAttribute('data-rm'); sel.splice(i,1); hist.splice(i,1); pills(); cols(); chips(); code(); hsync()})}) }
     function mlist(){var q=($('#xpMQ').value||'').trim().toLowerCase();
       $('#xpML').innerHTML=M.filter(function(m){return !q||(m.name+' '+m.vendor+' '+m.type.join(' ')).toLowerCase().indexOf(q)>=0}).map(function(m){return '<button class="xp-mi" type="button" role="option" data-id="'+m.id+'" aria-selected="'+(sel[slot]===m.id)+'">'+vlogo(m.vendor,18)+'<b>'+esc(m.name)+'</b><span class="bt-tag g">'+m.type.join(' · ')+'</span><span class="m2">'+esc(m.vendor)+' · 上下文 '+m.ctx+' · 输出 ¥'+m.mkt.toFixed(2)+' / 百万词元</span></button>'}).join('')||'<p class="m2" style="padding:10px;color:var(--ink-50)">没有符合条件的模型</p>';
       $$('#xpML [data-id]').forEach(function(b){b.addEventListener('click',function(){sel[slot]=b.getAttribute('data-id'); closePop(); pills(); cols(); chips(); code(); $('#xpQ').focus()})}) }
@@ -5917,7 +5965,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     function code(){var m=mm(sel[0]), msgs=[], sys=$('#xpS').value.trim(); if(sys) msgs.push({role:'system',content:sys}); msgs.push({role:'user',content:$('#xpQ').value.trim()||'你好'});
       var body={model:m.name,messages:msgs,temperature:+$('#xpT').value,top_p:+$('#xpP').value,max_tokens:parseInt($('#xpN').value,10)||1024};
       $('#xpCodeT').innerHTML='<span class="g"># 对比时每个模型各发一次请求，只改 model</span>\ncurl <span class="s">https://api.fathompeak.cn/v1/chat/completions</span> \\\n  -H <span class="s">"Authorization: Bearer $API_KEY"</span> \\\n  -H <span class="s">"Content-Type: application/json"</span> \\\n  -d <span class="s">\''+esc(JSON.stringify(body))+'\'</span>'}
-    $('#xpAdd').addEventListener('click',function(){var next=M.filter(function(x){return sel.indexOf(x.id)<0})[0]; if(!next) return; sel.push(next.id); hist.push((hist[0]||[]).filter(function(r){return r.u}).map(function(r){return {u:1,t:r.t}})); pills(); cols(); code()});
+    $('#xpAdd').addEventListener('click',function(){var next=M.filter(function(x){return sel.indexOf(x.id)<0})[0]; if(!next) return; sel.push(next.id); hist.push((hist[0]||[]).filter(function(r){return r.u}).map(function(r){return {u:1,t:r.t}})); pills(); cols(); code(); hsync()});
     $('#xpParB').addEventListener('click',function(e){e.stopPropagation(); var open=$('#xpPar').hidden; closePop(); $('#xpPar').hidden=!open; this.setAttribute('aria-expanded',String(open))});
     $('#xpT').addEventListener('input',function(){$('#xpTv').textContent=(+this.value).toFixed(1); code()});
     $('#xpP').addEventListener('input',function(){$('#xpPv').textContent=String(+(+this.value).toFixed(2)); code()});
@@ -5933,11 +5981,19 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
         var t='体验中心尚未开通。开通后这里显示 '+m.name+' 的回答，以及首字时延、速度、词元、费用和电站产地。';
         if(!true&&/deepseek/i.test(m.id)){var h=bj().getHours(); t+='\n现在按'+((h>=22||h<8)?'闲时':'忙时')+'价计费。'}
         hist[i].push({u:0,t:t})});
-      $('#xpQ').value=''; cols(); code()});
+      if(!curId){var list=hload(); curId='c'+Date.now().toString(36); list.unshift({id:curId,title:q.replace(/\s+/g,' ').slice(0,30),at:Date.now(),up:Date.now(),models:sel.slice(),hist:[]}); hsave(list); hcur(curId)}
+      hsync(); $('#xpQ').value=''; cols(); code(); recent()});
     $('#xpQ').addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault(); box.requestSubmit()}});
-    $('#xpNew').addEventListener('click',function(){hist=sel.map(function(){return []}); xp.setAttribute('data-mode','empty'); cols(); $('#xpQ').focus()});
-    window.supPlaySet=function(id){if(!byId[id]) return; sel=[id]; hist=[[]]; xp.setAttribute('data-mode','empty'); pills(); cols(); chips(); code()};
+    $('#xpNew').addEventListener('click',function(){hist=sel.map(function(){return []}); curId=null; hcur(null); xp.setAttribute('data-mode','empty'); cols(); recent(); $('#xpQ').focus()});
+    $('#xpHistB').addEventListener('click',function(e){e.stopPropagation(); var open=$('#xpHist').hidden; if(!open){hclose(); return} $('#xpHQ').value=''; hrender(); $('#xpHist').hidden=false; this.setAttribute('aria-expanded','true'); $('#xpHQ').focus()});
+    $('#xpHistX').addEventListener('click',hclose); $('#xpHQ').addEventListener('input',hrender);
+    $('#xpHist').addEventListener('click',function(e){e.stopPropagation()});
+    document.addEventListener('click',function(){if(!$('#xpHist').hidden) hclose()});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!$('#xpHist').hidden){hclose(); $('#xpHistB').focus()}});
+    window.supPlaySet=function(id){if(!byId[id]) return; sel=[id]; hist=[[]]; curId=null; hcur(null); xp.setAttribute('data-mode','empty'); pills(); cols(); chips(); code(); recent()};
+    window.__xpRecent=recent;
     pills(); chips(); cards(); code();
+    (function(){var id=null; try{id=sessionStorage.getItem('fp-xp-cur')}catch(e){} if(!(id&&hopen(id))) recent()})();
   })();
 
   /* ======== 登录：个人 / 企业两个入口（2026-10-14） ======== */
