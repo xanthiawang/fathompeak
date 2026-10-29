@@ -2806,7 +2806,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     <div class="pb-in"><span class="pb-meta">产品与服务 · 模型目录更新于 2026-10-13</span><h1 class="display">模型服务与<br>算电协同产品</h1><p>模型调用选 Token 交易平台；资源调度选模型基座；本地部署选 FPTM 一体机。电站与能源企业看解决方案。</p></div></div>
   <div class="wrap">
   <div class="pl">
-    <nav class="pidx" aria-label="产品目录"><div class="g"><span class="y">总览</span><a href="#models" data-scrollto="p-flow">三款产品如何协同</a></div><div class="g"><span class="y">产品</span><a href="#models" data-scrollto="p-api"><em>01</em>绿色 Token 交易平台</a><a href="#models" data-scrollto="p-market" class="s">模型市场</a><a href="#models" data-scrollto="pricingSec" class="s">节点定价</a><a href="#models" data-scrollto="p-base"><em>02</em>算电协同世界模型基座</a><a href="#models" data-scrollto="p-box"><em>03</em>FPTM 系列 Token 一体机</a></div><div class="g"><span class="y">解决方案</span><a href="#models" data-scrollto="p-coop"><em>04</em>电站与能源企业解决方案</a></div></nav>
+    <nav class="pidx" aria-label="产品目录"><div class="g"><span class="y">总览</span><a href="#models" data-scrollto="p-flow">三款产品如何协同</a></div><div class="g"><span class="y">产品</span><a href="#models" data-scrollto="p-api"><em>01</em>绿色 Token 交易平台</a><a href="#models" data-scrollto="p-market" class="s">模型市场</a><a href="#models" data-scrollto="pricingSec" class="s">电站价格</a><a href="#models" data-scrollto="p-base"><em>02</em>算电协同世界模型基座</a><a href="#models" data-scrollto="p-box"><em>03</em>FPTM 系列 Token 一体机</a></div><div class="g"><span class="y">解决方案</span><a href="#models" data-scrollto="p-coop"><em>04</em>电站与能源企业解决方案</a></div></nav>
     <div class="pmain">
 
       <article class="pe" id="p-flow">
@@ -2846,9 +2846,9 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       </article>
 
       <article class="pe sub" id="pricingSec">
-        <span class="pe-d">01 · 绿色 Token 交易平台 · 电站节点</span>
-        <h2 class="pe-t">节点定价</h2>
-        <p class="pe-lead">结合节点资源、电力供给与任务要求评估成本。</p>
+        <span class="pe-d">01 · 绿色 Token 交易平台 · 按电站计价</span>
+        <h2 class="pe-t">电站价格</h2>
+        <p class="pe-lead">价格按电站的电价系数与时段估算，选一座电站即可查看。</p>
         <div class="two pe-price"><div class="idx" id="priceIdx"></div><div id="priceBody"></div></div>
       </article>
 
@@ -4497,7 +4497,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
 <footer>
   <div class="cols">
     <div class="co"><a class="f-logo" href="#home" aria-label="沐仞科技 FathomPeak 首页"><img src="art/brand/fathompeak-primary_v31.svg" width="180" height="97" alt="沐仞科技 FATHOMPEAK"></a><span class="k">联系我们</span><div class="ct"><div><span>业务咨询</span><a href="mailto:fathompeak@163.com">fathompeak@163.com</a></div><div><span>公司地址</span>北京市海淀区清河中街 66 号院 1 号楼</div></div><div class="social" id="footSocial"></div></div>
-    <div><span class="k">产品</span><a href="#models" data-product-target="p-api">绿色 Token 交易平台</a><a href="#models" data-product-target="p-base">算电协同世界模型基座</a><a href="#models" data-product-target="p-box">FPTM 系列 Token 一体机</a><a href="#network">电站与能源企业解决方案</a><a href="#pricing">节点定价</a><a href="#api">文档</a></div>
+    <div><span class="k">产品</span><a href="#models" data-product-target="p-api">绿色 Token 交易平台</a><a href="#models" data-product-target="p-base">算电协同世界模型基座</a><a href="#models" data-product-target="p-box">FPTM 系列 Token 一体机</a><a href="#network">电站与能源企业解决方案</a><a href="#pricing">电站价格</a><a href="#api">文档</a></div>
     <div><span class="k">资源</span><a href="#pricing">定价</a><a href="#edu">教育优惠</a><a href="#guides">指南</a><a href="#api">接口参考</a><a href="#network">电站网络</a><a href="#news">新闻动态</a></div>
     <div><span class="k">公司</span><a href="#about">关于沐仞</a><a href="#news">新闻动态</a><a href="#compliance">合规与安全</a><a href="#about" data-scrollto="careers">加入我们</a><a href="mailto:fathompeak@163.com">联系我们</a><a href="#terms">用户协议</a><a href="#privacy">隐私政策</a></div>
   </div>
@@ -4977,7 +4977,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
   /* ---------- 价格 ---------- */
   var priceSel=0;
   function winState(w){ if(!w) return {txt:'今日无平价窗口',in:false}; if(w==='全天') return {txt:'全天平价',in:true}; var p=w.split('–'); var now=new Date(); var cur=now.getHours()*60+now.getMinutes(); var a=p[0].split(':'), b=p[1].split(':'); var s=+a[0]*60+ +a[1], e=+b[0]*60+ +b[1]; var inside = s<e ? (cur>=s&&cur<e) : (cur>=s||cur<e); if(inside){ var left=(e-cur+1440)%1440; return {txt:'平价窗口 '+w+' · 还有 '+Math.floor(left/60)+'h '+(left%60)+'m',in:true} } var until=(s-cur+1440)%1440; return {txt:'下一个窗口 '+w+' · '+Math.floor(until/60)+'h '+(until%60)+'m 后开始',in:false} }
-  function renderPricing(){ $('#priceIdx').innerHTML='<div class="y">电站节点</div>'+N.map(function(x,i){return '<button data-p="'+i+'"'+(i===priceSel?' class="on"':'')+'>'+x.n.replace('电站','')+'</button>'}).join('');
+  function renderPricing(){ $('#priceIdx').innerHTML='<div class="y">电站</div>'+N.map(function(x,i){return '<button data-p="'+i+'"'+(i===priceSel?' class="on"':'')+'>'+x.n.replace('电站','')+'</button>'}).join('');
     var x=N[priceSel];
     $('#priceBody').innerHTML='<h2 class="serif" style="font-size:24px;margin-bottom:10px">'+x.n+' <span class="k">'+x.t+'</span></h2><div class="tbl"><table class="ptable"><tr><th>评分</th><th>标签</th><th>电价系数</th></tr><tr><td class="mono">'+x.rate.toFixed(1)+'</td><td>'+x.tags.join(' · ')+'</td><td class="mono">'+x.coef+'</td></tr></table></div><div class="winbar"><span class="pk"><b></b>价格按订单时段计算</span><a class="btn black sm" href="#start">查看接入流程</a></div>';
     $$('#priceIdx button').forEach(function(b){b.addEventListener('click',function(){priceSel=+b.getAttribute('data-p');renderPricing()})}); bindToast(); }
@@ -6126,6 +6126,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     rows.forEach(function(r,k){r.addEventListener('mouseenter',function(){on(k)})});
     var sc=document.createElement('script');sc.src='ov-anim.js?v=20261029';sc.defer=true;document.body.appendChild(sc);})();
   (function(S){for(var k in S) I18N[k]=S[k]})({"平台接单，模型基座调度，一体机生产，电站供电。": "The platform takes orders, the model foundation schedules, the appliances produce, the plants supply power.", "按身份找方案": "Find your solution"});  /* 总览副句 */
+  (function(S){for(var k in S) if(!(k in I18N)||k!=="电站") I18N[k]=S[k]})({"电站价格": "Plant pricing", "01 · 绿色 Token 交易平台 · 按电站计价": "01 · Green Token Trading Platform · priced by plant", "价格按电站的电价系数与时段估算，选一座电站即可查看。": "Prices are estimated from each plant’s power price factor and time window; pick a plant to see it.", "电站": "Plants"});  /* 节点定价→电站价格 */
   syncAuthLocale(); applyLang();
 
   /* ---------- 接口参考（#api，2026-10-14）：内容取自沐仞模型平台的 OpenAPI 文档（/openapi/ai-model.json），
