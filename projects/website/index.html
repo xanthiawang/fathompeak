@@ -2067,19 +2067,24 @@ footer .co .f-logo img{width:180px;height:auto;display:block}
 @media (max-width:560px){[data-route="enterprise"] .val4{grid-template-columns:1fr;gap:20px}}
 </style>
 <style id="product-overview-20261029">
-#p-flow .ov{display:grid;grid-template-columns:minmax(0,1fr) 72px minmax(0,1fr) 72px minmax(0,1fr);align-items:stretch;margin-top:28px}
-#p-flow .ov-c{display:grid;gap:10px;align-content:start;padding:22px;border-radius:12px;background:var(--card);border:1px solid var(--line)}
-#p-flow .ov-n{font:500 12px var(--sans);letter-spacing:.03em;color:var(--ink-50)}
-#p-flow .ov-c b{font:400 21px/1.3 var(--serif);color:var(--ink)}
-#p-flow .ov-c p{margin:0;font-size:14px;line-height:1.65;color:var(--ink-70)}
-#p-flow .ov-who{display:flex;flex-wrap:wrap;gap:2px 8px;margin-top:4px;font-size:13px;color:var(--ink-50)}#p-flow .ov-who a{color:var(--ink);white-space:nowrap}
-#p-flow .ov-a{display:grid;place-content:center;justify-items:center;gap:4px;color:var(--ink-50);font-size:12px}
-#p-flow .ov-a svg{width:44px;height:12px}
-#p-flow .ov-back{grid-column:1/-1;position:relative;margin:14px 0 0;padding-top:14px;border-top:1px dashed var(--line);text-align:center;font-size:12.5px;color:var(--ink-50)}
-#p-flow .ov-back span::before{content:"← ";}
-#p-flow .ov-sol{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 24px;margin-top:26px;font-size:14px}
-#p-flow .ov-sol span{color:var(--ink-50)}
-@media (max-width:900px){#p-flow .ov{grid-template-columns:1fr}#p-flow .ov-a{grid-auto-flow:column;padding:10px 0}#p-flow .ov-a svg{transform:rotate(90deg);width:28px}}
+#p-flow .ov2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;margin-top:30px}
+#p-flow .ov-art{position:relative;min-height:360px;border-radius:24px;background:radial-gradient(55% 50% at 45% 40%,rgba(82,132,215,.13),rgba(82,132,215,0) 70%),radial-gradient(45% 40% at 65% 85%,rgba(169,140,200,.12),rgba(169,140,200,0) 70%)}
+#p-flow .ov-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform:scale(1.14)}
+/* 四行对齐插画的四层：上留 .32 份、下留 .08 份，层中心约在 20%/42%/63%/85% */
+#p-flow .ov-rows{display:grid;grid-template-rows:.32fr repeat(4,1fr) .08fr}
+#p-flow .ov-r{position:relative;align-self:center;display:grid;gap:3px;padding:10px 0 10px 56px}
+#p-flow .ov-r:nth-child(1){grid-row:2}#p-flow .ov-r:nth-child(2){grid-row:3}#p-flow .ov-r:nth-child(3){grid-row:4}#p-flow .ov-r:nth-child(4){grid-row:5}
+#p-flow .ov-r::before{content:"";position:absolute;left:0;top:50%;width:44px;border-top:1px dashed rgba(47,99,184,.45)}
+#p-flow .ov-r::after{content:"";position:absolute;left:-3px;top:calc(50% - 3px);width:6px;height:6px;border-radius:50%;background:#2F63B8}
+#p-flow .ov-t{font:500 11.5px var(--sans);letter-spacing:.06em;color:#2F63B8}
+#p-flow .ov-r b{font:400 21px/1.3 var(--serif);color:var(--ink)}
+#p-flow .ov-r p{margin:0;font-size:14px;line-height:1.6;color:var(--ink-70)}
+#p-flow .ov-who{display:flex;flex-wrap:wrap;gap:2px 10px;font-size:13px;color:var(--ink-50)}
+#p-flow .ov-who a{color:var(--ink);white-space:nowrap}
+#p-flow .ov-sol{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin-top:22px;font-size:14px}
+#p-flow .ov-sol span{color:var(--ink-50);margin-right:6px}
+#p-flow .ov-sol .btn{white-space:normal;text-align:center;max-width:100%}
+@media (max-width:900px){#p-flow .ov2{grid-template-columns:1fr}#p-flow .ov-art{min-height:0;aspect-ratio:1;max-width:360px;width:100%;margin:0 auto}#p-flow .ov-rows{grid-template-rows:none;gap:14px}#p-flow .ov-r{grid-row:auto!important;padding:0 0 0 18px}#p-flow .ov-r::before{display:none}#p-flow .ov-r::after{left:0;top:6px}}
 </style>
 </head>
 <body>
@@ -2798,16 +2803,12 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       <article class="pe" id="p-flow">
         <span class="pe-d">总览 · 三款产品如何协同</span>
         <h2 class="pe-t">一笔订单，经过三款产品</h2>
-        <p class="pe-lead">平台是前店，一体机是后厂，世界模型基座在中间调度。</p>
-        <div class="ov">
-          <div class="ov-c"><span class="ov-n">01 · 前店 · 接单与交付</span><b>绿色 Token 交易平台</b><p>客户通过统一 API 下单，平台按 Token 计费，交付结果并附产地卡。</p><span class="ov-who"><span>开发者与企业</span><a class="ul" href="#models" data-scrollto="p-api">按量购买 →</a></span></div>
-          <div class="ov-a"><span>订单</span><svg viewBox="0 0 48 12" aria-hidden="true"><path d="M0 6h44M38 1l6 5-6 5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></div>
-          <div class="ov-c"><span class="ov-n">02 · 中枢 · 调度</span><b>算电协同世界模型基座</b><p>世界模型先推演电价、出力与订单，再决定任务在哪个电站、什么时段运行。</p><span class="ov-who"><span>电站与能源企业</span><a class="ul" href="#models" data-scrollto="p-base">私有化部署 →</a></span></div>
-          <div class="ov-a"><span>调度指令</span><svg viewBox="0 0 48 12" aria-hidden="true"><path d="M0 6h44M38 1l6 5-6 5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></div>
-          <div class="ov-c"><span class="ov-n">03 · 后厂 · 生产</span><b>FPTM 系列 Token 一体机</b><p>部署在光伏、风电、水电场站旁，用富余绿电运行模型、生产 Token。</p><span class="ov-who"><span>资产方与机构</span><a class="ul" href="#models" data-scrollto="p-box">采购或合作运营 →</a></span></div>
-          <div class="ov-back"><span>Token 与产地卡回到平台，交付客户</span></div>
+        <p class="pe-lead">订单自上而下，Token 与产地卡自下而上交付客户。</p>
+        <div class="ov2">
+          <div class="ov-art"><img src="art/engineering-stack_2026-10-14.png" width="1254" height="1254" alt="四层等轴测插画：接入、调度、计算、电力" loading="lazy" decoding="async"></div>
+          <div class="ov-rows"><div class="ov-r"><span class="ov-t">接入层</span><b>绿色 Token 交易平台</b><p>客户下单、按 Token 计费、交付结果与产地卡。</p><span class="ov-who"><span>开发者与企业</span><a class="ul" href="#models" data-scrollto="p-api">按量购买 →</a></span></div><div class="ov-r"><span class="ov-t">调度层</span><b>算电协同世界模型基座</b><p>推演电价、出力与订单，决定电站与时段。</p><span class="ov-who"><span>电站与能源企业</span><a class="ul" href="#models" data-scrollto="p-base">私有化部署 →</a></span></div><div class="ov-r"><span class="ov-t">计算层</span><b>FPTM 系列 Token 一体机</b><p>在电站旁运行模型，把绿电变成 Token。</p><span class="ov-who"><span>资产方与机构</span><a class="ul" href="#models" data-scrollto="p-box">采购或合作运营 →</a></span></div><div class="ov-r"><span class="ov-t">电力层</span><b>光伏、风电、水电场站</b><p>富余绿电就地供给一体机。</p><span class="ov-who"><span>电站与能源企业</span><a class="ul" href="#network">四种合作方式 →</a></span></div></div>
         </div>
-        <div class="ov-sol"><span>按你的身份找方案</span><a class="ul" href="#enterprise">企业订购与海外服务 →</a><a class="ul" href="#network">电站与能源企业解决方案 →</a></div>
+        <div class="ov-sol"><span>按你的身份找方案</span><a class="btn gray" href="#enterprise">企业订购与海外服务</a><a class="btn gray" href="#network">电站与能源企业解决方案</a></div>
       </article>
 
       <article class="pe" id="p-api">
@@ -6119,6 +6120,8 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
   (function(S){for(var k in S) I18N[k]=S[k]})({"一笔订单，经过三款产品": "One order, three products", "平台是前店，一体机是后厂，中间由世界模型基座决定任务在哪个电站、什么时段运行。": "The platform is the storefront and the appliance is the factory; in between, the world model foundation decides which plant runs each task and when.", "01 · 前店 · 接单与交付": "01 · Storefront · orders and delivery", "客户通过统一 API 下单，平台按 Token 计费，交付结果并附产地卡。": "Customers order through one API; the platform bills by Token and delivers results with an origin card.", "开发者与企业：按量购买 Token →": "Developers and enterprises: buy Tokens by usage →", "订单": "Orders", "02 · 中枢 · 调度": "02 · Hub · scheduling", "世界模型先推演电价、出力与订单，再决定任务在哪个电站、什么时段运行。": "The world model first forecasts prices, output and orders, then decides which plant runs each task and when.", "电站与能源企业：私有化部署 →": "Plants and energy companies: private deployment →", "调度指令": "Dispatch", "03 · 后厂 · 生产": "03 · Factory · production", "部署在光伏、风电、水电场站旁，用富余绿电运行模型、生产 Token。": "Installed beside solar, wind and hydro plants, running models on surplus green power to produce Tokens.", "资产方与机构：采购或合作运营 →": "Asset owners and institutions: buy or co-operate →", "Token 与产地卡回到平台，交付客户": "Tokens and origin cards return through the platform to the customer", "按你的身份找方案": "Find your solution", "企业订购与海外服务 →": "Enterprise orders and overseas services →", "电站与能源企业解决方案 →": "Solutions for plants and energy companies →", "三款产品如何协同": "How the three products work together"});  /* 产品页总览重做 */
   (function(S){for(var k in S) I18N[k]=S[k]})({"平台是前店，一体机是后厂，世界模型基座在中间调度。": "The platform is the storefront, the appliance is the factory, and the world model foundation schedules in between.", "开发者与企业 · ": "Developers and enterprises · ", "按量购买 →": "Buy by usage →", "电站与能源企业 · ": "Plants and energy companies · ", "私有化部署 →": "Private deployment →", "资产方与机构 · ": "Asset owners and institutions · ", "采购或合作运营 →": "Buy or co-operate →"});  /* 总览链接一行 */
   (function(S){for(var k in S) I18N[k]=S[k]})({"开发者与企业": "Developers and enterprises", "电站与能源企业": "Plants and energy companies", "资产方与机构": "Asset owners and institutions"});  /* 总览受众标签 */
+  (function(S){for(var k in S) I18N[k]=S[k]})({"订单自上而下，Token 与产地卡自下而上交付客户。": "Orders flow down; Tokens and origin cards flow back up to the customer.", "接入层": "Access", "调度层": "Scheduling", "计算层": "Compute", "电力层": "Power", "客户下单、按 Token 计费、交付结果与产地卡。": "Customers order, pay by Token, and receive results with an origin card.", "推演电价、出力与订单，决定电站与时段。": "Forecasts prices, output and orders, then picks the plant and time window.", "在电站旁运行模型，把绿电变成 Token。": "Runs models beside the plant, turning green power into Tokens.", "光伏、风电、水电场站": "Solar, wind and hydro plants", "富余绿电就地供给一体机。": "Surplus green power feeds the appliances on site.", "按量购买": "Buy by usage", "私有化部署": "Private deployment", "采购或合作运营": "Buy or co-operate", "四种合作方式": "Four ways to partner", "企业订购与海外服务": "Enterprise orders and overseas services", "四层等轴测插画：接入、调度、计算、电力": "Four-layer isometric illustration: access, scheduling, compute, power"});  /* 总览改为分层插画 */
+  (function(S){for(var k in S) I18N[k]=S[k]})({"四种合作方式 →": "Four ways to partner →", "按量购买 →": "Buy by usage →", "私有化部署 →": "Private deployment →", "采购或合作运营 →": "Buy or co-operate →"});  /* 总览链接英文 */
   syncAuthLocale(); applyLang();
 
   /* ---------- 接口参考（#api，2026-10-14）：内容取自沐仞模型平台的 OpenAPI 文档（/openapi/ai-model.json），
