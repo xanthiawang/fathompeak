@@ -2069,7 +2069,9 @@ footer .co .f-logo img{width:180px;height:auto;display:block}
 <style id="product-overview-20261029">
 #p-flow .ov2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;margin-top:30px}
 #p-flow .ov-art{position:relative;min-height:360px;border-radius:24px;background:radial-gradient(55% 50% at 45% 40%,rgba(82,132,215,.13),rgba(82,132,215,0) 70%),radial-gradient(45% 40% at 65% 85%,rgba(169,140,200,.12),rgba(169,140,200,0) 70%)}
-#p-flow .ov-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform:scale(1.14)}
+#p-flow .ov-art .ov-anim{position:absolute;inset:0;width:100%;height:100%;max-width:none;aspect-ratio:auto;transform:scale(1.14)}
+#p-flow .ov-r b,#p-flow .ov-t{transition:color .5s}#p-flow .ov-r::after{transition:transform .5s,box-shadow .5s}
+#p-flow .ov-r.on b{color:#2F63B8}#p-flow .ov-r.on::after{transform:scale(1.6);box-shadow:0 0 0 4px rgba(82,132,215,.18)}
 /* 四行对齐插画的四层：上留 .32 份、下留 .08 份，层中心约在 20%/42%/63%/85% */
 #p-flow .ov-rows{display:grid;grid-template-rows:.32fr repeat(4,1fr) .08fr}
 #p-flow .ov-r{position:relative;align-self:center;display:grid;gap:3px;padding:10px 0 10px 56px}
@@ -2093,6 +2095,7 @@ footer .co .f-logo img{width:180px;height:auto;display:block}
 #home2 .oa-cap{display:flex;gap:10px;align-items:baseline;justify-content:center;font-size:12.5px;color:var(--ink-50)}
 #home2 .oa-cap b{font-weight:500;color:#5b6b3a}
 </style>
+<link rel="stylesheet" href="ov-anim.css?v=20261029">
 </head>
 <body>
 
@@ -2811,7 +2814,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
         <h2 class="pe-t">一笔订单，经过三款产品</h2>
         <p class="pe-lead">订单自上而下，Token 与产地卡自下而上交付客户。</p>
         <div class="ov2">
-          <div class="ov-art"><img src="art/engineering-stack_2026-10-14.png" width="1254" height="1254" alt="四层等轴测插画：接入、调度、计算、电力" loading="lazy" decoding="async"></div>
+          <div class="ov-art"><div class="ov-anim" data-layer="0" data-assets="art/overview/" role="img" aria-label="四层等轴测插画：接入、调度、计算、电力"><img class="ov-original" src="art/engineering-stack_2026-10-14.png" width="1254" height="1254" alt="" loading="lazy" decoding="async"></div></div>
           <div class="ov-rows"><div class="ov-r"><span class="ov-t">接入层</span><b>绿色 Token 交易平台</b><p>客户下单、按 Token 计费、交付结果与产地卡。</p><span class="ov-who"><span>开发者与企业</span><a class="ul" href="#models" data-scrollto="p-api">按量购买 →</a></span></div><div class="ov-r"><span class="ov-t">调度层</span><b>算电协同世界模型基座</b><p>推演电价、出力与订单，决定电站与时段。</p><span class="ov-who"><span>电站与能源企业</span><a class="ul" href="#models" data-scrollto="p-base">私有化部署 →</a></span></div><div class="ov-r"><span class="ov-t">计算层</span><b>FPTM 系列 Token 一体机</b><p>在电站旁运行模型，把绿电变成 Token。</p><span class="ov-who"><span>资产方与机构</span><a class="ul" href="#models" data-scrollto="p-box">采购或合作运营 →</a></span></div><div class="ov-r"><span class="ov-t">电力层</span><b>光伏、风电、水电场站</b><p>富余绿电就地供给一体机。</p><span class="ov-who"><span>电站与能源企业</span><a class="ul" href="#network">四种合作方式 →</a></span></div></div>
         </div>
         <div class="ov-sol"><span>按你的身份找方案</span><a class="btn gray" href="#enterprise">企业订购与海外服务</a><a class="btn gray" href="#network">电站与能源企业解决方案</a></div>
@@ -6116,6 +6119,12 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
   (function(S){for(var k in S) I18N[k]=S[k]})({"Token 出海业务资质": "Token export licence"});  /* 关于页出海运营 */
   (function(S){for(var k in S) I18N[k]=S[k]})({"企业订购、海外服务与电站合作，欢迎来信。": "For enterprise orders, overseas services and power plant partnerships, we’d love to hear from you.", "欢迎留下场站信息，我们一起评估合作方式。": "Leave your site details and we’ll work out the best fit together."});  /* 联系语气 */
   (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"用得越多，你的绿洲越绿：每消费 1,000 元长出一棵树，每消费 100 元再送 100 万 Token。": "The more you use, the greener your oasis: a tree grows for every ¥1,000 spent, plus 1M free Tokens for every ¥100.", "绿洲": "Oasis", "每一次调用，都在荒漠里种下一点绿。": "Every call plants a little green in the desert."});  /* 首页绿洲 */
+  /* 产品页总览动画：四层轮流点亮，右侧对应行同步高亮 */
+  (function(){var a=document.querySelector('#p-flow .ov-anim');if(!a)return;var rows=[].slice.call(document.querySelectorAll('#p-flow .ov-r'));
+    function on(i){rows.forEach(function(r,k){r.classList.toggle('on',k===i)})}
+    a.addEventListener('ovlayer',function(e){on(e.detail.layer)});on(0);
+    rows.forEach(function(r,k){r.addEventListener('mouseenter',function(){on(k)})});
+    var sc=document.createElement('script');sc.src='ov-anim.js?v=20261029';sc.defer=true;document.body.appendChild(sc);})();
   syncAuthLocale(); applyLang();
 
   /* ---------- 接口参考（#api，2026-10-14）：内容取自沐仞模型平台的 OpenAPI 文档（/openapi/ai-model.json），
