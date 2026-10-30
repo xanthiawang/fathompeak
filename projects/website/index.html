@@ -6536,7 +6536,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
   if(!reduce&&T.length) setInterval(function(){ti=(ti+1)%T.length; var rows=tk.children; tk.removeChild(rows[rows.length-1]); tk.insertAdjacentHTML('afterbegin',row(T[ti])); tx(tk.firstElementChild)},2600);
 
   /* 伙伴滚动带 */
-  var LOGOH={"stategrid":29,"tianjin-energy":21,"starcharge":23,"boe":31,"cgn":22,"shenzhen-gas":28,"ascend-cann":21,"nvidia-inception":28,"soul":29}; /* 2026-10-30 去白底、裁边后按长宽比统一视觉大小 */
+  var LOGOH={}; /* 2026-10-30 去白底、裁边；Zixin 定全部统一 26px 高 */
   var mh=LOGOS.map(function(n){return n.indexOf('t:')===0?'<span class="mq-t">'+n.slice(2)+'</span>':'<img src="art/logos/'+n+'.png?v=20261030" alt="" style="height:'+(LOGOH[n]||26)+'px">'}).join(''); $('#marq').innerHTML=mh+mh;
 
   /* 怎么用：滚动切换步骤与面板 */
