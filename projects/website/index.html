@@ -1963,7 +1963,7 @@ footer .social .qr-cap,.fab-p .fab-qr .qr-cap{font:400 13px var(--sans);color:va
 /* 首页文案与合作方（2026-10-28）。站点主样式在 body 里、晚于本段，选择器加 #home2 前缀 */
 #home2 .sub b{font-weight:600;color:inherit}
 #home2 .marq .mq-t{display:block;height:26px;line-height:26px;font:500 18px/26px var(--serif);letter-spacing:.06em;color:var(--ink);opacity:.62;white-space:nowrap}
-#home2 .marq-note{margin:-10px 0 0;padding:0 clamp(16px,4vw,48px) 8px;text-align:right;font:400 11px/1.4 var(--sans);letter-spacing:.08em;color:var(--ink);opacity:.32;pointer-events:none}
+#home2 .marq-note{margin:10px 0 0;padding:0 clamp(16px,4vw,48px) 8px;text-align:right;font:400 11px/1.4 var(--sans);letter-spacing:.08em;color:var(--ink);opacity:.32;pointer-events:none}
 #home2 .lane .ng-l{position:absolute;top:0;bottom:0;display:flex;align-items:center;font-size:12px;font-weight:500;color:var(--blue-2);white-space:nowrap}
 #home2 .cap-src{margin-top:12px;text-align:right}
 #home2 .cap-src summary{display:inline-block;list-style:none;cursor:pointer;font-size:12px;color:var(--ink-50);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
@@ -6535,7 +6535,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
   if(!reduce&&T.length) setInterval(function(){ti=(ti+1)%T.length; var rows=tk.children; tk.removeChild(rows[rows.length-1]); tk.insertAdjacentHTML('afterbegin',row(T[ti])); tx(tk.firstElementChild)},2600);
 
   /* 伙伴滚动带 */
-  var LOGOH={"stategrid":29,"tianjin-energy":21,"starcharge":23,"boe":31,"cgn":22,"shenzhen-gas":28,"ascend-cann":21,"nvidia-inception":31,"soul":29}; /* 2026-10-30 去白底、裁边后按长宽比统一视觉大小 */
+  var LOGOH={"stategrid":29,"tianjin-energy":21,"starcharge":23,"boe":31,"cgn":22,"shenzhen-gas":28,"ascend-cann":21,"nvidia-inception":28,"soul":29}; /* 2026-10-30 去白底、裁边后按长宽比统一视觉大小 */
   var mh=LOGOS.map(function(n){return n.indexOf('t:')===0?'<span class="mq-t">'+n.slice(2)+'</span>':'<img src="art/logos/'+n+'.png?v=20261030" alt="" style="height:'+(LOGOH[n]||26)+'px">'}).join(''); $('#marq').innerHTML=mh+mh;
 
   /* 怎么用：滚动切换步骤与面板 */
