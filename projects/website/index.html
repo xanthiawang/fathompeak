@@ -887,7 +887,7 @@ html.in-console body{background:#F8F8F8}
 #home2 .hero .ctas .s{font-size:13px;color:var(--ink-50)}
 #home2 .curve{position:absolute;left:-10%;width:120%;bottom:0;height:200px;background:var(--paper);border-radius:50% 50% 0 0/100% 100% 0 0;z-index:2}
 #home2 .marq{overflow:hidden;padding:18px 0;border-top:1px solid var(--line);-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
-#home2 .marq .tr{display:flex;gap:64px;width:max-content;animation:mq 38s linear infinite}
+#home2 .marq .tr{display:flex;align-items:center;gap:64px;width:max-content;animation:mq 38s linear infinite}
 #home2 .marq:hover .tr{animation-play-state:paused}
 #home2 .marq img{height:26px;filter:grayscale(1) contrast(1.1);opacity:.7;transition:opacity .2s,filter .2s}
 #home2 .marq img:hover{opacity:1;filter:none}
@@ -6535,7 +6535,8 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
   if(!reduce&&T.length) setInterval(function(){ti=(ti+1)%T.length; var rows=tk.children; tk.removeChild(rows[rows.length-1]); tk.insertAdjacentHTML('afterbegin',row(T[ti])); tx(tk.firstElementChild)},2600);
 
   /* 伙伴滚动带 */
-  var mh=LOGOS.map(function(n){return n.indexOf('t:')===0?'<span class="mq-t">'+n.slice(2)+'</span>':'<img src="art/logos/'+n+'.png" alt="">'}).join(''); $('#marq').innerHTML=mh+mh;
+  var LOGOH={"stategrid":29,"tianjin-energy":21,"starcharge":23,"boe":31,"cgn":22,"shenzhen-gas":28,"ascend-cann":21,"nvidia-inception":31,"soul":29}; /* 2026-10-30 去白底、裁边后按长宽比统一视觉大小 */
+  var mh=LOGOS.map(function(n){return n.indexOf('t:')===0?'<span class="mq-t">'+n.slice(2)+'</span>':'<img src="art/logos/'+n+'.png?v=20261030" alt="" style="height:'+(LOGOH[n]||26)+'px">'}).join(''); $('#marq').innerHTML=mh+mh;
 
   /* 怎么用：滚动切换步骤与面板 */
   var steps=$$('.step'), pans=$$('.pan'), sbar=$('#sbar');
