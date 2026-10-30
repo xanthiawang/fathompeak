@@ -863,6 +863,7 @@ html.in-console body{background:#F8F8F8}
 #home2 .hero h1 .x{font-family:var(--sans);font-weight:300;font-size:.75em}
 #home2 .hero .tagline{font-family:var(--serif);font-size:20px;margin:16px 0 0;opacity:.95}
 #home2 .hero .sub{max-width:52ch;margin:14px auto 0;font-size:15px;line-height:1.6;color:rgba(255,255,255,.8)}
+@media (min-width:900px){html:not([lang="en"]) #home2 .hero .sub{max-width:none;white-space:nowrap}}
 #home2 .word{position:absolute;left:50%;top:270px;transform:translate(-50%,0);font-family:var(--serif);font-weight:900;font-size:clamp(150px,24vw,360px);line-height:.9;letter-spacing:-.06em;color:rgba(255,255,255,.07);white-space:nowrap;user-select:none;pointer-events:none;transition:transform .6s var(--out)}
 #home2 .win{position:absolute;left:50%;top:max(430px,48svh);transform:translateX(-50%);width:min(70vw,960px);border-radius:16px 16px 0 0;background:rgba(255,255,255,.84);border:1px solid rgba(255,255,255,.7);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);box-shadow:0 30px 80px rgba(0,0,0,.25);overflow:hidden;z-index:2;-webkit-mask-image:linear-gradient(#000 60%,transparent);mask-image:linear-gradient(#000 60%,transparent);animation:winup 1.4s .4s var(--out) both}
 @keyframes winup{from{opacity:0;transform:translate(-50%,40px)}to{opacity:1;transform:translate(-50%,0)}}
