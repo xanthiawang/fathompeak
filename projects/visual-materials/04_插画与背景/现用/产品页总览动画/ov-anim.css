@@ -1,0 +1,49 @@
+/* Component-only stylesheet. All coordinates use the original 1254-square artwork. */
+.ov-anim {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  aspect-ratio: 1;
+  isolation: isolate;
+  --ov-blue: #2F63B8;
+  --ov-light: #A9C3E8;
+  --ov-return: #5284D7;
+}
+.ov-anim .ov-original,
+.ov-anim .ov-scene { display: block; width: 100%; height: 100%; }
+.ov-anim .ov-original { object-fit: contain; }
+.ov-anim .ov-scene { position: absolute; inset: 0; overflow: visible; visibility: hidden; }
+.ov-anim[data-ready] .ov-original { visibility: hidden; }
+.ov-anim[data-ready] .ov-scene { visibility: visible; }
+.ov-anim .ov-tier {
+  animation: ov-breathe 7.2s ease-in-out infinite;
+  animation-delay: calc(var(--ov-index) * -.8s);
+  transform-box: view-box;
+  transform-origin: center;
+}
+.ov-anim .ov-art { pointer-events: none; }
+.ov-anim .ov-hit { fill: transparent; stroke: none; pointer-events: all; }
+.ov-anim .ov-rim,
+.ov-anim .ov-halo { fill: none; stroke: var(--ov-blue); pointer-events: none; opacity: 0; transition: opacity 650ms ease; }
+.ov-anim .ov-rim { stroke-width: 3; stroke-linejoin: round; }
+.ov-anim .ov-halo { stroke: var(--ov-light); stroke-width: 12; filter: blur(5px); }
+.ov-anim .ov-tier[data-active] .ov-rim { opacity: .8; }
+.ov-anim .ov-tier[data-active] .ov-halo { opacity: .6; }
+/* SVG motion shares one clock per instance; JS pauses that clock on hover. */
+.ov-anim .ov-flow { pointer-events: none; color: var(--ov-blue); }
+.ov-anim .ov-flow-return { color: var(--ov-return); }
+.ov-anim .ov-spark-glow { fill: currentColor; opacity: .35; filter: blur(4px); }
+.ov-anim .ov-spark-core { fill: currentColor; }
+.ov-anim .ov-flow-return .ov-spark-core { fill: #fff; stroke: var(--ov-return); stroke-width: 2; }
+.ov-anim .ov-circuit .ov-spark-glow { opacity: .35; filter: blur(2px); }
+.ov-anim[data-paused] .ov-tier { animation-play-state: paused; }
+@keyframes ov-breathe {
+  0%, 100% { transform: translateY(-9px); }
+  50% { transform: translateY(9px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ov-anim .ov-scene { display: none !important; }
+  .ov-anim .ov-original { visibility: visible !important; }
+  .ov-anim .ov-tier, .ov-anim .ov-flow { animation: none; }
+  .ov-anim .ov-rim, .ov-anim .ov-halo { transition: none; }
+}
