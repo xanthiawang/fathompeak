@@ -2106,7 +2106,7 @@ footer .co .f-logo img{width:180px;height:auto;display:block}
 .detail .price{grid-template-columns:repeat(3,1fr)}
 @media (max-width:760px){
 #prModels .pr-tbl th,#prModels .pr-tbl td{display:table-cell}
-#prModels .pr-tbl th:nth-child(1),#prModels .pr-tbl td:nth-child(1),#prModels .pr-tbl th:nth-child(5),#prModels .pr-tbl td:nth-child(5),#prModels .pr-tbl th:last-child,#prModels .pr-tbl td:last-child{display:none}
+#prModels .pr-tbl th:nth-child(1),#prModels .pr-tbl td:nth-child(1),#prModels .pr-tbl th:nth-child(3),#prModels .pr-tbl td:nth-child(3),#prModels .pr-tbl th:last-child,#prModels .pr-tbl td:last-child{display:none}
 #prModels .pr-tbl td,#prModels .pr-tbl th{padding-left:6px;padding-right:6px}
 #prModels .pr-tbl td.r{font-size:13px}
 #prModels .pr-tbl td:nth-child(2) b{font-size:13px;white-space:normal}
@@ -2848,10 +2848,10 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       <article class="pe sub" id="p-market">
         <span class="pe-d">01 · 绿色 Token 交易平台 · 模型目录 2026-11-02</span>
         <h2 class="pe-t" id="secTitle">模型市场</h2>
-        <p class="pe-lead">按量计费，价格为沐仞平台价。DeepSeek 分闲时（22:00–次日 8:00）与忙时（8:00–22:00）计价。</p>
+        <p class="pe-lead">按量计费，目录与价格来自沐仞模型平台。</p>
         <div class="mk-bar">
           <label class="mk-q"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M11 11l3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><input type="search" id="mkQ" placeholder="搜索模型名称或厂商" aria-label="搜索模型名称或厂商" autocomplete="off" spellcheck="false"></label>
-          <div class="chips" id="chips"><button class="chip on" data-f="all">全部</button><button class="chip" data-f="对话">对话</button><button class="chip" data-f="推理">推理</button></div>
+          <div class="chips" id="chips"><button class="chip on" data-f="all">全部</button><button class="chip" data-f="对话">对话</button><button class="chip" data-f="推理">推理</button><button class="chip" data-f="视频生成">视频生成</button></div>
           <select class="mk-sel" id="mkVendor" aria-label="按厂商筛选"><option value="all">全部厂商</option></select>
           <select class="mk-sel" id="mkSort" aria-label="排序方式"><option value="">默认排序</option><option value="asc">输出价从低到高</option><option value="desc">输出价从高到低</option></select>
         </div>
@@ -3149,9 +3149,11 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     </div>
 
     <div class="pr-sec" id="prModels">
-      <div class="pr-hd"><h2>模型价格</h2><p>按量计费，价格为沐仞平台价。DeepSeek 分闲时（22:00–次日 8:00）与忙时（8:00–22:00）计价。</p></div>
-      <div class="tbl"><table class="pr-tbl"><thead><tr><th>厂商</th><th>模型</th><th class="r">输入<br><small>¥ / 百万 Tokens</small></th><th class="r">输出<br><small>¥ / 百万 Tokens</small></th><th class="r">缓存命中输入<br><small>¥ / 百万 Tokens</small></th><th class="r">相对官方价</th><th></th></tr></thead><tbody id="prRows"></tbody></table></div>
-      <p class="pr-note">费用 = 输入 + 输出 + 缓存命中输入，三项分别按上表单价计算。相对官方价 = 沐仞输出价 ÷ 模型厂商官方输出价。</p>
+      <div class="pr-hd"><h2>模型价格</h2><p>按量计费，目录与价格来自沐仞模型平台。</p></div>
+      <div class="tbl"><table class="pr-tbl"><thead><tr><th>厂商</th><th>模型</th><th>上下文</th><th class="r">输入<br><small>¥ / 百万 Tokens</small></th><th class="r">输出<br><small>¥ / 百万 Tokens</small></th><th class="r">相对官方价</th><th></th></tr></thead><tbody id="prRows"></tbody></table></div>
+      <p class="pr-note">费用 = 输入 Token × 输入单价 + 输出 Token × 输出单价。缓存等其余计费项按模型分别计价，以控制台模型列表为准。相对官方价为沐仞价与模型厂商官方价之比。</p>
+      <div class="tbl" style="margin-top:22px"><table class="pr-tbl pr-vid"><thead><tr><th>厂商</th><th>模型</th><th>时长</th><th class="r">价格</th><th class="r">相对官方价</th><th></th></tr></thead><tbody id="prVid"></tbody></table></div>
+      <p class="pr-note">视频生成按生成秒数计费。</p>
     </div>
 
     <div class="pr-sec">
@@ -4536,11 +4538,62 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
 (function(){
   document.documentElement.classList.add('js');
   /* ---------- 数据：模型、节点、看板行、评价取自平台公开页面（test.admin.fathompeak.cn，2026-10-12 / 10-13）；指南、更新日志、周报为内容设计 ---------- */
-  /* 模型与价格：来源 接入模型价格.xlsx（2026-11-02）。mkt/pin/pcache = 沐仞价（平台设定价，四舍五入到两位小数），lout/lin/lcache = 官方刊例价；DeepSeek 的顶层价为闲时价，tou 列出闲时与忙时 */
+  /* 模型与价格：以沐仞模型平台定价为准（2026-11-02 截图）。mkt = 输出价（视频为每秒价），pin = 输入价，disc = 相对官方价折扣；lin/lout = 由折扣反推的官方价 */
   var M=[
   {
-    "id": "glm-5-3",
-    "name": "GLM-5.3",
+    "id": "deepseek-v4-pro",
+    "name": "deepseek-v4-pro",
+    "vendor": "DeepSeek",
+    "type": [
+      "推理"
+    ],
+    "ctx": "1M",
+    "seen": "2026-11-02",
+    "desc": "复杂推理与智能体任务。",
+    "disc": 0.65,
+    "pin": 2.92,
+    "mkt": 8.77,
+    "unit": "M",
+    "lin": 4.4923,
+    "lout": 13.4923
+  },
+  {
+    "id": "deepseek-v4.1-flash",
+    "name": "deepseek-v4.1-flash",
+    "vendor": "DeepSeek",
+    "type": [
+      "对话"
+    ],
+    "ctx": "1M",
+    "seen": "2026-11-02",
+    "desc": "对话补全，速度快、成本低。",
+    "disc": 0.6,
+    "pin": 0.6,
+    "mkt": 2.4,
+    "unit": "M",
+    "lin": 1.0,
+    "lout": 4.0
+  },
+  {
+    "id": "fathompeak-claude-code",
+    "name": "fathompeak-claude-code",
+    "vendor": "Anthropic",
+    "type": [
+      "推理"
+    ],
+    "ctx": "1M",
+    "seen": "2026-11-02",
+    "desc": "代码与智能体任务。",
+    "disc": 0.4,
+    "pin": 11.2,
+    "mkt": 56.0,
+    "unit": "M",
+    "lin": 28.0,
+    "lout": 140.0
+  },
+  {
+    "id": "glm-5.3",
+    "name": "glm-5.3",
     "vendor": "Zhipu",
     "type": [
       "推理"
@@ -4548,137 +4601,80 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     "ctx": "1M",
     "seen": "2026-11-02",
     "desc": "GLM 系列推理模型，适合复杂任务。",
-    "lin": 8,
-    "lout": 28,
-    "lcache": 2,
-    "pin": 3.96,
-    "mkt": 13.86,
-    "pcache": 0.99
+    "disc": 0.55,
+    "pin": 4.4,
+    "mkt": 15.4,
+    "unit": "M",
+    "lin": 8.0,
+    "lout": 28.0
   },
   {
-    "id": "glm-5-3-flash",
-    "name": "GLM-5.3-Flash",
+    "id": "glm-5.3-flash",
+    "name": "glm-5.3-flash",
     "vendor": "Zhipu",
     "type": [
       "对话"
     ],
     "ctx": "1M",
     "seen": "2026-11-02",
-    "desc": "GLM 系列模型，适合对话任务。",
+    "desc": "GLM 系列模型，适合对话补全。",
+    "disc": 0.75,
+    "pin": 0.6,
+    "mkt": 2.1,
+    "unit": "M",
     "lin": 0.8,
-    "lout": 2.8,
-    "lcache": 0.23,
-    "pin": 0.57,
-    "mkt": 2.0,
-    "pcache": 0.16
+    "lout": 2.8
   },
   {
-    "id": "deepseek-v4-1-flash",
-    "name": "DeepSeek-V4.1-Flash",
-    "vendor": "DeepSeek",
-    "type": [
-      "对话"
-    ],
-    "ctx": "1M",
-    "seen": "2026-11-02",
-    "desc": "分闲时与忙时计价，闲时更便宜。",
-    "lin": 1,
-    "lout": 4,
-    "lcache": 0.02,
-    "pin": 0.55,
-    "mkt": 2.2,
-    "pcache": 0.01,
-    "tou": [
-      {
-        "t": "闲时 22:00–次日 8:00",
-        "lin": 1,
-        "lout": 4,
-        "lcache": 0.02,
-        "pin": 0.55,
-        "mkt": 2.2,
-        "pcache": 0.01
-      },
-      {
-        "t": "忙时 8:00–22:00",
-        "lin": 2,
-        "lout": 8,
-        "lcache": 0.04,
-        "pin": 1.1,
-        "mkt": 4.4,
-        "pcache": 0.02
-      }
-    ]
-  },
-  {
-    "id": "deepseek-v4-pro-0813",
-    "name": "DeepSeek-V4-Pro-0813",
-    "vendor": "DeepSeek",
+    "id": "kimi-k2.7-code",
+    "name": "kimi-k2.7-code",
+    "vendor": "Moonshot",
     "type": [
       "推理"
     ],
     "ctx": "1M",
     "seen": "2026-11-02",
-    "desc": "复杂推理与智能体任务；分闲时与忙时计价。",
-    "lin": 4.5,
-    "lout": 13.5,
-    "lcache": 0.45,
-    "pin": 2.72,
-    "mkt": 8.17,
-    "pcache": 0.27,
-    "tou": [
-      {
-        "t": "闲时 22:00–次日 8:00",
-        "lin": 4.5,
-        "lout": 13.5,
-        "lcache": 0.45,
-        "pin": 2.72,
-        "mkt": 8.17,
-        "pcache": 0.27
-      },
-      {
-        "t": "忙时 8:00–22:00",
-        "lin": 9,
-        "lout": 27,
-        "lcache": 0.9,
-        "pin": 5.45,
-        "mkt": 16.34,
-        "pcache": 0.54
-      }
-    ]
-  },
-  {
-    "id": "kimi-k2-7-code",
-    "name": "Kimi-K2.7-Code",
-    "vendor": "Moonshot",
-    "type": [
-      "代码"
-    ],
-    "ctx": "—",
-    "seen": "2026-11-02",
     "desc": "Kimi 系列代码模型。",
+    "disc": 0.8,
+    "pin": 5.2,
+    "mkt": 21.6,
+    "unit": "M",
     "lin": 6.5,
-    "lout": 27,
-    "lcache": 1.3,
-    "pin": 5.36,
-    "mkt": 22.28,
-    "pcache": 1.07
+    "lout": 27.0
   },
   {
     "id": "kimi-k3",
-    "name": "Kimi-K3",
+    "name": "kimi-k3",
     "vendor": "Moonshot",
     "type": [
-      "对话"
+      "推理"
     ],
-    "ctx": "—",
+    "ctx": "1M",
     "seen": "2026-11-02",
     "desc": "Kimi 系列模型。",
-    "lin": 20,
-    "lout": 100,
-    "lcache": 2,
-    "pin": 17.6,
-    "mkt": 88.0,
-    "pcache": 1.76
+    "disc": 0.85,
+    "pin": 17.0,
+    "mkt": 85.0,
+    "unit": "M",
+    "lin": 20.0,
+    "lout": 100.0
+  },
+  {
+    "id": "fathompeak-minimax-h3",
+    "name": "fathompeak-minimax-h3",
+    "vendor": "MiniMax",
+    "type": [
+      "视频生成"
+    ],
+    "ctx": "4–15s",
+    "seen": "2026-11-02",
+    "desc": "视频生成，按生成秒数计费。",
+    "disc": 0.76,
+    "pin": null,
+    "mkt": 0.38,
+    "unit": "秒",
+    "lin": null,
+    "lout": 0.5
   }
 ];
   var byId={}; M.forEach(function(m){byId[m.id]=m});
@@ -5005,11 +5001,11 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
 
   /* ---------- 市场 ---------- */
   function spark(seed){var a=[80,78,60,40,30,34,50,64,80,86], s=seed%3; return '<svg viewBox="0 0 200 100" preserveAspectRatio="none"><path d="M0 '+a[0]+' C30 '+(a[1]+s*6)+' 50 '+(a[3]-s*4)+' 80 '+a[4]+' S130 '+(a[6]+s*5)+' 200 '+a[9]+'" fill="none" stroke="var(--accent)" stroke-width="2"/><rect x="'+(90+s*20)+'" y="10" width="60" height="80" fill="var(--accent-fill)" opacity=".16"/></svg>'}
-  function card(m){return '<a class="mcard" href="#model-'+m.id+'"><div class="bd"><span class="k">'+m.vendor+' · '+m.type.join(' · ')+'</span><div class="t">'+m.name+'</div><div class="p">¥'+m.mkt.toFixed(2)+' <span>/ 百万 Token · 输出价</span></div>'+(m.desc?'<p class="mk-d">'+m.desc+'</p>':'')+'<div class="ft"><span class="k">上下文 '+m.ctx+'</span><span class="btn gray sm">查看详情</span></div></div></a>'}
+  function card(m){return '<a class="mcard" href="#model-'+m.id+'"><div class="bd"><span class="k">'+m.vendor+' · '+m.type.join(' · ')+'</span><div class="t">'+m.name+'</div><div class="p">¥'+m.mkt.toFixed(2)+' <span>'+(m.unit==='M'?'/ 百万 Token · 输出价':'/ 秒 · 视频生成')+'</span></div>'+(m.desc?'<p class="mk-d">'+m.desc+'</p>':'')+'<div class="ft"><span class="k">'+(m.unit==='M'?'上下文 ':'时长 ')+m.ctx+'</span><span class="btn gray sm">查看详情</span></div></div></a>'}
   function row(m){return '<a class="row" href="#model-'+m.id+'"><span class="n">'+m.name+' <span class="k">'+m.vendor+'</span></span><span>'+m.type.join(' · ')+'</span><span class="mono">'+m.ctx+'</span><span class="mono">¥'+m.mkt.toFixed(2)+'</span><span class="hide-m k">'+m.seen+'</span><span class="btn gray sm">查看详情</span></a>'}
   /* 筛选只用 M 里已有的字段：类型、厂商、名称；排序按输出价 mkt。厂商中文名只用于搜索匹配，不显示 */
   var filter='all', vendor='all', sortBy='', mq=$('#mkQ'), mv=$('#mkVendor'), ms=$('#mkSort'), msh=$('#mkSortH');
-  var VND_ZH={DeepSeek:'深度求索',Alibaba:'阿里巴巴 通义千问',Zhipu:'智谱',MiniMax:'稀宇'};
+  var VND_ZH={DeepSeek:'深度求索',Alibaba:'阿里巴巴 通义千问',Zhipu:'智谱',MiniMax:'稀宇',Moonshot:'月之暗面 Kimi',Anthropic:'Claude'};
   function norm(s){return String(s).toLowerCase().replace(/[\s\-_.·\/]+/g,'')}
   M.map(function(m){return m.vendor}).filter(function(v,i,a){return a.indexOf(v)===i}).forEach(function(v){var o=document.createElement('option');o.value=v;o.textContent=v;mv.appendChild(o)});
   function renderMarket(){var q=norm(mq.value);
@@ -5038,8 +5034,8 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
   /* ---------- 详情 ---------- */
   function renderModel(id){var m=byId[id]||M[0];
     $('#modelPane').innerHTML='<div class="detail"><div><span class="k">'+m.vendor+' · '+m.type.join(' · ')+'</span><h1 class="display" style="margin-top:6px">'+m.name+'</h1><p style="color:var(--ink-70);margin:10px 0 0;max-width:46ch">'+m.desc+'</p>'+
-      '<dl class="meta"><dt>上下文</dt><dd class="mono">'+m.ctx+'</dd><dt>接口支持</dt><dd>OpenAI 与 Gemini 原生格式</dd><dt>计价</dt><dd>按 Token 用量</dd><dt>收录日期</dt><dd class="mono">'+m.seen+'</dd></dl>'+
-      (m.tou||[{t:'',pin:m.pin,pcache:m.pcache,mkt:m.mkt,lin:m.lin,lcache:m.lcache,lout:m.lout}]).map(function(r){var f=function(n){return '¥'+n.toFixed(2)};return (r.t?'<p class="k" style="margin-top:14px">'+r.t+'</p>':'')+'<div class="price"><div>输入<span>'+f(r.pin)+'</span></div><div>输出<span>'+f(r.mkt)+'</span></div><div>缓存命中输入<span>'+f(r.pcache)+'</span></div></div>'}).join('')+'<p class="note" style="margin-top:8px">单位：元 / 百万 Tokens。</p>'+
+      '<dl class="meta"><dt>'+(m.unit==='M'?'上下文':'时长')+'</dt><dd class="mono">'+m.ctx+'</dd><dt>接口支持</dt><dd>OpenAI 与 Gemini 原生格式</dd><dt>计价</dt><dd>按 Token 用量</dd><dt>收录日期</dt><dd class="mono">'+m.seen+'</dd></dl>'+
+      (m.unit==='M'?'<div class="price"><div>输入<span>¥'+m.pin.toFixed(2)+'</span></div><div>输出<span>¥'+m.mkt.toFixed(2)+'</span></div><div>相对官方价<span>'+(Math.round(m.disc*100)/10)+' 折</span></div></div><p class="note" style="margin-top:8px">单位：元 / 百万 Tokens。</p>':'<div class="price"><div>价格<span>¥'+m.mkt.toFixed(2)+' / '+m.unit+'</span></div><div>时长<span>'+m.ctx+'</span></div><div>相对官方价<span>'+(Math.round(m.disc*100)/10)+' 折</span></div></div>')+
       '<div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap"><a class="btn black" href="#start">获取 FathomPeak Key ↓</a><a class="btn gray" href="#pricing">查看定价</a></div></div>'+
       '<div><span class="k">快速开始 · 配置与验证</span><div class="code" style="margin-top:8px"><button class="cp" data-copy>复制</button><span class="g"># 把你现有的 OpenAI 客户端指向沐仞</span><br><span class="g"># 沐仞 API 接入地址</span><br>curl <span class="s">https://api.fathompeak.cn/v1/chat/completions</span> \\<br>&nbsp;&nbsp;-H <span class="s">"Authorization: Bearer $API_KEY"</span> \\<br>&nbsp;&nbsp;-H <span class="s">"Content-Type: application/json"</span> \\<br>&nbsp;&nbsp;-d <span class="s">\'{"model":"'+m.name+'","messages":[{"role":"user","content":"请用一句话介绍算电协同。"}]}\'</span></div>'+
       '<div class="steps"><div class="st"><span class="n">01</span><div><b>获取 Key</b>在本站获取 FathomPeak Key。</div></div><div class="st"><span class="n">02</span><div><b>改 base_url</b>配置密钥与模型名称，核对参数及所需功能。</div></div><div class="st"><span class="n">03</span><div><b>看第一笔账单</b>核对调用结果、用量与实际计费项。</div></div></div></div></div>'+
@@ -5355,17 +5351,18 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
   $('#csWx').addEventListener('click',function(){toast('微信绑定接入后即可使用。')});
 
   /* 定价页：模型价格来自同一份模型目录 */
-  (function(){var min=Math.min.apply(null,M.map(function(m){return m.mkt})),ex=M.filter(function(m){return m.id==='glm-5-3-flash'})[0];
+  (function(){var min=Math.min.apply(null,M.filter(function(m){return m.unit==='M'}).map(function(m){return m.mkt})),ex=M.filter(function(m){return m.id==='glm-5-3-flash'})[0];
     $('#prFrom').textContent='¥'+min.toFixed(2); $('#prEx').textContent=ex?'¥'+ex.mkt.toFixed(2):'';
     function y(n){return '¥'+n.toFixed(2)}
-    function off(m,r){return (Math.round(r.mkt/r.lout*1000)/100)+' 折'}
-    function cell(m,k){var rs=m.tou;if(!rs)return '<span class="mono">'+y(m[k])+'</span>';return rs.map(function(r){return '<span class="pr-tou"><i>'+r.t.split(' ')[0]+'</i><span class="mono">'+y(r[k])+'</span></span>'}).join('')}
-    $('#prRows').innerHTML=M.map(function(m){var d=(m.tou||[m]).map(function(r){return off(m,r)}).filter(function(v,i,a){return a.indexOf(v)===i}).join(' / ');
-      return '<tr><td><span class="k">'+m.vendor+'</span></td><td><b>'+m.name+'</b></td><td class="r">'+cell(m,'pin')+'</td><td class="r">'+cell(m,'mkt')+'</td><td class="r">'+cell(m,'pcache')+'</td><td class="r mono">'+d+'</td><td><a class="btn gray sm" href="#model-'+m.id+'">查看详情</a></td></tr>'}).join('')})();
+    function zhe(d){return (Math.round(d*100)/10)+' 折'}
+    $('#prRows').innerHTML=M.filter(function(m){return m.unit==='M'}).map(function(m){
+      return '<tr><td><span class="k">'+m.vendor+'</span></td><td><b>'+m.name+'</b></td><td class="mono">'+m.ctx+'</td><td class="r mono">'+y(m.pin)+'</td><td class="r mono">'+y(m.mkt)+'</td><td class="r mono">'+zhe(m.disc)+'</td><td><a class="btn gray sm" href="#model-'+m.id+'">查看详情</a></td></tr>'}).join('');
+    $('#prVid').innerHTML=M.filter(function(m){return m.unit!=='M'}).map(function(m){
+      return '<tr><td><span class="k">'+m.vendor+'</span></td><td><b>'+m.name+'</b></td><td class="mono">'+m.ctx+'</td><td class="r mono">'+y(m.mkt)+' / '+m.unit+'</td><td class="r mono">'+zhe(m.disc)+'</td><td><a class="btn gray sm" href="#model-'+m.id+'">查看详情</a></td></tr>'}).join('')})();
 
   /* 定价：费用估算。输出按本页输出价；输入单价由用户按控制台填写，空着就不计入 */
   (function(){var sel=$('#pcModel'); if(!sel) return;
-    sel.innerHTML=M.map(function(m){return '<option value="'+m.id+'"'+(m.id==='glm-5-3-flash'?' selected':'')+'>'+m.name+' · ¥'+m.mkt.toFixed(2)+'</option>'}).join('');
+    sel.innerHTML=M.filter(function(m){return m.unit==='M'}).map(function(m){return '<option value="'+m.id+'"'+(m.id==='glm-5-3-flash'?' selected':'')+'>'+m.name+' · ¥'+m.mkt.toFixed(2)+'</option>'}).join('');
     function num(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0}
     function money(n){return '¥'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}
     function fillIn(){var m=byId[sel.value]||M[0];$('#pcInP').value=m.pin!=null?m.pin.toFixed(2):''}
@@ -6109,6 +6106,8 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
   /* 先查字典与短语；查不到时把「A · B」「A → B」拆开逐段查，价格与示例请求按规则换 */
   function trKey(k){ return trk(k) }
   var RX=[
+    [/^时长 (.+)$/, function(m,a){return 'Duration '+a}],
+    [/^(¥[\d.]+) \/ 秒$/, function(m,a){return a+' / sec'}],
     [/^([\d.]+) 折$/, function(m,a){return (Math.round(a*100)/10)+'% of list'}],
     [/^(.+?) - 沐仞科技 FathomPeak$/, function(m,a){var x=CJK.test(a)?trKey(a):a; return x==null?null:x+' - FathomPeak'}],
     [/^(.+?) → (.+)$/, function(m,a,b){var x=trKey(a); return x==null?null:x+' → '+b}],
@@ -6211,8 +6210,9 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
   (function(S){for(var k in S) if(!(k in I18N)||k!=="电站") I18N[k]=S[k]})({"电站价格": "Plant pricing", "01 · 绿色 Token 交易平台 · 按电站计价": "01 · Green Token Trading Platform · priced by plant", "价格按电站的电价系数与时段估算，选一座电站即可查看。": "Prices are estimated from each plant’s power price factor and time window; pick a plant to see it.", "电站": "Plants"});  /* 节点定价→电站价格 */
   (function(S){for(var k in S) I18N[k]=S[k]})({"分布式绿电": "Distributed green power", "异构算力，构筑算电协同的全球分布式算网": "heterogeneous compute, one global network", "GLM、DeepSeek、Qwen、MiniMax，": "GLM, DeepSeek, Qwen and MiniMax: ", "一个 FathomPeak Key 全部调用，公开价 4 折起。": "one FathomPeak Key for them all, from 40% of list price."});  /* 首屏新标题 */
   (function(S){for(var k in S) I18N[k]=S[k]})({"商务微信": "Business WeChat", "扫码添加商务微信": "Scan to add us on WeChat"});  /* 商务微信 */
-  (function(S){for(var k in S) I18N[k]=S[k]})({"计费时段": "Window", "输入": "Input", "缓存命中输入": "Cached input", "输出": "Output", "相对官方价": "vs. list price", "全天": "All day", "闲时 22:00–次日 8:00": "Off-peak 22:00–08:00", "忙时 8:00–22:00": "Peak 08:00–22:00", "按量计费，价格为沐仞平台价。DeepSeek 分闲时（22:00–次日 8:00）与忙时（8:00–22:00）计价。": "FathomPeak prices shown; struck-through figures are the vendors’ official list prices. DeepSeek is priced by off-peak (22:00–08:00) and peak (08:00–22:00) windows.", "单位：元 / 百万 Token，按量计费。费用 = 输入 + 缓存命中输入 + 输出，三项分别按上表单价计算。": "Unit: CNY per million Tokens, pay as you go. Cost = input + cached input + output, each at the unit price above.", "选模型，填入输入和输出用量，按本页沐仞价估算。": "Pick a model and enter input and output volume; estimated at FathomPeak prices.", "按模型分别计价，上方价格表列出了输入、缓存命中输入和输出三项单价。缓存命中的输入部分按缓存命中单价计费。": "Priced per model; the table above lists input, cached-input and output prices. Cached input is billed at the cached rate.", "单位：元 / 百万 Token。划线为官方刊例价。": "Unit: CNY per million Tokens. Struck-through figures are official list prices.", "计价": "Pricing", "按 Token 用量": "By Token usage", "代码": "Code", "Kimi 系列代码模型。": "Kimi coding model.", "Kimi 系列模型。": "Kimi model.", "分闲时与忙时计价，闲时更便宜。": "Priced by off-peak and peak windows; off-peak is cheaper.", "复杂推理与智能体任务；分闲时与忙时计价。": "For complex reasoning and agent tasks; priced by off-peak and peak windows.", "输出价": "Output price", "输出价从低到高": "Output price: low to high", "输出价从高到低": "Output price: high to low", "按输出价排序": "Sort by output price", "输出 / M": "Output / M"});  /* 模型价格 2026-11-02 */
-  (function(S){for(var k in S) I18N[k]=S[k]})({"按量计费，价格为沐仞平台价。DeepSeek 分闲时（22:00–次日 8:00）与忙时（8:00–22:00）计价。": "Pay as you go at FathomPeak platform prices. DeepSeek is priced by off-peak (22:00–08:00) and peak (08:00–22:00) windows.", "费用 = 输入 + 输出 + 缓存命中输入，三项分别按上表单价计算。相对官方价 = 沐仞输出价 ÷ 模型厂商官方输出价。": "Cost = input + output + cached input, each at the unit price above. vs. list price = FathomPeak output price ÷ vendor’s official output price.", "¥ / 百万 Tokens": "¥ / M Tokens", "厂商": "Vendor", "闲时": "Off-peak", "忙时": "Peak", "单位：元 / 百万 Tokens。": "Unit: CNY per million Tokens."});  /* 价格表头 2026-11-02 */
+  (function(S){for(var k in S) I18N[k]=S[k]})({"计费时段": "Window", "输入": "Input", "缓存命中输入": "Cached input", "输出": "Output", "相对官方价": "vs. list price", "全天": "All day", "闲时 22:00–次日 8:00": "Off-peak 22:00–08:00", "忙时 8:00–22:00": "Peak 08:00–22:00", "按量计费，目录与价格来自沐仞模型平台。": "FathomPeak prices shown; struck-through figures are the vendors’ official list prices. DeepSeek is priced by off-peak (22:00–08:00) and peak (08:00–22:00) windows.", "单位：元 / 百万 Token，按量计费。费用 = 输入 + 缓存命中输入 + 输出，三项分别按上表单价计算。": "Unit: CNY per million Tokens, pay as you go. Cost = input + cached input + output, each at the unit price above.", "选模型，填入输入和输出用量，按本页沐仞价估算。": "Pick a model and enter input and output volume; estimated at FathomPeak prices.", "按模型分别计价，上方价格表列出了输入、缓存命中输入和输出三项单价。缓存命中的输入部分按缓存命中单价计费。": "Priced per model; the table above lists input, cached-input and output prices. Cached input is billed at the cached rate.", "单位：元 / 百万 Token。划线为官方刊例价。": "Unit: CNY per million Tokens. Struck-through figures are official list prices.", "计价": "Pricing", "按 Token 用量": "By Token usage", "代码": "Code", "Kimi 系列代码模型。": "Kimi coding model.", "Kimi 系列模型。": "Kimi model.", "分闲时与忙时计价，闲时更便宜。": "Priced by off-peak and peak windows; off-peak is cheaper.", "复杂推理与智能体任务；分闲时与忙时计价。": "For complex reasoning and agent tasks; priced by off-peak and peak windows.", "输出价": "Output price", "输出价从低到高": "Output price: low to high", "输出价从高到低": "Output price: high to low", "按输出价排序": "Sort by output price", "输出 / M": "Output / M"});  /* 模型价格 2026-11-02 */
+  (function(S){for(var k in S) I18N[k]=S[k]})({"按量计费，目录与价格来自沐仞模型平台。": "Pay as you go at FathomPeak platform prices. DeepSeek is priced by off-peak (22:00–08:00) and peak (08:00–22:00) windows.", "费用 = 输入 + 输出 + 缓存命中输入，三项分别按上表单价计算。相对官方价 = 沐仞输出价 ÷ 模型厂商官方输出价。": "Cost = input + output + cached input, each at the unit price above. vs. list price = FathomPeak output price ÷ vendor’s official output price.", "¥ / 百万 Tokens": "¥ / M Tokens", "厂商": "Vendor", "闲时": "Off-peak", "忙时": "Peak", "单位：元 / 百万 Tokens。": "Unit: CNY per million Tokens."});  /* 价格表头 2026-11-02 */
+  (function(S){for(var k in S) I18N[k]=S[k]})({"按量计费，目录与价格来自沐仞模型平台。": "Pay as you go; catalog and prices from the FathomPeak model platform.", "费用 = 输入 Token × 输入单价 + 输出 Token × 输出单价。缓存等其余计费项按模型分别计价，以控制台模型列表为准。相对官方价为沐仞价与模型厂商官方价之比。": "Cost = input Tokens × input price + output Tokens × output price. Caching and other items are priced per model; see the console model list. vs. list price compares FathomPeak price with the vendor’s official price.", "视频生成按生成秒数计费。": "Video generation is billed per generated second.", "时长": "Duration", "价格": "Price", "视频生成": "Video generation", "/ 秒 · 视频生成": "/ sec · video", "上下文": "Context", "复杂推理与智能体任务。": "Complex reasoning and agent tasks.", "对话补全，速度快、成本低。": "Chat completion, fast and low-cost.", "代码与智能体任务。": "Coding and agent tasks.", "GLM 系列模型，适合对话补全。": "GLM model for chat completion.", "视频生成，按生成秒数计费。": "Video generation, billed per generated second."});  /* 价格按平台截图 2026-11-02 */
   syncAuthLocale(); applyLang();
 
   /* ---------- 接口参考（#api，2026-10-14）：内容取自沐仞模型平台的 OpenAPI 文档（/openapi/ai-model.json），
@@ -6605,7 +6605,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* 数据：模型目录与输出价取自线上站 M（2026-10-13）；看板行为线上站既有示例数据 T */
-  var M=(FP.M||[]).map(function(m){return [m.name,m.vendor||'',(m.type||[''])[0],m.mkt]});
+  var M=(FP.M||[]).filter(function(m){return !m.unit||m.unit==='M'}).map(function(m){return [m.name,m.vendor||'',(m.type||[''])[0],m.mkt]});
   var T=FP.T||[];
   var LOGOS=['stategrid','tianjin-energy','starcharge','t:万帮数字能源','boe','cgn','shenzhen-gas','ascend-cann','nvidia-inception','soul'];
 
