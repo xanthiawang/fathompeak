@@ -4943,7 +4943,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
 
 
   /* ---------- 咨询浮窗与社媒二维码：SOCIAL 为空时只显示链接，不出现二维码位 ---------- */
-  var SOCIAL=[{k:'微信公众号',img:'art/qr/wechat-mp_2026-10-19.png',cap:'微信扫一扫'},{k:'商务微信',img:'art/qr/wechat-business_2026-11-02.png',cap:'扫码添加商务微信'}]; /* 2026-10-19 填入公众号。格式，图片放 art/qr/：{k:'公众号',img:'art/qr/wechat-mp.png'}, {k:'企业微信',img:'art/qr/wecom.png'} */
+  var SOCIAL=[{k:'微信公众号',img:'art/qr/wechat-mp_2026-10-19.png',cap:'微信扫一扫'},{k:'商务微信',img:'art/qr/wechat-business_2026-11-02.png?v=2',cap:'扫码添加商务微信'}]; /* 2026-10-19 填入公众号。格式，图片放 art/qr/：{k:'公众号',img:'art/qr/wechat-mp.png'}, {k:'企业微信',img:'art/qr/wecom.png'} */
   /* 图二样式：标签「微信公众号」→ 白色圆角卡片里的二维码 → 「微信扫一扫」 */
   function qrHTML(){return SOCIAL.map(function(x){return '<figure class="qr"><figcaption class="qr-k">'+x.k+'</figcaption><span class="qr-card"><img src="'+x.img+'" alt="沐仞科技'+x.k+'二维码" width="128" height="128" loading="lazy"></span>'+(x.cap?'<span class="qr-cap">'+x.cap+'</span>':'')+'</figure>'}).join('')}
   if(SOCIAL.length){ $('#fabQr').innerHTML=qrHTML(); $('#footSocial').innerHTML=qrHTML() }
