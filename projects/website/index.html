@@ -2190,7 +2190,6 @@ section[data-route="app"]{padding:0!important;margin:0!important;max-width:none!
 .apx-ib svg{width:18px;height:18px}
 .apx.chat .apx-ib{border-color:transparent;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
 .apx.chat .apx-ib:hover{background:var(--gray-btn);color:var(--ink)}
-.apx-ib[aria-checked="true"],.apx.chat .apx-ib[aria-checked="true"]{background:#000;border-color:#000;color:#fff}
 .apx-open{display:none}.apx.col .apx-open{display:grid}
 .apx-tbtn{appearance:none;display:inline-flex;align-items:center;gap:6px;max-width:min(60%,560px);height:34px;padding:0 10px;border:0;border-radius:999px;background:transparent;font:500 15px/1.3 var(--sans);color:var(--ink);cursor:pointer;transition:background-color .2s var(--ease)}
 .apx-tbtn:hover,.apx-tbtn[aria-expanded="true"]{background:var(--gray-btn)}
@@ -2224,7 +2223,6 @@ html.in-app .xp[data-mode="chat"] .apx-meta{position:sticky;bottom:0;z-index:4;m
 html.in-app .apx-meta .xp-note{margin:0}
 html.in-app .apx-meta .xp-pills{flex-wrap:nowrap}
 html.in-app .apx-meta .xp-pill,html.in-app .apx-meta .xp-add,html.in-app .apx-meta .xp-opt{height:34px}
-html.in-app:not(.apx-dev) #xpParB,html.in-app:not(.apx-dev) #xpCode{display:none!important}
 html.in-app .xp-chips{margin-top:8px}
 html.in-app .xp-chip{height:36px;font-size:13.5px}
 html.in-app .xp:not([data-mode="chat"]) .apx-meta{flex-wrap:wrap}
@@ -3486,7 +3484,6 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
         <button class="apx-ib apx-open" type="button" id="apxOpen" aria-label="打开侧栏" title="打开侧栏"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="4" width="14" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 4v12" stroke="currentColor" stroke-width="1.4"/></svg></button>
         <button class="apx-tbtn" type="button" id="apxTitleB" aria-haspopup="true" aria-expanded="false" aria-controls="apxTPop" hidden><span id="apxTitle"></span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <span class="apx-sp"></span>
-        <button class="apx-ib" type="button" role="switch" aria-checked="false" id="apxDev" aria-label="开发者视图" title="开发者视图"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 6.5h7M14 6.5h2.5M3.5 13.5H6M9.5 13.5h7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="12.2" cy="6.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="7.8" cy="13.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>
       </div>
       <div class="bt-pop apx-tpop" id="apxTPop" hidden><button type="button" id="apxDel">删除这条对话</button></div>
     </main>
@@ -6520,7 +6517,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
   })();
 
   (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"已复制":"Copied","重新生成":"Regenerate","已重新生成":"Regenerated","复制失败，请手动选择文字":"Copy failed. Select the text manually.","历史对话":"History", "搜索对话": "Search chats", "今天": "Today", "昨天": "Yesterday", "近 7 天": "Previous 7 days", "更早": "Earlier", "删除": "Delete", "确认删除": "Confirm delete", "删除这条对话": "Delete this chat", "已删除": "Deleted", "最近对话": "Recent", "全部 →": "All →", "关闭": "Close", "没有找到相关对话": "No matching chats", "对话记录只保存在你的账号里，可以随时删除。": "Chats are saved to your account only. You can delete them anytime.", "还没有历史对话。": "No chats yet.", "发送第一个问题后，对话会保存在这里。": "Your chats will be saved here after you send the first question."});  /* 体验中心历史对话英文 */
-  (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"打开应用":"Open app","新对话":"New chat","搜索":"Search","最近":"Recents","输入你的问题":"Ask anything","今天想做点什么？":"What would you like to make today?","直接开始":"Start right away","在应用里对话和创作，一个账号调用全部模型。":"Chat and create in the app. One account, every model.","写一句话，回车进入应用":"Type a line, press Enter to open the app","想直接聊天和创作？":"Just want to chat and create?","打开应用 →":"Open app →","开发者视图":"Developer view","按实际用量从余额扣费，价格见":"Billed to your balance by actual usage. See ","体验中心按实际用量从余额扣费，价格见":"Playground usage is billed to your balance. See ","打开侧栏":"Open sidebar","收起侧栏":"Collapse sidebar","应用导航":"App navigation","应用":"App","应用 - 沐仞科技 FathomPeak":"App - FathomPeak"});  /* 应用页英文 */
+  (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"打开应用":"Open app","新对话":"New chat","搜索":"Search","最近":"Recents","输入你的问题":"Ask anything","今天想做点什么？":"What would you like to make today?","直接开始":"Start right away","在应用里对话和创作，一个账号调用全部模型。":"Chat and create in the app. One account, every model.","写一句话，回车进入应用":"Type a line, press Enter to open the app","想直接聊天和创作？":"Just want to chat and create?","打开应用 →":"Open app →","按实际用量从余额扣费，价格见":"Billed to your balance by actual usage. See ","体验中心按实际用量从余额扣费，价格见":"Playground usage is billed to your balance. See ","打开侧栏":"Open sidebar","收起侧栏":"Collapse sidebar","应用导航":"App navigation","应用":"App","应用 - 沐仞科技 FathomPeak":"App - FathomPeak"});  /* 应用页英文 */
   RX.push([/^对话尚未开通。开通后这里显示 (.+) 的回答，以及首字时延、速度、Token、费用和电站产地。$/,function(m,a){return 'Chat is not live yet. Once it is, '+a+"'s reply will appear here with time to first token, speed, tokens, cost and source plant."}]);
   (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"支持": "Support", "先在这里找答案；需要人工处理时，提交问题或直接联系我们。": "Find answers here first. If you need a person, submit a request or contact us.", "充值未到账": "Top-up not received", "付款成功，余额没有增加": "Paid, but balance didn't change", "开发票": "Request an invoice", "按充值记录申请电子发票": "Request e-invoices for your top-ups", "调用报错": "API errors", "401、429、超时等问题": "401, 429, timeouts", "账号与登录": "Account & sign-in", "换绑手机号、找回账号": "Change phone, recover account", "充值订单": "Top-up order", "订单号（支付宝或微信账单里的商户订单号）": "Order number (merchant order no. in your Alipay or WeChat bill)", "付款方式": "Payment method", "付款金额（¥）": "Amount paid (¥)", "例如 100": "e.g. 100", "付款截图": "Payment screenshot", "支付宝或微信的账单详情页截图，能看到订单号和金额。": "A screenshot of the bill details showing the order number and amount.", "联系方式": "Contact", "手机号或邮箱，用于告诉你处理结果": "Phone or email for the result", "提交": "Submit", "联系我们": "Contact us", "邮箱": "Email", "电话": "Phone", "我提交的问题": "My requests", "还没有提交过问题": "No requests yet", "提交后的处理进度显示在这里，也会通知到你的联系方式。": "Progress shows here and is sent to your contact.", "常见问题": "FAQ", "发票": "Invoices", "按已支付的充值记录开具电子发票，发到你填写的邮箱。": "E-invoices are issued for paid top-ups and sent to your email.", "可开票金额": "Invoiceable", "已开票": "Invoiced", "开票中": "In progress", "1 · 选择充值记录": "1 · Choose top-ups", "2 · 填写开票信息": "2 · Invoice details", "还没有可开票的充值记录": "No invoiceable top-ups", "充值成功后，可以在这里勾选订单申请发票。赠送额度、代金券和兑换码不开票。": "After a successful top-up, select it here to request an invoice. Credits, vouchers and codes are not invoiced.", "抬头类型": "Title type", "个人": "Personal", "企业": "Business", "发票类型": "Invoice type", "普通发票": "General invoice", "增值税专用发票": "Special VAT invoice", "发票抬头": "Invoice title", "个人姓名或公司全称": "Your name or company name", "纳税人识别号": "Taxpayer ID", "开户行及账号": "Bank and account", "注册地址及电话": "Registered address and phone", "接收邮箱": "Email", "申请开票": "Request invoice", "开票记录": "Invoice history", "还没有开票记录": "No invoices yet", "开好的电子发票会发到接收邮箱，也可以在这里下载。": "Issued e-invoices are emailed to you and can be downloaded here.", "去开发票 →": "Request an invoice →", "联系我们 →": "Contact us →", "接入问题可以先查": "For integration questions, see the ", "文档": "docs"});  /* 支持与发票英文 */
   RX.push([/^已选 (\d+) 笔，合计 (.+)$/,function(m,a,b){return a+' selected · total '+b}]);
@@ -6800,8 +6797,6 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     function fit(){ if(!inApp()) return; q.style.height='auto'; q.style.height=Math.max(36,Math.min(q.scrollHeight,220))+'px' }
     function inApp(){return H.classList.contains('in-app')}
     function narrow(){return window.matchMedia('(max-width:900px)').matches}
-    function devOn(){try{return localStorage.getItem('fp-app-dev')==='1'}catch(e){return false}}
-    function setDev(v){H.classList.toggle('apx-dev',!!v); $('#apxDev').setAttribute('aria-checked',String(!!v)); if(!v){var c=$('#xpCode'); if(c) c.hidden=true}}
     function hist(){if(window.__xpHist) window.__xpHist()}
     function pop(open){$('#apxPop').hidden=!open; $('#apxMe').setAttribute('aria-expanded',String(!!open))}
     function tpop(open){var b=$('#apxTitleB'), m=$('#apxTPop'); if(open){var r=b.getBoundingClientRect(); m.style.left=Math.round(r.left)+'px'; m.style.top=Math.round(r.bottom+6)+'px'} m.hidden=!open; b.setAttribute('aria-expanded',String(!!open))}
@@ -6813,11 +6808,11 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       var u=me||{}; $('#apxWho').textContent=u.phone||u.email||'我的账户'; $('#apxSub').textContent=WHO[u.role]?' · '+WHO[u.role]:'';
       $('#apxAv').textContent=u.email?u.email.charAt(0).toUpperCase():(u.phone?u.phone.slice(-2):'我');
       var col=false; try{col=localStorage.getItem('fp-app-col')==='1'}catch(e){} ap.classList.toggle('col',col);
-      setDev(devOn()); pop(false); tpop(false); drawer(false); find(false); q.setAttribute('placeholder','输入你的问题'); q.rows=1; fit();
+      pop(false); tpop(false); drawer(false); find(false); q.setAttribute('placeholder','输入你的问题'); q.rows=1; fit();
       var q0=null; try{q0=sessionStorage.getItem('fp-app-q'); sessionStorage.removeItem('fp-app-q')}catch(e){}
       if(q0){$('#xpNew').click(); q.value=q0; box.requestSubmit()} sync() }
     function unmount(){ metaOut(); if(xp.parentNode!==xpHome){xpHome.appendChild(xp); xp.insertBefore(hs,hsNext); hs.hidden=true}
-      H.classList.remove('apx-dev'); ap.classList.remove('chat'); pop(false); tpop(false); drawer(false); q.setAttribute('placeholder','输入问题，或从下面选一个模板'); q.rows=3; q.style.height='' }
+      ap.classList.remove('chat'); pop(false); tpop(false); drawer(false); q.setAttribute('placeholder','输入问题，或从下面选一个模板'); q.rows=3; q.style.height='' }
     window.__apxSync=function(on){H.classList.toggle('in-app',!!on); if(on) mount(); else unmount()};
     new MutationObserver(function(){if(inApp()) sync()}).observe(xp,{attributes:true,attributeFilter:['data-mode']});
     new MutationObserver(function(){if(inApp()) sync()}).observe($('#xpHL'),{childList:true});
@@ -6834,7 +6829,6 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     document.addEventListener('keydown',function(e){if(e.key!=='Escape'||!inApp()) return; if(!$('#apxPop').hidden){pop(false); $('#apxMe').focus()} else if(!$('#apxTPop').hidden){tpop(false); $('#apxTitleB').focus()} else if(ap.classList.contains('open')) drawer(false); else if(ap.classList.contains('find')) find(false)});
     $$('#apx [data-cs]').forEach(function(b){b.addEventListener('click',function(){toCs(b.getAttribute('data-cs'))})});
     $('#apxDel').addEventListener('click',function(){var d=$('#xpHL .xp-hi.on .xp-hd'); tpop(false); if(d){d.click(); d.click()}});
-    $('#apxDev').addEventListener('click',function(){var v=this.getAttribute('aria-checked')!=='true'; try{localStorage.setItem('fp-app-dev',v?'1':'0')}catch(e){} setDev(v)});
     $('#apxOut').addEventListener('click',function(){$('#csOut').click()});
     $('#apxCol').addEventListener('click',function(){if(narrow()){drawer(false); return} ap.classList.add('col'); try{localStorage.setItem('fp-app-col','1')}catch(e){}});
     $('#apxOpen').addEventListener('click',function(){if(narrow()){drawer(true); return} ap.classList.remove('col'); try{localStorage.setItem('fp-app-col','0')}catch(e){}});
