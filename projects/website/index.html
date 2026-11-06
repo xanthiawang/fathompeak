@@ -2714,6 +2714,69 @@ html.in-app .xp:not([data-mode="chat"]) .apx-meta .apx-pjc{display:inline-flex}
 @media (max-width:900px){.apx-cl.g2{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:760px){.apx-feat{flex-direction:column;align-items:flex-start}.apx-feat .bt-collage{display:none}.apx-czq{width:100%}.apx-card{flex-wrap:wrap}.apx-ca{width:100%;justify-content:flex-end}}
 </style>
+
+<style id="app-page-v7-20261107">
+/* 应用页 v7：伙伴（陪聊 + 每日简报 + 记忆）。变量沿用 .apx */
+.apx[data-view^="cp"] #apxCpN{background:var(--gray-btn);color:var(--ink)}
+.apx[data-view^="cp"] #apxNew{background:transparent!important;color:var(--ink-50)!important}
+.apx[data-view="cpb"] #apxCPB,.apx[data-view="cpm"] #apxCPM{display:block}
+.apx-av2{display:inline-grid;place-items:center;flex:none;width:28px;height:28px;border-radius:50%;background:linear-gradient(150deg,#2F63B8 0%,#8FA9DA 58%,#EBCFC4 100%);overflow:hidden}
+.apx-av2 img{width:64%;height:auto;filter:brightness(0) invert(1)}
+.apx-av2.xl{width:72px;height:72px;box-shadow:0 14px 34px -16px rgba(47,99,184,.6)}
+/* 顶栏：伙伴身份 + 聊天 / 简报 / 记忆 */
+.apx-cphd{display:none;align-items:center;gap:10px;min-width:0}
+.apx[data-view^="cp"] .apx-cphd{display:flex}
+.apx[data-view^="cp"] .apx-tbtn,.apx[data-view^="cp"] .apx-crumb{display:none!important}
+.apx-cphd b{font:400 17px/1.2 var(--serif);letter-spacing:-.01em;color:var(--ink);font-variation-settings:"opsz" 144}
+.apx-cphd .apx-seg{margin-left:10px}
+.apx-cphd .apx-seg button{height:30px;padding:0 12px;font-size:14px}
+/* 聊天：空状态换成伙伴的招呼 */
+.apx-cpi{display:none}
+.apx[data-view="cp"] .xp-bg,.apx[data-view="cp"] .xp-intro>.xp-h,.apx[data-view="cp"] #xpChips,.apx[data-view="cp"] .apx-pjc{display:none!important}
+.apx[data-view="cp"] .xp:not([data-mode="chat"]) .apx-cpi{display:grid;justify-items:center;gap:10px;text-align:center;margin-bottom:8px}
+.apx-cpi h1{margin:6px 0 0;font:400 34px/1.15 var(--serif);letter-spacing:-.02em;color:var(--ink);font-variation-settings:"opsz" 144}
+.apx-cpi p{margin:0;font:400 15px/1.6 var(--sans);color:var(--ink-70)}
+.apx-cpi .row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:6px}
+.apx-cpi .row .apx-btn{height:34px;font-size:13px;font-weight:400}
+.apx-cpi .row svg{width:15px;height:15px;color:var(--icon)}
+html.in-app .apx[data-view="cp"] .xp:not([data-mode="chat"]) .xp-stage{padding-top:15vh!important}
+/* 简报、记忆页 */
+.apx-bset{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:0 0 26px}
+.apx-bset .apx-card{display:grid;gap:10px;align-content:start}
+.apx-bset h3{margin:0;font:400 17px/1.3 var(--serif);color:var(--ink)}
+.apx-opt2{display:flex;align-items:center;gap:10px;font:400 14px/1.5 var(--sans);color:var(--ink-85)}
+.apx-opt2 input[type=checkbox]{width:16px;height:16px;margin:0;accent-color:#000}
+.apx.night .apx-opt2 input[type=checkbox]{accent-color:#F2F1F3}
+.apx-opt2 input[type=time]{appearance:none;padding:6px 10px;border:1px solid var(--line);border-radius:10px;background:transparent;font:400 14px var(--sans);color:var(--ink)}
+.apx-opt2 .st{margin-left:auto;font:400 12px var(--sans);color:var(--ink-50)}
+.apx-opt2.na{color:var(--ink-50)}
+.apx-brief{display:grid;gap:14px;padding:22px 24px;border:1px solid var(--line);border-radius:20px;background:var(--card)}
+.apx-brief header{display:flex;align-items:baseline;gap:10px}
+.apx-brief header b{font:400 22px/1.2 var(--serif);letter-spacing:-.01em;color:var(--ink);font-variation-settings:"opsz" 144}
+.apx-brief header span{font:400 13px var(--sans);color:var(--ink-50)}
+.apx-brief h4{margin:0 0 4px;font:400 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-50)}
+.apx-brief ul{margin:0;padding:0 0 0 18px;display:grid;gap:4px;font:400 15px/1.6 var(--sans);color:var(--ink-85)}
+.apx-brief .none{margin:0;font:400 14px var(--sans);color:var(--ink-50)}
+.apx-brief footer{font:400 12px var(--sans);color:var(--ink-50)}
+.apx-bl{display:grid;gap:14px}
+.apx-memadd{display:flex;gap:8px;margin:0 0 14px}
+.apx-memadd input{appearance:none;flex:1;min-width:0;height:40px;box-sizing:border-box;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:var(--card);outline:0;font:400 15px var(--sans);color:var(--ink)}
+.apx-memadd input:focus{border-color:var(--frame)}
+.apx-mi{display:flex;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.apx-mi:first-child{border-top:1px solid var(--line)}
+.apx-mi span{flex:1;min-width:0;font:400 15px/1.6 var(--sans);color:var(--ink)}
+.apx-mi small{flex:none;font:400 12px var(--sans);color:var(--ink-50)}
+.apx-mi button{appearance:none;flex:none;border:0;background:transparent;padding:4px 8px;border-radius:8px;font:400 13px var(--sans);color:var(--ink-50);cursor:pointer}
+.apx-mi button:hover{background:var(--gray-btn);color:var(--ink)}
+.apx-mi .apx-ren{margin:0}
+.apx-lead{margin:-8px 0 26px;max-width:660px;font:400 15px/1.65 var(--sans);color:var(--ink-70)}
+.apx-sw{appearance:none;position:relative;flex:none;width:38px;height:22px;padding:0;border:0;border-radius:999px;background:rgba(61,49,79,.2);cursor:pointer;transition:background-color .2s var(--ease)}
+.apx-sw::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .2s var(--ease)}
+.apx-sw[aria-checked="true"]{background:#000}.apx-sw[aria-checked="true"]::after{transform:translateX(16px)}
+.apx.night .apx-sw{background:rgba(255,255,255,.22)}.apx.night .apx-sw[aria-checked="true"]{background:#F2F1F3}.apx.night .apx-sw[aria-checked="true"]::after{background:#1A191B}
+.apx-swl{display:flex;align-items:center;gap:12px;margin:0 0 22px;font:400 15px var(--sans);color:var(--ink)}
+@media (max-width:760px){.apx-cphd b{display:none}}
+</style>
 </head>
 <body>
 
@@ -3919,6 +3982,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       <nav class="bt-nav" aria-label="应用">
         <button type="button" id="apxNew"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4.5v11M4.5 10h11" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>新对话</span></button>
         <button type="button" id="apxFind" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="5.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M13 13l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>搜索</span></button>
+        <button type="button" id="apxCpN" data-nav-view="cp" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.3 11.6c.7.9 1.6 1.4 2.7 1.4s2-.5 2.7-1.4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.6 8.3v.2M12.4 8.3v.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>伙伴</span></button>
         <button type="button" id="apxPjN" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="3.5" width="14" height="4" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M4.3 7.5v7a2 2 0 0 0 2 2h7.4a2 2 0 0 0 2-2v-7M8.2 10.5h3.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>项目</span></button>
         <button type="button" data-pane-b="works" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3.5" y="6.5" width="9" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7.5 6.5V5.5a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg><span>作品</span></button>
         <button type="button" id="apxTbN" data-nav-view="tb" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8.5a1.5 1.5 0 0 1 1.5-1.5h11A1.5 1.5 0 0 1 17 8.5V15a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 3 15Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 7V5.2A1.7 1.7 0 0 1 9.2 3.5h1.6a1.7 1.7 0 0 1 1.7 1.7V7M3 11.2h14M8.6 10.2v2M11.4 10.2v2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>工具箱</span></button>
@@ -3950,6 +4014,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     <main class="apx-main" id="apxMain">
       <div class="apx-bar" id="apxBar">
         <button class="apx-ib apx-open" type="button" id="apxOpen" aria-label="打开侧栏" title="打开侧栏"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="4" width="14" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 4v12" stroke="currentColor" stroke-width="1.4"/></svg></button>
+        <div class="apx-cphd" id="apxCpHd"><span class="apx-av2" aria-hidden="true"><img src="art/brand/fathompeak-mark_2026-10-19.svg" alt=""></span><b>伙伴</b><div class="apx-seg" role="tablist" aria-label="伙伴"><button type="button" data-cpt="cp" aria-pressed="true">聊天</button><button type="button" data-cpt="cpb" aria-pressed="false">简报</button><button type="button" data-cpt="cpm" aria-pressed="false">记忆</button></div></div>
         <button class="apx-crumb" type="button" id="apxCrumb"><span></span></button>
         <button class="apx-tbtn" type="button" id="apxTitleB" aria-haspopup="true" aria-expanded="false" aria-controls="apxTPop" hidden><span id="apxTitle"></span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <span class="apx-sp"></span>
@@ -3990,6 +4055,29 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
         <div id="apxTbB"></div>
       </section>
       <div class="bt-pop apx-subm" id="apxTbM" role="menu" hidden></div>
+      <section class="apx-pl" id="apxCPB" aria-labelledby="apxCPBT">
+        <div class="apx-plh"><h1 id="apxCPBT">每日简报</h1><button class="apx-btn pri" type="button" id="apxBGen">现在生成一份</button></div>
+        <p class="apx-lead">伙伴每天定时把你需要知道的事整理成一页，送到这里，也可以同时发到微信。</p>
+        <div class="apx-bset">
+          <div class="apx-card"><h3>时间与渠道</h3><label class="apx-opt2">每天<input type="time" id="apxBT" value="09:00"></label><label class="apx-opt2"><input type="checkbox" checked disabled>应用内</label><label class="apx-opt2"><input type="checkbox" id="apxBWx">同时发到微信<span class="st">需要先绑定</span></label></div>
+          <div class="apx-card"><h3>从哪里整理</h3><label class="apx-opt2"><input type="checkbox" id="apxBS1" checked>对话与项目</label><label class="apx-opt2"><input type="checkbox" id="apxBS2" checked>定时任务</label><label class="apx-opt2 na"><input type="checkbox" disabled>MindScope 本机记忆<span class="st">未连接</span></label><label class="apx-opt2 na"><input type="checkbox" disabled>微信聊天里的待办<span class="st">未连接</span></label></div>
+        </div>
+        <div class="apx-bl" id="apxBL"></div>
+        <div class="apx-emp" id="apxBE"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 3v1.6M10 15.4V17M3 10h1.6M15.4 10H17M5.1 5.1l1.1 1.1M13.8 13.8l1.1 1.1M5.1 14.9l1.1-1.1M13.8 6.2l1.1-1.1" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><b>还没有简报</b><span>第一份会在明天早上按时生成；也可以点右上角现在生成一份。</span></div>
+      </section>
+      <section class="apx-pl" id="apxCPM" aria-labelledby="apxCPMT">
+        <div class="apx-plh"><h1 id="apxCPMT">记忆</h1></div>
+        <p class="apx-lead">伙伴会记住你的偏好和关于你的事实，用来回答得更贴近你。每一条都能改、能删，也可以整体关掉。</p>
+        <label class="apx-swl"><button class="apx-sw" type="button" role="switch" id="apxMemOn" aria-checked="true" aria-label="记忆"></button><span>记忆已开启</span></label>
+        <div class="apx-bset">
+          <div class="apx-card"><h3>对话</h3><span class="apx-cm">聊天时提到的偏好和事实</span><span class="apx-tg g" style="justify-self:start">已开启</span></div>
+          <div class="apx-card"><h3>MindScope</h3><span class="apx-cm">你的 Mac 上整理的屏幕与会议记忆，只存在本机，伙伴按需查询</span><span class="apx-tg" style="justify-self:start">未连接</span></div>
+          <div class="apx-card"><h3>微信助手</h3><span class="apx-cm">微信聊天里提到的约定和待办</span><span class="apx-tg" style="justify-self:start">未连接</span></div>
+        </div>
+        <form class="apx-memadd" id="apxMemF"><input id="apxMemQ" maxlength="200" placeholder="手动添加一条，例如你的称呼或写作习惯" aria-label="添加一条记忆" autocomplete="off"><button class="apx-btn pri" type="submit"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4.5v11M4.5 10h11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>添加</span></button></form>
+        <div id="apxMemL"></div>
+        <div class="apx-emp" id="apxMemE"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4.5a2.5 2.5 0 0 0-2.5 2.5v.3A2.5 2.5 0 0 0 3.5 12a2.5 2.5 0 0 0 2.5 3.5h1A2 2 0 0 0 10 14V5.8A2.2 2.2 0 0 0 7 4.5ZM13 4.5a2.5 2.5 0 0 1 2.5 2.5v.3a2.5 2.5 0 0 1 1 4.7 2.5 2.5 0 0 1-2.5 3.5h-1A2 2 0 0 1 10 14V5.8a2.2 2.2 0 0 1 3-1.3Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><b>还没有记忆</b><span>聊天时提到的偏好会记在这里，你也可以手动添加。</span></div>
+      </section>
     </main>
     <div class="apx-dlg" id="apxPDlg" hidden><form id="apxPForm" role="dialog" aria-modal="true" aria-labelledby="apxPDT" novalidate>
       <h2 id="apxPDT">新建项目</h2>
@@ -7065,7 +7153,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
   })();
 
   (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"已复制":"Copied","重新生成":"Regenerate","已重新生成":"Regenerated","复制失败，请手动选择文字":"Copy failed. Select the text manually.","历史对话":"History", "搜索对话": "Search chats", "今天": "Today", "昨天": "Yesterday", "近 7 天": "Previous 7 days", "更早": "Earlier", "删除": "Delete", "确认删除": "Confirm delete", "删除这条对话": "Delete this chat", "已删除": "Deleted", "最近对话": "Recent", "全部 →": "All →", "关闭": "Close", "没有找到相关对话": "No matching chats", "对话记录只保存在你的账号里，可以随时删除。": "Chats are saved to your account only. You can delete them anytime.", "还没有历史对话。": "No chats yet.", "发送第一个问题后，对话会保存在这里。": "Your chats will be saved here after you send the first question."});  /* 体验中心历史对话英文 */
-  (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"打开应用":"Open app","新对话":"New chat","搜索":"Search","最近":"Recents","工具箱":"Toolbox","定时任务":"Scheduled","新建任务":"New task","技能":"Skills","客户端":"Clients","我的":"Yours","模板":"Templates","筛选":"Filter","按名称排序":"Sort by name","名称":"Name","要问什么":"Prompt","频率":"Frequency","时间":"Time","每天":"Daily","工作日":"Weekdays","每周一":"Mondays","只一次":"Once","排到绿电时段运行":"Run in a green-power window","到点后顺延到最近的电站富余绿电时段再运行":"At the set time, wait for the next plant surplus green-power window","创建任务":"Create task","新建技能":"New skill","什么时候用":"When to use","一句话说明（可不填）":"One line (optional)","提示词":"Prompt","默认模型":"Default model","项目":"Projects","新建项目":"New project","搜索项目":"Search projects","全部项目":"All projects","项目操作":"Project actions","项目信息":"Project info","项目说明":"Instructions","资料":"Project files","编辑":"Edit","对话":"Chats","项目名称":"Project name","做什么用":"Description","给项目起个名字":"Name your project","这个项目要做什么（可不填）":"What is this project for? (optional)","取消":"Cancel","创建项目":"Create project","保存":"Save","这个项目里的每条对话都会先带上这段说明。":"Every chat in this project starts with these instructions.","还没有资料。上传的文件在这个项目的每条对话里都能用。":"No files yet. Files added here are available in every chat in this project.","这个项目还没有对话。在上面的输入框里开始第一条。":"No chats in this project yet. Start one in the box above.","排序":"Sort","对话目录":"Chat outline","后台任务":"Background tasks","这条对话还没有消息。":"No messages in this chat yet.","按最近更新排序":"Sorted by recent","复制":"Copy","这条对话的操作":"Chat actions","用 FathomPeak Key 调用同一个模型，模型和参数跟这条对话一致。":"Call the same model with your FathomPeak Key; the model and parameters match this chat.","我":"Me","· 个人":"· Personal","· 企业管理员":"· Org admin","· 企业成员":"· Member","· 速度":"· Speed","· 费用":"· Cost","置顶":"Pinned","取消置顶":"Unpin","作品":"Artifacts","任务":"Tasks","文件":"Files","更多":"More","添加":"Add","后退":"Back","前进":"Forward","面板":"Panels","侧面板":"Side panel","对比模型":"Compare models","调用代码":"API code","筛选文件":"Filter files","上传文件":"Upload files","移除":"Remove","这条对话还没有文件。点输入框旁的加号上传图片或文档。":"No files in this chat yet. Use the plus button by the composer to upload images or documents.","这条对话生成的图片、视频和文档会列在这里。":"Images, videos and documents generated in this chat will be listed here.","生成视频这类耗时任务会在这里排队并显示进度。":"Long-running jobs such as video generation will queue here with progress.","切换到夜间":"Switch to night","切换到白天":"Switch to day","输入你的问题":"Ask anything","今天想做点什么？":"What would you like to make today?","直接开始":"Start right away","在应用里对话和创作，一个账号调用全部模型。":"Chat and create in the app. One account, every model.","写一句话，回车进入应用":"Type a line, press Enter to open the app","想直接聊天和创作？":"Just want to chat and create?","打开应用 →":"Open app →","按实际用量从余额扣费，价格见":"Billed to your balance by actual usage. See ","体验中心按实际用量从余额扣费，价格见":"Playground usage is billed to your balance. See ","打开侧栏":"Open sidebar","收起侧栏":"Collapse sidebar","应用导航":"App navigation","应用":"App","应用 - 沐仞科技 FathomPeak":"App - FathomPeak"});  /* 应用页英文 */
+  (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"打开应用":"Open app","新对话":"New chat","搜索":"Search","最近":"Recents","伙伴":"Companion","聊天":"Chat","简报":"Briefing","记忆":"Memory","每日简报":"Daily briefing","现在生成一份":"Generate one now","伙伴每天定时把你需要知道的事整理成一页，送到这里，也可以同时发到微信。":"Every day your companion sums up what you need to know on one page, here and optionally on WeChat.","时间与渠道":"Time and delivery","应用内":"In the app","同时发到微信":"Also send to WeChat","需要先绑定":"Needs linking","从哪里整理":"Sources","对话与项目":"Chats and projects","MindScope 本机记忆":"MindScope local memory","未连接":"Not connected","微信聊天里的待办":"To-dos from WeChat chats","还没有简报":"No briefings yet","第一份会在明天早上按时生成；也可以点右上角现在生成一份。":"The first one arrives tomorrow morning, or generate one now from the top right.","伙伴会记住你的偏好和关于你的事实，用来回答得更贴近你。每一条都能改、能删，也可以整体关掉。":"Your companion remembers your preferences and facts about you to answer more personally. Edit or delete any item, or turn memory off.","记忆已开启":"Memory is on","聊天时提到的偏好和事实":"Preferences and facts from your chats","已开启":"On","你的 Mac 上整理的屏幕与会议记忆，只存在本机，伙伴按需查询":"Screen and meeting memory organised on your Mac; it stays on the device and is queried only when needed","微信助手":"WeChat assistant","微信聊天里提到的约定和待办":"Plans and to-dos mentioned in WeChat chats","手动添加一条，例如你的称呼或写作习惯":"Add one yourself, such as what to call you or how you like to write","添加一条记忆":"Add a memory","还没有记忆":"No memories yet","聊天时提到的偏好会记在这里，你也可以手动添加。":"Preferences you mention in chats will appear here. You can also add them yourself.","工具箱":"Toolbox","定时任务":"Scheduled","新建任务":"New task","技能":"Skills","客户端":"Clients","我的":"Yours","模板":"Templates","筛选":"Filter","按名称排序":"Sort by name","名称":"Name","要问什么":"Prompt","频率":"Frequency","时间":"Time","每天":"Daily","工作日":"Weekdays","每周一":"Mondays","只一次":"Once","排到绿电时段运行":"Run in a green-power window","到点后顺延到最近的电站富余绿电时段再运行":"At the set time, wait for the next plant surplus green-power window","创建任务":"Create task","新建技能":"New skill","什么时候用":"When to use","一句话说明（可不填）":"One line (optional)","提示词":"Prompt","默认模型":"Default model","项目":"Projects","新建项目":"New project","搜索项目":"Search projects","全部项目":"All projects","项目操作":"Project actions","项目信息":"Project info","项目说明":"Instructions","资料":"Project files","编辑":"Edit","对话":"Chats","项目名称":"Project name","做什么用":"Description","给项目起个名字":"Name your project","这个项目要做什么（可不填）":"What is this project for? (optional)","取消":"Cancel","创建项目":"Create project","保存":"Save","这个项目里的每条对话都会先带上这段说明。":"Every chat in this project starts with these instructions.","还没有资料。上传的文件在这个项目的每条对话里都能用。":"No files yet. Files added here are available in every chat in this project.","这个项目还没有对话。在上面的输入框里开始第一条。":"No chats in this project yet. Start one in the box above.","排序":"Sort","对话目录":"Chat outline","后台任务":"Background tasks","这条对话还没有消息。":"No messages in this chat yet.","按最近更新排序":"Sorted by recent","复制":"Copy","这条对话的操作":"Chat actions","用 FathomPeak Key 调用同一个模型，模型和参数跟这条对话一致。":"Call the same model with your FathomPeak Key; the model and parameters match this chat.","我":"Me","· 个人":"· Personal","· 企业管理员":"· Org admin","· 企业成员":"· Member","· 速度":"· Speed","· 费用":"· Cost","置顶":"Pinned","取消置顶":"Unpin","作品":"Artifacts","任务":"Tasks","文件":"Files","更多":"More","添加":"Add","后退":"Back","前进":"Forward","面板":"Panels","侧面板":"Side panel","对比模型":"Compare models","调用代码":"API code","筛选文件":"Filter files","上传文件":"Upload files","移除":"Remove","这条对话还没有文件。点输入框旁的加号上传图片或文档。":"No files in this chat yet. Use the plus button by the composer to upload images or documents.","这条对话生成的图片、视频和文档会列在这里。":"Images, videos and documents generated in this chat will be listed here.","生成视频这类耗时任务会在这里排队并显示进度。":"Long-running jobs such as video generation will queue here with progress.","切换到夜间":"Switch to night","切换到白天":"Switch to day","输入你的问题":"Ask anything","今天想做点什么？":"What would you like to make today?","直接开始":"Start right away","在应用里对话和创作，一个账号调用全部模型。":"Chat and create in the app. One account, every model.","写一句话，回车进入应用":"Type a line, press Enter to open the app","想直接聊天和创作？":"Just want to chat and create?","打开应用 →":"Open app →","按实际用量从余额扣费，价格见":"Billed to your balance by actual usage. See ","体验中心按实际用量从余额扣费，价格见":"Playground usage is billed to your balance. See ","打开侧栏":"Open sidebar","收起侧栏":"Collapse sidebar","应用导航":"App navigation","应用":"App","应用 - 沐仞科技 FathomPeak":"App - FathomPeak"});  /* 应用页英文 */
   RX.push([/^对话尚未开通。开通后这里显示 (.+) 的回答，以及首字时延、速度、Token、费用和电站产地。$/,function(m,a){return 'Chat is not live yet. Once it is, '+a+"'s reply will appear here with time to first token, speed, tokens, cost and source plant."}]);
   (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"支持": "Support", "先在这里找答案；需要人工处理时，提交问题或直接联系我们。": "Find answers here first. If you need a person, submit a request or contact us.", "充值未到账": "Top-up not received", "付款成功，余额没有增加": "Paid, but balance didn't change", "开发票": "Request an invoice", "按充值记录申请电子发票": "Request e-invoices for your top-ups", "调用报错": "API errors", "401、429、超时等问题": "401, 429, timeouts", "账号与登录": "Account & sign-in", "换绑手机号、找回账号": "Change phone, recover account", "充值订单": "Top-up order", "订单号（支付宝或微信账单里的商户订单号）": "Order number (merchant order no. in your Alipay or WeChat bill)", "付款方式": "Payment method", "付款金额（¥）": "Amount paid (¥)", "例如 100": "e.g. 100", "付款截图": "Payment screenshot", "支付宝或微信的账单详情页截图，能看到订单号和金额。": "A screenshot of the bill details showing the order number and amount.", "联系方式": "Contact", "手机号或邮箱，用于告诉你处理结果": "Phone or email for the result", "提交": "Submit", "联系我们": "Contact us", "邮箱": "Email", "电话": "Phone", "我提交的问题": "My requests", "还没有提交过问题": "No requests yet", "提交后的处理进度显示在这里，也会通知到你的联系方式。": "Progress shows here and is sent to your contact.", "常见问题": "FAQ", "发票": "Invoices", "按已支付的充值记录开具电子发票，发到你填写的邮箱。": "E-invoices are issued for paid top-ups and sent to your email.", "可开票金额": "Invoiceable", "已开票": "Invoiced", "开票中": "In progress", "1 · 选择充值记录": "1 · Choose top-ups", "2 · 填写开票信息": "2 · Invoice details", "还没有可开票的充值记录": "No invoiceable top-ups", "充值成功后，可以在这里勾选订单申请发票。赠送额度、代金券和兑换码不开票。": "After a successful top-up, select it here to request an invoice. Credits, vouchers and codes are not invoiced.", "抬头类型": "Title type", "个人": "Personal", "企业": "Business", "发票类型": "Invoice type", "普通发票": "General invoice", "增值税专用发票": "Special VAT invoice", "发票抬头": "Invoice title", "个人姓名或公司全称": "Your name or company name", "纳税人识别号": "Taxpayer ID", "开户行及账号": "Bank and account", "注册地址及电话": "Registered address and phone", "接收邮箱": "Email", "申请开票": "Request invoice", "开票记录": "Invoice history", "还没有开票记录": "No invoices yet", "开好的电子发票会发到接收邮箱，也可以在这里下载。": "Issued e-invoices are emailed to you and can be downloaded here.", "去开发票 →": "Request an invoice →", "联系我们 →": "Contact us →", "接入问题可以先查": "For integration questions, see the ", "文档": "docs"});  /* 支持与发票英文 */
   RX.push([/^已选 (\d+) 笔，合计 (.+)$/,function(m,a,b){return a+' selected · total '+b}]);
@@ -7668,7 +7756,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     var ct=$('#xpCodeT'); if(ct&&window.MutationObserver) new MutationObserver(cdSync).observe(ct,{childList:true,subtree:true,characterData:true}); cdSync();
     $('#apxCdCp').addEventListener('click',function(){ var t=$('#apxCd').textContent, bad=function(){toast(T('复制失败，请手动选择文字','Copy failed. Select the text manually'))};
       try{navigator.clipboard.writeText(t).then(function(){toast(T('已复制','Copied'))},bad)}catch(err){bad()} });
-    new MutationObserver(function(){ if(!inApp()) return; if(isChat()&&view) show(''); crumb() }).observe(xp,{attributes:true,attributeFilter:['data-mode']});
+    new MutationObserver(function(){ if(!inApp()) return; if(isChat()&&view&&view!=='cp') show(''); crumb() }).observe(xp,{attributes:true,attributeFilter:['data-mode']});
     /* —— 新建 / 编辑项目 —— */
     var dm=null;
     function dlgProj(id,cid,sel){ var x=id?pby(id):null; mclose(); dm={id:x?id:'',cid:cid||'',sel:!!sel};
@@ -7859,6 +7947,80 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     $('#apxTbN').addEventListener('click',function(){show('tb'); ap.classList.remove('open')});
     document.addEventListener('keydown',function(e){ if(e.key!=='Escape'||!inApp()) return; if(open){closeM(); return} $('#apxSDlg').hidden=true; $('#apxKDlg').hidden=true });
     var _sync=window.__apxSync; window.__apxSync=function(on){ _sync(on); if(!on){closeM(); $('#apxSDlg').hidden=true; $('#apxKDlg').hidden=true} };
+  })();
+  /* ======== 应用页 v7（2026-11-07）：伙伴（陪聊、每日简报、记忆） ======== */
+  (function(){
+    var ap=$('#apx'), xp=$('#xp'), q=$('#xpQ'), box=$('#xpBox'); if(!ap||!xp||!q||!box||!$('#apxCpN')||!window.__apxShow) return;
+    var H=document.documentElement; function inApp(){return H.classList.contains('in-app')}
+    var IC={pal:'<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.3 11.6c.7.9 1.6 1.4 2.7 1.4s2-.5 2.7-1.4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.6 8.3v.2M12.4 8.3v.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',sun:'<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 3v1.6M10 15.4V17M3 10h1.6M15.4 10H17M5.1 5.1l1.1 1.1M13.8 13.8l1.1 1.1M5.1 14.9l1.1-1.1M13.8 6.2l1.1-1.1" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',mem:'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4.5a2.5 2.5 0 0 0-2.5 2.5v.3A2.5 2.5 0 0 0 3.5 12a2.5 2.5 0 0 0 2.5 3.5h1A2 2 0 0 0 10 14V5.8A2.2 2.2 0 0 0 7 4.5ZM13 4.5a2.5 2.5 0 0 1 2.5 2.5v.3a2.5 2.5 0 0 1 1 4.7 2.5 2.5 0 0 1-2.5 3.5h-1A2 2 0 0 1 10 14V5.8a2.2 2.2 0 0 1 3-1.3Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',chat:'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 5.5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-3.5 3v-3H6a2 2 0 0 1-2-2Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',plus:'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4.5v11M4.5 10h11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',more:'<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="5" cy="10" r="1.3" fill="currentColor"/><circle cx="10" cy="10" r="1.3" fill="currentColor"/><circle cx="15" cy="10" r="1.3" fill="currentColor"/></svg>'}, AV='<span class="apx-av2" aria-hidden="true"><img src="art/brand/fathompeak-mark_2026-10-19.svg" alt=""></span>', show=window.__apxShow;
+    function T(zh,e){return (typeof lang!=='undefined'&&lang==='en')?e:zh}
+    function ukey(){var u=window.__me&&window.__me(); return (u&&(u.email||u.phone))||'preview'}
+    function jget(k,d){try{var v=JSON.parse(localStorage.getItem(k)||'null'); return v==null?d:v}catch(e){return d}}
+    function jset(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+    function z(v){return (v<10?'0':'')+v}
+    function isChat(){return xp.getAttribute('data-mode')==='chat'}
+    function curConv(){try{return isChat()?(sessionStorage.getItem('fp-xp-cur')||''):''}catch(e){return ''}}
+    function view(){return ap.getAttribute('data-view')||''}
+    function comp(){return jget('fp-app-comp:'+ukey(),{})||{}}
+    function compSet(v){jset('fp-app-comp:'+ukey(),v)}
+    /* —— 伙伴那条对话：不进「最近」，放在看不见的地方，点它照样能打开 —— */
+    var hold=document.createElement('div'); hold.id='apxCompHold'; hold.hidden=true; ap.appendChild(hold);
+    function hideComp(){ var id=comp().conv; hold.innerHTML=''; if(!id) return; var b=$('#apxLists [data-open="'+id+'"]'); if(b){var r=b.closest('.xp-hi'); if(r) hold.appendChild(r)} }
+    var _g=window.__apxGroup; window.__apxGroup=function(){ hideComp(); if(_g) _g() };
+    /* —— 聊天空状态：头像、招呼、两个跳转 —— */
+    var intro=$('.xp-intro',xp), ci=document.createElement('div'); ci.className='apx-cpi'; ci.id='apxCpI';
+    ci.innerHTML=AV.replace('apx-av2','apx-av2 xl')+'<h1>'+T('嗨，我在。','Hi, I’m here.')+'</h1><p>'+T('想聊什么都行。我会记住你在意的事，每天早上把要紧的整理给你。','Talk about anything. I remember what matters to you and sum up the important bits every morning.')+'</p>'+
+      '<div class="row"><button class="apx-btn" type="button" data-cpgo="cpb">'+IC.sun+'<span>'+T('看今天的简报','Today’s briefing')+'</span></button><button class="apx-btn" type="button" data-cpgo="cpm">'+IC.mem+'<span>'+T('你记得我什么？','What do you remember about me?')+'</span></button></div>';
+    intro.insertBefore(ci,intro.firstChild);
+    var PH0=q.getAttribute('placeholder');
+    function openComp(){ var id=comp().conv; show('cp'); var b=id&&$('#apxCompHold [data-open="'+id+'"]'); if(b) b.click(); else { if(id) compSet({}); if(isChat()) $('#xpNew').click() } tabs(); }
+    function tabs(){ var v=view(); $$('[data-cpt]').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-cpt')===v))}); if(v==='cp') q.setAttribute('placeholder',T('和伙伴说点什么','Say something to your companion')); else if(q.getAttribute('placeholder')!==PH0&&!/^cp/.test(v)) q.setAttribute('placeholder',PH0) }
+    new MutationObserver(tabs).observe(ap,{attributes:true,attributeFilter:['data-view']});
+    /* 在伙伴里发出的第一句：记下这条对话 */
+    var pend=false;
+    document.addEventListener('submit',function(e){ if(e.target===box&&inApp()&&view()==='cp'&&!isChat()&&q.value.trim()) pend=true },true);
+    box.addEventListener('submit',function(){ if(!pend) return; pend=false; setTimeout(function(){var id=curConv(); if(id){var c=comp(); c.conv=id; c.at=c.at||Date.now(); compSet(c); if(window.__xpHist) window.__xpHist()}},0) });
+    /* ===== 每日简报 ===== */
+    function bget(){var v=jget('fp-app-brief:'+ukey(),[]); return Array.isArray(v)?v:[]}
+    function cfg(){return jget('fp-app-briefcfg:'+ukey(),{t:'09:00',wx:false,s1:true,s2:true})}
+    function cfgSet(v){jset('fp-app-briefcfg:'+ukey(),v)}
+    var WD=['日','一','二','三','四','五','六'], WE=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    function dayName(d){return T((d.getMonth()+1)+' 月 '+d.getDate()+' 日 周'+WD[d.getDay()], WE[d.getDay()]+', '+(d.getMonth()+1)+'/'+d.getDate())}
+    function runsToday(t){ if(!t.on) return false; if(t.freq==='once'&&t.last) return false; var w=new Date().getDay(); if(t.freq==='wk'&&(w===0||w===6)) return false; if(t.freq==='week'&&w!==1) return false; return true }
+    function gen(){ var c=cfg(), now=new Date(), since=new Date(now.getFullYear(),now.getMonth(),now.getDate()-1).getTime(), me=comp().conv, secs=[];
+      if(c.s1){ var cv=jget('fp-xp-convs:'+ukey(),[]); cv=Array.isArray(cv)?cv:[]; var rec=cv.filter(function(x){return x.id!==me&&(x.up||x.at||0)>=since}).slice(0,8);
+        secs.push({h:T('昨天以来的对话','Chats since yesterday'),items:rec.map(function(x){return x.title})});
+        var pj=jget('fp-app-projs:'+ukey(),[]); pj=Array.isArray(pj)?pj:[]; secs.push({h:T('有更新的项目','Projects with updates'),items:pj.filter(function(x){return (x.up||0)>=since}).map(function(x){return x.name+T('（'+(x.convs||[]).length+' 个对话）',' ('+(x.convs||[]).length+' chats)')})}) }
+      if(c.s2){ var sc=jget('fp-app-sched:'+ukey(),[]); sc=Array.isArray(sc)?sc:[]; secs.push({h:T('今天要跑的定时任务','Scheduled tasks for today'),items:sc.filter(runsToday).map(function(x){return x.time+' '+x.name+(x.green?T('（绿电时段）',' (green-power window)'):'')})}) }
+      var a=bget(); a.unshift({at:Date.now(),secs:secs}); jset('fp-app-brief:'+ukey(),a.slice(0,30)); bRender() }
+    function bRender(){ var c=cfg(), a=bget(); $('#apxBT').value=c.t; $('#apxBWx').checked=!!c.wx; $('#apxBS1').checked=c.s1!==false; $('#apxBS2').checked=c.s2!==false; $('#apxBE').hidden=a.length>0;
+      $('#apxBL').innerHTML=a.map(function(b){ var d=new Date(b.at);
+        return '<article class="apx-brief"><header><b>'+esc(dayName(d))+'</b><span>'+z(d.getHours())+':'+z(d.getMinutes())+' '+T('生成','generated')+'</span></header>'+
+          b.secs.map(function(s){return '<section><h4>'+esc(s.h)+'</h4>'+(s.items.length?'<ul>'+s.items.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ul>':'<p class="none">'+T('没有','None')+'</p>')+'</section>'}).join('')+
+          '<footer>'+T('来源：这台设备上的对话、项目和定时任务记录','Source: chats, projects and scheduled tasks on this device')+'</footer></article>' }).join('') }
+    $('#apxBGen').addEventListener('click',gen);
+    $('#apxBT').addEventListener('change',function(){var c=cfg(); c.t=this.value||'09:00'; cfgSet(c)});
+    [['#apxBWx','wx'],['#apxBS1','s1'],['#apxBS2','s2']].forEach(function(o){$(o[0]).addEventListener('change',function(){var c=cfg(); c[o[1]]=this.checked; cfgSet(c)})});
+    /* ===== 记忆 ===== */
+    function mget(){var v=jget('fp-app-mem:'+ukey(),[]); return Array.isArray(v)?v:[]}
+    function mset(a){jset('fp-app-mem:'+ukey(),a)}
+    function mRender(){ var on=jget('fp-app-memon:'+ukey(),true)!==false, a=mget(); $('#apxMemOn').setAttribute('aria-checked',String(on)); $('#apxMemOn').nextElementSibling.textContent=on?T('记忆已开启','Memory is on'):T('记忆已关闭','Memory is off');
+      $('#apxMemE').hidden=a.length>0;
+      $('#apxMemL').innerHTML=a.map(function(m){return '<div class="apx-mi" data-mid="'+m.id+'"><span>'+esc(m.text)+'</span><small>'+(m.src==='chat'?T('来自对话','From chats'):T('手动添加','Added by you'))+'</small><button type="button" data-me="'+m.id+'">'+T('改','Edit')+'</button><button type="button" data-md="'+m.id+'">'+T('删','Delete')+'</button></div>'}).join('') }
+    $('#apxMemOn').addEventListener('click',function(){var on=jget('fp-app-memon:'+ukey(),true)!==false; jset('fp-app-memon:'+ukey(),!on); mRender()});
+    $('#apxMemF').addEventListener('submit',function(e){e.preventDefault(); var v=$('#apxMemQ').value.trim(); if(!v) return; var a=mget(); a.unshift({id:'m'+Date.now().toString(36),text:v,src:'me',at:Date.now()}); mset(a); $('#apxMemQ').value=''; mRender()});
+    $('#apxMemL').addEventListener('click',function(e){ var d=e.target.closest('[data-md]'), ed=e.target.closest('[data-me]');
+      if(d){mset(mget().filter(function(m){return m.id!==d.getAttribute('data-md')})); mRender(); return}
+      if(ed){ var id=ed.getAttribute('data-me'), row=ed.closest('.apx-mi'), sp=row.querySelector('span'), m=mget().filter(function(x){return x.id===id})[0]; if(!m) return;
+        var inp=document.createElement('input'); inp.className='apx-ren'; inp.value=m.text; inp.setAttribute('aria-label',T('改这条记忆','Edit this memory')); sp.replaceWith(inp); inp.focus(); var fin=false;
+        function end(ok){ if(fin) return; fin=true; var v=inp.value.trim(); if(ok&&v){var a=mget(); a.forEach(function(x){if(x.id===id) x.text=v}); mset(a)} mRender() }
+        inp.addEventListener('keydown',function(ev){ev.stopPropagation(); if(ev.key==='Enter'){ev.preventDefault(); end(true)} else if(ev.key==='Escape') end(false)}); inp.addEventListener('blur',function(){end(true)}) } });
+    /* —— 入口与切换 —— */
+    window.__apxPages=window.__apxPages||{}; window.__apxPages.cpb=bRender; window.__apxPages.cpm=mRender;
+    $('#apxCpN').addEventListener('click',function(){openComp(); ap.classList.remove('open')});
+    $$('[data-cpt]').forEach(function(b){b.addEventListener('click',function(){var v=b.getAttribute('data-cpt'); if(v==='cp') openComp(); else show(v)})});
+    ci.addEventListener('click',function(e){var b=e.target.closest('[data-cpgo]'); if(b) show(b.getAttribute('data-cpgo'))});
+    var _gv=window.__apxGoV; window.__apxGoV=function(k){ if(k==='@cp') openComp(); else _gv(k) };
   })();
   window.addEventListener('hashchange',route); route();
   function openOasisPreview(){if(new URLSearchParams(location.search).get('oasis')==='1'&&logged&&location.hash==='#console'&&me.role!=='root'){window.fpOasis?.sync();csTab('oasis');}}
