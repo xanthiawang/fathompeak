@@ -4273,6 +4273,8 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
         <span class="cs-grp bt-grp">账户设置</span>
         <button type="button" data-p="acct"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><span>通用设置</span></button>
         <button type="button" data-p="members" data-roles="admin root"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="7.5" cy="7" r="2.8" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.5 16.5c0-2.8 2.2-4.5 5-4.5s5 1.7 5 4.5M13 7.2a2.6 2.6 0 0 1 0 5.2M14.5 12.3c1.9.4 3 1.8 3 4.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>成员</span></button>
+        <button type="button" data-p="policy" data-roles="admin"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5 16 5v4.6c0 3.7-2.6 6.6-6 7.9-3.4-1.3-6-4.2-6-7.9V5Z M7.4 10.2l1.9 1.8 3.5-3.7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/></svg><span>访问策略</span></button>
+
         <button type="button" data-p="bill" data-roles="personal admin root"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="4.5" width="15" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.5 8h15" stroke="currentColor" stroke-width="1.4"/></svg><span>钱包与账单</span></button>
         <button type="button" data-p="invoice" data-roles="personal admin"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 2.5h10v15l-2.5-1.5L10 17.5 7.5 16 5 17.5Z M7.5 7h5M7.5 10.5h5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/></svg><span>发票</span></button>
         <button type="button" data-p="kyc" class="sup-new" data-roles="personal root"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 4.5h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2Z M7 11.3a1.8 1.8 0 1 0 0-3.6 1.8 1.8 0 0 0 0 3.6Z M11.5 8.5H15M11.5 11.5H15" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>实名认证</span></button>
@@ -5148,7 +5150,42 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
         <form class="cs-newf" id="csInv" novalidate><input class="in" type="email" name="email" placeholder="同事的工作邮箱" aria-label="同事的工作邮箱" autocomplete="off"><select class="mk-sel" name="mrole" aria-label="角色"><option value="member">成员</option><option value="admin">管理员</option></select><button class="btn black sm" type="submit">添加</button><button class="btn gray sm" type="button" id="csInvLink">复制邀请链接</button></form>
         <p class="cs-help">每个成员的本月消费在下表；按成员导出对账在「用量与订单」里按 Key 筛选后导出。</p>
         <p class="cs-help">按邮箱添加：同事会收到邮件，用这个邮箱在「企业登录」用验证码登录即可。邀请链接：发到工作群，同事打开后用自己的工作邮箱验证就加入；链接可以随时重置，旧链接立即失效。成员被移除后，他创建的 FathomPeak Key 同时失效。</p>
-        <div class="tbl"><table class="cs-tbl cs-wide"><thead><tr><th>成员</th><th>角色</th><th>状态</th><th class="r">本月消费</th><th class="r">月限额（¥）</th><th>加入时间</th><th></th></tr></thead><tbody id="csSubs"></tbody></table></div>
+        <div class="tbl"><table class="cs-tbl cs-wide"><thead><tr><th>成员</th><th>角色</th><th>状态</th><th class="r">本月消费</th><th>可用模型</th><th class="r">月限额（¥）</th><th>加入时间</th><th></th></tr></thead><tbody id="csSubs"></tbody></table></div>
+      </div>
+      <div class="cs-p" data-p="policy">
+        <div class="cs-hd"><div><h2>访问策略</h2><p>统一规定企业里谁能用哪些模型、请求里不能带什么内容、对话保存多久。策略对企业内所有成员和 FathomPeak Key 生效。</p></div></div>
+        <div class="cs-tiles n4"><div><span class="k">登录方式</span><b id="polT1">企业邮箱</b></div><div><span class="k">可用模型</span><b class="mono" id="polT2">0</b></div><div><span class="k">内容规则</span><b id="polT3">未开启</b></div><div><span class="k">对话内容</span><b id="polT4">不保存</b></div></div>
+        <h3 class="cs-h3">统一登录</h3>
+        <ul class="cs-sl">
+          <li><div><b>用公司账号登录</b><p>接入企业微信、飞书、钉钉或贵公司的统一身份系统后，成员用公司账号进入这个企业账户。有人离职，在公司系统里停用即可，不用在这里逐个移除。</p><span class="cs-st" id="polSsoSt">未接入</span></div><button class="btn gray sm" type="button" data-sx aria-controls="polSsoF" aria-expanded="false" id="polSsoB">接入</button>
+            <form class="cs-sx" id="polSsoF" hidden novalidate>
+              <div class="cs-f"><label for="polSsoP">身份系统</label><select class="mk-sel" id="polSsoP"><option>企业微信</option><option>飞书</option><option>钉钉</option><option>OIDC</option></select></div>
+              <div class="cs-f"><label for="polSsoId">应用 ID</label><input class="in mono" id="polSsoId" autocomplete="off"><p class="cs-help">在所选平台的管理后台创建应用后获得。</p></div>
+              <div class="cs-f"><label for="polSsoDom">企业邮箱域名</label><input class="in mono" id="polSsoDom" autocomplete="off" placeholder="company.com"><p class="cs-help">这个域名下的账号首次登录时，自动加入企业并成为成员。</p></div>
+              <p class="ac-msg" id="polSsoMsg" role="alert"></p>
+              <div class="cs-acts"><button class="btn black sm" type="submit">保存</button><button class="btn gray sm" type="button" data-sx-close>取消</button></div>
+            </form></li>
+          <li><div><b>登录后直接用对话，不用 Key</b><p>开启后，成员登录即可在应用里对话，用量记在本人名下、计入月限额。写代码调用接口时仍用 FathomPeak Key。</p><span class="cs-st" id="polNoKeySt">未开启</span></div><button class="btn gray sm" type="button" id="polNoKey">开启</button></li>
+        </ul>
+        <h3 class="cs-h3">可用模型</h3>
+        <p class="cs-help">取消勾选后，企业内所有成员和 Key 都不能再调用这个模型。在「成员」里还可以按人再收窄。</p>
+        <div class="tbl"><table class="cs-tbl"><thead><tr><th>模型</th><th>厂商</th><th>类型</th><th class="r">允许使用</th></tr></thead><tbody id="polModels"></tbody></table></div>
+        <h3 class="cs-h3">内容规则</h3>
+        <ul class="cs-sl">
+          <li><div><b>个人敏感信息</b><p>请求发往模型之前，检查手机号、身份证号和银行卡号。</p></div><select class="mk-sel" id="polPii" aria-label="个人敏感信息的处理方式"><option value="off">不检查</option><option value="mask">打码后发送</option><option value="block">拦截请求</option></select></li>
+          <li><div><b>自定义关键词</b><p>每行一个词。请求里出现这些词时拦截，并通知管理员。</p><textarea class="in" id="polKw" rows="3" aria-label="自定义关键词"></textarea></div><button class="btn gray sm" type="button" id="polKwSave">保存</button></li>
+        </ul>
+        <h3 class="cs-h3">数据留存</h3>
+        <ul class="cs-sl">
+          <li><div><b>对话内容</b><p>选「不保存」时，请求和回答的正文处理完即丢弃，平台不写入磁盘；用量和账单照常记录。</p></div><select class="mk-sel" id="polRet" aria-label="对话内容保存时长"><option value="0">不保存</option><option value="30">保存 30 天</option><option value="180">保存 180 天</option></select></li>
+          <li><div><b>请求记录</b><p>只含时间、成员、模型、Token 数和费用，不含正文，用于对账和审计。</p></div><select class="mk-sel" id="polLog" aria-label="请求记录保存时长"><option value="180">保存 180 天</option><option value="365">保存 1 年</option><option value="1095">保存 3 年</option></select></li>
+        </ul>
+        <h3 class="cs-h3">拦截记录</h3>
+        <div class="tbl"><table class="cs-tbl"><thead><tr><th>时间</th><th>成员</th><th>命中规则</th><th>模型</th></tr></thead><tbody id="polHits"></tbody></table></div>
+        <div class="cs-empty" id="polHits0"><b>还没有拦截记录</b><span>开启内容规则后，被拦截或打码的请求显示在这里，只记规则和时间，不记正文。</span></div>
+        <h3 class="cs-h3">策略变更</h3>
+        <div class="tbl"><table class="cs-tbl"><thead><tr><th>时间</th><th>操作人</th><th>变更</th></tr></thead><tbody id="polLogT"></tbody></table></div>
+        <div class="cs-empty" id="polLogT0"><b>还没有变更</b><span>谁在什么时候改了哪条策略，都记在这里。</span></div>
       </div>
       <div class="cs-p" data-p="stats">
         <div class="cs-hd"><div><h2>用量分析</h2><p id="supStP">按时间、FathomPeak Key 和模型查看请求量、Token、费用与性能。</p></div><button class="btn gray sm" type="button" id="supStCsv">导出 CSV</button></div>
@@ -6264,13 +6301,44 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
   /* 成员列表：本人（管理员）在最前，其后是邀请的同事 */
   function roleName(r){return {personal:'个人账户',member:'企业成员',admin:'企业管理员',root:'超级管理员'}[r]||'个人账户'}
   function renderMembers(){var subs=me.subs||[],tb=$('#csSubs');if(!tb)return;
-    var you='<tr><td><span class="cs-mm"><span>'+esc(me.email||roleName(me.role))+'</span><span class="cs-you">你</span></span></td><td>'+(me.role==='root'?'超级管理员':'管理员')+'</td><td><span class="cs-st ok">已加入</span></td><td class="r mono">¥0.00</td><td class="r mono">不限</td><td class="mono">'+esc(me.since||'')+'</td><td></td></tr>';
+    var you='<tr><td><span class="cs-mm"><span>'+esc(me.email||roleName(me.role))+'</span><span class="cs-you">你</span></span></td><td>'+(me.role==='root'?'超级管理员':'管理员')+'</td><td><span class="cs-st ok">已加入</span></td><td class="r mono">¥0.00</td><td>按企业策略</td><td class="r mono">不限</td><td class="mono">'+esc(me.since||'')+'</td><td></td></tr>';
     tb.innerHTML=you+subs.map(function(x,i){var r=x.role==='admin'?'admin':'member';
-      return '<tr><td><span class="cs-mm"><span>'+esc(x.email)+'</span></span></td><td><select class="mk-sel" data-role="'+i+'" aria-label="角色"><option value="member"'+(r==='member'?' selected':'')+'>成员</option><option value="admin"'+(r==='admin'?' selected':'')+'>管理员</option></select></td><td>'+(x.joined?'<span class="cs-st ok">已加入</span>':'<span class="cs-st wait">待加入</span>')+'</td><td class="r mono">¥0.00</td><td class="r"><input class="in mono cs-lim" data-lim="'+i+'" inputmode="decimal" value="'+(x.limit?esc(x.limit):'')+'" placeholder="不限" aria-label="月限额"></td><td class="mono">'+esc(x.at||'')+'</td><td class="r"><button class="ac-link" type="button" data-rm="'+i+'">移除</button></td></tr>'}).join('');
+      return '<tr><td><span class="cs-mm"><span>'+esc(x.email)+'</span></span></td><td><select class="mk-sel" data-role="'+i+'" aria-label="角色"><option value="member"'+(r==='member'?' selected':'')+'>成员</option><option value="admin"'+(r==='admin'?' selected':'')+'>管理员</option></select></td><td>'+(x.joined?'<span class="cs-st ok">已加入</span>':'<span class="cs-st wait">待加入</span>')+'</td><td class="r mono">¥0.00</td><td>'+polScopeSel(i,x.scope)+'</td><td class="r"><input class="in mono cs-lim" data-lim="'+i+'" inputmode="decimal" value="'+(x.limit?esc(x.limit):'')+'" placeholder="不限" aria-label="月限额"></td><td class="mono">'+esc(x.at||'')+'</td><td class="r"><button class="ac-link" type="button" data-rm="'+i+'">移除</button></td></tr>'}).join('');
     $('#csMemN').textContent=1+subs.length; $('#csMemP').textContent=subs.filter(function(x){return !x.joined}).length; $('#csMemK').textContent=me.keys.filter(function(k){return kState(k)==='on'}).length;
     $$('#csSubs [data-role]').forEach(function(sel){sel.addEventListener('change',function(){me.subs[+sel.getAttribute('data-role')].role=sel.value;persist();toast('已更新角色。')})});
     $$('#csSubs [data-lim]').forEach(function(inp){inp.addEventListener('change',function(){var v=inp.value.trim();if(v&&!(+v>0)){toast('请输入大于 0 的金额，留空为不限。');inp.value='';return}me.subs[+inp.getAttribute('data-lim')].limit=v;persist();toast(v?'已设置月限额 ¥'+v+'。':'已取消限额。')})});
     $$('#csSubs [data-rm]').forEach(function(b){b.addEventListener('click',function(){if(!b._armed){b._armed=1;b.textContent='确认移除';return}me.subs.splice(+b.getAttribute('data-rm'),1);persist();renderConsole();toast('已移除成员，他的 FathomPeak Key 已失效。')})})}
+
+  /* ======== 访问策略（预览，2026-11-07）：企业级模型白名单、内容规则、数据留存、统一登录；成员可再按人收窄 ======== */
+  var POL_SCOPES=[['','按企业策略'],['text','仅文本与代码'],['video','仅视频生成']];
+  function polScopeSel(i,v){return '<select class="mk-sel" data-scope="'+i+'" aria-label="可用模型">'+POL_SCOPES.map(function(o){return '<option value="'+o[0]+'"'+((v||'')===o[0]?' selected':'')+'>'+o[1]+'</option>'}).join('')+'</select>'}
+  function pol(){if(!me)return null;if(!me.policy){var ms={};M.forEach(function(m){ms[m.id]=true});me.policy={models:ms,pii:'off',kw:'',ret:'0',log:'180',sso:null,nokey:false,changes:[]}}return me.policy}
+  function polNote(what){var P=pol();P.changes.unshift({t:Date.now(),who:me.email||'管理员',what:what});persist();polRender()}
+  function polRender(){var P=pol();if(!P||!$('#polModels'))return;
+    var on=M.filter(function(m){return P.models[m.id]!==false});
+    $('#polT1').textContent=P.sso?P.sso.p:'企业邮箱'; $('#polT2').textContent=on.length+' / '+M.length;
+    $('#polT3').textContent=(P.pii!=='off'||P.kw.trim())?'已开启':'未开启'; $('#polT4').textContent=P.ret==='0'?'不保存':'保存 '+P.ret+' 天';
+    $('#polSsoSt').textContent=P.sso?('已接入 '+P.sso.p+(P.sso.dom?' · '+P.sso.dom:'')):'未接入'; $('#polSsoB').textContent=P.sso?'修改':'接入';
+    $('#polNoKeySt').textContent=P.nokey?'已开启':'未开启'; $('#polNoKey').textContent=P.nokey?'关闭':'开启';
+    $('#polModels').innerHTML=M.map(function(m){var ok=P.models[m.id]!==false;return '<tr><td class="mono">'+esc(m.name)+'</td><td>'+esc(m.vendor)+'</td><td>'+esc((m.type||[]).join(' · '))+'</td><td class="r"><label class="cs-sw"><input type="checkbox" data-pm="'+esc(m.id)+'"'+(ok?' checked':'')+' aria-label="允许使用 '+esc(m.name)+'"></label></td></tr>'}).join('');
+    $$('#polModels [data-pm]').forEach(function(c){c.addEventListener('change',function(){var id=c.getAttribute('data-pm');if(!c.checked&&M.filter(function(m){return P.models[m.id]!==false}).length<=1){c.checked=true;toast('至少保留一个可用模型。');return}P.models[id]=c.checked;polNote((c.checked?'允许':'停用')+'模型 '+id);toast(c.checked?'已允许 '+id+'。':'已停用 '+id+'，企业内的 Key 不能再调用它。')})});
+    $('#polPii').value=P.pii; $('#polKw').value=P.kw; $('#polRet').value=P.ret; $('#polLog').value=P.log;
+    $('#polHits').innerHTML=''; $('#polHits0').hidden=false; $('#polHits').closest('.tbl').hidden=true;
+    $('#polLogT').innerHTML=P.changes.slice(0,50).map(function(c){return '<tr><td class="mono">'+stamp(c.t)+'</td><td>'+esc(c.who)+'</td><td>'+esc(c.what)+'</td></tr>'}).join(''); $('#polLogT0').hidden=P.changes.length>0; $('#polLogT').closest('.tbl').hidden=!P.changes.length;
+    $$('#csSubs [data-scope]').forEach(function(sel){sel.onchange=function(){var x=me.subs[+sel.getAttribute('data-scope')];x.scope=sel.value;polNote(x.email+' 的可用模型改为「'+sel.options[sel.selectedIndex].text+'」');toast('已更新 '+x.email+' 的可用模型。')}})}
+  (function(){if(!$('#polModels'))return;
+    var PII={off:'不检查',mask:'打码后发送',block:'拦截请求'},RET={'0':'不保存','30':'保存 30 天','180':'保存 180 天'},LOG={'180':'保存 180 天','365':'保存 1 年','1095':'保存 3 年'};
+    $('#polPii').addEventListener('change',function(){pol().pii=this.value;polNote('个人敏感信息改为「'+PII[this.value]+'」');toast('已保存。')});
+    $('#polRet').addEventListener('change',function(){pol().ret=this.value;polNote('对话内容改为「'+RET[this.value]+'」');toast(this.value==='0'?'已改为不保存对话内容。':'已保存。')});
+    $('#polLog').addEventListener('change',function(){pol().log=this.value;polNote('请求记录改为「'+LOG[this.value]+'」');toast('已保存。')});
+    $('#polKwSave').addEventListener('click',function(){var v=$('#polKw').value.split('\n').map(function(x){return x.trim()}).filter(Boolean);pol().kw=v.join('\n');polNote(v.length?'自定义关键词更新为 '+v.length+' 个':'清空自定义关键词');toast(v.length?'已保存 '+v.length+' 个关键词。':'已清空关键词。')});
+    $('#polNoKey').addEventListener('click',function(){var P=pol();P.nokey=!P.nokey;polNote(P.nokey?'开启「登录后直接用对话」':'关闭「登录后直接用对话」');toast(P.nokey?'已开启，成员登录后可直接在应用里对话。':'已关闭。')});
+    $('#polSsoF').addEventListener('submit',function(e){e.preventDefault();var id=$('#polSsoId').value.trim(),dom=$('#polSsoDom').value.trim().replace(/^@/,''),m=$('#polSsoMsg');
+      if(!id){m.textContent='请填写应用 ID。';$('#polSsoId').focus();return}
+      if(dom&&!/^[a-z0-9.-]+\.[a-z]{2,}$/i.test(dom)){m.textContent='企业邮箱域名格式不对。';$('#polSsoDom').focus();return}
+      m.textContent='';pol().sso={p:$('#polSsoP').value,id:id,dom:dom};sxClose(this);polNote('接入统一登录：'+pol().sso.p);toast('已保存。身份系统验证通过后，成员即可用公司账号登录。')});
+    var _rcPol=renderConsole;renderConsole=function(){_rcPol();polRender()};
+  })();
   var _invL=$('#csInvLink'); if(_invL) _invL.addEventListener('click',function(){if(!me)return;var link=location.origin+location.pathname+'#start?invite='+(me.aff||'');copyText(link,function(){toast('邀请链接已复制，7 天内有效。')})});
 
   /* 余额与可用时长：可用时长 = 余额 ÷ 近 24 小时消费；没有消费时显示 -- */
