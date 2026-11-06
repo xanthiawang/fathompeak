@@ -2832,7 +2832,25 @@ html.in-app .apx[data-view="cp"] .xp:not([data-mode="chat"]) .xp-stage{padding-t
 .apx-side .bt-nav #apxCpN{position:relative}
 .apx.cp-unread #apxCpN::after{content:"";position:absolute;right:14px;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:#E5484D}
 /* 伙伴聊天里保留简报的段落 */
-.apx[data-view="cp"] .xf-t{white-space:pre-wrap}
+/* 简报卡：聊天里和简报页用同一套 */
+.apx-bc{display:grid;gap:0;max-width:640px;padding:18px 22px 16px;border:1px solid var(--line);border-radius:18px;background:var(--card);white-space:normal}
+.apx-bc .k-t,.apx-brief .k-t{margin:0;font:400 20px/1.3 var(--serif);letter-spacing:-.01em;color:var(--ink);font-variation-settings:"opsz" 144}
+.apx-bc .k-r,.apx-brief .k-r{margin:2px 0 4px;font:400 12px/1.5 var(--sans);color:var(--ink-50)}
+.apx-bc .k-s,.apx-brief .k-s{margin:14px 0 4px;font:400 16px/1.35 var(--serif);color:var(--ink)}
+.apx-bc .k-g,.apx-brief .k-g{margin:6px 0 2px;font:500 12px/1.5 var(--sans);color:var(--ink-50)}
+.apx-bc .k-i,.apx-brief .k-i{display:flex;align-items:flex-start;gap:10px;margin:0;padding:3px 0;font:400 15px/1.55 var(--sans);color:var(--ink-85)}
+.apx-bc .k-i.done span,.apx-brief .k-i.done span{color:var(--ink-50)}
+.apx-bc .k-n,.apx-brief .k-n{margin:0;padding:2px 0;font:400 14px/1.55 var(--sans);color:var(--ink-50)}
+.apx-ck2{appearance:none;flex:none;display:grid;place-items:center;width:19px;height:19px;margin-top:2px;padding:0;border:1.5px solid var(--ink-30);border-radius:50%;background:transparent;color:#fff;cursor:pointer;transition:background-color .15s var(--ease),border-color .15s var(--ease)}
+.apx-ck2 svg{width:11px;height:11px;opacity:0}
+.apx-ck2:hover{border-color:#3E9B67}
+.apx-ck2[aria-checked="true"]{background:#3E9B67;border-color:#3E9B67}.apx-ck2[aria-checked="true"] svg{opacity:1}
+.apx-brief{gap:0}
+.apx-brief footer{margin-top:10px}
+/* 伙伴聊天：沐沐的消息署名 */
+.xf-who .apx-who-ip{width:30px;height:auto;margin:-8px -2px -4px -4px;flex:none;filter:drop-shadow(0 2px 2px rgba(0,0,0,.12))}
+.xf-who .apx-who-n{font:400 15px/1.2 var(--serif);color:var(--ink)}
+.xf-who .apx-who-m{font:400 12px var(--sans);color:var(--ink-50)}
 .apx-brief ul{margin:0;padding:0 0 0 18px;display:grid;gap:4px;font:400 15px/1.6 var(--sans);color:var(--ink-85)}
 .apx-brief .none{margin:0;font:400 14px var(--sans);color:var(--ink-50)}
 .apx-brief footer{font:400 12px var(--sans);color:var(--ink-50)}
@@ -8116,7 +8134,28 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       if(view()==='cpb') bRender() }
     function due(){ var c=cfg(), n=new Date(), hm=(c.t||'09:00').split(':'), at=new Date(n.getFullYear(),n.getMonth(),n.getDate(),+hm[0]||0,+hm[1]||0); return n>=at&&jget('fp-app-briefsent:'+ukey(),'')!==today() }
     setInterval(function(){ if(inApp()&&due()) deliver() },30000);
-    function fmt(t){ return t.split('\n\n').map(function(l,i){ var c=i===0?'bt':i===1?'br':/^([一二三四]、|(I|II|III|IV)\. )/.test(l)?'bs':/^(（[一二三四五六七八九]）|\(\d+\) )/.test(l)?'bg':/^\d+\. /.test(l)?'bi':'bn'; return '<p class="'+c+'">'+esc(l)+'</p>' }).join('') }
+    function bdone(){var v=jget('fp-app-briefdone:'+ukey(),{}); return v&&typeof v==='object'?v:{}}
+    function hk(x){var h=0; for(var i=0;i<x.length;i++){h=(h*31+x.charCodeAt(i))|0} return (h>>>0).toString(36)}
+    var CK='<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 6.3 5 8.6l4.4-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    /* 一、二两章是要动手的事：条目前一个打卡圆点；三、四只是告知，普通一行 */
+    function fmt(t){ var L=t.split('\n\n'), title=L[0]||'', sec=-1, done=bdone();
+      return L.map(function(l,i){ if(i===0) return '<p class="k-t">'+esc(l)+'</p>'; if(i===1) return '<p class="k-r">'+esc(l)+'</p>';
+        if(/^([一二三四]、|(I|II|III|IV)\. )/.test(l)){sec++; return '<p class="k-s">'+esc(l)+'</p>'}
+        if(/^(（[一二三四五六七八九]）|\(\d+\) )/.test(l)) return '<p class="k-g">'+esc(l.replace(/^(（[一二三四五六七八九]）|\(\d+\) )/,''))+'</p>';
+        var m=/^\d+\. (.*)$/.exec(l); if(!m) return '<p class="k-n">'+esc(l)+'</p>';
+        if(sec<=1){ var k=hk(title+'|'+sec+'|'+m[1]), on=!!done[k]; return '<p class="k-i ck'+(on?' done':'')+'"><button class="apx-ck2" type="button" role="checkbox" aria-checked="'+on+'" data-bdone="'+k+'" aria-label="'+T('标记完成','Mark done')+'">'+CK+'</button><span>'+esc(m[1])+'</span></p>' }
+        return '<p class="k-i"><span>'+esc(m[1])+'</span></p>' }).join('') }
+    function isBrief(t){return /^.{1,24}(每日简报｜| daily briefing \| )/.test(t||'')}
+    /* 打卡：聊天和简报页里同一条一起变 */
+    document.addEventListener('click',function(e){ var b=e.target.closest&&e.target.closest('[data-bdone]'); if(!b) return; e.stopPropagation(); var k=b.getAttribute('data-bdone'), d=bdone(), on=!d[k]; if(on) d[k]=Date.now(); else delete d[k]; jset('fp-app-briefdone:'+ukey(),d);
+      $$('[data-bdone="'+k+'"]').forEach(function(x){x.setAttribute('aria-checked',String(on)); x.parentNode.classList.toggle('done',on)}) },true);
+    /* 伙伴聊天：简报消息换成卡片；沐沐的消息署名换成形象 + 名字 */
+    function decorateChat(){ var inComp=view()==='cp'; $$('#xpCols .xf-a').forEach(function(a){ var w=a.querySelector('.xf-who'), t=a.querySelector('.xf-t');
+        if(t&&!t.hasAttribute('data-bc')&&isBrief(t.textContent)){ t.setAttribute('data-bc','1'); t.innerHTML='<div class="apx-bc">'+fmt(t.textContent)+'</div>' }
+        if(inComp&&w&&!w.hasAttribute('data-who')){ var nav=$('#apxCpN .apx-cpav'), mdl=w.textContent.trim(); w.setAttribute('data-who','1');
+          w.innerHTML='<img class="apx-who-ip apx-cpav" src="'+(nav?nav.getAttribute('src'):'')+'" alt=""><span class="apx-who-n">'+esc(comp().name||T('沐沐','Mumu'))+'</span><span class="apx-who-m">'+esc(mdl)+'</span>' } }) }
+    new MutationObserver(function(){ if(inApp()) decorateChat() }).observe($('#xpCols'),{childList:true,subtree:true});
+    new MutationObserver(function(){ if(inApp()) decorateChat() }).observe(ap,{attributes:true,attributeFilter:['data-view']});
     function bRender(){ var c=cfg(), a=bget().filter(function(b){return b.text}); $('#apxBT').value=c.t; $('#apxBWx').checked=!!c.wx; $('#apxBS1').checked=c.s1!==false; $('#apxBS2').checked=c.s2!==false; $('#apxBE').hidden=a.length>0;
       $('#apxBL').innerHTML=a.map(function(b){ var d=new Date(b.at); return '<article class="apx-brief">'+fmt(b.text)+'<footer>'+T('沐沐 '+z(d.getHours())+':'+z(d.getMinutes())+' 发到聊天 · 来源：这台设备上的对话、项目和定时任务','Sent to chat by Mumu at '+z(d.getHours())+':'+z(d.getMinutes())+' · Source: chats, projects and scheduled tasks on this device')+'</footer></article>' }).join('') }
     $('#apxBGen').addEventListener('click',function(){deliver(); toast(T('沐沐已经把简报发到聊天里','Mumu sent the briefing to your chat'))});
