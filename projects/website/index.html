@@ -8150,7 +8150,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     document.addEventListener('click',function(e){ var b=e.target.closest&&e.target.closest('[data-bdone]'); if(!b) return; e.stopPropagation(); var k=b.getAttribute('data-bdone'), d=bdone(), on=!d[k]; if(on) d[k]=Date.now(); else delete d[k]; jset('fp-app-briefdone:'+ukey(),d);
       $$('[data-bdone="'+k+'"]').forEach(function(x){x.setAttribute('aria-checked',String(on)); x.parentNode.classList.toggle('done',on)}) },true);
     /* 伙伴聊天：简报消息换成卡片；沐沐的消息署名换成形象 + 名字 */
-    function decorateChat(){ var inComp=view()==='cp'; $$('#xpCols .xf-a').forEach(function(a){ var w=a.querySelector('.xf-who'), t=a.querySelector('.xf-t');
+    function decorateChat(){ var inComp=view()==='cp'||(isChat()&&!!comp().conv&&curConv()===comp().conv); $$('#xpCols .xf-a').forEach(function(a){ var w=a.querySelector('.xf-who'), t=a.querySelector('.xf-t');
         if(t&&!t.hasAttribute('data-bc')&&isBrief(t.textContent)){ t.setAttribute('data-bc','1'); t.innerHTML='<div class="apx-bc">'+fmt(t.textContent)+'</div>' }
         if(inComp&&w&&!w.hasAttribute('data-who')){ var nav=$('#apxCpN .apx-cpav'), mdl=w.textContent.trim(); w.setAttribute('data-who','1');
           w.innerHTML='<img class="apx-who-ip apx-cpav" src="'+(nav?nav.getAttribute('src'):'')+'" alt=""><span class="apx-who-n">'+esc(comp().name||T('沐沐','Mumu'))+'</span><span class="apx-who-m">'+esc(mdl)+'</span>' } }) }
@@ -8160,7 +8160,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       $('#apxBL').innerHTML=a.map(function(b){ var d=new Date(b.at); return '<article class="apx-brief">'+fmt(b.text)+'<footer>'+T('沐沐 '+z(d.getHours())+':'+z(d.getMinutes())+' 发到聊天 · 来源：这台设备上的对话、项目和定时任务','Sent to chat by Mumu at '+z(d.getHours())+':'+z(d.getMinutes())+' · Source: chats, projects and scheduled tasks on this device')+'</footer></article>' }).join('') }
     $('#apxBGen').addEventListener('click',function(){deliver(); toast(T('沐沐已经把简报发到聊天里','Mumu sent the briefing to your chat'))});
     $('#apxCPB').addEventListener('click',function(e){var b=e.target.closest('[data-cpgo]'); if(b) show(b.getAttribute('data-cpgo'))});
-    var _s2=window.__apxSync; window.__apxSync=function(on){ _s2(on); if(on&&due()) setTimeout(deliver,800) };
+    var _s2=window.__apxSync; window.__apxSync=function(on){ _s2(on); if(on&&isChat()&&comp().conv&&curConv()===comp().conv&&view()!=='cp'){ show('cp'); decorateChat() } if(on&&due()) setTimeout(deliver,800) };
     $('#apxBT').addEventListener('change',function(){var c=cfg(); c.t=this.value||'09:00'; cfgSet(c)});
     [['#apxBWx','wx'],['#apxBS1','s1'],['#apxBS2','s2']].forEach(function(o){$(o[0]).addEventListener('change',function(){var c=cfg(); c[o[1]]=this.checked; cfgSet(c)})});
     /* ===== 记忆 ===== */
