@@ -2407,6 +2407,156 @@ html.in-app .apx.desk .xp[data-mode="chat"] .xf{min-height:calc(100vh - 32px - 5
 }
 @media (max-width:900px){.apx.has-pane,.apx.col.has-pane{grid-template-columns:minmax(0,1fr)}.apx-num{display:none}.apx.desk{margin:0;height:100vh;border-radius:0}.apx.desk .apx-side{position:fixed;height:auto}}
 </style>
+
+<style id="app-page-v5-20261107">
+/* 应用页 v5：项目层级。变量沿用 .apx 上那一套 */
+/* —— 模型列表：窄窗口里名字不折行 —— */
+html.in-app .xp-mpop{min-width:min(360px,calc(100vw - 24px))}
+html.in-app .xp-mi b,html.in-app .xp-mi .m2{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+html.in-app .xp-mi .bt-tag{max-width:132px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.apx.night img[src*="kimi-color"]{filter:invert(1) hue-rotate(180deg)}
+/* —— 左栏：功能行「项目」 —— */
+.apx.pv #apxPjN,.apx.pd #apxPjN{background:var(--gray-btn);color:var(--ink)}
+.apx.pv #apxNew,.apx.pd #apxNew{background:transparent;color:var(--ink-50)}
+/* —— 左栏：项目组 —— */
+.apx-sech{flex:none;display:flex;align-items:center;margin-top:18px}
+.apx-sech .apx-sec{flex:1;margin-top:0}
+.apx-add{appearance:none;flex:none;width:24px;height:24px;margin-right:8px;padding:0;border:0;border-radius:7px;background:transparent;display:grid;place-items:center;color:var(--ink-50);cursor:pointer;opacity:0;transition:opacity .2s var(--ease),background-color .2s var(--ease)}
+.apx-add svg{width:15px;height:15px}
+.apx-sech:hover .apx-add,.apx-add:focus-visible{opacity:1}.apx-add:hover{background:var(--gray-btn);color:var(--ink)}
+@media (hover:none){.apx-add{opacity:1}}
+.apx.pj-off #apxPjH svg{transform:rotate(-90deg)}
+.apx.pj-off .apx-pjs,.apx.pj-off #apxPjE{display:none}
+.apx-pjs{display:grid;gap:2px}
+.apx-pje{appearance:none;display:flex;align-items:center;gap:12px;padding:8px 12px;border:0;border-radius:999px;background:transparent;font:400 15px/1.4 var(--sans);color:var(--ink-50);text-align:left;cursor:pointer}
+.apx-pje svg{width:18px;height:18px;flex:none;color:var(--icon)}
+.apx-pje:hover{color:var(--ink);background:var(--gray-btn)}
+.apx-pr{position:relative;display:flex;align-items:center;min-width:0;border-radius:999px}
+.apx-pr.on{background:var(--gray-btn)}
+.apx-po{appearance:none;flex:0 1 auto;min-width:0;display:flex;align-items:center;gap:12px;padding:8px 2px 8px 12px;border:0;background:transparent;text-align:left;cursor:pointer}
+.apx-po svg{width:18px;height:18px;flex:none;color:var(--icon)}
+.apx-po b{min-width:0;font:400 15px/1.4 var(--sans);color:var(--ink-50);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.apx-pr:hover .apx-po b,.apx-pr.on .apx-po b{color:var(--ink)}
+.apx-pt{appearance:none;flex:none;width:22px;height:22px;padding:0;border:0;border-radius:6px;background:transparent;display:grid;place-items:center;color:var(--ink-50);cursor:pointer}
+.apx-pt svg{width:12px;height:12px;transition:transform .2s var(--ease)}
+.apx-pg:not(.open)>.apx-pr .apx-pt svg{transform:rotate(-90deg)}
+.apx-pt:hover{background:var(--gray-btn);color:var(--ink)}
+/* 行尾「⋯」：对话行与项目行共用；下载端悬停时顶替序号 */
+.apx-rm{appearance:none;flex:none;width:26px;height:26px;padding:0;border:0;border-radius:8px;background:transparent;display:grid;place-items:center;color:var(--ink-70);cursor:pointer;opacity:0;transition:opacity .15s var(--ease),background-color .2s var(--ease)}
+.apx-rm svg{width:16px;height:16px}
+.apx-pr .apx-rm{margin:0 6px 0 auto}
+.apx-lists .xp-hi .apx-rm{position:absolute;right:6px;top:50%;transform:translateY(-50%)}
+.xp-hi:hover .apx-rm,.apx-pr:hover .apx-rm,.apx-rm[aria-expanded="true"],.apx-rm:focus-visible{opacity:1}
+.apx-rm:hover,.apx-rm[aria-expanded="true"]{background:rgba(61,49,79,.1);color:var(--ink)}
+.apx.night .apx-rm:hover,.apx.night .apx-rm[aria-expanded="true"]{background:rgba(255,255,255,.1)}
+.apx-lists .xp-hi:hover .apx-num,.apx-lists .xp-hi:has(.apx-rm[aria-expanded="true"]) .apx-num{visibility:hidden}
+.apx-lists .xp-hi:hover .xp-ho,.apx-lists .xp-hi:has(.apx-rm[aria-expanded="true"]) .xp-ho{padding-right:36px}
+@media (hover:none){.apx-rm{opacity:1}}
+/* 项目下的对话：树形连线（竖线 + 最后一条的圆角拐角） */
+.apx-kids{display:grid;gap:2px}
+.apx-pg:not(.open) .apx-kids{display:none}
+.apx-kids .xp-hi{margin-left:30px}
+.apx-kids .xp-hi::before{content:"";position:absolute;left:-9px;top:-1px;bottom:-1px;width:7px;border-left:1px solid var(--line);pointer-events:none}
+.apx-kids .xp-hi:first-child::before{top:-8px}
+.apx-kids .xp-hi:last-child::before{bottom:auto;height:calc(50% + 1px);border-bottom:1px solid var(--line);border-bottom-left-radius:7px}
+.apx-kids .xp-hi:first-child:last-child::before{height:calc(50% + 8px)}
+.apx-kids .apx-ri{display:none}
+.apx-nest{appearance:none;position:relative;margin-left:30px;padding:6px 12px;border:0;border-radius:999px;background:transparent;font:400 14px/1.4 var(--sans);color:var(--ink-50);text-align:left;cursor:pointer;display:none}
+.apx-pg:not(.open) .apx-nest{display:block}
+.apx-nest::before{content:"";position:absolute;left:-9px;top:-8px;height:calc(50% + 8px);width:7px;border-left:1px solid var(--line);border-bottom:1px solid var(--line);border-bottom-left-radius:7px}
+.apx-nest:hover{color:var(--ink)}
+.apx.find .apx-pg:not(:has(.xp-hi)),.apx.find #apxPjE{display:none}
+.apx.rec-empty:not(.find) #apxRec{display:none}
+/* —— 行菜单与二级菜单 —— */
+.bt-pop.apx-rowm,.bt-pop.apx-subm{width:236px}
+.apx-rowm button,.apx-subm button{appearance:none;display:flex;align-items:center;gap:12px;width:100%;box-sizing:border-box;padding:8px 12px;border-radius:10px;border:0;background:transparent;font:400 15px/1.4 var(--sans);color:var(--ink-50);text-align:left;cursor:pointer;transition:color .2s var(--ease),background-color .2s var(--ease)}
+.apx-rowm button span,.apx-subm button span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.apx-rowm button:hover,.apx-subm button:hover,.apx-rowm .sub.on{color:var(--ink);background:var(--gray-btn)}
+.apx-rowm kbd{font:400 12px/1 var(--mono);color:var(--ink-30)}
+.apx.web .apx-rowm kbd{display:none}
+.apx-rowm svg,.apx-subm svg{width:13px;height:13px;flex:none;color:var(--ink-50)}
+.apx-subm svg{color:var(--icon-active)}
+.apx-rowm i,.apx-subm i{display:block;height:1px;margin:4px 6px;background:var(--line)}
+.apx-rowm .dz,.apx-rowm .dz:hover{color:#B3261E}.apx-rowm .dz:hover{background:rgba(179,38,30,.08)}
+.apx.night .apx-rowm .dz,.apx.night .apx-rowm .dz:hover{color:#FF9A91}
+/* 原地改名 */
+.apx-ren{appearance:none;flex:1;min-width:0;box-sizing:border-box;margin:3px 4px;padding:5px 10px;border:1px solid var(--frame);border-radius:10px;background:var(--card);outline:0;font:400 15px/1.4 var(--sans);color:var(--ink)}
+.apx-bar .apx-ren{flex:0 1 360px;font-weight:500}
+.apx-phd .apx-ren{flex:1;font:400 34px/1.15 var(--serif);padding:2px 10px}
+/* —— 顶栏：项目名 / 对话标题 —— */
+.apx-crumb{appearance:none;display:none;align-items:center;gap:8px;max-width:240px;height:32px;margin-right:-6px;padding:0 4px 0 8px;border:0;border-radius:8px;background:transparent;font:400 15px var(--sans);color:var(--ink-50);cursor:pointer;white-space:nowrap}
+.apx-crumb span{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.apx-crumb::after{content:"/";color:var(--ink-30)}
+.apx-crumb:hover{color:var(--ink)}
+.apx.chat .apx-crumb.has{display:inline-flex}
+.apx.pv .apx-tools,.apx.pd .apx-tools{display:none}
+/* —— 项目页 —— */
+.apx-pl{display:none;max-width:1080px;margin:0 auto;padding:84px 40px 72px;box-sizing:border-box}
+.apx.pv .apx-pl{display:block}
+.apx.pv #xp{display:none!important}
+.apx-plh{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.apx-plh h1{flex:1;margin:0;font:400 40px/1.1 var(--serif);letter-spacing:-.025em;color:var(--ink);font-variation-settings:"opsz" 144}
+.apx-pl .apx-pf{margin-bottom:26px}
+.apx-pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:28px 22px}
+.apx-pc{appearance:none;display:grid;align-content:start;gap:3px;min-width:0;padding:0;border:0;background:transparent;text-align:left;cursor:pointer}
+.apx-pth{position:relative;display:block;aspect-ratio:16/10;margin-bottom:10px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:linear-gradient(155deg,#E4EAF5 0%,#EFEAF0 52%,#F8F7F6 100%);transition:box-shadow .25s var(--ease)}
+.apx-pth img{display:block;width:100%;height:100%;object-fit:cover}
+.apx-pth i{position:absolute;left:18px;bottom:10px;font:400 52px/1 var(--serif);font-style:normal;color:rgba(47,38,64,.16)}
+.apx-pc:hover .apx-pth{box-shadow:0 14px 34px -18px rgba(33,32,33,.4)}
+.apx-pc b{font:500 15px/1.4 var(--sans);color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.apx-pc .d{font:400 14px/1.5 var(--sans);color:var(--ink-70);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.apx-pc .m{font:400 12px/1.5 var(--sans);color:var(--ink-50)}
+.apx.night .apx-pth{background:linear-gradient(155deg,#212838 0%,#2A2531 55%,#1F1E21 100%)}
+.apx.night .apx-pth i{color:rgba(255,255,255,.16)}
+.apx-btn{appearance:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;height:38px;padding:0 18px;border:1px solid var(--line);border-radius:999px;background:transparent;font:500 14px var(--sans);color:var(--ink);cursor:pointer;white-space:nowrap;transition:background-color .2s var(--ease),border-color .2s var(--ease)}
+.apx-btn:hover{background:var(--gray-btn)}
+.apx-btn svg{width:16px;height:16px}
+.apx-btn.pri{background:#000;border-color:#000;color:#fff}.apx-btn.pri:hover{background:#212021}
+.apx.night .apx-btn.pri{background:#F2F1F3;border-color:#F2F1F3;color:#1A191B}
+/* —— 单个项目页：借用对话组件的空状态，换掉问候语和背景 —— */
+.apx-phd,.apx-pas,.apx-pcs{display:none}
+.apx.pd .xp-bg,.apx.pd .xp-intro>.xp-h,.apx.pd #xpChips{display:none!important}
+html.in-app .apx.pd .xp-stage{max-width:1120px;grid-template-columns:minmax(0,1fr) 300px;column-gap:44px;align-content:start;padding-top:84px!important}
+.apx.pd .xp-stage>*{grid-column:1}
+.apx.pd .xp-intro{justify-items:stretch;text-align:left;gap:0}
+.apx.pd .apx-phd{display:grid;justify-items:start;gap:4px;margin-bottom:10px}
+.apx-back{appearance:none;display:inline-flex;align-items:center;gap:4px;margin-left:-6px;padding:4px 10px 4px 4px;border:0;border-radius:999px;background:transparent;font:400 14px var(--sans);color:var(--ink-50);cursor:pointer}
+.apx-back svg{width:16px;height:16px}.apx-back:hover{color:var(--ink);background:var(--gray-btn)}
+.apx-pht{display:flex;align-items:center;gap:8px;width:100%;margin-top:10px}
+.apx-pht h1{min-width:0;margin:0;font:400 40px/1.12 var(--serif);letter-spacing:-.025em;color:var(--ink);font-variation-settings:"opsz" 144;overflow-wrap:anywhere}
+.apx-pht .apx-rm{opacity:1;width:32px;height:32px}
+#apxPDesc{margin:2px 0 0;font:400 15px/1.6 var(--sans);color:var(--ink-70)}
+#apxPDesc:empty{display:none}
+.apx.pd .apx-pas{display:grid;gap:16px;align-content:start;grid-column:2;grid-row:1 / span 12}
+.apx-pk{display:grid;gap:10px;padding:16px 18px;border:1px solid var(--line);border-radius:18px;background:var(--card)}
+.apx-pk header{display:flex;align-items:center;gap:8px}
+.apx-pk header b{flex:1;font:500 15px/1.4 var(--sans);color:var(--ink)}
+.apx-pk header button{appearance:none;display:inline-flex;align-items:center;gap:4px;height:30px;padding:0 12px;border:1px solid var(--line);border-radius:999px;background:transparent;font:400 13px var(--sans);color:var(--ink-70);cursor:pointer}
+.apx-pk header button svg{width:14px;height:14px}
+.apx-pk header button:hover{color:var(--ink);border-color:var(--frame)}
+.apx-pk>p{margin:0;font:400 14px/1.6 var(--sans);color:var(--ink-50);white-space:pre-wrap;overflow-wrap:anywhere}
+.apx-pk>p.has{color:var(--ink-85);display:-webkit-box;-webkit-line-clamp:7;-webkit-box-orient:vertical;overflow:hidden}
+.apx-pk .apx-fi{padding:6px 0}.apx-pk .apx-fi:hover{background:transparent}
+.apx.pd .apx-pcs{display:block;margin-top:30px}
+.apx-pch{padding:0 4px 8px;border-bottom:1px solid var(--line);font:400 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-50)}
+.apx-pci{appearance:none;display:flex;align-items:baseline;gap:12px;width:100%;box-sizing:border-box;padding:14px 8px;border:0;border-bottom:1px solid var(--line);background:transparent;text-align:left;cursor:pointer;transition:background-color .2s var(--ease)}
+.apx-pci b{flex:1;min-width:0;font:400 15px/1.4 var(--sans);color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.apx-pci span{flex:none;font:400 12px var(--sans);color:var(--ink-50)}
+.apx-pci:hover{background:var(--gray-btn)}
+.apx-pcs .apx-pe{padding:18px 4px}
+@media (max-width:1180px){html.in-app .apx.pd .xp-stage{grid-template-columns:minmax(0,1fr)}.apx.pd .apx-pas{grid-column:1;grid-row:auto;margin-top:28px}}
+@media (max-width:700px){.apx-pl{padding:72px 18px 48px}.apx-plh h1,.apx-pht h1{font-size:32px}}
+/* —— 对话框：新建 / 编辑项目、项目说明 —— */
+.apx-dlg{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:16px;background:rgba(33,32,33,.28)}
+.apx-dlg form{width:min(480px,100%);box-sizing:border-box;display:grid;gap:14px;padding:24px;border:1px solid var(--line);border-radius:22px;background:var(--card);box-shadow:0 30px 80px -30px rgba(0,0,0,.45),0 0 2px rgba(0,0,0,.06)}
+.apx-dlg h2{margin:0;font:400 26px/1.2 var(--serif);letter-spacing:-.02em;color:var(--ink)}
+.apx-dlg p{margin:-4px 0 0;font:400 14px/1.6 var(--sans);color:var(--ink-50)}
+.apx-dlg label{display:grid;gap:6px;font:400 13px var(--sans);color:var(--ink-70)}
+.apx-dlg input,.apx-dlg textarea{appearance:none;box-sizing:border-box;width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:transparent;outline:0;font:400 15px/1.5 var(--sans);color:var(--ink);resize:vertical}
+.apx-dlg input:focus,.apx-dlg textarea:focus{border-color:var(--frame)}
+.apx-dlg .ft{display:flex;justify-content:flex-end;gap:8px;margin-top:4px}
+.apx.night .apx-dlg{background:rgba(0,0,0,.5)}
+</style>
 </head>
 <body>
 
@@ -3612,12 +3762,16 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       <nav class="bt-nav" aria-label="应用">
         <button type="button" id="apxNew"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4.5v11M4.5 10h11" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>新对话</span></button>
         <button type="button" id="apxFind" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="5.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M13 13l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>搜索</span></button>
+        <button type="button" id="apxPjN" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="3.5" width="14" height="4" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M4.3 7.5v7a2 2 0 0 0 2 2h7.4a2 2 0 0 0 2-2v-7M8.2 10.5h3.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>项目</span></button>
         <button type="button" data-pane-b="works" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3.5" y="6.5" width="9" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7.5 6.5V5.5a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg><span>作品</span></button>
         <button type="button" data-cs="batch"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3 17 6.8 10 10.6 3 6.8Z M3 10.4l7 3.8 7-3.8 M3 13.8l7 3.7 7-3.7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>绿电批量任务</span></button>
       </nav>
       <div class="apx-lists" id="apxLists">
       <button class="apx-sec" type="button" id="apxPinH" aria-expanded="true" aria-controls="apxPins" hidden><span>置顶</span><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5h6L5 7.2Z" fill="currentColor"/></svg></button>
       <div class="apx-pins" id="apxPins"></div>
+      <div class="apx-sech" id="apxPjS"><button class="apx-sec" type="button" id="apxPjH" aria-expanded="true" aria-controls="apxPjs"><span>项目</span><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5h6L5 7.2Z" fill="currentColor"/></svg></button><button class="apx-add" type="button" id="apxPjAdd" aria-label="新建项目" title="新建项目"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4.5v11M4.5 10h11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div>
+      <div class="apx-pjs" id="apxPjs"></div>
+      <button class="apx-pje" type="button" id="apxPjE" hidden><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4.5v11M4.5 10h11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>新建项目</span></button>
       <button class="apx-sec" type="button" id="apxRec" aria-expanded="true" aria-controls="apxHist"><span>最近</span><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5h6L5 7.2Z" fill="currentColor"/></svg></button>
       <div class="apx-hist" id="apxHist"></div>
       </div>
@@ -3630,7 +3784,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
         <button type="button" data-cs="oasis"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17V9.5M10 11.5C10 8 7.6 6.3 4 6.3c0 3.5 2.4 5.2 6 5.2ZM10 9.5c0-3 2-4.7 5.6-4.7 0 3-2 4.7-5.6 4.7ZM5.5 17h9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>绿洲</span></button>
         <i aria-hidden="true"></i>
         <button type="button" data-cs="home"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 9 10 3.5 16.5 9v7.5h-4.5v-4.5h-4v4.5H3.5Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg><span>控制台</span></button>
-        <button type="button" data-cs="acct"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="2.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M10 2.5v2.2M10 15.3v2.2M2.5 10h2.2M15.3 10h2.2M4.7 4.7l1.6 1.6M13.7 13.7l1.6 1.6M4.7 15.3l1.6-1.6M13.7 6.3l1.6-1.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>通用设置</span></button>
+        <button type="button" data-cs="acct"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><span>通用设置</span></button>
         <a href="#home"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M8 6.5 4.5 10 8 13.5M4.5 10h7a4 4 0 0 1 4 4v1" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>返回官网</span></a>
         <i aria-hidden="true"></i>
         <button type="button" id="apxOut"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M8 3.5H4.5v13H8M12.5 6.5 16 10l-3.5 3.5M16 10H7.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>退出登录</span></button>
@@ -3639,6 +3793,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     <main class="apx-main" id="apxMain">
       <div class="apx-bar" id="apxBar">
         <button class="apx-ib apx-open" type="button" id="apxOpen" aria-label="打开侧栏" title="打开侧栏"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="4" width="14" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 4v12" stroke="currentColor" stroke-width="1.4"/></svg></button>
+        <button class="apx-crumb" type="button" id="apxCrumb"><span></span></button>
         <button class="apx-tbtn" type="button" id="apxTitleB" aria-haspopup="true" aria-expanded="false" aria-controls="apxTPop" hidden><span id="apxTitle"></span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <span class="apx-sp"></span>
         <div class="apx-tools" role="toolbar" aria-label="面板">
@@ -3651,7 +3806,27 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       <div class="bt-pop apx-tpop" id="apxTPop" hidden><button type="button" id="apxPinT">置顶</button><button type="button" id="apxDel">删除这条对话</button></div>
       <div class="bt-pop apx-morem" id="apxMore" hidden><button type="button" id="apxCodeM"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 6.5 3.5 10 7 13.5M13 6.5l3.5 3.5-3.5 3.5M11.3 4.8 8.7 15.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>调用代码</span></button><button type="button" data-cs="oasis"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17V9.5M10 11.5C10 8 7.6 6.3 4 6.3c0 3.5 2.4 5.2 6 5.2ZM10 9.5c0-3 2-4.7 5.6-4.7 0 3-2 4.7-5.6 4.7ZM5.5 17h9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>绿洲</span></button></div>
       <div class="bt-pop apx-plusm" id="apxPlusM" hidden><button type="button" id="apxUp"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 13V4.5M6.5 8 10 4.5 13.5 8M4.5 13v1.5a1.5 1.5 0 0 0 1.5 1.5h8a1.5 1.5 0 0 0 1.5-1.5V13" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>上传文件</span></button><button type="button" id="apxCmp"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3.5" y="4.5" width="5.5" height="11" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="11" y="4.5" width="5.5" height="11" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg><span>对比模型</span></button></div>
+      <div class="bt-pop apx-rowm" id="apxRowM" role="menu" hidden></div>
+      <div class="bt-pop apx-subm" id="apxSubM" role="menu" hidden></div>
+      <section class="apx-pl" id="apxPL" aria-labelledby="apxPLT">
+        <div class="apx-plh"><h1 id="apxPLT">项目</h1><button class="apx-btn pri" type="button" id="apxPNew"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4.5v11M4.5 10h11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>新建项目</span></button></div>
+        <label class="apx-pf"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="5.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M13 13l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><input type="search" id="apxPQ" placeholder="搜索项目" aria-label="搜索项目" autocomplete="off"></label>
+        <div class="apx-pgrid" id="apxPG"></div>
+        <p class="apx-pe" id="apxPE" hidden></p>
+      </section>
     </main>
+    <div class="apx-dlg" id="apxPDlg" hidden><form id="apxPForm" role="dialog" aria-modal="true" aria-labelledby="apxPDT" novalidate>
+      <h2 id="apxPDT">新建项目</h2>
+      <label>项目名称<input id="apxPNm" maxlength="60" autocomplete="off" placeholder="给项目起个名字"></label>
+      <label>做什么用<textarea id="apxPDs" rows="3" maxlength="400" placeholder="这个项目要做什么（可不填）"></textarea></label>
+      <div class="ft"><button type="button" class="apx-btn" data-x>取消</button><button type="submit" class="apx-btn pri" id="apxPOk">创建项目</button></div>
+    </form></div>
+    <div class="apx-dlg" id="apxIDlg" hidden><form id="apxIForm" role="dialog" aria-modal="true" aria-labelledby="apxIDT" novalidate>
+      <h2 id="apxIDT">项目说明</h2>
+      <p>这个项目里的每条对话都会先带上这段说明。</p>
+      <textarea id="apxITx" rows="8" maxlength="4000" aria-label="项目说明"></textarea>
+      <div class="ft"><button type="button" class="apx-btn" data-x>取消</button><button type="submit" class="apx-btn pri">保存</button></div>
+    </form></div>
     <aside class="apx-pane" id="apxPane" aria-label="侧面板" hidden>
       <div class="apx-ph"><b id="apxPT"></b><button class="bt-col" type="button" id="apxPX" aria-label="关闭" title="关闭"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5.5 5.5l9 9M14.5 5.5l-9 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button></div>
       <div class="apx-pb" data-pane="files" hidden>
@@ -3695,7 +3870,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
         <button type="button" data-p="explore"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="3" width="5.5" height="5.5" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="11.5" y="3" width="5.5" height="5.5" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="3" y="11.5" width="5.5" height="5.5" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="11.5" y="11.5" width="5.5" height="5.5" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/></svg><span>探索</span></button>
         <i class="bt-rule" aria-hidden="true"></i>
         <span class="cs-grp bt-grp">账户设置</span>
-        <button type="button" data-p="acct"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="2.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M10 2.5v2.2M10 15.3v2.2M2.5 10h2.2M15.3 10h2.2M4.7 4.7l1.6 1.6M13.7 13.7l1.6 1.6M4.7 15.3l1.6-1.6M13.7 6.3l1.6-1.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>通用设置</span></button>
+        <button type="button" data-p="acct"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><span>通用设置</span></button>
         <button type="button" data-p="members" data-roles="admin root"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="7.5" cy="7" r="2.8" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.5 16.5c0-2.8 2.2-4.5 5-4.5s5 1.7 5 4.5M13 7.2a2.6 2.6 0 0 1 0 5.2M14.5 12.3c1.9.4 3 1.8 3 4.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>成员</span></button>
         <button type="button" data-p="bill" data-roles="personal admin root"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="4.5" width="15" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.5 8h15" stroke="currentColor" stroke-width="1.4"/></svg><span>钱包与账单</span></button>
         <button type="button" data-p="invoice" data-roles="personal admin"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 2.5h10v15l-2.5-1.5L10 17.5 7.5 16 5 17.5Z M7.5 7h5M7.5 10.5h5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/></svg><span>发票</span></button>
@@ -5748,7 +5923,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
 
   /* 控制台外框（2026-10-14，照 Baseten 控制台版式）：侧栏账户菜单与余额弹层、概览分区、模型表、探索、固定模型、右栏摘要。
      页面数字只来自当前账户的 Key、请求记录 LOGS 和模型目录 M；没有的数据显示 0 或「--」 */
-  var bt=$('#bt'), VLOGO={DeepSeek:'deepseek',Alibaba:'qwen',Zhipu:'zhipu',MiniMax:'minimax'};
+  var bt=$('#bt'), VLOGO={DeepSeek:'deepseek',Alibaba:'qwen',Zhipu:'zhipu',MiniMax:'minimax',Moonshot:'kimi',Anthropic:'claude'};
   function vlogo(v,s){return VLOGO[v]?'<img src="art/model-logos/'+VLOGO[v]+'-color.svg" alt="" width="'+(s||26)+'" height="'+(s||26)+'">':''}
   function inConsole(){var sec=$('[data-route="console"]');document.documentElement.classList.toggle('in-console',!!sec&&sec.classList.contains('on'))}
   window.addEventListener('hashchange',function(){setTimeout(inConsole,0)}); setTimeout(inConsole,0);
@@ -6692,7 +6867,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
   })();
 
   (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"已复制":"Copied","重新生成":"Regenerate","已重新生成":"Regenerated","复制失败，请手动选择文字":"Copy failed. Select the text manually.","历史对话":"History", "搜索对话": "Search chats", "今天": "Today", "昨天": "Yesterday", "近 7 天": "Previous 7 days", "更早": "Earlier", "删除": "Delete", "确认删除": "Confirm delete", "删除这条对话": "Delete this chat", "已删除": "Deleted", "最近对话": "Recent", "全部 →": "All →", "关闭": "Close", "没有找到相关对话": "No matching chats", "对话记录只保存在你的账号里，可以随时删除。": "Chats are saved to your account only. You can delete them anytime.", "还没有历史对话。": "No chats yet.", "发送第一个问题后，对话会保存在这里。": "Your chats will be saved here after you send the first question."});  /* 体验中心历史对话英文 */
-  (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"打开应用":"Open app","新对话":"New chat","搜索":"Search","最近":"Recents","我":"Me","· 个人":"· Personal","· 企业管理员":"· Org admin","· 企业成员":"· Member","· 速度":"· Speed","· 费用":"· Cost","置顶":"Pinned","取消置顶":"Unpin","作品":"Artifacts","任务":"Tasks","文件":"Files","更多":"More","添加":"Add","后退":"Back","前进":"Forward","面板":"Panels","侧面板":"Side panel","对比模型":"Compare models","调用代码":"API code","筛选文件":"Filter files","上传文件":"Upload files","移除":"Remove","这条对话还没有文件。点输入框旁的加号上传图片或文档。":"No files in this chat yet. Use the plus button by the composer to upload images or documents.","这条对话生成的图片、视频和文档会列在这里。":"Images, videos and documents generated in this chat will be listed here.","生成视频这类耗时任务会在这里排队并显示进度。":"Long-running jobs such as video generation will queue here with progress.","切换到夜间":"Switch to night","切换到白天":"Switch to day","输入你的问题":"Ask anything","今天想做点什么？":"What would you like to make today?","直接开始":"Start right away","在应用里对话和创作，一个账号调用全部模型。":"Chat and create in the app. One account, every model.","写一句话，回车进入应用":"Type a line, press Enter to open the app","想直接聊天和创作？":"Just want to chat and create?","打开应用 →":"Open app →","按实际用量从余额扣费，价格见":"Billed to your balance by actual usage. See ","体验中心按实际用量从余额扣费，价格见":"Playground usage is billed to your balance. See ","打开侧栏":"Open sidebar","收起侧栏":"Collapse sidebar","应用导航":"App navigation","应用":"App","应用 - 沐仞科技 FathomPeak":"App - FathomPeak"});  /* 应用页英文 */
+  (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"打开应用":"Open app","新对话":"New chat","搜索":"Search","最近":"Recents","项目":"Projects","新建项目":"New project","搜索项目":"Search projects","全部项目":"All projects","项目操作":"Project actions","项目信息":"Project info","项目说明":"Instructions","资料":"Project files","编辑":"Edit","对话":"Chats","项目名称":"Project name","做什么用":"Description","给项目起个名字":"Name your project","这个项目要做什么（可不填）":"What is this project for? (optional)","取消":"Cancel","创建项目":"Create project","保存":"Save","这个项目里的每条对话都会先带上这段说明。":"Every chat in this project starts with these instructions.","还没有资料。上传的文件在这个项目的每条对话里都能用。":"No files yet. Files added here are available in every chat in this project.","这个项目还没有对话。在上面的输入框里开始第一条。":"No chats in this project yet. Start one in the box above.","我":"Me","· 个人":"· Personal","· 企业管理员":"· Org admin","· 企业成员":"· Member","· 速度":"· Speed","· 费用":"· Cost","置顶":"Pinned","取消置顶":"Unpin","作品":"Artifacts","任务":"Tasks","文件":"Files","更多":"More","添加":"Add","后退":"Back","前进":"Forward","面板":"Panels","侧面板":"Side panel","对比模型":"Compare models","调用代码":"API code","筛选文件":"Filter files","上传文件":"Upload files","移除":"Remove","这条对话还没有文件。点输入框旁的加号上传图片或文档。":"No files in this chat yet. Use the plus button by the composer to upload images or documents.","这条对话生成的图片、视频和文档会列在这里。":"Images, videos and documents generated in this chat will be listed here.","生成视频这类耗时任务会在这里排队并显示进度。":"Long-running jobs such as video generation will queue here with progress.","切换到夜间":"Switch to night","切换到白天":"Switch to day","输入你的问题":"Ask anything","今天想做点什么？":"What would you like to make today?","直接开始":"Start right away","在应用里对话和创作，一个账号调用全部模型。":"Chat and create in the app. One account, every model.","写一句话，回车进入应用":"Type a line, press Enter to open the app","想直接聊天和创作？":"Just want to chat and create?","打开应用 →":"Open app →","按实际用量从余额扣费，价格见":"Billed to your balance by actual usage. See ","体验中心按实际用量从余额扣费，价格见":"Playground usage is billed to your balance. See ","打开侧栏":"Open sidebar","收起侧栏":"Collapse sidebar","应用导航":"App navigation","应用":"App","应用 - 沐仞科技 FathomPeak":"App - FathomPeak"});  /* 应用页英文 */
   RX.push([/^对话尚未开通。开通后这里显示 (.+) 的回答，以及首字时延、速度、Token、费用和电站产地。$/,function(m,a){return 'Chat is not live yet. Once it is, '+a+"'s reply will appear here with time to first token, speed, tokens, cost and source plant."}]);
   (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"支持": "Support", "先在这里找答案；需要人工处理时，提交问题或直接联系我们。": "Find answers here first. If you need a person, submit a request or contact us.", "充值未到账": "Top-up not received", "付款成功，余额没有增加": "Paid, but balance didn't change", "开发票": "Request an invoice", "按充值记录申请电子发票": "Request e-invoices for your top-ups", "调用报错": "API errors", "401、429、超时等问题": "401, 429, timeouts", "账号与登录": "Account & sign-in", "换绑手机号、找回账号": "Change phone, recover account", "充值订单": "Top-up order", "订单号（支付宝或微信账单里的商户订单号）": "Order number (merchant order no. in your Alipay or WeChat bill)", "付款方式": "Payment method", "付款金额（¥）": "Amount paid (¥)", "例如 100": "e.g. 100", "付款截图": "Payment screenshot", "支付宝或微信的账单详情页截图，能看到订单号和金额。": "A screenshot of the bill details showing the order number and amount.", "联系方式": "Contact", "手机号或邮箱，用于告诉你处理结果": "Phone or email for the result", "提交": "Submit", "联系我们": "Contact us", "邮箱": "Email", "电话": "Phone", "我提交的问题": "My requests", "还没有提交过问题": "No requests yet", "提交后的处理进度显示在这里，也会通知到你的联系方式。": "Progress shows here and is sent to your contact.", "常见问题": "FAQ", "发票": "Invoices", "按已支付的充值记录开具电子发票，发到你填写的邮箱。": "E-invoices are issued for paid top-ups and sent to your email.", "可开票金额": "Invoiceable", "已开票": "Invoiced", "开票中": "In progress", "1 · 选择充值记录": "1 · Choose top-ups", "2 · 填写开票信息": "2 · Invoice details", "还没有可开票的充值记录": "No invoiceable top-ups", "充值成功后，可以在这里勾选订单申请发票。赠送额度、代金券和兑换码不开票。": "After a successful top-up, select it here to request an invoice. Credits, vouchers and codes are not invoiced.", "抬头类型": "Title type", "个人": "Personal", "企业": "Business", "发票类型": "Invoice type", "普通发票": "General invoice", "增值税专用发票": "Special VAT invoice", "发票抬头": "Invoice title", "个人姓名或公司全称": "Your name or company name", "纳税人识别号": "Taxpayer ID", "开户行及账号": "Bank and account", "注册地址及电话": "Registered address and phone", "接收邮箱": "Email", "申请开票": "Request invoice", "开票记录": "Invoice history", "还没有开票记录": "No invoices yet", "开好的电子发票会发到接收邮箱，也可以在这里下载。": "Issued e-invoices are emailed to you and can be downloaded here.", "去开发票 →": "Request an invoice →", "联系我们 →": "Contact us →", "接入问题可以先查": "For integration questions, see the ", "文档": "docs"});  /* 支持与发票英文 */
   RX.push([/^已选 (\d+) 笔，合计 (.+)$/,function(m,a,b){return a+' selected · total '+b}]);
@@ -7041,7 +7216,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
         $$('#xpHL .xp-hi').forEach(function(r){r.setAttribute('data-dec','1'); if(pins.indexOf(rid(r))>=0) P.appendChild(r)});
         $$('#apxLists .xp-hi').forEach(function(r,i){var o=r.querySelector('.xp-ho'); if(o&&!o.querySelector('.apx-ri')) o.insertAdjacentHTML('afterbegin',RI);
           var n=r.querySelector('.apx-num'); if(n) n.remove(); if(i<9) r.insertAdjacentHTML('beforeend','<span class="apx-num" aria-hidden="true">'+(i+1)+'</span>')});
-        $('#apxPinH').hidden=!P.children.length; fileRender(); track() } }
+        $('#apxPinH').hidden=!P.children.length; if(window.__apxGroup) window.__apxGroup(); fileRender(); track() } }
     new MutationObserver(decorate).observe(HL,{childList:true});
     $('#apxPinH').addEventListener('click',function(){var off=ap.classList.toggle('pin-off'); this.setAttribute('aria-expanded',String(!off))});
     $('#apxTitleB').addEventListener('click',function(){var on=pinGet().indexOf(curId())>=0; $('#apxPinT').textContent=on?'取消置顶':'置顶'});
@@ -7049,12 +7224,12 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     $('#apxPins').addEventListener('click',function(e){if(e.target.closest('[data-open]')) ap.classList.remove('open')});
     /* 下载端：Alt+数字直达第 n 条；后退、前进在看过的对话之间走 */
     document.addEventListener('keydown',function(e){ if(!desk||!inApp()||!e.altKey||e.metaKey||e.ctrlKey) return; var m=/^Digit([1-9])$/.exec(e.code||''); if(!m) return;
-      var r=$$('#apxLists .xp-hi')[+m[1]-1]; if(r){e.preventDefault(); var b=r.querySelector('[data-open]'); if(b) b.click()} });
+      var r=$$('#apxLists .xp-hi').filter(function(x){return x.offsetParent!==null})[+m[1]-1]; if(r){e.preventDefault(); var b=r.querySelector('[data-open]'); if(b) b.click()} });
     var stack=[''], si=0, hop=false;
     function navBtns(){$('#apxBack').disabled=si<=0; $('#apxFwd').disabled=si>=stack.length-1}
-    function track(){ if(!desk||!inApp()) return; var id=isChat()?curId():''; if(isChat()&&!id) return; if(hop){ if(id===stack[si]) hop=false } else if(id!==stack[si]){stack=stack.slice(0,si+1); stack.push(id); si=stack.length-1} navBtns() }
+    function track(){ if(!desk||!inApp()) return; var vk=window.__apxVK?window.__apxVK():''; var id=vk||(isChat()?curId():''); if(!vk&&isChat()&&!id) return; if(hop){ if(id===stack[si]) hop=false } else if(id!==stack[si]){stack=stack.slice(0,si+1); stack.push(id); si=stack.length-1} navBtns() }
     function go(d){var j=si+d; if(j<0||j>=stack.length) return; si=j; hop=true; var id=stack[si];
-      if(!id){$('#xpNew').click(); if(window.__xpHist) window.__xpHist()} else {var b=$('#apxLists [data-open="'+id+'"]'); if(b) b.click(); else hop=false} navBtns()}
+      if(id.charAt(0)==='@'){ if(window.__apxGoV) window.__apxGoV(id) } else if(!id){ if(window.__apxGoV) window.__apxGoV(''); $('#xpNew').click(); if(window.__xpHist) window.__xpHist()} else {var b=$('#apxLists [data-open="'+id+'"]'); if(b) b.click(); else hop=false} navBtns()}
     $('#apxBack').addEventListener('click',function(){go(-1)}); $('#apxFwd').addEventListener('click',function(){go(1)});
     /* —— 右侧面板 —— */
     var PT={files:'文件',works:'作品',tasks:'任务'};
@@ -7062,7 +7237,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       else{ap.setAttribute('data-pane',name); ap.classList.add('has-pane'); $('#apxPane').hidden=false; $('#apxPT').textContent=PT[name]; $$('#apxPane .apx-pb').forEach(function(b){b.hidden=b.getAttribute('data-pane')!==name}); if(name==='files') fileRender()}
       $$('#apx [data-pane-b]').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-pane-b')===name))}) }
     $$('#apx [data-pane-b]').forEach(function(b){b.addEventListener('click',function(){pane(b.getAttribute('data-pane-b')); ap.classList.remove('open')})});
-    $('#apxPX').addEventListener('click',function(){pane('')});
+    $('#apxPX').addEventListener('click',function(){pane('')}); window.__apxPane=pane; window.__apxTrack=track;
     /* —— 「⋯」与「＋」两个菜单 —— */
     function menu(btn,m,open,above){ if(open){var r=btn.getBoundingClientRect(); m.style.left='auto'; m.style.right='auto'; m.style.top='auto'; m.style.bottom='auto';
         if(above){m.style.left=Math.max(8,Math.round(r.left))+'px'; if(r.top>window.innerHeight/2) m.style.bottom=Math.round(window.innerHeight-r.top+8)+'px'; else m.style.top=Math.round(r.bottom+8)+'px'}
@@ -7106,6 +7281,182 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     var _sync=window.__apxSync; window.__apxSync=function(on){ _sync(on);
       if(on){place(); decorate(); fileRender(); stack=[isChat()?curId():'']; si=0; hop=false; navBtns()}
       else {pane(''); more(false); plusm(false); if(plus.parentNode!==box) box.insertBefore(plus,q); $('#apxPins').innerHTML=''; $$('#xpHL .xp-hi').forEach(function(r){r.removeAttribute('data-dec')})} };
+  })();
+  /* ======== 应用页 v5（2026-11-07）：项目 ======== */
+  (function(){
+    var ap=$('#apx'), xp=$('#xp'), q=$('#xpQ'), box=$('#xpBox'); if(!ap||!xp||!q||!box||!$('#apxPjs')) return;
+    var H=document.documentElement; function inApp(){return H.classList.contains('in-app')}
+    var IC={proj:'<svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="3.5" width="14" height="4" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M4.3 7.5v7a2 2 0 0 0 2 2h7.4a2 2 0 0 0 2-2v-7M8.2 10.5h3.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',plus:'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4.5v11M4.5 10h11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>',more:'<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="5" cy="10" r="1.3" fill="currentColor"/><circle cx="10" cy="10" r="1.3" fill="currentColor"/><circle cx="15" cy="10" r="1.3" fill="currentColor"/></svg>',chev:'<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',chevR:'<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 3 7.5 6 4.5 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',check:'<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.3 5 8.6l4.5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',back:'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12 5.5 7.5 10l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'};
+    function T(zh,e){return (typeof lang!=='undefined'&&lang==='en')?e:zh}
+    function ukey(){var u=window.__me&&window.__me(); return (u&&(u.email||u.phone))||'preview'}
+    function jget(k,d){try{var v=JSON.parse(localStorage.getItem(k)||'null'); return v==null?d:v}catch(e){return d}}
+    function jset(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+    function pget(){var v=jget('fp-app-projs:'+ukey(),[]); return Array.isArray(v)?v:[]}
+    function pset(a){jset('fp-app-projs:'+ukey(),a)}
+    function cget(){var v=jget('fp-xp-convs:'+ukey(),[]); return Array.isArray(v)?v:[]}
+    function cset(a){jset('fp-xp-convs:'+ukey(),a.slice(0,100))}
+    function pins(){var v=jget('fp-app-pins',[]); return Array.isArray(v)?v:[]}
+    function pby(id){return pget().filter(function(x){return x.id===id})[0]||null}
+    function pmod(id,fn,touch){var a=pget(); a.forEach(function(x){if(x.id===id){fn(x); if(touch) x.up=Date.now()}}); pset(a)}
+    function pof(cid){var r=null; if(cid) pget().forEach(function(x){if((x.convs||[]).indexOf(cid)>=0) r=x}); return r}
+    function when(t){var d=new Date(t||Date.now()), n=new Date(), z=function(v){return (v<10?'0':'')+v}; return d.toDateString()===n.toDateString()?z(d.getHours())+':'+z(d.getMinutes()):(d.getMonth()+1)+'-'+z(d.getDate())}
+    function fsize(n){return n<1024?n+' B':n<1048576?Math.round(n/1024)+' KB':(n/1048576).toFixed(1)+' MB'}
+    function fext(n){var m=/\.([A-Za-z0-9]+)$/.exec(n); return m?m[1].toUpperCase().slice(0,4):'FILE'}
+    function hist(){if(window.__xpHist) window.__xpHist()}
+    function rid(r){var b=r.querySelector('[data-open]'); return b?b.getAttribute('data-open'):''}
+    function isChat(){return xp.getAttribute('data-mode')==='chat'}
+    function curConv(){try{return isChat()?(sessionStorage.getItem('fp-xp-cur')||''):''}catch(e){return ''}}
+    var view='', curP='', PURL={};
+    /* —— 项目里的页面结构：挂进对话组件 —— */
+    var intro=$('.xp-intro',xp), stage=$('.xp-stage',xp), meta=$('.apx-meta',xp);
+    var phd=document.createElement('div'); phd.className='apx-phd'; phd.id='apxPHd';
+    phd.innerHTML='<button class="apx-back" type="button" id="apxPBack">'+IC.back+'<span>全部项目</span></button><div class="apx-pht"><h1 id="apxPName"></h1><button class="apx-rm" type="button" id="apxPMore" aria-haspopup="true" aria-expanded="false" aria-label="项目操作">'+IC.more+'</button></div><p id="apxPDesc"></p>';
+    intro.insertBefore(phd,intro.firstChild);
+    var pcs=document.createElement('div'); pcs.className='apx-pcs'; pcs.id='apxPCs';
+    pcs.innerHTML='<div class="apx-pch">对话</div><div id="apxPCL"></div><p class="apx-pe" id="apxPCE">这个项目还没有对话。在上面的输入框里开始第一条。</p>';
+    (meta||box).after(pcs);
+    var pas=document.createElement('aside'); pas.className='apx-pas'; pas.id='apxPAs'; pas.setAttribute('aria-label','项目信息');
+    pas.innerHTML='<section class="apx-pk"><header><b>项目说明</b><button type="button" id="apxPInstB">编辑</button></header><p id="apxPInst"></p></section>'+
+      '<section class="apx-pk"><header><b>资料</b><button type="button" id="apxPFileB">'+IC.plus+'<span>添加</span></button></header><div class="apx-fl" id="apxPFL"></div><p id="apxPFE">还没有资料。上传的文件在这个项目的每条对话里都能用。</p><input type="file" id="apxPFIn" multiple hidden></section>';
+    stage.appendChild(pas);
+    /* —— 左栏：把属于项目的对话挂到项目下 —— */
+    function group(){ if(!inApp()) return;
+      var list=pget(), ids=cget().map(function(c){return c.id}), dirty=false;
+      list.forEach(function(x){var keep=(x.convs||[]).filter(function(id){return ids.indexOf(id)>=0}); if(keep.length!==(x.convs||[]).length) dirty=true; x.convs=keep}); if(dirty) pset(list);
+      var pin=pins(), host=$('#apxPjs'); host.innerHTML='';
+      list.forEach(function(x){ var open=x.open!==false, g=document.createElement('div'); g.className='apx-pg'+(open?' open':''); g.setAttribute('data-pg',x.id);
+        g.innerHTML='<div class="apx-pr'+(view==='pd'&&curP===x.id?' on':'')+'"><button class="apx-po" type="button" data-pjo="'+x.id+'">'+IC.proj+'<b>'+esc(x.name)+'</b></button>'+
+          '<button class="apx-pt" type="button" data-pjt="'+x.id+'" aria-expanded="'+open+'" aria-label="'+T('展开或收起','Expand or collapse')+'">'+IC.chev+'</button>'+
+          '<button class="apx-rm" type="button" data-pjm="'+x.id+'" aria-haspopup="true" aria-expanded="false" aria-label="'+T('更多','More')+'">'+IC.more+'</button></div>'+
+          '<div class="apx-kids" role="group"></div><button class="apx-nest" type="button" data-pjt="'+x.id+'" hidden></button>';
+        host.appendChild(g);
+        var kids=g.querySelector('.apx-kids');
+        $$('#xpHL .xp-hi').forEach(function(r){var id=rid(r); if(x.convs.indexOf(id)>=0&&pin.indexOf(id)<0) kids.appendChild(r)});
+        var k=kids.children.length, ne=g.querySelector('.apx-nest'); ne.hidden=!k; ne.textContent=T(k+' 个对话',k+(k>1?' chats':' chat')) });
+      $('#apxPjE').hidden=list.length>0;
+      ap.classList.toggle('rec-empty',!$$('#xpHL .xp-hi').length&&!$('#xpHL .xp-he'));
+      $$('#apxLists .xp-hi').forEach(function(r){ if(!r.querySelector('.apx-rm')) r.insertAdjacentHTML('beforeend','<button class="apx-rm" type="button" data-cvm="'+rid(r)+'" aria-haspopup="true" aria-expanded="false" aria-label="'+T('更多','More')+'">'+IC.more+'</button>') });
+      renum(); crumb(); if(view==='pd') pdRender(); if(view==='pl') plRender() }
+    window.__apxGroup=group;
+    function renum(){ var i=0; $$('#apxLists .xp-hi').forEach(function(r){var n=r.querySelector('.apx-num'); if(n) n.remove(); if(r.offsetParent!==null&&i<9){i++; r.insertAdjacentHTML('beforeend','<span class="apx-num" aria-hidden="true">'+i+'</span>')}}) }
+    function toggle(id){ pmod(id,function(x){x.open=x.open===false}); var x=pby(id), g=$('#apxPjs [data-pg="'+id+'"]'); if(g&&x){g.classList.toggle('open',x.open!==false); var t=g.querySelector('.apx-pt'); if(t) t.setAttribute('aria-expanded',String(x.open!==false))} renum() }
+    function moveTo(cid,pid){ var a=pget(); a.forEach(function(x){x.convs=(x.convs||[]).filter(function(c){return c!==cid}); if(x.id===pid){x.convs.unshift(cid); x.up=Date.now(); x.open=true}}); pset(a); hist() }
+    function crumb(){ var c=$('#apxCrumb'), x=pof(curConv()); c.classList.toggle('has',!!x); c.setAttribute('data-pj',x?x.id:''); c.firstChild.textContent=x?x.name:'' }
+    /* —— 视图：''=对话；pl=项目页；pd=单个项目 —— */
+    function show(v,pid){ var was=view; view=v||''; curP=view==='pd'?(pid||curP):'';
+      if(view==='pd'&&!pby(curP)) view='pl';
+      ap.classList.toggle('pv',view==='pl'); ap.classList.toggle('pd',view==='pd'); $('#apxPjN').setAttribute('aria-pressed',String(!!view));
+      if(view&&window.__apxPane) window.__apxPane('');
+      if(view==='pd'&&isChat()) $('#xpNew').click();
+      if(view==='pl'){$('#apxPQ').value=''; plRender()} if(view==='pd') pdRender();
+      hist(); if(view&&view!==was){ var m=$('#apxMain'); if(m) m.scrollTop=0; window.scrollTo(0,0) }
+      if(window.__apxTrack) window.__apxTrack() }
+    window.__apxVK=function(){return view==='pl'?'@pl':view==='pd'?'@pd:'+curP:''};
+    window.__apxGoV=function(k){ if(k==='@pl') show('pl'); else if(k.indexOf('@pd:')===0) show('pd',k.slice(4)); else if(view) show('') };
+    function plRender(){ var k=($('#apxPQ').value||'').trim().toLowerCase(), list=pget(), shown=list.filter(function(x){return !k||(x.name+' '+(x.desc||'')).toLowerCase().indexOf(k)>=0});
+      $('#apxPG').innerHTML=shown.map(function(x){ var u=PURL[x.id]||{}, img=''; (x.files||[]).some(function(f){if(u[f.name]){img=u[f.name]; return true} return false}); var n=(x.convs||[]).length;
+        return '<button class="apx-pc" type="button" data-pjo="'+x.id+'"><span class="apx-pth">'+(img?'<img src="'+img+'" alt="">':'<i>'+esc(Array.from(x.name)[0]||'')+'</i>')+'</span><b>'+esc(x.name)+'</b>'+(x.desc?'<span class="d">'+esc(x.desc)+'</span>':'')+'<span class="m">'+T(n+' 个对话 · 更新于 '+when(x.up),n+(n===1?' chat':' chats')+' · updated '+when(x.up))+'</span></button>' }).join('');
+      var e=$('#apxPE'); e.hidden=shown.length>0; e.textContent=list.length?T('没有找到相关项目','No matching projects'):T('项目把相关的对话和资料放在一起，并共用一段说明。','A project keeps related chats and files together and shares one set of instructions.') }
+    function pdRender(){ var x=pby(curP); if(!x) return; var u=PURL[x.id]||{};
+      if(!$('#apxPHd .apx-ren')){ $('#apxPName').textContent=x.name } $('#apxPDesc').textContent=x.desc||'';
+      var it=$('#apxPInst'); it.textContent=x.inst||T('还没有说明。','No instructions yet.'); it.classList.toggle('has',!!x.inst); $('#apxPInstB').textContent=x.inst?T('编辑','Edit'):T('添加','Add');
+      var fl=x.files||[]; $('#apxPFL').innerHTML=fl.map(function(f,i){return '<div class="apx-fi"><span class="t">'+(u[f.name]?'<img src="'+u[f.name]+'" alt="">':'<i>'+esc(fext(f.name))+'</i>')+'</span><span class="n"><b title="'+esc(f.name)+'">'+esc(f.name)+'</b><span>'+fsize(f.size)+'</span></span><button type="button" data-prm="'+i+'">'+T('移除','Remove')+'</button></div>'}).join('');
+      $('#apxPFE').hidden=fl.length>0;
+      var mine=cget().filter(function(c){return (x.convs||[]).indexOf(c.id)>=0});
+      $('#apxPCL').innerHTML=mine.map(function(c){return '<button class="apx-pci" type="button" data-pco="'+c.id+'"><b>'+esc(c.title)+'</b><span>'+when(c.up||c.at)+'</span></button>'}).join('');
+      $('#apxPCE').hidden=mine.length>0 }
+    /* —— 行菜单 —— */
+    var RM=$('#apxRowM'), SM=$('#apxSubM'), mt=null;
+    function mclose(){ if(mt&&mt.btn) mt.btn.setAttribute('aria-expanded','false'); RM.hidden=true; SM.hidden=true; mt=null }
+    function place(m,btn,side){ var r=btn.getBoundingClientRect(), W=m.offsetWidth||236, Hh=m.offsetHeight||220, x, y;
+      if(side){x=r.right+4; if(x+W>innerWidth-8) x=r.left-W-4; y=r.top-7} else {x=r.left-12; y=r.bottom+6; if(y+Hh>innerHeight-8) y=r.top-Hh-6}
+      m.style.left=Math.round(Math.max(8,Math.min(x,innerWidth-W-8)))+'px'; m.style.top=Math.round(Math.max(8,Math.min(y,innerHeight-Hh-8)))+'px'; m.style.right='auto'; m.style.bottom='auto' }
+    function it(act,label,key,cls){return '<button type="button" role="menuitem" data-act="'+act+'"'+(cls?' class="'+cls+'"':'')+'><span>'+label+'</span>'+(key?'<kbd>'+key+'</kbd>':'')+'</button>'}
+    function mopen(kind,id,btn,where){ mclose(); var h='';
+      if(kind==='c'){ var pinned=pins().indexOf(id)>=0;
+        h=it('pin',pinned?T('取消置顶','Unpin'):T('置顶','Pin'),'P')+it('ren',T('重命名','Rename'),'R')+'<button type="button" role="menuitem" class="sub" data-act="move" aria-haspopup="true"><span>'+T('移到项目','Move to project')+'</span>'+IC.chevR+'</button><i></i>'+it('del',T('删除','Delete'),'D','dz') }
+      else { var x=pby(id); if(!x) return;
+        h=it('pnew',T('新对话','New chat'),'N')+it('pren',T('重命名','Rename'),'R')+it('pedit',T('编辑项目','Edit project'),'E')+it('ptog',x.open===false?T('展开对话','Show chats'):T('收起对话','Hide chats'),'H')+'<i></i>'+it('pdel',T('删除项目','Delete project'),'D','dz') }
+      RM.innerHTML=h; RM.hidden=false; mt={kind:kind,id:id,btn:btn,where:where||''}; place(RM,btn,false); btn.setAttribute('aria-expanded','true') }
+    function subOpen(b){ if(!mt) return; var x0=pof(mt.id), list=pget();
+      SM.innerHTML=list.map(function(x){return '<button type="button" role="menuitem" data-mv="'+x.id+'"><span>'+esc(x.name)+'</span>'+(x0&&x0.id===x.id?IC.check:'')+'</button>'}).join('')+(list.length?'<i></i>':'')+
+        '<button type="button" role="menuitem" data-mv="+"><span>'+T('新建项目…','New project…')+'</span></button>'+(x0?'<button type="button" role="menuitem" data-mv="-"><span>'+T('移出项目','Remove from project')+'</span></button>':'');
+      SM.hidden=false; $$('#apxRowM .sub').forEach(function(s){s.classList.add('on')}); place(SM,b,true) }
+    RM.addEventListener('mouseover',function(e){var b=e.target.closest('button'); if(!b) return; if(b.classList.contains('sub')){if(SM.hidden) subOpen(b)} else if(!SM.hidden){SM.hidden=true; $$('#apxRowM .sub').forEach(function(s){s.classList.remove('on')})}});
+    RM.addEventListener('click',function(e){ e.stopPropagation(); var b=e.target.closest('[data-act]'); if(!b||!mt) return; var a=b.getAttribute('data-act'), ctx=mt, id=ctx.id;
+      if(a==='move'){subOpen(b); return}
+      if((a==='del'||a==='pdel')&&!b.classList.contains('sure')){b.classList.add('sure'); b.firstChild.textContent=T('确认删除','Confirm delete'); return}
+      mclose();
+      if(a==='pin'){var ps=pins(), i=ps.indexOf(id); if(i>=0) ps.splice(i,1); else ps.unshift(id); jset('fp-app-pins',ps.slice(0,50)); hist()}
+      else if(a==='ren') renameConv(id,ctx.where==='bar');
+      else if(a==='del'){var d=$('#apxLists [data-del="'+id+'"]'); if(d){d.click(); d.click()}}
+      else if(a==='pnew') show('pd',id);
+      else if(a==='pren') renameProj(id,ctx.where==='hd');
+      else if(a==='pedit') dlgProj(id);
+      else if(a==='ptog') toggle(id);
+      else if(a==='pdel'){pset(pget().filter(function(x){return x.id!==id})); if(curP===id) show('pl'); else hist(); toast(T('已删除项目，里面的对话回到「最近」','Project deleted. Its chats are back in Recents'))} });
+    SM.addEventListener('click',function(e){ e.stopPropagation(); var b=e.target.closest('[data-mv]'); if(!b||!mt) return; var v=b.getAttribute('data-mv'), cid=mt.id; mclose(); if(v==='+') dlgProj('',cid); else moveTo(cid,v==='-'?'':v) });
+    document.addEventListener('click',function(){if(!RM.hidden) mclose()});
+    document.addEventListener('keydown',function(e){ if(!inApp()) return;
+      if(e.key==='Escape'){ if(!$('#apxPDlg').hidden){dlgClose(); return} if(!$('#apxIDlg').hidden){$('#apxIDlg').hidden=true; return} if(!RM.hidden){var b=mt&&mt.btn; mclose(); if(b) b.focus()} return }
+      if(!RM.hidden&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&/^[a-z]$/i.test(e.key)){ var k=e.key.toUpperCase(); $$('#apxRowM kbd').forEach(function(kb){if(kb.textContent===k){e.preventDefault(); kb.parentNode.click()}}) } });
+    /* 顶栏标题的下拉：换成同一个行菜单 */
+    document.addEventListener('click',function(e){ var b=e.target.closest&&e.target.closest('#apxTitleB'); if(!b||!inApp()) return; e.stopPropagation(); e.preventDefault(); var id=curConv(); if(!id) return; if(mt&&mt.btn===b){mclose(); return} mopen('c',id,b,'bar') },true);
+    /* —— 左栏点击 —— */
+    $('#apxLists').addEventListener('click',function(e){ var t=e.target;
+      var m=t.closest('[data-cvm],[data-pjm]'); if(m){e.stopPropagation(); if(mt&&mt.btn===m){mclose(); return} mopen(m.hasAttribute('data-cvm')?'c':'p',m.getAttribute('data-cvm')||m.getAttribute('data-pjm'),m); return}
+      var g=t.closest('[data-pjt]'); if(g){toggle(g.getAttribute('data-pjt')); return}
+      var o=t.closest('[data-pjo]'); if(o){show('pd',o.getAttribute('data-pjo')); ap.classList.remove('open'); return}
+      if(t.closest('[data-open]')&&view) show('') },true);
+    $('#apxPjH').addEventListener('click',function(){var off=ap.classList.toggle('pj-off'); this.setAttribute('aria-expanded',String(!off)); renum()});
+    $('#apxPjAdd').addEventListener('click',function(e){e.stopPropagation(); dlgProj()});
+    $('#apxPjE').addEventListener('click',function(){dlgProj()});
+    $('#apxPjN').addEventListener('click',function(){show('pl'); ap.classList.remove('open')});
+    $('#apxNew').addEventListener('click',function(){if(view) show('')});
+    $('#apxCrumb').addEventListener('click',function(){var id=this.getAttribute('data-pj'); if(id) show('pd',id)});
+    /* —— 项目页、单个项目页 —— */
+    $('#apxPNew').addEventListener('click',function(){dlgProj()});
+    $('#apxPQ').addEventListener('input',plRender);
+    $('#apxPG').addEventListener('click',function(e){var o=e.target.closest('[data-pjo]'); if(o) show('pd',o.getAttribute('data-pjo'))});
+    $('#apxPBack').addEventListener('click',function(){show('pl')});
+    $('#apxPMore').addEventListener('click',function(e){e.stopPropagation(); if(mt&&mt.btn===this){mclose(); return} mopen('p',curP,this,'hd')});
+    $('#apxPCL').addEventListener('click',function(e){var b=e.target.closest('[data-pco]'); if(!b) return; var r=$('#apxLists [data-open="'+b.getAttribute('data-pco')+'"]'); if(r){show(''); r.click()}});
+    $('#apxPInstB').addEventListener('click',function(){var x=pby(curP); if(!x) return; $('#apxITx').value=x.inst||''; $('#apxIDlg').hidden=false; setTimeout(function(){$('#apxITx').focus()},0)});
+    $('#apxIForm').addEventListener('submit',function(e){e.preventDefault(); var v=$('#apxITx').value.trim(); $('#apxIDlg').hidden=true; pmod(curP,function(x){x.inst=v},true); pdRender()});
+    $('#apxIDlg').addEventListener('click',function(e){if(e.target===this||e.target.closest('[data-x]')) this.hidden=true});
+    $('#apxPFileB').addEventListener('click',function(){$('#apxPFIn').click()});
+    $('#apxPFIn').addEventListener('change',function(){ var fi=this, pid=curP, add=[]; PURL[pid]=PURL[pid]||{};
+      [].forEach.call(fi.files||[],function(f){add.push({name:f.name,size:f.size}); if(/^image\//.test(f.type)) PURL[pid][f.name]=URL.createObjectURL(f)});
+      fi.value=''; pmod(pid,function(x){x.files=(x.files||[]).filter(function(o){return !add.some(function(a){return a.name===o.name})}).concat(add)},true); pdRender() });
+    $('#apxPFL').addEventListener('click',function(e){var b=e.target.closest('[data-prm]'); if(!b) return; var i=+b.getAttribute('data-prm'); pmod(curP,function(x){var f=(x.files||[]).splice(i,1)[0]; if(f&&PURL[x.id]&&PURL[x.id][f.name]){URL.revokeObjectURL(PURL[x.id][f.name]); delete PURL[x.id][f.name]}},true); pdRender()});
+    /* 在项目页里发出的第一句：新对话归到这个项目 */
+    var pendP='';
+    document.addEventListener('submit',function(e){if(e.target===box&&inApp()&&view==='pd'&&q.value.trim()) pendP=curP},true);
+    box.addEventListener('submit',function(){ if(!pendP) return; var pid=pendP; pendP=''; setTimeout(function(){var id=curConv(); if(id) moveTo(id,pid)},0) });
+    new MutationObserver(function(){ if(!inApp()) return; if(isChat()&&view) show(''); crumb() }).observe(xp,{attributes:true,attributeFilter:['data-mode']});
+    /* —— 新建 / 编辑项目 —— */
+    var dm=null;
+    function dlgProj(id,cid){ var x=id?pby(id):null; mclose(); dm={id:x?id:'',cid:cid||''};
+      $('#apxPDT').textContent=x?T('编辑项目','Edit project'):T('新建项目','New project'); $('#apxPOk').textContent=x?T('保存','Save'):T('创建项目','Create project');
+      $('#apxPNm').value=x?x.name:''; $('#apxPDs').value=x?(x.desc||''):''; $('#apxPDlg').hidden=false; setTimeout(function(){$('#apxPNm').focus()},0) }
+    function dlgClose(){$('#apxPDlg').hidden=true; dm=null}
+    $('#apxPForm').addEventListener('submit',function(e){ e.preventDefault(); var nm=$('#apxPNm').value.trim(), ds=$('#apxPDs').value.trim(); if(!nm){$('#apxPNm').focus(); return} var m=dm||{}; dlgClose();
+      if(m.id){pmod(m.id,function(x){x.name=nm; x.desc=ds},true); hist(); return}
+      var x={id:'p'+Date.now().toString(36)+Math.random().toString(36).slice(2,6),name:nm,desc:ds,inst:'',files:[],convs:[],open:true,at:Date.now(),up:Date.now()}, a=pget();
+      a.unshift(x); pset(a); if(m.cid){moveTo(m.cid,x.id); toast(T('已移到「'+nm+'」','Moved to “'+nm+'”'))} else show('pd',x.id) });
+    $('#apxPDlg').addEventListener('click',function(e){if(e.target===this||e.target.closest('[data-x]')) dlgClose()});
+    /* —— 原地改名 —— */
+    function inline(el,val,done){ var inp=document.createElement('input'); inp.className='apx-ren'; inp.value=val; inp.setAttribute('aria-label',T('新名称','New name')); el.hidden=true; el.parentNode.insertBefore(inp,el.nextSibling); inp.focus(); inp.select(); var fin=false;
+      function end(ok){ if(fin) return; fin=true; var v=inp.value.trim(); inp.remove(); el.hidden=false; if(ok&&v&&v!==val) done(v) }
+      inp.addEventListener('keydown',function(e){e.stopPropagation(); if(e.key==='Enter'){e.preventDefault(); end(true)} else if(e.key==='Escape'){e.preventDefault(); end(false)}});
+      inp.addEventListener('blur',function(){end(true)}); inp.addEventListener('click',function(e){e.stopPropagation()}) }
+    function renameConv(id,bar){ var c=cget().filter(function(x){return x.id===id})[0]; if(!c) return; var o=$('#apxLists [data-open="'+id+'"]'), el=(bar||!o||o.offsetParent===null)?$('#apxTitleB'):o; if(!el||el.offsetParent===null) el=$('#apxTitleB');
+      inline(el,c.title,function(v){var a=cget(); a.forEach(function(x){if(x.id===id) x.title=v}); cset(a); hist()}) }
+    function renameProj(id,hd){ var x=pby(id); if(!x) return; var el=hd?$('#apxPName'):$('#apxPjs [data-pjo="'+id+'"]'); if(!el||el.offsetParent===null) el=$('#apxPName'); if(!el||el.offsetParent===null) return;
+      inline(el,x.name,function(v){pmod(id,function(p){p.name=v},true); hist()}) }
+    /* —— 进出应用页 —— */
+    var _sync=window.__apxSync; window.__apxSync=function(on){ _sync(on);
+      if(on){crumb()} else {mclose(); dlgClose(); $('#apxIDlg').hidden=true; view=''; curP=''; ap.classList.remove('pv','pd'); $('#apxPjs').innerHTML=''; hist()} };
   })();
   window.addEventListener('hashchange',route); route();
   function openOasisPreview(){if(new URLSearchParams(location.search).get('oasis')==='1'&&logged&&location.hash==='#console'&&me.role!=='root'){window.fpOasis?.sync();csTab('oasis');}}
