@@ -2847,10 +2847,9 @@ html.in-app .apx[data-view="cp"] .xp:not([data-mode="chat"]) .xp-stage{padding-t
 .apx-ck2[aria-checked="true"]{background:#3E9B67;border-color:#3E9B67}.apx-ck2[aria-checked="true"] svg{opacity:1}
 .apx-brief{gap:0}
 .apx-brief footer{margin-top:10px}
-/* 伙伴聊天：沐沐的消息署名 */
-.xf-who .apx-who-ip{width:30px;height:auto;margin:-8px -2px -4px -4px;flex:none;filter:drop-shadow(0 2px 2px rgba(0,0,0,.12))}
-.xf-who .apx-who-n{font:400 15px/1.2 var(--serif);color:var(--ink)}
-.xf-who .apx-who-m{font:400 12px var(--sans);color:var(--ink-50)}
+/* 照 Claude：回复上方不写名字，只有用户的消息是气泡；回答的模型名挪到回复下面那行小字的最前面 */
+html.in-app .xf-who{display:none}
+.xf-met .apx-mdl{color:var(--ink-70)}
 .apx-brief ul{margin:0;padding:0 0 0 18px;display:grid;gap:4px;font:400 15px/1.6 var(--sans);color:var(--ink-85)}
 .apx-brief .none{margin:0;font:400 14px var(--sans);color:var(--ink-50)}
 .apx-brief footer{font:400 12px var(--sans);color:var(--ink-50)}
@@ -8149,11 +8148,10 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     /* 打卡：聊天和简报页里同一条一起变 */
     document.addEventListener('click',function(e){ var b=e.target.closest&&e.target.closest('[data-bdone]'); if(!b) return; e.stopPropagation(); var k=b.getAttribute('data-bdone'), d=bdone(), on=!d[k]; if(on) d[k]=Date.now(); else delete d[k]; jset('fp-app-briefdone:'+ukey(),d);
       $$('[data-bdone="'+k+'"]').forEach(function(x){x.setAttribute('aria-checked',String(on)); x.parentNode.classList.toggle('done',on)}) },true);
-    /* 伙伴聊天：简报消息换成卡片；沐沐的消息署名换成形象 + 名字 */
-    function decorateChat(){ var inComp=view()==='cp'||(isChat()&&!!comp().conv&&curConv()===comp().conv); $$('#xpCols .xf-a').forEach(function(a){ var w=a.querySelector('.xf-who'), t=a.querySelector('.xf-t');
+    /* 聊天：简报消息换成卡片；回复上方的名字隐藏，模型名放进下面那行指标的最前面 */
+    function decorateChat(){ $$('#xpCols .xf-a').forEach(function(a){ var w=a.querySelector('.xf-who'), t=a.querySelector('.xf-t'), mt=a.querySelector('.xf-met');
         if(t&&!t.hasAttribute('data-bc')&&isBrief(t.textContent)){ t.setAttribute('data-bc','1'); t.innerHTML='<div class="apx-bc">'+fmt(t.textContent)+'</div>' }
-        if(inComp&&w&&!w.hasAttribute('data-who')){ var nav=$('#apxCpN .apx-cpav'), mdl=w.textContent.trim(); w.setAttribute('data-who','1');
-          w.innerHTML='<img class="apx-who-ip apx-cpav" src="'+(nav?nav.getAttribute('src'):'')+'" alt=""><span class="apx-who-n">'+esc(comp().name||T('沐沐','Mumu'))+'</span><span class="apx-who-m">'+esc(mdl)+'</span>' } }) }
+        if(w&&mt&&!mt.querySelector('.apx-mdl')){ var mdl=w.textContent.trim(); if(mdl) mt.insertAdjacentHTML('afterbegin','<span class="apx-mdl">'+esc(mdl)+'</span> · ') } }) }
     new MutationObserver(function(){ if(inApp()) decorateChat() }).observe($('#xpCols'),{childList:true,subtree:true});
     new MutationObserver(function(){ if(inApp()) decorateChat() }).observe(ap,{attributes:true,attributeFilter:['data-view']});
     function bRender(){ var c=cfg(), a=bget().filter(function(b){return b.text}); $('#apxBT').value=c.t; $('#apxBWx').checked=!!c.wx; $('#apxBS1').checked=c.s1!==false; $('#apxBS2').checked=c.s2!==false; $('#apxBE').hidden=a.length>0;
