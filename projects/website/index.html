@@ -2416,7 +2416,7 @@ html.in-app .xp-mi b,html.in-app .xp-mi .m2{white-space:nowrap;overflow:hidden;t
 html.in-app .xp-mi .bt-tag{max-width:132px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .apx.night img[src*="kimi-color"]{filter:invert(1) hue-rotate(180deg)}
 /* —— 左栏：功能行「项目」 —— */
-.apx.pv #apxPjN,.apx.pd #apxPjN{background:var(--gray-btn);color:var(--ink)}
+.apx[data-view="pl"] #apxPjN,.apx.pd #apxPjN{background:var(--gray-btn);color:var(--ink)}
 .apx.pv #apxNew,.apx.pd #apxNew{background:transparent;color:var(--ink-50)}
 /* —— 左栏：项目组 —— */
 .apx-sech{flex:none;display:flex;align-items:center;margin-top:18px}
@@ -2492,7 +2492,7 @@ html.in-app .xp-mi .bt-tag{max-width:132px;overflow:hidden;text-overflow:ellipsi
 .apx.pv .apx-tools,.apx.pd .apx-tools{display:none}
 /* —— 项目页 —— */
 .apx-pl{display:none;max-width:1080px;margin:0 auto;padding:84px 40px 72px;box-sizing:border-box}
-.apx.pv .apx-pl{display:block}
+.apx[data-view="pl"] #apxPL{display:block}
 .apx.pv #xp{display:none!important}
 .apx-plh{display:flex;align-items:center;gap:12px;margin-bottom:22px}
 .apx-plh h1{flex:1;margin:0;font:400 40px/1.1 var(--serif);letter-spacing:-.025em;color:var(--ink);font-variation-settings:"opsz" 144}
@@ -2613,6 +2613,106 @@ html.in-app .xp:not([data-mode="chat"]) .apx-meta .apx-pjc{display:inline-flex}
 .apx-cd{margin:0;padding:14px 16px;border-radius:14px;background:#17161A;color:#E9E7EE;font:400 12.5px/1.7 var(--mono);white-space:pre-wrap;word-break:break-all;overflow:auto}
 .apx-cd .s{color:#B9D3FF}.apx-cd .g{color:#8E8A99}
 .apx.night .apx-cd{background:#0F0E11}
+</style>
+
+<style id="app-page-v6-20261107">
+/* 应用页 v6：工具箱（定时任务 + 技能 + 模型 + 客户端），对照 Claude 桌面 Scheduled / Customize。变量沿用 .apx */
+.apx [data-nav-view][aria-pressed="true"]{background:var(--gray-btn);color:var(--ink)}
+.apx[data-view="tb"] #apxTB{display:block}
+/* 整页（项目、工具箱）时，顶栏不留上一条对话的标题和底线 */
+.apx.pv .apx-tbtn,.apx.pv .apx-crumb{display:none!important}
+.apx.pv .apx-bar,.apx.pv.chat .apx-bar,.apx.night.pv.chat .apx-bar{background:transparent!important;border-bottom-color:transparent!important;box-shadow:none!important;margin-bottom:-52px!important}
+.apx-cl{display:grid;gap:12px}
+.apx-cl.g2{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.apx-card{position:relative;display:flex;align-items:flex-start;gap:16px;padding:18px;border:1px solid var(--line);border-radius:18px;background:var(--card)}
+.apx-ic{flex:none;width:52px;height:52px;box-sizing:border-box;display:grid;place-items:center;border:1px solid var(--line);border-radius:14px;background:var(--paper);color:var(--icon)}
+.apx-ic svg{width:24px;height:24px}.apx-ic img{width:26px;height:26px}
+.apx-ic i{font:400 22px/1 var(--serif);font-style:normal;color:var(--ink-70)}
+.apx-ct{flex:1;min-width:0;display:grid;gap:4px}
+.apx-ct b{font:400 19px/1.3 var(--serif);letter-spacing:-.01em;color:var(--ink);font-variation-settings:"opsz" 144}
+.apx-ct p{margin:0;font:400 14px/1.6 var(--sans);color:var(--ink-70);white-space:pre-line;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.apx-card.open .apx-ct p{display:block}
+.apx-ct .apx-cd{display:none;margin-top:8px}.apx-card.open .apx-ct .apx-cd{display:block}
+.apx-cm{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font:400 13px/1.5 var(--sans);color:var(--ink-50)}
+.apx-tg{padding:3px 9px;border:1px solid var(--line);border-radius:999px;font:400 12px/1.3 var(--sans);font-style:normal;color:var(--ink-70);white-space:nowrap}
+.apx-tg.g{color:#3E7B5A;border-color:rgba(62,123,90,.32)}
+.apx.night .apx-tg.g{color:#8FD1A9;border-color:rgba(143,209,169,.35)}
+.apx-ca{flex:none;display:flex;align-items:center;gap:8px}
+.apx-ca .apx-rm{opacity:1;width:34px;height:34px}
+.apx-ca .apx-btn{height:34px;padding:0 14px;font-size:13px}
+.apx-plus2{appearance:none;width:36px;height:36px;padding:0;border:1px solid var(--line);border-radius:10px;background:transparent;display:grid;place-items:center;color:var(--ink);cursor:pointer}
+.apx-plus2 svg{width:18px;height:18px}.apx-plus2:hover{background:var(--gray-btn)}
+.apx-plus2[aria-pressed="true"]{background:var(--gray-btn);border-color:transparent;color:var(--icon-active)}
+/* 定时任务卡：照 Claude 两列卡 */
+.apx-task{appearance:none;display:grid;gap:6px;align-content:start;padding:18px 20px;border:1px solid var(--line);border-radius:18px;background:var(--card);text-align:left;cursor:pointer;transition:box-shadow .2s var(--ease)}
+.apx-task:hover{box-shadow:0 10px 28px -18px rgba(33,32,33,.35)}
+.apx-task .hd{display:flex;align-items:center;gap:8px;min-width:0;padding-right:34px}
+.apx-task .hd b{min-width:0;font:400 18px/1.3 var(--serif);letter-spacing:-.01em;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-variation-settings:"opsz" 144}
+.apx-dotst{flex:none;width:8px;height:8px;margin-left:auto;border-radius:50%;background:#3E9B67}
+.apx-task.off .apx-dotst{background:var(--ink-30)}
+.apx-task p{margin:0;font:400 14px/1.6 var(--sans);color:var(--ink-70);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.apx-task .apx-rm{position:absolute;top:12px;right:12px;opacity:0}
+.apx-taskw{position:relative;display:grid}
+.apx-taskw:hover .apx-rm,.apx-taskw .apx-rm[aria-expanded="true"],.apx-taskw .apx-rm:focus-visible{opacity:1}
+@media (hover:none){.apx-taskw .apx-rm{opacity:1}}
+.apx-info{display:flex;align-items:center;gap:12px;margin:0 0 22px;padding:16px 20px;border:1px solid var(--line);border-radius:16px;font:400 15px/1.5 var(--sans);color:var(--ink-85)}
+.apx-info svg{width:20px;height:20px;flex:none;color:var(--ink-50)}
+.apx-emp{display:grid;justify-items:center;gap:8px;padding:48px 24px;border:1px dashed var(--line);border-radius:18px;text-align:center}
+.apx-emp svg{width:34px;height:34px;color:var(--icon)}
+.apx-emp b{font:400 20px/1.3 var(--serif);color:var(--ink)}
+.apx-emp span{max-width:440px;font:400 14px/1.6 var(--sans);color:var(--ink-50)}
+.apx-emp .apx-btn{margin-top:8px}
+.apx-ln{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;margin-top:28px;padding:18px 20px;border-radius:18px;background:var(--gray-btn)}
+.apx-ln>div{flex:1;min-width:220px;display:grid;gap:2px}
+.apx-ln b{font:400 17px/1.3 var(--serif);color:var(--ink)}
+.apx-ln span{font:400 14px/1.6 var(--sans);color:var(--ink-70)}
+.apx-ln .mono{font:400 14px var(--mono);color:var(--ink)}
+.apx-ln0{margin:0 0 6px}
+.apx-subm .dz{color:#B3261E}.apx-subm .dz:hover{background:rgba(179,38,30,.08);color:#B3261E}
+.apx.night .apx-subm .dz{color:#FF9A91}
+/* 工具条 */
+.apx-czb{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 24px}
+.apx-tabs{display:flex;gap:2px}
+.apx-tabs button{appearance:none;height:38px;padding:0 16px;border:0;border-radius:12px;background:transparent;font:400 15px var(--sans);color:var(--ink-70);cursor:pointer;transition:background-color .2s var(--ease),color .2s var(--ease)}
+.apx-tabs button:hover{color:var(--ink)}
+.apx-tabs button[aria-selected="true"]{background:var(--gray-btn);color:var(--ink)}
+.apx-vs{width:1px;height:24px;margin:0 4px;background:var(--line)}
+.apx-seg{display:flex;padding:3px;border-radius:12px;background:var(--gray-btn)}
+.apx-seg button{appearance:none;height:32px;padding:0 14px;border:0;border-radius:9px;background:transparent;font:400 15px var(--sans);color:var(--ink-70);cursor:pointer}
+.apx-seg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.apx-czb .apx-sp{flex:1}
+.apx-ib2{appearance:none;width:38px;height:38px;padding:0;border:0;border-radius:10px;background:transparent;display:grid;place-items:center;color:var(--ink-70);cursor:pointer}
+.apx-ib2 svg{width:20px;height:20px}
+.apx-ib2:hover,.apx-ib2[aria-pressed="true"],.apx-ib2[aria-expanded="true"]{background:var(--gray-btn);color:var(--ink)}
+.apx-czq{display:flex;align-items:center;gap:6px;width:200px;height:38px;box-sizing:border-box;padding:0 12px;border:1px solid var(--line);border-radius:999px;background:var(--card)}
+.apx-czq svg{width:16px;height:16px;flex:none;color:var(--ink-50)}
+.apx-czq input{appearance:none;flex:1;min-width:0;border:0;outline:0;background:transparent;font:400 14px var(--sans);color:var(--ink)}
+.apx-czb #apxTbMain .ch{width:11px;height:11px;margin-left:2px}
+.apx-czb[data-tab="models"] .apx-seg,.apx-czb[data-tab="clients"] .apx-seg,.apx-czb[data-tab="models"] .apx-vs,.apx-czb[data-tab="clients"] .apx-vs,
+.apx-czb[data-tab="models"] #apxTbFil,.apx-czb[data-tab="clients"] #apxTbFil,.apx-czb[data-tab="models"] #apxTbSort,.apx-czb[data-tab="clients"] #apxTbSort,.apx-czb[data-tab="models"] #apxTbMain,.apx-czb[data-tab="clients"] #apxTbMain{display:none}
+/* 精选卡 */
+.apx-feat{display:flex;align-items:center;gap:24px;margin-bottom:34px;padding:28px 32px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(155deg,#E4EAF5 0%,#EFEAF0 55%,#F6F3F1 100%)}
+.apx-feat>div{flex:1;min-width:0;display:grid;justify-items:start;gap:8px}
+.apx-feat small{font:400 13px var(--sans);color:var(--ink-70)}
+.apx-feat h2{margin:0;font:400 32px/1.15 var(--serif);letter-spacing:-.02em;color:var(--ink);font-variation-settings:"opsz" 144}
+.apx-feat p{margin:0 0 6px;max-width:540px;font:400 15px/1.6 var(--sans);color:var(--ink-70)}
+.apx-feat .bt-collage{width:150px}
+.apx.night .apx-feat{background:linear-gradient(155deg,#212838 0%,#2A2531 55%,#1F1E21 100%)}
+.apx-sh{display:flex;align-items:baseline;justify-content:space-between;margin:0 0 12px}
+.apx-sh h2{margin:0;font:400 22px/1.2 var(--serif);letter-spacing:-.01em;color:var(--ink)}
+.apx-gl{margin:28px 0 10px;font:400 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-50)}
+.apx-gn{margin:-4px 0 12px;font:400 13px/1.6 var(--sans);color:var(--ink-50)}
+.apx-foot{margin:22px 0 0;font:400 13px/1.6 var(--sans);color:var(--ink-50)}
+/* 对话框里的两栏、下拉、勾选 */
+.apx-row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.apx-dlg select{appearance:none;width:100%;box-sizing:border-box;padding:10px 34px 10px 12px;border:1px solid var(--line);border-radius:12px;background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5 6 7.5 9 4.5' fill='none' stroke='%23888' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 12px center/12px;font:400 15px var(--sans);color:var(--ink)}
+.apx.night .apx-dlg select option{background:#252427;color:#F2F1F3}
+.apx-dlg .apx-ck{display:flex;align-items:flex-start;gap:10px;font:400 14px/1.5 var(--sans);color:var(--ink)}
+.apx-dlg .apx-ck input{appearance:auto;flex:none;width:18px;height:18px;margin:2px 0 0;padding:0;accent-color:#000}
+.apx.night .apx-dlg .apx-ck input{accent-color:#F2F1F3}
+.apx-ck small{display:block;font-size:13px;color:var(--ink-50)}
+@media (max-width:900px){.apx-cl.g2{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:760px){.apx-feat{flex-direction:column;align-items:flex-start}.apx-feat .bt-collage{display:none}.apx-czq{width:100%}.apx-card{flex-wrap:wrap}.apx-ca{width:100%;justify-content:flex-end}}
 </style>
 </head>
 <body>
@@ -3821,7 +3921,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
         <button type="button" id="apxFind" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="5.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M13 13l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>搜索</span></button>
         <button type="button" id="apxPjN" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="3.5" width="14" height="4" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M4.3 7.5v7a2 2 0 0 0 2 2h7.4a2 2 0 0 0 2-2v-7M8.2 10.5h3.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>项目</span></button>
         <button type="button" data-pane-b="works" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3.5" y="6.5" width="9" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7.5 6.5V5.5a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg><span>作品</span></button>
-        <button type="button" data-cs="batch"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M10 6.3V10l2.6 1.7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>绿电批量任务</span></button>
+        <button type="button" id="apxTbN" data-nav-view="tb" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8.5a1.5 1.5 0 0 1 1.5-1.5h11A1.5 1.5 0 0 1 17 8.5V15a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 3 15Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 7V5.2A1.7 1.7 0 0 1 9.2 3.5h1.6a1.7 1.7 0 0 1 1.7 1.7V7M3 11.2h14M8.6 10.2v2M11.4 10.2v2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>工具箱</span></button>
       </nav>
       <div class="apx-lists" id="apxLists">
       <button class="apx-sec" type="button" id="apxPinH" aria-expanded="true" aria-controls="apxPins" hidden><span>置顶</span><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5h6L5 7.2Z" fill="currentColor"/></svg></button>
@@ -3874,6 +3974,22 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
         <div class="apx-pgrid" id="apxPG"></div>
         <p class="apx-pe" id="apxPE" hidden></p>
       </section>
+      <section class="apx-pl" id="apxTB" aria-labelledby="apxTBT">
+        <div class="apx-plh"><h1 id="apxTBT">工具箱</h1></div>
+        <div class="apx-czb" data-tab="sched">
+          <div class="apx-tabs" role="tablist" aria-label="工具箱"><button type="button" role="tab" data-tbt="sched" aria-selected="true">定时任务</button><button type="button" role="tab" data-tbt="skills" aria-selected="false">技能</button><button type="button" role="tab" data-tbt="models" aria-selected="false">模型</button><button type="button" role="tab" data-tbt="clients" aria-selected="false">客户端</button></div>
+          <span class="apx-vs" aria-hidden="true"></span>
+          <div class="apx-seg"><button type="button" data-tbs="a" aria-pressed="true">我的</button><button type="button" data-tbs="b" aria-pressed="false">模板</button></div>
+          <span class="apx-sp"></span>
+          <label class="apx-czq" id="apxTbQW" hidden><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="5.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 13l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><input type="search" id="apxTbQ" placeholder="搜索" aria-label="搜索" autocomplete="off"></label>
+          <button class="apx-ib2" type="button" id="apxTbFind" aria-pressed="false" aria-label="搜索" title="搜索"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="5.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 13l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="apx-ib2" type="button" id="apxTbFil" aria-haspopup="true" aria-expanded="false" aria-label="筛选" title="筛选"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 6h12M6.5 10h7M9 14h2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="apx-ib2" type="button" id="apxTbSort" aria-pressed="false" aria-label="排序" title="按名称排序"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 15.5V4.5M4.5 7 7 4.5 9.5 7M13 4.5v11M10.5 13l2.5 2.5 2.5-2.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="apx-btn pri" type="button" id="apxTbMain" aria-haspopup="true" aria-expanded="false"><span>新建任务</span></button>
+        </div>
+        <div id="apxTbB"></div>
+      </section>
+      <div class="bt-pop apx-subm" id="apxTbM" role="menu" hidden></div>
     </main>
     <div class="apx-dlg" id="apxPDlg" hidden><form id="apxPForm" role="dialog" aria-modal="true" aria-labelledby="apxPDT" novalidate>
       <h2 id="apxPDT">新建项目</h2>
@@ -3885,6 +4001,23 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       <h2 id="apxIDT">项目说明</h2>
       <p>这个项目里的每条对话都会先带上这段说明。</p>
       <textarea id="apxITx" rows="8" maxlength="4000" aria-label="项目说明"></textarea>
+      <div class="ft"><button type="button" class="apx-btn" data-x>取消</button><button type="submit" class="apx-btn pri">保存</button></div>
+    </form></div>
+    <div class="apx-dlg" id="apxSDlg" hidden><form id="apxSForm" role="dialog" aria-modal="true" aria-labelledby="apxSDT" novalidate>
+      <h2 id="apxSDT">新建任务</h2>
+      <label>名称<input id="apxSNm" maxlength="60" autocomplete="off"></label>
+      <label>要问什么<textarea id="apxSQ" rows="4" maxlength="4000"></textarea></label>
+      <div class="apx-row2"><label>频率<select id="apxSF"><option value="day">每天</option><option value="wk">工作日</option><option value="week">每周一</option><option value="once">只一次</option></select></label><label>时间<input type="time" id="apxST" value="09:00"></label></div>
+      <label>模型<select id="apxSM"></select></label>
+      <label class="apx-ck"><input type="checkbox" id="apxSG"><span>排到绿电时段运行<small>到点后顺延到最近的电站富余绿电时段再运行</small></span></label>
+      <div class="ft"><button type="button" class="apx-btn" data-x>取消</button><button type="submit" class="apx-btn pri" id="apxSOk">创建任务</button></div>
+    </form></div>
+    <div class="apx-dlg" id="apxKDlg" hidden><form id="apxKForm" role="dialog" aria-modal="true" aria-labelledby="apxKDT" novalidate>
+      <h2 id="apxKDT">新建技能</h2>
+      <label>名称<input id="apxKNm" maxlength="60" autocomplete="off"></label>
+      <label>什么时候用<input id="apxKDs" maxlength="120" autocomplete="off" placeholder="一句话说明（可不填）"></label>
+      <label>提示词<textarea id="apxKP" rows="6" maxlength="4000"></textarea></label>
+      <label>默认模型<select id="apxKMd"></select></label>
       <div class="ft"><button type="button" class="apx-btn" data-x>取消</button><button type="submit" class="apx-btn pri">保存</button></div>
     </form></div>
     <aside class="apx-pane" id="apxPane" aria-label="侧面板" hidden>
@@ -6932,7 +7065,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
   })();
 
   (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"已复制":"Copied","重新生成":"Regenerate","已重新生成":"Regenerated","复制失败，请手动选择文字":"Copy failed. Select the text manually.","历史对话":"History", "搜索对话": "Search chats", "今天": "Today", "昨天": "Yesterday", "近 7 天": "Previous 7 days", "更早": "Earlier", "删除": "Delete", "确认删除": "Confirm delete", "删除这条对话": "Delete this chat", "已删除": "Deleted", "最近对话": "Recent", "全部 →": "All →", "关闭": "Close", "没有找到相关对话": "No matching chats", "对话记录只保存在你的账号里，可以随时删除。": "Chats are saved to your account only. You can delete them anytime.", "还没有历史对话。": "No chats yet.", "发送第一个问题后，对话会保存在这里。": "Your chats will be saved here after you send the first question."});  /* 体验中心历史对话英文 */
-  (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"打开应用":"Open app","新对话":"New chat","搜索":"Search","最近":"Recents","项目":"Projects","新建项目":"New project","搜索项目":"Search projects","全部项目":"All projects","项目操作":"Project actions","项目信息":"Project info","项目说明":"Instructions","资料":"Project files","编辑":"Edit","对话":"Chats","项目名称":"Project name","做什么用":"Description","给项目起个名字":"Name your project","这个项目要做什么（可不填）":"What is this project for? (optional)","取消":"Cancel","创建项目":"Create project","保存":"Save","这个项目里的每条对话都会先带上这段说明。":"Every chat in this project starts with these instructions.","还没有资料。上传的文件在这个项目的每条对话里都能用。":"No files yet. Files added here are available in every chat in this project.","这个项目还没有对话。在上面的输入框里开始第一条。":"No chats in this project yet. Start one in the box above.","排序":"Sort","对话目录":"Chat outline","后台任务":"Background tasks","这条对话还没有消息。":"No messages in this chat yet.","按最近更新排序":"Sorted by recent","复制":"Copy","这条对话的操作":"Chat actions","用 FathomPeak Key 调用同一个模型，模型和参数跟这条对话一致。":"Call the same model with your FathomPeak Key; the model and parameters match this chat.","我":"Me","· 个人":"· Personal","· 企业管理员":"· Org admin","· 企业成员":"· Member","· 速度":"· Speed","· 费用":"· Cost","置顶":"Pinned","取消置顶":"Unpin","作品":"Artifacts","任务":"Tasks","文件":"Files","更多":"More","添加":"Add","后退":"Back","前进":"Forward","面板":"Panels","侧面板":"Side panel","对比模型":"Compare models","调用代码":"API code","筛选文件":"Filter files","上传文件":"Upload files","移除":"Remove","这条对话还没有文件。点输入框旁的加号上传图片或文档。":"No files in this chat yet. Use the plus button by the composer to upload images or documents.","这条对话生成的图片、视频和文档会列在这里。":"Images, videos and documents generated in this chat will be listed here.","生成视频这类耗时任务会在这里排队并显示进度。":"Long-running jobs such as video generation will queue here with progress.","切换到夜间":"Switch to night","切换到白天":"Switch to day","输入你的问题":"Ask anything","今天想做点什么？":"What would you like to make today?","直接开始":"Start right away","在应用里对话和创作，一个账号调用全部模型。":"Chat and create in the app. One account, every model.","写一句话，回车进入应用":"Type a line, press Enter to open the app","想直接聊天和创作？":"Just want to chat and create?","打开应用 →":"Open app →","按实际用量从余额扣费，价格见":"Billed to your balance by actual usage. See ","体验中心按实际用量从余额扣费，价格见":"Playground usage is billed to your balance. See ","打开侧栏":"Open sidebar","收起侧栏":"Collapse sidebar","应用导航":"App navigation","应用":"App","应用 - 沐仞科技 FathomPeak":"App - FathomPeak"});  /* 应用页英文 */
+  (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"打开应用":"Open app","新对话":"New chat","搜索":"Search","最近":"Recents","工具箱":"Toolbox","定时任务":"Scheduled","新建任务":"New task","技能":"Skills","客户端":"Clients","我的":"Yours","模板":"Templates","筛选":"Filter","按名称排序":"Sort by name","名称":"Name","要问什么":"Prompt","频率":"Frequency","时间":"Time","每天":"Daily","工作日":"Weekdays","每周一":"Mondays","只一次":"Once","排到绿电时段运行":"Run in a green-power window","到点后顺延到最近的电站富余绿电时段再运行":"At the set time, wait for the next plant surplus green-power window","创建任务":"Create task","新建技能":"New skill","什么时候用":"When to use","一句话说明（可不填）":"One line (optional)","提示词":"Prompt","默认模型":"Default model","项目":"Projects","新建项目":"New project","搜索项目":"Search projects","全部项目":"All projects","项目操作":"Project actions","项目信息":"Project info","项目说明":"Instructions","资料":"Project files","编辑":"Edit","对话":"Chats","项目名称":"Project name","做什么用":"Description","给项目起个名字":"Name your project","这个项目要做什么（可不填）":"What is this project for? (optional)","取消":"Cancel","创建项目":"Create project","保存":"Save","这个项目里的每条对话都会先带上这段说明。":"Every chat in this project starts with these instructions.","还没有资料。上传的文件在这个项目的每条对话里都能用。":"No files yet. Files added here are available in every chat in this project.","这个项目还没有对话。在上面的输入框里开始第一条。":"No chats in this project yet. Start one in the box above.","排序":"Sort","对话目录":"Chat outline","后台任务":"Background tasks","这条对话还没有消息。":"No messages in this chat yet.","按最近更新排序":"Sorted by recent","复制":"Copy","这条对话的操作":"Chat actions","用 FathomPeak Key 调用同一个模型，模型和参数跟这条对话一致。":"Call the same model with your FathomPeak Key; the model and parameters match this chat.","我":"Me","· 个人":"· Personal","· 企业管理员":"· Org admin","· 企业成员":"· Member","· 速度":"· Speed","· 费用":"· Cost","置顶":"Pinned","取消置顶":"Unpin","作品":"Artifacts","任务":"Tasks","文件":"Files","更多":"More","添加":"Add","后退":"Back","前进":"Forward","面板":"Panels","侧面板":"Side panel","对比模型":"Compare models","调用代码":"API code","筛选文件":"Filter files","上传文件":"Upload files","移除":"Remove","这条对话还没有文件。点输入框旁的加号上传图片或文档。":"No files in this chat yet. Use the plus button by the composer to upload images or documents.","这条对话生成的图片、视频和文档会列在这里。":"Images, videos and documents generated in this chat will be listed here.","生成视频这类耗时任务会在这里排队并显示进度。":"Long-running jobs such as video generation will queue here with progress.","切换到夜间":"Switch to night","切换到白天":"Switch to day","输入你的问题":"Ask anything","今天想做点什么？":"What would you like to make today?","直接开始":"Start right away","在应用里对话和创作，一个账号调用全部模型。":"Chat and create in the app. One account, every model.","写一句话，回车进入应用":"Type a line, press Enter to open the app","想直接聊天和创作？":"Just want to chat and create?","打开应用 →":"Open app →","按实际用量从余额扣费，价格见":"Billed to your balance by actual usage. See ","体验中心按实际用量从余额扣费，价格见":"Playground usage is billed to your balance. See ","打开侧栏":"Open sidebar","收起侧栏":"Collapse sidebar","应用导航":"App navigation","应用":"App","应用 - 沐仞科技 FathomPeak":"App - FathomPeak"});  /* 应用页英文 */
   RX.push([/^对话尚未开通。开通后这里显示 (.+) 的回答，以及首字时延、速度、Token、费用和电站产地。$/,function(m,a){return 'Chat is not live yet. Once it is, '+a+"'s reply will appear here with time to first token, speed, tokens, cost and source plant."}]);
   (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"支持": "Support", "先在这里找答案；需要人工处理时，提交问题或直接联系我们。": "Find answers here first. If you need a person, submit a request or contact us.", "充值未到账": "Top-up not received", "付款成功，余额没有增加": "Paid, but balance didn't change", "开发票": "Request an invoice", "按充值记录申请电子发票": "Request e-invoices for your top-ups", "调用报错": "API errors", "401、429、超时等问题": "401, 429, timeouts", "账号与登录": "Account & sign-in", "换绑手机号、找回账号": "Change phone, recover account", "充值订单": "Top-up order", "订单号（支付宝或微信账单里的商户订单号）": "Order number (merchant order no. in your Alipay or WeChat bill)", "付款方式": "Payment method", "付款金额（¥）": "Amount paid (¥)", "例如 100": "e.g. 100", "付款截图": "Payment screenshot", "支付宝或微信的账单详情页截图，能看到订单号和金额。": "A screenshot of the bill details showing the order number and amount.", "联系方式": "Contact", "手机号或邮箱，用于告诉你处理结果": "Phone or email for the result", "提交": "Submit", "联系我们": "Contact us", "邮箱": "Email", "电话": "Phone", "我提交的问题": "My requests", "还没有提交过问题": "No requests yet", "提交后的处理进度显示在这里，也会通知到你的联系方式。": "Progress shows here and is sent to your contact.", "常见问题": "FAQ", "发票": "Invoices", "按已支付的充值记录开具电子发票，发到你填写的邮箱。": "E-invoices are issued for paid top-ups and sent to your email.", "可开票金额": "Invoiceable", "已开票": "Invoiced", "开票中": "In progress", "1 · 选择充值记录": "1 · Choose top-ups", "2 · 填写开票信息": "2 · Invoice details", "还没有可开票的充值记录": "No invoiceable top-ups", "充值成功后，可以在这里勾选订单申请发票。赠送额度、代金券和兑换码不开票。": "After a successful top-up, select it here to request an invoice. Credits, vouchers and codes are not invoiced.", "抬头类型": "Title type", "个人": "Personal", "企业": "Business", "发票类型": "Invoice type", "普通发票": "General invoice", "增值税专用发票": "Special VAT invoice", "发票抬头": "Invoice title", "个人姓名或公司全称": "Your name or company name", "纳税人识别号": "Taxpayer ID", "开户行及账号": "Bank and account", "注册地址及电话": "Registered address and phone", "接收邮箱": "Email", "申请开票": "Request invoice", "开票记录": "Invoice history", "还没有开票记录": "No invoices yet", "开好的电子发票会发到接收邮箱，也可以在这里下载。": "Issued e-invoices are emailed to you and can be downloaded here.", "去开发票 →": "Request an invoice →", "联系我们 →": "Contact us →", "接入问题可以先查": "For integration questions, see the ", "文档": "docs"});  /* 支持与发票英文 */
   RX.push([/^已选 (\d+) 笔，合计 (.+)$/,function(m,a,b){return a+' selected · total '+b}]);
@@ -7410,14 +7543,16 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     /* —— 视图：''=对话；pl=项目页；pd=单个项目 —— */
     function show(v,pid){ var was=view; view=v||''; curP=view==='pd'?(pid||curP):'';
       if(view==='pd'&&!pby(curP)) view='pl';
-      ap.classList.toggle('pv',view==='pl'); ap.classList.toggle('pd',view==='pd'); $('#apxPjN').setAttribute('aria-pressed',String(!!view));
+      var PG=window.__apxPages||{}; ap.classList.toggle('pv',view==='pl'||!!PG[view]); ap.classList.toggle('pd',view==='pd'); if(view) ap.setAttribute('data-view',view); else ap.removeAttribute('data-view');
+      $('#apxPjN').setAttribute('aria-pressed',String(view==='pl'||view==='pd')); $$('#apx [data-nav-view]').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-nav-view')===view))});
       if(view&&window.__apxPane) window.__apxPane('');
       if(view==='pd'&&isChat()) $('#xpNew').click();
-      if(view==='pl'){$('#apxPQ').value=''; plRender()} if(view==='pd') pdRender();
+      if(view==='pl'){$('#apxPQ').value=''; plRender()} if(view==='pd') pdRender(); if(PG[view]) PG[view]();
       hist(); if(view&&view!==was){ var m=$('#apxMain'); if(m) m.scrollTop=0; window.scrollTo(0,0) }
       if(window.__apxTrack) window.__apxTrack() }
-    window.__apxVK=function(){return view==='pl'?'@pl':view==='pd'?'@pd:'+curP:''};
-    window.__apxGoV=function(k){ if(k==='@pl') show('pl'); else if(k.indexOf('@pd:')===0) show('pd',k.slice(4)); else if(view) show('') };
+    window.__apxVK=function(){return view==='pd'?'@pd:'+curP:view?'@'+view:''};
+    window.__apxGoV=function(k){ if(k.indexOf('@pd:')===0) show('pd',k.slice(4)); else if(k) show(k.slice(1)); else if(view) show('') };
+    window.__apxShow=show; window.__apxViewNow=function(){return view};
     function plRender(){ var k=($('#apxPQ').value||'').trim().toLowerCase(), list=pget(), shown=list.filter(function(x){return !k||(x.name+' '+(x.desc||'')).toLowerCase().indexOf(k)>=0});
       $('#apxPG').innerHTML=shown.map(function(x){ var u=PURL[x.id]||{}, img=''; (x.files||[]).some(function(f){if(u[f.name]){img=u[f.name]; return true} return false}); var n=(x.convs||[]).length;
         return '<button class="apx-pc" type="button" data-pjo="'+x.id+'"><span class="apx-pth">'+(img?'<img src="'+img+'" alt="">':'<i>'+esc(Array.from(x.name)[0]||'')+'</i>')+'</span><b>'+esc(x.name)+'</b>'+(x.desc?'<span class="d">'+esc(x.desc)+'</span>':'')+'<span class="m">'+T(n+' 个对话 · 更新于 '+when(x.up),n+(n===1?' chat':' chats')+' · updated '+when(x.up))+'</span></button>' }).join('');
@@ -7556,7 +7691,174 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       inline(el,x.name,function(v){pmod(id,function(p){p.name=v},true); hist()}) }
     /* —— 进出应用页 —— */
     var _sync=window.__apxSync; window.__apxSync=function(on){ _sync(on);
-      if(on){crumb()} else {mclose(); dlgClose(); $('#apxIDlg').hidden=true; view=''; curP=''; ap.classList.remove('pv','pd'); $('#apxPjs').innerHTML=''; hist()} };
+      if(on){crumb()} else {mclose(); dlgClose(); $('#apxIDlg').hidden=true; view=''; curP=''; ap.classList.remove('pv','pd'); ap.removeAttribute('data-view'); $('#apxPjs').innerHTML=''; hist()} };
+  })();
+  /* ======== 应用页 v6（2026-11-07）：工具箱（定时任务、技能、模型、客户端） ======== */
+  (function(){
+    var ap=$('#apx'), q=$('#xpQ'), box=$('#xpBox'); if(!ap||!q||!box||!$('#apxTB')||!window.__apxShow) return;
+    var H=document.documentElement; function inApp(){return H.classList.contains('in-app')}
+    var IC={tool:'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8.5a1.5 1.5 0 0 1 1.5-1.5h11A1.5 1.5 0 0 1 17 8.5V15a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 3 15Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 7V5.2A1.7 1.7 0 0 1 9.2 3.5h1.6a1.7 1.7 0 0 1 1.7 1.7V7M3 11.2h14M8.6 10.2v2M11.4 10.2v2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',clock:'<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 6.3V10l2.6 1.7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',info:'<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 9v4.5M10 6.6v.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',plus:'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4.5v11M4.5 10h11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',more:'<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="5" cy="10" r="1.3" fill="currentColor"/><circle cx="10" cy="10" r="1.3" fill="currentColor"/><circle cx="15" cy="10" r="1.3" fill="currentColor"/></svg>',check:'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.3 8.3 14l7.2-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',chev:'<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',find:'<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="5.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 13l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',filter:'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 6h12M6.5 10h7M9 14h2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',updown:'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 15.5V4.5M4.5 7 7 4.5 9.5 7M13 4.5v11M10.5 13l2.5 2.5 2.5-2.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',pen:'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.8 4.2a1.9 1.9 0 0 1 2.7 2.7L7.2 15.2 4 16l.8-3.2Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M11.5 5.5l3 3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',code:'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 6.5 3.5 10 7 13.5M13 6.5l3.5 3.5-3.5 3.5M11.3 4.8 8.7 15.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',tr:'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 5h7M7 3.5V5M5 5c.4 2.6 2 4.6 4.5 5.6M9 5c-.4 2.7-2.2 4.8-5 6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 16.5l3-7 3 7M11.6 14h3.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',chart:'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 16.5h13M6 13.5V9.5M10 13.5V5.5M14 13.5v-6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',chat:'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 5.5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-3.5 3v-3H6a2 2 0 0 1-2-2Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',spark:'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3.5v3M10 13.5v3M3.5 10h3M13.5 10h3M5.4 5.4l2.1 2.1M12.5 12.5l2.1 2.1M5.4 14.6l2.1-2.1M12.5 7.5l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>'}, show=window.__apxShow;
+    function T(zh,e){return (typeof lang!=='undefined'&&lang==='en')?e:zh}
+    function ukey(){var u=window.__me&&window.__me(); return (u&&(u.email||u.phone))||'preview'}
+    function jget(k,d){try{var v=JSON.parse(localStorage.getItem(k)||'null'); return v==null?d:v}catch(e){return d}}
+    function jset(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+    function z(v){return (v<10?'0':'')+v}
+    function fmt(d){var n=new Date(), tm=new Date(n.getFullYear(),n.getMonth(),n.getDate()+1); return (d.toDateString()===n.toDateString()?T('今天','Today'):d.toDateString()===tm.toDateString()?T('明天','Tomorrow'):(d.getMonth()+1)+'-'+z(d.getDate()))+' '+z(d.getHours())+':'+z(d.getMinutes())}
+    function models(){return $$('#xpChips .xp-chip').map(function(b){var im=b.querySelector('img'); return {id:b.getAttribute('data-id'),name:((b.querySelector('span')||b).textContent||'').trim(),logo:im?im.outerHTML:''}})}
+    function mname(id){return (models().filter(function(m){return m.id===id})[0]||{}).name||''}
+    function pick(mid){var c=mid&&$('#xpChips [data-id="'+mid+'"]'); if(c) c.click()}
+    function fresh(){show(''); $('#apxNew').click()}
+    function fill(t){q.value=t; q.dispatchEvent(new Event('input',{bubbles:true})); q.focus(); try{q.setSelectionRange(t.length,t.length)}catch(e){}}
+    function toCons(p){location.hash='#console'; setTimeout(function(){if(typeof csTab==='function') csTab(p)},60)}
+    function B(){return ap.classList.contains('desk')?ap.getBoundingClientRect():{left:0,top:0,right:innerWidth,bottom:innerHeight}}
+    var M=$('#apxTbM'), open=null;
+    function closeM(){ if(open){M.hidden=true; open.b.setAttribute('aria-expanded','false'); open=null} }
+    function menu(btn,html,ctx){ if(open&&open.b===btn){closeM(); return} closeM(); M.innerHTML=html; M.hidden=false;
+      var r=btn.getBoundingClientRect(), W=M.offsetWidth, Hh=M.offsetHeight, b=B(), x=r.right-W, y=r.bottom+6; if(y+Hh>b.bottom-8) y=r.top-Hh-6;
+      M.style.left=Math.round(Math.max(b.left+8,Math.min(x,b.right-W-8)))+'px'; M.style.top=Math.round(Math.max(b.top+8,y))+'px'; M.style.right='auto'; M.style.bottom='auto';
+      btn.setAttribute('aria-expanded','true'); open={b:btn,ctx:ctx} }
+    document.addEventListener('click',function(){closeM()});
+    function mi(act,label,cls,extra){return '<button type="button" role="menuitem" data-a="'+act+'"'+(cls?' class="'+cls+'"':'')+(extra||'')+'><span>'+label+'</span></button>'}
+    function sure(b){ if(b.classList.contains('sure')) return true; b.classList.add('sure'); b.firstChild.textContent=T('确认删除','Confirm delete'); return false }
+    var tb={tab:'sched',seg:{sched:'a',skills:'b'},q:'',fil:{sched:'',skills:''},sort:''};
+    /* ===== 技能（体验中心原有模板 + 自建） ===== */
+    var SK=null, GLY={'写作':IC.pen,'编程':IC.code,'翻译':IC.tr,'分析':IC.chart,'客服':IC.chat};
+    function sk(){ if(SK&&SK.length) return SK; var all=$('#xpTabs [data-c="全部"]'); if(all&&!all.classList.contains('on')) all.click();
+      SK=$$('#xpCards .xp-card').map(function(c){var a=c.querySelector('.bt-collage'), g=function(s){var el=c.querySelector(s); return el?el.textContent.trim():''}; return {id:'t'+c.getAttribute('data-t'),t:c.getAttribute('data-t'),cat:g('.k'),name:g('b'),prompt:g('p'),model:g('.xp-mc'),art:a?a.getAttribute('data-art'):''}}); return SK }
+    function kget(){var v=jget('fp-app-skills:'+ukey(),null); return {added:(v&&v.added)||[],custom:(v&&v.custom)||[]}}
+    function kset(v){jset('fp-app-skills:'+ukey(),v)}
+    function skById(id){ if(id.charAt(0)==='t') return sk().filter(function(s){return s.id===id})[0]; var c=kget().custom.filter(function(x){return x.id===id})[0]; return c?{id:c.id,name:c.name,desc:c.desc,prompt:c.prompt,modelId:c.model,custom:true}:null }
+    /* ===== 定时任务 ===== */
+    var FREQ={day:['每天','Daily'],wk:['工作日','Weekdays'],week:['每周一','Mondays'],once:['只一次','Once']};
+    function sget(){var v=jget('fp-app-sched:'+ukey(),[]); return Array.isArray(v)?v:[]}
+    function sset(a){jset('fp-app-sched:'+ukey(),a)}
+    function nextRun(t){ if(!t.on||(t.freq==='once'&&t.last)) return null; var hm=(t.time||'09:00').split(':'), n=new Date(), d=new Date(n.getFullYear(),n.getMonth(),n.getDate(),+hm[0]||0,+hm[1]||0);
+      for(var i=0;i<9;i++){ var w=d.getDay(), ok=d>n; if(t.freq==='wk'&&(w===0||w===6)) ok=false; if(t.freq==='week'&&w!==1) ok=false; if(ok) return d; d.setDate(d.getDate()+1) } return null }
+    function schedHtml(){ var q0=tb.q.toLowerCase(), h='<div class="apx-info">'+IC.info+'<span>'+T('定时任务在云端按时运行，不用开着电脑。勾选「绿电时段」的任务会顺延到最近的电站富余绿电时段。','Scheduled tasks run in the cloud on time, so your computer can be off. Tasks marked “green-power window” wait for the next plant surplus green-power window.')+'</span></div>';
+      if(tb.seg.sched==='b'){ var ls=sk().filter(function(s){return !q0||(s.name+' '+s.prompt).toLowerCase().indexOf(q0)>=0});
+        return h+'<div class="apx-cl">'+ls.map(function(s){return '<div class="apx-card"><span class="apx-ic">'+(GLY[s.cat]||IC.spark)+'</span><div class="apx-ct"><b>'+esc(s.name)+'</b><p>'+esc(s.prompt)+'</p><span class="apx-cm">'+esc(s.cat)+(s.model?' · '+esc(s.model):'')+'</span></div><div class="apx-ca"><button class="apx-btn" type="button" data-fromk="'+s.id+'">'+T('用它建任务','Create a task from it')+'</button></div></div>'}).join('')+'</div>' }
+      var a=sget().filter(function(t){return (!q0||(t.name+' '+t.q).toLowerCase().indexOf(q0)>=0)&&(!tb.fil.sched||(tb.fil.sched==='on')===!!t.on)});
+      if(tb.sort) a=a.slice().sort(function(x,y){return x.name.localeCompare(y.name,'zh')});
+      if(!a.length) h+='<div class="apx-emp">'+IC.clock+'<b>'+((q0||tb.fil.sched)?T('没有找到相关任务','No matching tasks'):T('还没有定时任务','No scheduled tasks yet'))+'</b><span>'+((q0||tb.fil.sched)?'':T('新建一个任务，写好要问的话，选好时间和模型；也可以从「模板」里挑一个技能来建。','Create a task with a prompt, a time and a model, or start from a skill under Templates.'))+'</span>'+((q0||tb.fil.sched)?'':'<button class="apx-btn" type="button" data-newtask>'+IC.plus+'<span>'+T('新建任务','New task')+'</span></button>')+'</div>';
+      else h+='<div class="apx-cl g2">'+a.map(function(t){ var f=FREQ[t.freq]||FREQ.day, nx=nextRun(t), m=mname(t.model);
+        return '<div class="apx-taskw"><button class="apx-task'+(t.on?'':' off')+'" type="button" data-edit="'+t.id+'"><span class="hd"><b>'+esc(t.name)+'</b><i class="apx-tg">'+T('对话','Chat')+'</i>'+(t.green?'<i class="apx-tg g">'+T('绿电时段','Green power')+'</i>':'')+'<span class="apx-dotst" aria-hidden="true"></span></span>'+
+          '<p>'+esc(t.q)+'</p><span class="apx-cm">'+(t.on?T('启用中','Active'):T('已暂停','Paused'))+' · '+T(f[0],f[1])+' '+esc(t.time)+(m?' · '+esc(m):'')+'</span>'+
+          '<span class="apx-cm">'+(nx?T('下次 ','Next ')+fmt(nx):(t.on?T('已运行','Done'):''))+(t.last?(nx||t.on?' · ':'')+T('上次 ','Last ')+fmt(new Date(t.last)):'')+'</span></button>'+
+          '<button class="apx-rm" type="button" data-scm="'+t.id+'" aria-haspopup="true" aria-expanded="false" aria-label="'+T('更多','More')+'">'+IC.more+'</button></div>' }).join('')+'</div>';
+      return h+'<div class="apx-ln"><div><b>'+T('成批的离线请求','Offline batch requests')+'</b><span>'+T('把大量请求写成 JSONL 文件一次上传，排到绿电时段逐条处理，完成后下载结果。','Upload many requests as one JSONL file; they run one by one in green-power windows and you download the results.')+'</span></div><button class="apx-btn" type="button" data-czcs="batch">'+T('去后台的绿电批量任务','Open Green batch jobs')+'</button></div>' }
+    function runTask(id){ var t=sget().filter(function(x){return x.id===id})[0]; if(!t) return; fresh(); pick(t.model); fill(t.q); box.requestSubmit();
+      var a=sget(); a.forEach(function(x){if(x.id===id) x.last=Date.now()}); sset(a); toast(T('已运行，结果在这条新对话里','Ran now. The result is in this new chat')) }
+    var sEdit='';
+    function sDlg(id,seed){ var t=id?sget().filter(function(x){return x.id===id})[0]:null, ms=models(), cur=t?t.model:((seed&&seed.modelId)||jget('fp-app-defm','')||(ms[0]&&ms[0].id)); sEdit=t?id:'';
+      $('#apxSDT').textContent=t?T('编辑任务','Edit task'):T('新建任务','New task'); $('#apxSOk').textContent=t?T('保存','Save'):T('创建任务','Create task');
+      $('#apxSM').innerHTML=ms.map(function(m){return '<option value="'+esc(m.id)+'"'+(m.id===cur?' selected':'')+'>'+esc(m.name)+'</option>'}).join('');
+      $('#apxSNm').value=t?t.name:(seed?seed.name:''); $('#apxSQ').value=t?t.q:(seed?seed.prompt:''); $('#apxSF').value=t?t.freq:'day'; $('#apxST').value=t?t.time:'09:00'; $('#apxSG').checked=!!(t&&t.green);
+      $('#apxSDlg').hidden=false; setTimeout(function(){(seed?$('#apxSQ'):$('#apxSNm')).focus()},0) }
+    $('#apxSForm').addEventListener('submit',function(e){ e.preventDefault(); var nm=$('#apxSNm').value.trim(), qq=$('#apxSQ').value.trim(); if(!nm){$('#apxSNm').focus(); return} if(!qq){$('#apxSQ').focus(); return}
+      var v={name:nm,q:qq,freq:$('#apxSF').value,time:$('#apxST').value||'09:00',model:$('#apxSM').value,green:$('#apxSG').checked}, a=sget();
+      if(sEdit) a.forEach(function(t){if(t.id===sEdit) for(var k in v) t[k]=v[k]}); else {v.id='s'+Date.now().toString(36)+Math.random().toString(36).slice(2,5); v.on=true; v.at=Date.now(); a.unshift(v)}
+      sset(a); $('#apxSDlg').hidden=true; tb.tab='sched'; tb.seg.sched='a'; render() });
+    $('#apxSDlg').addEventListener('click',function(e){if(e.target===this||e.target.closest('[data-x]')) this.hidden=true});
+    /* ===== 技能、模型、客户端 ===== */
+    function card(o,mine){ var added=kget().added.indexOf(o.id)>=0;
+      return '<div class="apx-card"><span class="apx-ic">'+(GLY[o.cat]||IC.spark)+'</span><div class="apx-ct"><b>'+esc(o.name)+'</b><p>'+esc(o.desc||o.prompt)+'</p><span class="apx-cm">'+(o.custom?T('我建的','Created by you'):T('沐仞','FathomPeak'))+(o.cat?' · '+esc(o.cat):'')+(o.model?' · '+esc(o.model):'')+'</span></div><div class="apx-ca">'+
+        '<button class="apx-btn" type="button" data-use="'+o.id+'">'+T('使用','Use')+'</button>'+
+        (mine?'<button class="apx-rm" type="button" data-km="'+o.id+'" aria-haspopup="true" aria-expanded="false" aria-label="'+T('更多','More')+'">'+IC.more+'</button>'
+             :'<button class="apx-plus2" type="button" data-add="'+o.id+'" aria-pressed="'+added+'" aria-label="'+(added?T('已添加，点一下移除','Added. Click to remove'):T('添加到我的技能','Add to your skills'))+'">'+(added?IC.check:IC.plus)+'</button>')+'</div></div>' }
+    function skillsHtml(){ var st=kget(), q0=tb.q.toLowerCase(), bi=sk(), mine=tb.seg.skills==='a', h='';
+      var cu=st.custom.map(function(c){return {id:c.id,name:c.name,desc:c.desc,prompt:c.prompt,cat:'',model:mname(c.model),custom:true}});
+      var list=mine?bi.filter(function(s){return st.added.indexOf(s.id)>=0}).concat(cu):bi;
+      list=list.filter(function(s){return (!tb.fil.skills||s.cat===tb.fil.skills)&&(!q0||(s.name+' '+s.prompt+' '+(s.desc||'')).toLowerCase().indexOf(q0)>=0)});
+      if(tb.sort) list=list.slice().sort(function(a,b){return a.name.localeCompare(b.name,'zh')});
+      if(!mine&&!q0&&!tb.fil.skills&&bi.length){ var f=bi[0], ad=st.added.indexOf(f.id)>=0;
+        h+='<div class="apx-feat"><div><small>'+T('来自沐仞','From FathomPeak')+' · '+esc(f.cat)+'</small><h2>'+esc(f.name)+'</h2><p>'+esc(f.prompt)+'</p><button class="apx-btn pri" type="button" data-add="'+f.id+'" aria-pressed="'+ad+'">'+(ad?T('已添加','Added'):T('添加','Add'))+'</button></div>'+(f.art?'<span class="bt-collage" data-art="'+esc(f.art)+'" aria-hidden="true"></span>':'')+'</div>'+
+           '<div class="apx-sh"><h2>'+T('全部技能','All skills')+'</h2></div>' }
+      if(list.length) h+='<div class="apx-cl">'+list.map(function(s){return card(s,mine)}).join('')+'</div>';
+      else h+='<div class="apx-emp">'+IC.spark+'<b>'+((q0||tb.fil.skills)?T('没有找到相关技能','No matching skills'):T('还没有技能','No skills yet'))+'</b><span>'+((q0||tb.fil.skills)?'':T('在「发现」里添加，或新建一个。','Add one from Discover, or create your own.'))+'</span></div>';
+      return h }
+    function modelsHtml(){ var d=jget('fp-app-defm',''), q0=tb.q.toLowerCase(), ms=models().filter(function(m){return !q0||m.name.toLowerCase().indexOf(q0)>=0});
+      return '<div class="apx-cl">'+ms.map(function(m){var on=m.id===d; return '<div class="apx-card"><span class="apx-ic">'+(m.logo||IC.spark)+'</span><div class="apx-ct"><b>'+esc(m.name)+'</b><span class="apx-cm">'+(on?'<i class="apx-tg">'+T('新对话默认用它','Default for new chats')+'</i>':T('同一个 FathomPeak Key 就能调用','Callable with the same FathomPeak Key'))+'</span></div><div class="apx-ca"><button class="apx-btn" type="button" data-defm="'+esc(m.id)+'">'+(on?T('取消默认','Unset default'):T('设为默认','Set as default'))+'</button></div></div>'}).join('')+'</div>'+
+        '<div class="apx-ln"><div><b>'+T('价格、上下文和调用方式','Pricing, context and how to call')+'</b><span>'+T('每个模型的价格与参数在后台的模型 API 里。','Each model’s pricing and parameters are under Model API in the console.')+'</span></div><button class="apx-btn" type="button" data-czcs="models">'+T('去后台的模型 API','Open Model API')+'</button></div>' }
+    function clientsHtml(){ var pane=$('.pane[data-doc="clients"]'), q0=tb.q.toLowerCase(), g='', note={}, order=[], items=[], cur=null, foot='';
+      var h='<div class="apx-ln apx-ln0"><div><b>'+T('接入地址','Base URL')+'</b><span class="mono">https://api.fathompeak.cn/v1</span></div><button class="apx-btn" type="button" data-copyurl>'+T('复制','Copy')+'</button><button class="apx-btn pri" type="button" data-czcs="keys">'+T('去后台创建 Key','Create a key in the console')+'</button></div>';
+      if(!pane) return h;
+      [].forEach.call(pane.children,function(el){
+        if(el.tagName==='H2'){g=el.textContent.trim(); order.push(g); cur=null}
+        else if(el.tagName==='H3'&&g){cur={g:g,name:el.textContent.trim(),ps:[],code:''}; items.push(cur)}
+        else if(el.tagName==='P'&&el.classList.contains('dn')) note[g]=el.textContent.trim();
+        else if(el.tagName==='P'&&el.classList.contains('note')) foot=el.textContent.trim();
+        else if(el.tagName==='P'&&cur) cur.ps.push(el.textContent.trim());
+        else if(el.classList&&el.classList.contains('code')&&cur){var c=el.cloneNode(true), bt=c.querySelector('.cp'); if(bt) bt.remove(); cur.code=c.innerHTML} });
+      order.forEach(function(gg){ var its=items.filter(function(i){return i.g===gg&&(!q0||(i.name+' '+i.ps.join(' ')).toLowerCase().indexOf(q0)>=0)}); if(!its.length) return;
+        h+='<div class="apx-gl">'+esc(gg)+'</div>'+(note[gg]?'<p class="apx-gn">'+esc(note[gg])+'</p>':'')+'<div class="apx-cl">'+its.map(function(i){
+          return '<div class="apx-card"><span class="apx-ic"><i>'+esc(Array.from(i.name)[0]||'')+'</i></span><div class="apx-ct"><b>'+esc(i.name)+'</b><p>'+esc(i.ps.join('\n'))+'</p>'+(i.code?'<pre class="apx-cd">'+i.code+'</pre>':'')+'</div><div class="apx-ca"><button class="apx-btn" type="button" data-cl>'+T('接入步骤','Setup steps')+'</button></div></div>'}).join('')+'</div>' });
+      if(foot) h+='<p class="apx-foot">'+esc(foot)+'</p>';
+      return h }
+    /* ===== 页面与工具条 ===== */
+    var SEG={sched:[['我的','Yours'],['模板','Templates']],skills:[['我的','Yours'],['发现','Discover']]};
+    function render(){ var bar=$('#apxTB .apx-czb'), t=tb.tab; bar.setAttribute('data-tab',t);
+      $$('[data-tbt]').forEach(function(b){b.setAttribute('aria-selected',String(b.getAttribute('data-tbt')===t))});
+      if(SEG[t]) $$('[data-tbs]').forEach(function(b){var k=b.getAttribute('data-tbs'), lb=SEG[t][k==='a'?0:1]; b.textContent=T(lb[0],lb[1]); b.setAttribute('aria-pressed',String(tb.seg[t]===k))});
+      $('#apxTbQ').placeholder=t==='sched'?T('搜索任务','Search tasks'):t==='skills'?T('搜索技能','Search skills'):t==='models'?T('搜索模型','Search models'):T('搜索客户端','Search clients');
+      $('#apxTbFil').setAttribute('aria-pressed',String(!!tb.fil[t])); $('#apxTbSort').setAttribute('aria-pressed',String(!!tb.sort));
+      var mb=$('#apxTbMain'); mb.innerHTML=t==='sched'?IC.plus+'<span>'+T('新建任务','New task')+'</span>'+IC.chev.replace('<svg ','<svg class="ch" '):IC.plus+'<span>'+T('新建技能','New skill')+'</span>'; mb.setAttribute('aria-haspopup',t==='sched'?'true':'false');
+      $('#apxTbB').innerHTML=t==='sched'?schedHtml():t==='skills'?skillsHtml():t==='models'?modelsHtml():clientsHtml() }
+    $$('[data-tbt]').forEach(function(b){b.addEventListener('click',function(){tb.tab=b.getAttribute('data-tbt'); tb.q=''; $('#apxTbQ').value=''; render()})});
+    $$('[data-tbs]').forEach(function(b){b.addEventListener('click',function(){if(SEG[tb.tab]){tb.seg[tb.tab]=b.getAttribute('data-tbs'); render()}})});
+    $('#apxTbFind').addEventListener('click',function(){ var w=$('#apxTbQW'), on=w.hidden; w.hidden=!on; this.setAttribute('aria-pressed',String(on)); if(on) $('#apxTbQ').focus(); else if(tb.q){tb.q=''; $('#apxTbQ').value=''; render()} });
+    $('#apxTbQ').addEventListener('input',function(){tb.q=this.value.trim(); render()});
+    $('#apxTbSort').addEventListener('click',function(){tb.sort=tb.sort?'':'name'; this.title=tb.sort?T('按名称排序（再点恢复）','Sorted by name (click again to reset)'):T('按名称排序','Sort by name'); render()});
+    $('#apxTbFil').addEventListener('click',function(e){ e.stopPropagation(); var t=tb.tab, opts;
+      if(t==='sched') opts=[['',T('全部任务','All tasks')],['on',T('启用中','Active')],['off',T('已暂停','Paused')]];
+      else {opts=[['',T('全部分类','All categories')]]; sk().forEach(function(s){if(s.cat&&!opts.some(function(o){return o[0]===s.cat})) opts.push([s.cat,s.cat])})}
+      menu(this,opts.map(function(o){return '<button type="button" role="menuitemradio" data-a="fil" data-v="'+esc(o[0])+'"><span>'+esc(o[1])+'</span>'+(o[0]===tb.fil[t]?IC.check:'')+'</button>'}).join(''),'') });
+    $('#apxTbMain').addEventListener('click',function(e){ if(tb.tab!=='sched'){kDlg(''); return} e.stopPropagation();
+      menu(this,mi('blank',T('空白任务','Blank task'))+mi('tpl',T('从模板新建','From a template')),'') });
+    M.addEventListener('click',function(e){ e.stopPropagation(); var b=e.target.closest('[data-a]'); if(!b||!open) return; var a=b.getAttribute('data-a'), id=open.ctx;
+      if((a==='del'||a==='kdel')&&!sure(b)) return; closeM();
+      if(a==='fil'){tb.fil[tb.tab]=b.getAttribute('data-v'); render()}
+      else if(a==='blank') sDlg('');
+      else if(a==='tpl'){tb.seg.sched='b'; render()}
+      else if(a==='run') runTask(id);
+      else if(a==='tog'){var s1=sget(); s1.forEach(function(t){if(t.id===id) t.on=!t.on}); sset(s1); render()}
+      else if(a==='edit') sDlg(id);
+      else if(a==='del'){sset(sget().filter(function(t){return t.id!==id})); render()}
+      else if(a==='krm'){var st=kget(); st.added=st.added.filter(function(x){return x!==id}); kset(st); render()}
+      else if(a==='kedit') kDlg(id);
+      else if(a==='kdel'){var st2=kget(); st2.custom=st2.custom.filter(function(x){return x.id!==id}); kset(st2); render()} });
+    function useSkill(id){ if(id.charAt(0)==='t'){ var t=id.slice(1); fresh(); var c=$('#xpCards [data-t="'+t+'"]'); if(c) c.click(); setTimeout(function(){q.dispatchEvent(new Event('input',{bubbles:true})); q.focus()},0); return }
+      var c2=skById(id); if(!c2) return; fresh(); pick(c2.modelId); fill(c2.prompt) }
+    $('#apxTbB').addEventListener('click',function(e){ var t=e.target, b;
+      if((b=t.closest('[data-scm]'))){e.stopPropagation(); var on=(sget().filter(function(x){return x.id===b.getAttribute('data-scm')})[0]||{}).on;
+        menu(b,mi('run',T('立即运行','Run now'))+mi('tog',on?T('暂停','Pause'):T('启用','Resume'))+mi('edit',T('编辑','Edit'))+'<i></i>'+mi('del',T('删除','Delete'),'dz'),b.getAttribute('data-scm')); return}
+      if((b=t.closest('[data-edit]'))){sDlg(b.getAttribute('data-edit')); return}
+      if(t.closest('[data-newtask]')){sDlg(''); return}
+      if((b=t.closest('[data-fromk]'))){sDlg('',skById(b.getAttribute('data-fromk'))); return}
+      if((b=t.closest('[data-add]'))){var id=b.getAttribute('data-add'), st=kget(), i=st.added.indexOf(id); if(i>=0) st.added.splice(i,1); else st.added.unshift(id); kset(st); render(); return}
+      if((b=t.closest('[data-use]'))){useSkill(b.getAttribute('data-use')); return}
+      if((b=t.closest('[data-km]'))){e.stopPropagation(); var kid=b.getAttribute('data-km');
+        menu(b,kid.charAt(0)==='k'?mi('kedit',T('编辑','Edit'))+'<i></i>'+mi('kdel',T('删除','Delete'),'dz'):mi('krm',T('从我的技能移除','Remove from your skills')),kid); return}
+      if((b=t.closest('[data-defm]'))){var m=b.getAttribute('data-defm'); jset('fp-app-defm',jget('fp-app-defm','')===m?'':m); render(); return}
+      if((b=t.closest('[data-czcs]'))){toCons(b.getAttribute('data-czcs')); return}
+      if(t.closest('[data-copyurl]')){var bad=function(){toast(T('复制失败，请手动选择文字','Copy failed. Select the text manually'))}; try{navigator.clipboard.writeText('https://api.fathompeak.cn/v1').then(function(){toast(T('已复制','Copied'))},bad)}catch(err){bad()} return}
+      if((b=t.closest('[data-cl]'))){var cd=b.closest('.apx-card'), op=cd.classList.toggle('open'); b.textContent=op?T('收起','Collapse'):T('接入步骤','Setup steps')} });
+    var kEdit='';
+    function kDlg(id){ var c=id?kget().custom.filter(function(x){return x.id===id})[0]:null, ms=models(), cur=c?c.model:(jget('fp-app-defm','')||(ms[0]&&ms[0].id)); kEdit=c?id:'';
+      $('#apxKDT').textContent=c?T('编辑技能','Edit skill'):T('新建技能','New skill');
+      $('#apxKMd').innerHTML=ms.map(function(m){return '<option value="'+esc(m.id)+'"'+(m.id===cur?' selected':'')+'>'+esc(m.name)+'</option>'}).join('');
+      $('#apxKNm').value=c?c.name:''; $('#apxKDs').value=c?(c.desc||''):''; $('#apxKP').value=c?c.prompt:''; $('#apxKDlg').hidden=false; setTimeout(function(){$('#apxKNm').focus()},0) }
+    $('#apxKForm').addEventListener('submit',function(e){ e.preventDefault(); var nm=$('#apxKNm').value.trim(), pr=$('#apxKP').value.trim(); if(!nm){$('#apxKNm').focus(); return} if(!pr){$('#apxKP').focus(); return}
+      var v={name:nm,desc:$('#apxKDs').value.trim(),prompt:pr,model:$('#apxKMd').value}, st=kget();
+      if(kEdit) st.custom.forEach(function(c){if(c.id===kEdit) for(var k in v) c[k]=v[k]}); else {v.id='k'+Date.now().toString(36)+Math.random().toString(36).slice(2,5); st.custom.unshift(v)}
+      kset(st); $('#apxKDlg').hidden=true; tb.tab='skills'; tb.seg.skills='a'; render() });
+    $('#apxKDlg').addEventListener('click',function(e){if(e.target===this||e.target.closest('[data-x]')) this.hidden=true});
+    /* 新对话默认模型 */
+    $('#apxNew').addEventListener('click',function(){var d=jget('fp-app-defm',''); if(d) pick(d)});
+    /* —— 挂到左栏与视图系统 —— */
+    window.__apxPages=window.__apxPages||{}; window.__apxPages.tb=render;
+    $('#apxTbN').addEventListener('click',function(){show('tb'); ap.classList.remove('open')});
+    document.addEventListener('keydown',function(e){ if(e.key!=='Escape'||!inApp()) return; if(open){closeM(); return} $('#apxSDlg').hidden=true; $('#apxKDlg').hidden=true });
+    var _sync=window.__apxSync; window.__apxSync=function(on){ _sync(on); if(!on){closeM(); $('#apxSDlg').hidden=true; $('#apxKDlg').hidden=true} };
   })();
   window.addEventListener('hashchange',route); route();
   function openOasisPreview(){if(new URLSearchParams(location.search).get('oasis')==='1'&&logged&&location.hash==='#console'&&me.role!=='root'){window.fpOasis?.sync();csTab('oasis');}}
