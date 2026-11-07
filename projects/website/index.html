@@ -9408,10 +9408,10 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
 
     function loadBrief(){ if(st.briefDay===day()&&st.brief) return Promise.resolve(st.brief);
       return get('/mumu/brief').then(function(b){ st.brief=b; st.briefDay=day(); render(); return b }, function(){ return null }) }
-    function refresh(quiet){ if(!on()){ render(); return Promise.resolve(false) } if(!conf().token){ st.ok=false; st.err=''; render(); return Promise.resolve(false) }
+    function refresh(quiet){ if(!on()){ st.ok=false; voice(); render(); return Promise.resolve(false) } if(!conf().token){ st.ok=false; st.err=''; voice(); render(); return Promise.resolve(false) }
       st.busy=true; render();
-      return Promise.all([get('/mumu/status'),get('/mumu/memory')]).then(function(r){ st.busy=false; st.ok=true; st.err=''; st.status=r[0]; st.mem=r[1]; render(); loadBrief(); return true },
-        function(e){ st.busy=false; st.ok=false; st.err=errText(e); render(); if(!quiet) toast(st.err); return false }) }
+      return Promise.all([get('/mumu/status'),get('/mumu/memory'),get('/mumu/state').catch(function(){return {}})]).then(function(r){ st.busy=false; st.ok=true; st.err=''; st.status=r[0]; st.mem=r[1]; st.audio=!!(r[2]&&r[2].audio); voice(); render(); loadBrief(); return true },
+        function(e){ st.busy=false; st.ok=false; st.err=errText(e); voice(); render(); if(!quiet) toast(st.err); return false }) }
     function when(sec){ if(!sec) return T('还没整理过','not organised yet'); var d=new Date(sec*1000), n=new Date(), hm=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);
       return d.toDateString()===n.toDateString()?T('今天 ','today ')+hm:(d.getMonth()+1)+'/'+d.getDate()+' '+hm }
     function kindName(k){return k==='screen'?T('屏幕','Screen'):k==='audio'?T('语音','Speech'):T('记忆','Memory')}
@@ -9465,6 +9465,11 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       hours:function(){ return Promise.resolve([]) },
       frame:nope, frameAt:nope, pause:nope, setExcluded:nope, deleteRange:nope
     });
+    /* 语音听写：引擎开着音频（本机转写模型已加载）时才提供 transcribe，否则 v15 自动用浏览器识别 */
+    function transcribe(blob){ var c=conf(), fd=new FormData(); fd.append('file',blob,'speech.'+(/ogg/.test(blob.type)?'ogg':/mp4|m4a/.test(blob.type)?'m4a':'webm'));
+      return fetch(c.base+'/v1/audio/transcriptions',{method:'POST',headers:{'Authorization':'Bearer '+c.token},body:fd}).then(function(r){
+        return r.json().catch(function(){return {}}).then(function(j){ if(!r.ok) throw new Error((j.error&&j.error.message)||('HTTP '+r.status)); return String(j.text||'').trim() }) }) }
+    function voice(){ if(ready()&&st.ok&&st.audio) F.transcribe=transcribe; else delete F.transcribe }
     if(on()) refresh(true); else render();
   })();
   window.addEventListener('hashchange',route); route();
