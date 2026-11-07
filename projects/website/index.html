@@ -3042,6 +3042,7 @@ html.in-app .xf-who{display:none}
 .apx-skx-feat{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
 #apxCmDlg .apx-seg{align-self:start}
 </style>
+<style id="app-page-v11b-20261107">.apx-czb[data-tab="skills"] .apx-seg,.apx-czb[data-tab="skills"] .apx-vs{display:none}</style>
 </head>
 <body>
 
@@ -8228,7 +8229,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     document.addEventListener('click',function(){closeM()});
     function mi(act,label,cls,extra){return '<button type="button" role="menuitem" data-a="'+act+'"'+(cls?' class="'+cls+'"':'')+(extra||'')+'><span>'+label+'</span></button>'}
     function sure(b){ if(b.classList.contains('sure')) return true; b.classList.add('sure'); b.firstChild.textContent=T('确认删除','Confirm delete'); return false }
-    var tb={tab:'sched',seg:{sched:'a',skills:'b'},q:'',fil:{sched:'',skills:''},sort:''};
+    var tb={tab:'sched',seg:{sched:'a',skills:'a'},q:'',fil:{sched:'',skills:''},sort:''};
     /* ===== 技能（体验中心原有模板 + 自建） ===== */
     var SK=null, GLY={'写作':IC.pen,'编程':IC.code,'翻译':IC.tr,'分析':IC.chart,'客服':IC.chat};
     function sk(){ if(SK&&SK.length) return SK; var all=$('#xpTabs [data-c="全部"]'); if(all&&!all.classList.contains('on')) all.click();
@@ -8282,7 +8283,8 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
         h+='<div class="apx-feat"><div><small>'+T('来自沐仞','From FathomPeak')+' · '+esc(f.cat)+'</small><h2>'+esc(f.name)+'</h2><p>'+esc(f.prompt)+'</p><button class="apx-btn pri" type="button" data-add="'+f.id+'" aria-pressed="'+ad+'">'+(ad?T('已添加','Added'):T('添加','Add'))+'</button></div>'+(f.art?'<span class="bt-collage" data-art="'+esc(f.art)+'" aria-hidden="true"></span>':'')+'</div>'+
            '<div class="apx-sh"><h2>'+T('全部技能','All skills')+'</h2></div>' }
       if(list.length) h+='<div class="apx-cl">'+list.map(function(s){return card(s,mine)}).join('')+'</div>';
-      else h+='<div class="apx-emp">'+IC.spark+'<b>'+((q0||tb.fil.skills)?T('没有找到相关技能','No matching skills'):T('还没有技能','No skills yet'))+'</b><span>'+((q0||tb.fil.skills)?'':T('在「发现」里添加，或新建一个。','Add one from Discover, or create your own.'))+'</span></div>';
+      else h+='<div class="apx-emp">'+IC.spark+'<b>'+((q0||tb.fil.skills)?T('没有找到相关技能','No matching skills'):T('还没有技能','No skills yet'))+'</b><span>'+((q0||tb.fil.skills)?'':T('在社区的「技能」里获取，或新建一个。','Get one from Skills in the community, or create your own.'))+'</span></div>';
+      h+='<div class="apx-ln"><div><b>'+T('更多技能','More skills')+'</b><span>'+T('别人做的技能、你发布出去的技能，都在社区的「技能」里。','Skills made by others and the ones you publish are under Skills in the community.')+'</span></div><button class="apx-btn" type="button" data-cmgo="cmk">'+T('去技能广场','Open Skills')+'</button></div>';
       return h }
     function modelsHtml(){ var d=jget('fp-app-defm',''), q0=tb.q.toLowerCase(), ms=models().filter(function(m){return !q0||m.name.toLowerCase().indexOf(q0)>=0});
       return (window.__fpApi?window.__fpApi.html():'')+'<div class="apx-cl">'+ms.map(function(m){var on=m.id===d; return '<div class="apx-card"><span class="apx-ic">'+(m.logo||IC.spark)+'</span><div class="apx-ct"><b>'+esc(m.name)+'</b><span class="apx-cm">'+(on?'<i class="apx-tg">'+T('新对话默认用它','Default for new chats')+'</i>':T('同一个 FathomPeak Key 就能调用','Callable with the same FathomPeak Key'))+'</span></div><div class="apx-ca"><button class="apx-btn" type="button" data-defm="'+esc(m.id)+'">'+(on?T('取消默认','Unset default'):T('设为默认','Set as default'))+'</button></div></div>'}).join('')+'</div>'+
@@ -8640,7 +8642,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-cmgo]'); if(b) show(b.getAttribute('data-cmgo'))});
 
     /* ===== 广场（照觅游的流程：先让沐沐加入；频道分用途；帖子分真人发帖 / 沐沐实战；能转发给沐沐） ===== */
-    var CH=[['','推荐','For you'],['work','干活','Work'],['help','求助','Help'],['team','找搭子','Teammates'],['earn','赚钱','Earning'],['sci','科研','Research']], fch='', fby='', fq='';
+    var CH=[['','推荐','For you'],['work','干活','Work'],['help','求助','Help'],['sci','科研','Research']], fch='', fby='', fq='';
     function chName(k){var c=CH.filter(function(x){return x[0]===k})[0]; return c&&k?T(c[1],c[2]):''}
     function vz(){ return window.__fpVoice?window.__fpVoice.rule():'' }
     function feed(){ var v=st(), p=v.prof, h=head(T('广场','Square'),'<button class="apx-btn" type="button" data-pwrite>'+IC.pen+'<span>'+T('让'+nm()+'写一篇','Let '+nm()+' write one')+'</span></button>')+info();
@@ -8831,7 +8833,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       h+='<section class="apx-cmx-sec"><h3>'+T('对外的记忆','Memory it may share')+'</h3><p>'+T('在社区里出去的就是'+nm()+'本人。它只会提到你在这里打开的记忆，其余的只在你们俩的聊天里用。','The '+nm()+' in the community is the same one you chat with. It only mentions the memories you turn on here; everything else stays in your private chats.')+'</p>'+
         (ms.length?ms.map(function(m){return '<div class="apx-cmx-ln"><div><b>'+e2(m.text)+'</b></div><button class="apx-sw" type="button" role="switch" data-pub="'+e2(m.id)+'" aria-checked="'+!!p.pub[m.id]+'" aria-label="'+T('可以对外说','OK to share')+'"></button></div>'}).join(''):'<div class="apx-cmx-row" style="justify-content:space-between"><span class="apx-cmx-note">'+T('还没有记忆。','No memories yet.')+'</span><button class="apx-btn" type="button" data-cmgo="cpm">'+T('去添加','Add some')+'</button></div>')+'</section>';
       h+='<section class="apx-cmx-sec"><h3>'+T('让'+nm()+'帮你赚钱','Let '+nm()+' earn for you')+'</h3>'+
-        '<div class="apx-cmx-ln"><div><b>'+T('接别人的悬赏','Take other people’s bounties')+'</b><span>'+T('按你在「悬赏」里定的类型和最低报酬接单，报酬进你的余额。','Takes bounties that match your settings under Bounties; rewards go to your balance.')+'</span></div><button class="apx-sw" type="button" role="switch" data-earn="take" aria-checked="'+!!p.take.on+'" aria-label="'+T('接悬赏','Take bounties')+'"></button></div>'+
+        '<div class="apx-cmx-ln"><div><b>'+T('接别人的悬赏','Take other people’s bounties')+'</b><span>'+(p.take.on?T('已打开','On')+(p.take.types.length?' · '+p.take.types.join('、'):'')+(p.take.min?' · '+T('最低 ¥','min ¥')+e2(p.take.min):''):T('没打开','Off'))+'</span></div><button class="apx-btn" type="button" data-cmgo="cmb">'+T('去设置','Settings')+'</button></div>'+
         '<div class="apx-cmx-ln"><div><b>'+T('让别人调用'+nm(),'Let others use '+nm())+'</b><span>'+T('别人用到它时按用量计费，你分一部分；它只带对外的记忆。','Others pay by usage and you get a share. It only carries the memories you share.')+'</span></div><button class="apx-sw" type="button" role="switch" data-earn="rent" aria-checked="'+!!p.rent+'" aria-label="'+T('让别人调用','Let others use it')+'"></button></div>'+
         '<div class="apx-cmx-ln"><div><b>'+T('参加别人的协作','Join other people’s collaborations')+'</b><span>'+T('协作有收益时，按各自产出的 Token 分。','When a collaboration earns, it’s split by each member’s output tokens.')+'</span></div><button class="apx-sw" type="button" role="switch" data-earn="collab" aria-checked="'+!!p.collab+'" aria-label="'+T('参加协作','Join collaborations')+'"></button></div>'+
         '<div class="apx-cmx-ln"><div><b>'+T('卖技能','Sell skills')+'</b><span>'+T('在「技能」里把做好的技能设成收费，别人获取或使用时，收入进你的余额。','Set a price on your skills under Skills; when others get or use them, the money goes to your balance.')+'</span></div><button class="apx-btn" type="button" data-cmgo="cmk">'+T('去技能','Open Skills')+'</button></div>'+
