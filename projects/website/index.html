@@ -9230,6 +9230,8 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
        hours({day})        -> Promise<[{hour, frames:[{id, at, thumb}]}]>
        frame(id) / frameAt(meetingId, ms) -> Promise<{img, at, app, window}>
        pause(bool), setExcluded([app]), deleteRange(from, to) -> Promise
+       setCapture({excludeApps:[app], skipPrivateWindows, saveImages, keepDays, capGB}) -> Promise   （11-07 加：用户在「回看 › 隐私 / 占用空间」里的选择）
+       status() 可另带 usage:{imagesMB, textMB}，用来显示现在占用多少
   */
   (function(){
     var ap=$('#apx'), A=window.__fpApi; if(!ap||!A||!$('#apxCPG')||!window.__apxShow) return;
@@ -9279,14 +9281,29 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     function rbar(dis){ var d=dis?' disabled':''; return '<div class="apx-scx-bar"><input class="apx-cmx-in" id="apxScRQ" type="search" placeholder="'+T('搜屏幕上出现过的字','Search text that appeared on screen')+'" value="'+e2(rq)+'"'+d+'>'+
           '<select class="apx-cmx-in" id="apxScRR"'+d+'>'+[['today','今天','Today'],['7d','近 7 天','Last 7 days'],['all','全部','All']].map(function(o){return '<option value="'+o[0]+'"'+(rrange===o[0]?' selected':'')+'>'+T(o[1],o[2])+'</option>'}).join('')+'</select>'+
           '<input class="apx-cmx-in" id="apxScRA" style="flex:none;width:150px" placeholder="'+T('只看某个软件','Only one app')+'" value="'+e2(rapp)+'"'+d+'></div>' }
+    var CATS=[['pw','密码管理器和网银','Password managers and banking',['1Password','Bitwarden','KeePassXC','钥匙串访问','Keychain Access','招商银行','工商银行','建设银行','中国银行','农业银行','支付宝']],
+              ['ai','AI 助手和终端','AI assistants and terminals',['Claude','ChatGPT','Codex','Cursor','终端','Terminal','iTerm2','Warp']],
+              ['incog','无痕窗口','Private browser windows',['无痕 / 私密浏览窗口']],
+              ['wechat','微信','WeChat',['微信','WeChat']]];
+    function cfg2(pr){ pr=pr||{}; var c=pr.cats||{pw:true,ai:true,incog:true,wechat:false}; return {cats:c,images:pr.images!==false,keepDays:pr.keepDays||7,capGB:pr.capGB||10} }
+    function mb(x){ x=+x||0; return x>=1024?(x/1024).toFixed(1)+' GB':Math.round(x)+' MB' }
+    function push(pr){ var pv=P(), c=cfg2(pr), apps=[]; CATS.forEach(function(k){ if(k[0]!=='incog'&&c.cats[k[0]]) apps=apps.concat(k[3]) }); apps=apps.concat(pr.exclude||[]);
+      if(pv&&pv.setCapture) pv.setCapture({excludeApps:apps,skipPrivateWindows:!!c.cats.incog,saveImages:c.images,keepDays:c.keepDays,capGB:c.capGB}).catch(function(){});
+      else if(pv&&pv.setExcluded) pv.setExcluded(apps).catch(function(){}) }
     function review(){ var g=gate('r'), h=head(T('回看','Review'))+'<p class="apx-lead">'+T('你在这台电脑上看过的内容，都能按文字搜到，也能按时间往回翻。','Search anything you saw on this computer, or browse back by time.')+'</p>';
       if(g){ RB.innerHTML=h+rbar(true)+g; return } var pv=P(), pr=A.jget('fp-app-screenpriv:'+A.ukey(),{})||{};
       RB.innerHTML=h+rbar(!pv)+
         '<div id="apxScRL">'+(pv?'<p class="apx-cmx-note">'+T('正在读取…','Loading…')+'</p>':emptyOf('r'))+'</div>'+
         '<section class="apx-cmx-sec"><h3>'+T('隐私','Privacy')+'</h3><p>'+T('屏幕记录只存在这台电脑上，不上传。','Screen history stays on this computer and is never uploaded.')+'</p>'+
           '<div class="apx-cmx-ln"><div><b>'+T('暂停录制','Pause recording')+'</b><span>'+T('暂停期间不记屏幕，也不记会议。','Nothing is recorded while paused.')+'</span></div><button class="apx-sw" type="button" role="switch" data-scpriv="pause" aria-checked="'+!!pr.paused+'" aria-label="'+T('暂停录制','Pause recording')+'"></button></div>'+
-          '<div class="apx-cmx-ln"><div><b>'+T('不记录这些软件','Never record these apps')+'</b><span>'+T('用逗号隔开，比如：1Password, 网银','Separate with commas, e.g. 1Password, banking')+'</span></div><input class="apx-cmx-in" id="apxScEx" style="width:260px" value="'+e2((pr.exclude||[]).join(', '))+'"></div>'+
-          '<div class="apx-cmx-ln"><div><b>'+T('删除一段记录','Delete a time range')+'</b></div><select class="apx-cmx-in" id="apxScDel" style="width:auto">'+[['15m','最近 15 分钟','Last 15 minutes'],['1h','最近 1 小时','Last hour'],['today','今天','Today'],['all','全部','Everything']].map(function(o){return '<option value="'+o[0]+'">'+T(o[1],o[2])+'</option>'}).join('')+'</select><button class="apx-btn" type="button" data-scdel>'+T('删除','Delete')+'</button></div></section>';
+          '<div class="apx-cmx-ln"><div><b>'+T('这些不记录','Never record')+'</b><span>'+T('推荐的已经勾上，可以按自己的需要改。','Recommended ones are on; change them as you like.')+'</span><div class="apx-cmx-chips" style="margin-top:8px">'+CATS.map(function(c){return '<button type="button" data-sccat="'+c[0]+'" aria-pressed="'+!!cfg2(pr).cats[c[0]]+'" title="'+e2(c[3].join('、'))+'">'+T(c[1],c[2])+'</button>'}).join('')+'</div></div></div>'+
+          '<div class="apx-cmx-ln"><div><b>'+T('另外不记录的软件','Other apps to skip')+'</b><span>'+T('用逗号隔开','Separate with commas')+'</span></div><input class="apx-cmx-in" id="apxScEx" style="width:260px" value="'+e2((pr.exclude||[]).join(', '))+'"></div>'+
+          '<div class="apx-cmx-ln"><div><b>'+T('删除一段记录','Delete a time range')+'</b></div><select class="apx-cmx-in" id="apxScDel" style="width:auto">'+[['15m','最近 15 分钟','Last 15 minutes'],['1h','最近 1 小时','Last hour'],['today','今天','Today'],['all','全部','Everything']].map(function(o){return '<option value="'+o[0]+'">'+T(o[1],o[2])+'</option>'}).join('')+'</select><button class="apx-btn" type="button" data-scdel>'+T('删除','Delete')+'</button></div></section>'+
+        '<section class="apx-cmx-sec"><h3>'+T('占用空间','Storage')+'</h3><p id="apxScUse">'+T('画面最占空间；文字记录很小，会一直保留，除非你删除。','Screen images take the most space. Text is small and kept until you delete it.')+'</p>'+
+          '<div class="apx-cmx-ln"><div><b>'+T('保存画面','Keep screen images')+'</b><span>'+T('关掉后只记文字：还能按字搜，但看不到当时的画面。','Off: text only. You can still search, but can’t see the screen at that moment.')+'</span></div><button class="apx-sw" type="button" role="switch" data-scpriv="images" aria-checked="'+!!cfg2(pr).images+'" aria-label="'+T('保存画面','Keep screen images')+'"></button></div>'+
+          '<div class="apx-cmx-ln"><div><b>'+T('画面保留','Keep images for')+'</b></div><select class="apx-cmx-in" id="apxScKeep" style="width:auto"'+(cfg2(pr).images?'':' disabled')+'>'+[[3,'3 天','3 days'],[7,'7 天','7 days'],[30,'30 天','30 days']].map(function(o){return '<option value="'+o[0]+'"'+(cfg2(pr).keepDays===o[0]?' selected':'')+'>'+T(o[1],o[2])+'</option>'}).join('')+'</select></div>'+
+          '<div class="apx-cmx-ln"><div><b>'+T('最多占用','Use at most')+'</b><span>'+T('超过后先删最早的画面。','Oldest images are removed first when over the limit.')+'</span></div><select class="apx-cmx-in" id="apxScCap" style="width:auto"'+(cfg2(pr).images?'':' disabled')+'>'+[[5,'5 GB'],[10,'10 GB'],[20,'20 GB'],[50,'50 GB']].map(function(o){return '<option value="'+o[0]+'"'+(cfg2(pr).capGB===o[0]?' selected':'')+'>'+o[1]+'</option>'}).join('')+'</select></div></section>';
+      (pv&&pv.status?pv.status():Promise.resolve(null)).then(function(st){ var u=st&&st.usage, el=$('#apxScUse'); if(!u||!el) return; el.textContent=T('现在占用：画面 '+mb(u.imagesMB)+'，文字 '+mb(u.textMB)+'。画面最占空间；文字记录很小，会一直保留，除非你删除。','Now using: images '+mb(u.imagesMB)+', text '+mb(u.textMB)+'.') }).catch(function(){});
       if(!pv) return; var r=range(), q={q:rq,app:rapp,from:r.from,to:r.to};
       (rq||rapp?pv.search(q):(pv.hours?pv.hours({day:Date.now()}):pv.search(q))).then(function(res){ var el=$('#apxScRL'); if(!el) return;
           if(!res||!res.length){ el.innerHTML=rq||rapp?'<p class="apx-cmx-note">'+T('没有找到。','Nothing found.')+'</p>':emptyOf('r'); return }
@@ -9301,8 +9318,10 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       tmr=setTimeout(function(){ if(id==='apxScGQ'){gq=v; meetings()} else { if(id==='apxScRQ') rq=v; else rapp=v; review() } var x=$('#'+id); if(x){x.focus(); try{x.setSelectionRange(x.value.length,x.value.length)}catch(er){}} },350) });
     document.addEventListener('change',function(e){ var id=e.target&&e.target.id, pr=A.jget('fp-app-screenpriv:'+A.ukey(),{})||{}, pv=P();
       if(id==='apxScRR'){ rrange=e.target.value; review() }
-      if(id==='apxScEx'){ pr.exclude=e.target.value.split(/[,，、]\s*/).map(function(x){return x.trim()}).filter(Boolean); A.jset('fp-app-screenpriv:'+A.ukey(),pr); if(pv&&pv.setExcluded) pv.setExcluded(pr.exclude); toast(T('已保存','Saved')) } });
-    document.addEventListener('click',function(e){ var t=e.target.closest&&e.target.closest('[data-cpgo2],[data-scmeet],[data-scback],[data-scat],[data-scframe],[data-sctodo],[data-sccopy],[data-scpause],[data-scpriv],[data-scdel]'); if(!t) return; var pv=P();
+      if(id==='apxScEx'){ pr.exclude=e.target.value.split(/[,，、]\s*/).map(function(x){return x.trim()}).filter(Boolean); A.jset('fp-app-screenpriv:'+A.ukey(),pr); push(pr); toast(T('已保存','Saved')) }
+      if(id==='apxScKeep'||id==='apxScCap'){ if(id==='apxScKeep') pr.keepDays=+e.target.value; else pr.capGB=+e.target.value; A.jset('fp-app-screenpriv:'+A.ukey(),pr); push(pr); toast(T('已保存','Saved')) } });
+    document.addEventListener('click',function(e){ var t=e.target.closest&&e.target.closest('[data-cpgo2],[data-scmeet],[data-scback],[data-scat],[data-scframe],[data-sctodo],[data-sccopy],[data-scpause],[data-scpriv],[data-scdel],[data-sccat]'); if(!t) return; var pv=P();
+      if(t.hasAttribute('data-sccat')){ var p0=A.jget('fp-app-screenpriv:'+A.ukey(),{})||{}, c0=cfg2(p0).cats, k0=t.getAttribute('data-sccat'); c0[k0]=!c0[k0]; p0.cats=c0; A.jset('fp-app-screenpriv:'+A.ukey(),p0); t.setAttribute('aria-pressed',String(c0[k0])); push(p0); return }
       if(t.hasAttribute('data-cpgo2')){ show(t.getAttribute('data-cpgo2')); return }
       if(t.hasAttribute('data-scmeet')){ gid=t.getAttribute('data-scmeet'); meetings(); return }
       if(t.hasAttribute('data-scback')){ gid=''; meetings(); return }
@@ -9312,6 +9331,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       if(t.hasAttribute('data-sccopy')){ var mm=GB._m; if(!mm) return; var txt=(mm.title||'')+'\n'+((mm.notes&&mm.notes.summary)||'')+'\n\n'+(mm.transcript||[]).map(function(l){return ts(l.ms)+' '+(l.speaker||'')+'：'+l.text}).join('\n');
         try{ navigator.clipboard.writeText(txt).then(function(){toast(T('已复制','Copied'))},function(){toast(T('复制失败','Copy failed'))}) }catch(er){ toast(T('复制失败','Copy failed')) } return }
       if(t.hasAttribute('data-scpause')){ if(pv&&pv.pause) pv.pause(t.getAttribute('data-scpause')==='1').then(meetings,meetings); return }
+      if(t.getAttribute('data-scpriv')==='images'){ var pi=A.jget('fp-app-screenpriv:'+A.ukey(),{})||{}; pi.images=!cfg2(pi).images; A.jset('fp-app-screenpriv:'+A.ukey(),pi); push(pi); review(); toast(pi.images?T('会保存画面','Screen images on'):T('只记文字，不存画面','Text only, no images')); return }
       if(t.hasAttribute('data-scpriv')){ var pr=A.jget('fp-app-screenpriv:'+A.ukey(),{})||{}; pr.paused=!pr.paused; A.jset('fp-app-screenpriv:'+A.ukey(),pr); t.setAttribute('aria-checked',String(pr.paused)); if(pv&&pv.pause) pv.pause(pr.paused); toast(pr.paused?T('已暂停录制','Recording paused'):T('已继续录制','Recording resumed')); return }
       if(t.hasAttribute('data-scdel')){ if(!t.classList.contains('sure')){ t.classList.add('sure'); t.textContent=T('确认删除，不能恢复','Confirm. This can’t be undone'); return }
         var sel=$('#apxScDel').value, now=Date.now(), n=new Date(), d0=new Date(n.getFullYear(),n.getMonth(),n.getDate()).getTime(), from=sel==='15m'?now-9e5:sel==='1h'?now-36e5:sel==='today'?d0:0;
@@ -9408,10 +9428,10 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
 
     function loadBrief(){ if(st.briefDay===day()&&st.brief) return Promise.resolve(st.brief);
       return get('/mumu/brief').then(function(b){ st.brief=b; st.briefDay=day(); render(); return b }, function(){ return null }) }
-    function refresh(quiet){ if(!on()){ st.ok=false; voice(); render(); return Promise.resolve(false) } if(!conf().token){ st.ok=false; st.err=''; voice(); render(); return Promise.resolve(false) }
+    function refresh(quiet){ if(!on()){ render(); return Promise.resolve(false) } if(!conf().token){ st.ok=false; st.err=''; render(); return Promise.resolve(false) }
       st.busy=true; render();
-      return Promise.all([get('/mumu/status'),get('/mumu/memory'),get('/mumu/state').catch(function(){return {}})]).then(function(r){ st.busy=false; st.ok=true; st.err=''; st.status=r[0]; st.mem=r[1]; st.audio=!!(r[2]&&r[2].audio); voice(); render(); loadBrief(); return true },
-        function(e){ st.busy=false; st.ok=false; st.err=errText(e); voice(); render(); if(!quiet) toast(st.err); return false }) }
+      return Promise.all([get('/mumu/status'),get('/mumu/memory')]).then(function(r){ st.busy=false; st.ok=true; st.err=''; st.status=r[0]; st.mem=r[1]; render(); loadBrief(); return true },
+        function(e){ st.busy=false; st.ok=false; st.err=errText(e); render(); if(!quiet) toast(st.err); return false }) }
     function when(sec){ if(!sec) return T('还没整理过','not organised yet'); var d=new Date(sec*1000), n=new Date(), hm=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);
       return d.toDateString()===n.toDateString()?T('今天 ','today ')+hm:(d.getMonth()+1)+'/'+d.getDate()+' '+hm }
     function kindName(k){return k==='screen'?T('屏幕','Screen'):k==='audio'?T('语音','Speech'):T('记忆','Memory')}
@@ -9465,11 +9485,6 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       hours:function(){ return Promise.resolve([]) },
       frame:nope, frameAt:nope, pause:nope, setExcluded:nope, deleteRange:nope
     });
-    /* 语音听写：引擎开着音频（本机转写模型已加载）时才提供 transcribe，否则 v15 自动用浏览器识别 */
-    function transcribe(blob){ var c=conf(), fd=new FormData(); fd.append('file',blob,'speech.'+(/ogg/.test(blob.type)?'ogg':/mp4|m4a/.test(blob.type)?'m4a':'webm'));
-      return fetch(c.base+'/v1/audio/transcriptions',{method:'POST',headers:{'Authorization':'Bearer '+c.token},body:fd}).then(function(r){
-        return r.json().catch(function(){return {}}).then(function(j){ if(!r.ok) throw new Error((j.error&&j.error.message)||('HTTP '+r.status)); return String(j.text||'').trim() }) }) }
-    function voice(){ if(ready()&&st.ok&&st.audio) F.transcribe=transcribe; else delete F.transcribe }
     if(on()) refresh(true); else render();
   })();
   window.addEventListener('hashchange',route); route();
