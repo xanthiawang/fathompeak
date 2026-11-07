@@ -3200,6 +3200,7 @@ html.in-app #xpBox .xp-send{margin-left:2px!important}
 .apx-sch-ft kbd{display:inline-block;min-width:16px;margin-left:6px;padding:1px 6px;border:1px solid var(--line);border-radius:6px;font:400 12px var(--mono);color:var(--ink-70);text-align:center}
 @media (max-width:640px){#apxSearch{padding-top:8vh}.apx-sch-ft{display:none}}
 </style>
+<style id="app-page-v32-20261108">#apx:not(.apx-local):not(.desk) #s21Conn{display:none!important}</style>
 </head>
 <body>
 
@@ -4507,7 +4508,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
         <div class="apx-bset">
           <div class="apx-card"><div class="apx-hd2"><h3>对话</h3><button class="apx-sw" type="button" role="switch" data-msrc="chat" aria-checked="true" aria-label="对话"></button></div><span class="apx-cm">聊天时提到的偏好和事实。</span></div>
           <div class="apx-card"><div class="apx-hd2"><h3>屏幕与会议</h3><button class="apx-sw" type="button" role="switch" data-msrc="screen" aria-checked="false" aria-label="屏幕与会议"></button></div><span class="apx-cm">记下你在这台电脑上看过的内容和开过的会，整理成文字记忆，只存在本机。</span><span class="apx-cm k">第一次打开时，系统会请你允许屏幕录制和麦克风。</span><span class="apx-cm w">只能在下载版里打开。</span></div>
-          <div class="apx-card"><div class="apx-hd2"><h3>微信​</h3><button class="apx-sw" type="button" role="switch" data-msrc="wechat" aria-checked="false" aria-label="微信​"></button></div><span class="apx-cm">微信聊天里提到的约定和待办。</span><span class="apx-cm k">你在电脑上看微信时，沐沐会记下聊天里的约定和待办；不读取微信的数据。</span><span class="apx-cm w">只能在下载版里打开。</span></div>
+          <div class="apx-card"><div class="apx-hd2"><h3>微信​</h3><button class="apx-sw" type="button" role="switch" data-msrc="wechat" aria-checked="false" aria-label="微信​"></button></div><span class="apx-cm">微信聊天里提到的约定和待办。</span><span class="apx-cm k">读这台 Mac 上「微信聊天助手」整理好的聊天和待办，找出约定和待办；沐沐自己不打开微信的数据库。</span><span class="apx-cm w">只能在下载版里打开。</span></div>
         </div>
         <section class="apx-card apx-conn apx-scr" id="apxScr" hidden></section>
         <section class="apx-card apx-voice" id="apxVoice" aria-label="你的文风"></section>
@@ -7612,7 +7613,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
   })();
 
   (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"已复制":"Copied","重新生成":"Regenerate","已重新生成":"Regenerated","复制失败，请手动选择文字":"Copy failed. Select the text manually.","历史对话":"History", "搜索对话": "Search chats", "今天": "Today", "昨天": "Yesterday", "近 7 天": "Previous 7 days", "更早": "Earlier", "删除": "Delete", "确认删除": "Confirm delete", "删除这条对话": "Delete this chat", "已删除": "Deleted", "最近对话": "Recent", "全部 →": "All →", "关闭": "Close", "没有找到相关对话": "No matching chats", "对话记录只保存在你的账号里，可以随时删除。": "Chats are saved to your account only. You can delete them anytime.", "还没有历史对话。": "No chats yet.", "发送第一个问题后，对话会保存在这里。": "Your chats will be saved here after you send the first question."});  /* 体验中心历史对话英文 */
-  (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"打开应用":"Open app","新对话":"New chat","搜索":"Search","最近":"Recents","语音输入":"Dictate","会议":"Meetings","回看":"Review","个性化推荐":"Personalised recommendations","消息":"Messages","技能​":"Skills","你的文风":"Your voice","形象和性格":"Look and personality","一句话介绍":"Intro","擅长":"Good at","别人在社区里先看到这个":"The first thing people see in the community","用顿号或逗号隔开":"Separate with commas","社区":"Community","广场":"Square","悬赏":"Bounties","协作":"Collaborate","我的沐沐":"My Mumu","我的协作":"My collaborations","微信​":"WeChat","项目​":"Projects","停止":"Stop","接入模型":"Connect models","接口地址":"Endpoint","连接":"Connect","重新连接":"Reconnect","断开":"Disconnect","去接入":"Connect","伙伴":"Companion","聊天":"Chat","简报":"Briefing","记忆":"Memory","形象":"Look","给你的伙伴起名字、定性格，换成你喜欢的样子。可以自己拼，也可以描述给它听，让它画出来。":"Name your companion, set its personality and give it a look you like. Build one yourself, or describe it and let it draw.","名字":"Name","给它起个名字":"Give it a name","它怎么叫你":"What it calls you","不填就直接说「你」":"Leave empty to just say “you”","性格（可多选）":"Personality (pick any)","温柔":"Gentle","直爽":"Straightforward","幽默":"Funny","话少":"Quiet","爱鼓励":"Encouraging","好奇":"Curious","样子":"Look","沐沐":"Mumu","换个动作":"Pick a pose","沐沐的七个动作，选一个当它的样子。":"Mumu’s seven poses: pick one as its look.","用这个":"Use this","在沐仞的形象上换个姿势、换条水线颜色。":"Give FathomPeak’s character a new pose or waterline colour.","头顶的「仞」是一片山峰，底下是蓝色的水线。":"The “Ren” on its head is a mountain peak with a blue waterline beneath.","自己拼":"Build your own","用一张图":"Use a picture","传一张你喜欢的图，整张显示，不裁切。":"Upload a picture you like; it is shown whole, not cropped.","选图片":"Choose a picture","描述给它听":"Describe it","说说想要的样子，它在聊天里帮你画出来，满意了再换上。":"Describe the look you want; it draws it in the chat, and you switch when you like it.","比如：一只戴耳机的小企鹅，蓝白配色":"e.g. a little penguin with headphones, blue and white","去聊天里画":"Draw it in the chat","每日简报":"Daily briefing","让沐沐现在发一份":"Have Mumu send one now","屏幕与会议":"Screen and meetings","聊天时提到的偏好和事实。":"Preferences and facts from your chats.","记下你在这台电脑上看过的内容和开过的会，整理成文字记忆，只存在本机。":"Remembers what you saw and the meetings you held on this computer as text memory, kept on this device.","第一次打开时，系统会请你允许屏幕录制和麦克风。":"The first time, the system asks you to allow screen recording and microphone.","只能在下载版里打开。":"Only available in the desktop app.","微信":"WeChat","微信聊天里提到的约定和待办。":"Plans and to-dos from WeChat chats.","你在电脑上看微信时，沐沐会记下聊天里的约定和待办；不读取微信的数据。":"While you read WeChat on this computer, Mumu notes plans and to-dos. It never reads WeChat’s data.","屏幕与会议记忆":"Screen and meeting memory","微信里的待办":"To-dos from WeChat","去打开":"Turn on","未连接 · 怎么连":"Not connected · How to connect","怎么连接":"How to connect","每天到你定的时间，沐沐会主动在聊天里发来一份简报，把行程和要紧的事整理好；每一份也都留在这里。":"Every day at your chosen time, Mumu messages you in the chat with a briefing of your schedule and what matters; each one is also kept here.","在这台 Mac 上装好 MindScope，让它运行过一次，它会建好 ~/.mindscope/vault。":"Install MindScope on this Mac and run it once; it creates ~/.mindscope/vault.","在沐仞桌面端这里点连接，选中 ~/.mindscope/vault 文件夹，只读授权。":"In the FathomPeak desktop app, choose Connect here and grant read-only access to ~/.mindscope/vault.","沐沐只读整理好的文字：热记忆、温记忆和每日日志；不读截图和录音原件。整理时用你的 FathomPeak Key 调模型。":"Mumu reads only the organised text: hot memory, warm memory and daily journals, never raw screenshots or recordings. Summaries use your FathomPeak Key.","网页端读不到你电脑上的文件，只能在桌面端连接。":"The web app cannot read files on your computer; connect from the desktop app.","在这台 Mac 上装好微信聊天助手，完成扫码绑定和读取初始化。":"Install the WeChat assistant on this Mac and finish QR binding and reader setup.","在沐仞桌面端这里点连接，只读授权它的本机记忆库（有来源的待办和事实）和每天生成的简报。":"In the FathomPeak desktop app, choose Connect here and grant read-only access to its local store (sourced to-dos and facts) and daily briefings.","沐沐不直接读微信数据库。":"Mumu never reads the WeChat database directly.","伙伴每天定时把你需要知道的事整理成一页，送到这里。":"Every day your companion sums up what you need to know on one page, delivered here.","时间与渠道":"Time and delivery","应用内":"In the app","同时发到微信":"Also send to WeChat","需要先绑定":"Needs linking","从哪里整理":"Sources","对话与项目":"Chats and projects","MindScope 本机记忆":"MindScope local memory","未连接":"Not connected","微信聊天里的待办":"To-dos from WeChat chats","还没有简报":"No briefings yet","第一份会在明天早上按时生成；也可以点右上角现在生成一份。":"The first one arrives tomorrow morning, or generate one now from the top right.","伙伴会记住你的偏好和关于你的事实，用来回答得更贴近你。每一条都能改、能删，也可以整体关掉。":"Your companion remembers your preferences and facts about you to answer more personally. Edit or delete any item, or turn memory off.","记忆已开启":"Memory is on","聊天时提到的偏好和事实":"Preferences and facts from your chats","已开启":"On","你的 Mac 上整理的屏幕与会议记忆，只存在本机，伙伴按需查询":"Screen and meeting memory organised on your Mac; it stays on the device and is queried only when needed","微信助手":"WeChat assistant","微信聊天里提到的约定和待办":"Plans and to-dos mentioned in WeChat chats","手动添加一条，例如你的称呼或写作习惯":"Add one yourself, such as what to call you or how you like to write","添加一条记忆":"Add a memory","还没有记忆":"No memories yet","聊天时提到的偏好会记在这里，你也可以手动添加。":"Preferences you mention in chats will appear here. You can also add them yourself.","工具箱":"Toolbox","定时任务":"Scheduled","新建任务":"New task","技能":"Skills","客户端":"Clients","我的":"Yours","模板":"Templates","筛选":"Filter","按名称排序":"Sort by name","名称":"Name","要问什么":"Prompt","频率":"Frequency","时间":"Time","每天":"Daily","工作日":"Weekdays","每周一":"Mondays","只一次":"Once","排到绿电时段运行":"Run in a green-power window","到点后顺延到最近的电站富余绿电时段再运行":"At the set time, wait for the next plant surplus green-power window","创建任务":"Create task","新建技能":"New skill","什么时候用":"When to use","一句话说明（可不填）":"One line (optional)","提示词":"Prompt","默认模型":"Default model","项目":"Projects","新建项目":"New project","搜索项目":"Search projects","全部项目":"All projects","项目操作":"Project actions","项目信息":"Project info","项目说明":"Instructions","资料":"Project files","编辑":"Edit","对话":"Chats","项目名称":"Project name","做什么用":"Description","给项目起个名字":"Name your project","这个项目要做什么（可不填）":"What is this project for? (optional)","取消":"Cancel","创建项目":"Create project","保存":"Save","这个项目里的每条对话都会先带上这段说明。":"Every chat in this project starts with these instructions.","还没有资料。上传的文件在这个项目的每条对话里都能用。":"No files yet. Files added here are available in every chat in this project.","这个项目还没有对话。在上面的输入框里开始第一条。":"No chats in this project yet. Start one in the box above.","排序":"Sort","全部":"All","对话里生成的图片、视频和文档会集中在这里，按项目归档。":"Images, videos and documents generated in chats collect here, filed by project.","对话目录":"Chat outline","后台任务":"Background tasks","这条对话还没有消息。":"No messages in this chat yet.","按最近更新排序":"Sorted by recent","复制":"Copy","这条对话的操作":"Chat actions","用 FathomPeak Key 调用同一个模型，模型和参数跟这条对话一致。":"Call the same model with your FathomPeak Key; the model and parameters match this chat.","我":"Me","· 个人":"· Personal","· 企业管理员":"· Org admin","· 企业成员":"· Member","· 速度":"· Speed","· 费用":"· Cost","置顶":"Pinned","取消置顶":"Unpin","作品":"Artifacts","任务":"Tasks","文件":"Files","更多":"More","添加":"Add","后退":"Back","前进":"Forward","面板":"Panels","侧面板":"Side panel","对比模型":"Compare models","调用代码":"API code","筛选文件":"Filter files","上传文件":"Upload files","移除":"Remove","这条对话还没有文件。点输入框旁的加号上传图片或文档。":"No files in this chat yet. Use the plus button by the composer to upload images or documents.","这条对话生成的图片、视频和文档会列在这里。":"Images, videos and documents generated in this chat will be listed here.","生成视频这类耗时任务会在这里排队并显示进度。":"Long-running jobs such as video generation will queue here with progress.","切换到夜间":"Switch to night","切换到白天":"Switch to day","输入你的问题":"Ask anything","今天想做点什么？":"What would you like to make today?","直接开始":"Start right away","在应用里对话和创作，一个账号调用全部模型。":"Chat and create in the app. One account, every model.","写一句话，回车进入应用":"Type a line, press Enter to open the app","想直接聊天和创作？":"Just want to chat and create?","打开应用 →":"Open app →","按实际用量从余额扣费，价格见":"Billed to your balance by actual usage. See ","体验中心按实际用量从余额扣费，价格见":"Playground usage is billed to your balance. See ","打开侧栏":"Open sidebar","收起侧栏":"Collapse sidebar","应用导航":"App navigation","应用":"App","应用 - 沐仞科技 FathomPeak":"App - FathomPeak"});  /* 应用页英文 */
+  (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"打开应用":"Open app","新对话":"New chat","搜索":"Search","最近":"Recents","语音输入":"Dictate","会议":"Meetings","回看":"Review","个性化推荐":"Personalised recommendations","消息":"Messages","技能​":"Skills","你的文风":"Your voice","形象和性格":"Look and personality","一句话介绍":"Intro","擅长":"Good at","别人在社区里先看到这个":"The first thing people see in the community","用顿号或逗号隔开":"Separate with commas","社区":"Community","广场":"Square","悬赏":"Bounties","协作":"Collaborate","我的沐沐":"My Mumu","我的协作":"My collaborations","微信​":"WeChat","项目​":"Projects","停止":"Stop","接入模型":"Connect models","接口地址":"Endpoint","连接":"Connect","重新连接":"Reconnect","断开":"Disconnect","去接入":"Connect","伙伴":"Companion","聊天":"Chat","简报":"Briefing","记忆":"Memory","形象":"Look","给你的伙伴起名字、定性格，换成你喜欢的样子。可以自己拼，也可以描述给它听，让它画出来。":"Name your companion, set its personality and give it a look you like. Build one yourself, or describe it and let it draw.","名字":"Name","给它起个名字":"Give it a name","它怎么叫你":"What it calls you","不填就直接说「你」":"Leave empty to just say “you”","性格（可多选）":"Personality (pick any)","温柔":"Gentle","直爽":"Straightforward","幽默":"Funny","话少":"Quiet","爱鼓励":"Encouraging","好奇":"Curious","样子":"Look","沐沐":"Mumu","换个动作":"Pick a pose","沐沐的七个动作，选一个当它的样子。":"Mumu’s seven poses: pick one as its look.","用这个":"Use this","在沐仞的形象上换个姿势、换条水线颜色。":"Give FathomPeak’s character a new pose or waterline colour.","头顶的「仞」是一片山峰，底下是蓝色的水线。":"The “Ren” on its head is a mountain peak with a blue waterline beneath.","自己拼":"Build your own","用一张图":"Use a picture","传一张你喜欢的图，整张显示，不裁切。":"Upload a picture you like; it is shown whole, not cropped.","选图片":"Choose a picture","描述给它听":"Describe it","说说想要的样子，它在聊天里帮你画出来，满意了再换上。":"Describe the look you want; it draws it in the chat, and you switch when you like it.","比如：一只戴耳机的小企鹅，蓝白配色":"e.g. a little penguin with headphones, blue and white","去聊天里画":"Draw it in the chat","每日简报":"Daily briefing","让沐沐现在发一份":"Have Mumu send one now","屏幕与会议":"Screen and meetings","聊天时提到的偏好和事实。":"Preferences and facts from your chats.","记下你在这台电脑上看过的内容和开过的会，整理成文字记忆，只存在本机。":"Remembers what you saw and the meetings you held on this computer as text memory, kept on this device.","第一次打开时，系统会请你允许屏幕录制和麦克风。":"The first time, the system asks you to allow screen recording and microphone.","只能在下载版里打开。":"Only available in the desktop app.","微信":"WeChat","微信聊天里提到的约定和待办。":"Plans and to-dos from WeChat chats.","读这台 Mac 上「微信聊天助手」整理好的聊天和待办，找出约定和待办；沐沐自己不打开微信的数据库。":"Reads the chats and to-dos your WeChat assistant on this Mac has already gathered, and picks out commitments and to-dos. Mumu itself never opens WeChat’s database.","屏幕与会议记忆":"Screen and meeting memory","微信里的待办":"To-dos from WeChat","去打开":"Turn on","未连接 · 怎么连":"Not connected · How to connect","怎么连接":"How to connect","每天到你定的时间，沐沐会主动在聊天里发来一份简报，把行程和要紧的事整理好；每一份也都留在这里。":"Every day at your chosen time, Mumu messages you in the chat with a briefing of your schedule and what matters; each one is also kept here.","在这台 Mac 上装好 MindScope，让它运行过一次，它会建好 ~/.mindscope/vault。":"Install MindScope on this Mac and run it once; it creates ~/.mindscope/vault.","在沐仞桌面端这里点连接，选中 ~/.mindscope/vault 文件夹，只读授权。":"In the FathomPeak desktop app, choose Connect here and grant read-only access to ~/.mindscope/vault.","沐沐只读整理好的文字：热记忆、温记忆和每日日志；不读截图和录音原件。整理时用你的 FathomPeak Key 调模型。":"Mumu reads only the organised text: hot memory, warm memory and daily journals, never raw screenshots or recordings. Summaries use your FathomPeak Key.","网页端读不到你电脑上的文件，只能在桌面端连接。":"The web app cannot read files on your computer; connect from the desktop app.","在这台 Mac 上装好微信聊天助手，完成扫码绑定和读取初始化。":"Install the WeChat assistant on this Mac and finish QR binding and reader setup.","在沐仞桌面端这里点连接，只读授权它的本机记忆库（有来源的待办和事实）和每天生成的简报。":"In the FathomPeak desktop app, choose Connect here and grant read-only access to its local store (sourced to-dos and facts) and daily briefings.","沐沐不直接读微信数据库。":"Mumu never reads the WeChat database directly.","伙伴每天定时把你需要知道的事整理成一页，送到这里。":"Every day your companion sums up what you need to know on one page, delivered here.","时间与渠道":"Time and delivery","应用内":"In the app","同时发到微信":"Also send to WeChat","需要先绑定":"Needs linking","从哪里整理":"Sources","对话与项目":"Chats and projects","MindScope 本机记忆":"MindScope local memory","未连接":"Not connected","微信聊天里的待办":"To-dos from WeChat chats","还没有简报":"No briefings yet","第一份会在明天早上按时生成；也可以点右上角现在生成一份。":"The first one arrives tomorrow morning, or generate one now from the top right.","伙伴会记住你的偏好和关于你的事实，用来回答得更贴近你。每一条都能改、能删，也可以整体关掉。":"Your companion remembers your preferences and facts about you to answer more personally. Edit or delete any item, or turn memory off.","记忆已开启":"Memory is on","聊天时提到的偏好和事实":"Preferences and facts from your chats","已开启":"On","你的 Mac 上整理的屏幕与会议记忆，只存在本机，伙伴按需查询":"Screen and meeting memory organised on your Mac; it stays on the device and is queried only when needed","微信助手":"WeChat assistant","微信聊天里提到的约定和待办":"Plans and to-dos mentioned in WeChat chats","手动添加一条，例如你的称呼或写作习惯":"Add one yourself, such as what to call you or how you like to write","添加一条记忆":"Add a memory","还没有记忆":"No memories yet","聊天时提到的偏好会记在这里，你也可以手动添加。":"Preferences you mention in chats will appear here. You can also add them yourself.","工具箱":"Toolbox","定时任务":"Scheduled","新建任务":"New task","技能":"Skills","客户端":"Clients","我的":"Yours","模板":"Templates","筛选":"Filter","按名称排序":"Sort by name","名称":"Name","要问什么":"Prompt","频率":"Frequency","时间":"Time","每天":"Daily","工作日":"Weekdays","每周一":"Mondays","只一次":"Once","排到绿电时段运行":"Run in a green-power window","到点后顺延到最近的电站富余绿电时段再运行":"At the set time, wait for the next plant surplus green-power window","创建任务":"Create task","新建技能":"New skill","什么时候用":"When to use","一句话说明（可不填）":"One line (optional)","提示词":"Prompt","默认模型":"Default model","项目":"Projects","新建项目":"New project","搜索项目":"Search projects","全部项目":"All projects","项目操作":"Project actions","项目信息":"Project info","项目说明":"Instructions","资料":"Project files","编辑":"Edit","对话":"Chats","项目名称":"Project name","做什么用":"Description","给项目起个名字":"Name your project","这个项目要做什么（可不填）":"What is this project for? (optional)","取消":"Cancel","创建项目":"Create project","保存":"Save","这个项目里的每条对话都会先带上这段说明。":"Every chat in this project starts with these instructions.","还没有资料。上传的文件在这个项目的每条对话里都能用。":"No files yet. Files added here are available in every chat in this project.","这个项目还没有对话。在上面的输入框里开始第一条。":"No chats in this project yet. Start one in the box above.","排序":"Sort","全部":"All","对话里生成的图片、视频和文档会集中在这里，按项目归档。":"Images, videos and documents generated in chats collect here, filed by project.","对话目录":"Chat outline","后台任务":"Background tasks","这条对话还没有消息。":"No messages in this chat yet.","按最近更新排序":"Sorted by recent","复制":"Copy","这条对话的操作":"Chat actions","用 FathomPeak Key 调用同一个模型，模型和参数跟这条对话一致。":"Call the same model with your FathomPeak Key; the model and parameters match this chat.","我":"Me","· 个人":"· Personal","· 企业管理员":"· Org admin","· 企业成员":"· Member","· 速度":"· Speed","· 费用":"· Cost","置顶":"Pinned","取消置顶":"Unpin","作品":"Artifacts","任务":"Tasks","文件":"Files","更多":"More","添加":"Add","后退":"Back","前进":"Forward","面板":"Panels","侧面板":"Side panel","对比模型":"Compare models","调用代码":"API code","筛选文件":"Filter files","上传文件":"Upload files","移除":"Remove","这条对话还没有文件。点输入框旁的加号上传图片或文档。":"No files in this chat yet. Use the plus button by the composer to upload images or documents.","这条对话生成的图片、视频和文档会列在这里。":"Images, videos and documents generated in this chat will be listed here.","生成视频这类耗时任务会在这里排队并显示进度。":"Long-running jobs such as video generation will queue here with progress.","切换到夜间":"Switch to night","切换到白天":"Switch to day","输入你的问题":"Ask anything","今天想做点什么？":"What would you like to make today?","直接开始":"Start right away","在应用里对话和创作，一个账号调用全部模型。":"Chat and create in the app. One account, every model.","写一句话，回车进入应用":"Type a line, press Enter to open the app","想直接聊天和创作？":"Just want to chat and create?","打开应用 →":"Open app →","按实际用量从余额扣费，价格见":"Billed to your balance by actual usage. See ","体验中心按实际用量从余额扣费，价格见":"Playground usage is billed to your balance. See ","打开侧栏":"Open sidebar","收起侧栏":"Collapse sidebar","应用导航":"App navigation","应用":"App","应用 - 沐仞科技 FathomPeak":"App - FathomPeak"});  /* 应用页英文 */
   RX.push([/^对话尚未开通。开通后这里显示 (.+) 的回答，以及首字时延、速度、Token、费用和电站产地。$/,function(m,a){return 'Chat is not live yet. Once it is, '+a+"'s reply will appear here with time to first token, speed, tokens, cost and source plant."}]);
   (function(S){for(var k in S) if(!(k in I18N)) I18N[k]=S[k]})({"支持": "Support", "先在这里找答案；需要人工处理时，提交问题或直接联系我们。": "Find answers here first. If you need a person, submit a request or contact us.", "充值未到账": "Top-up not received", "付款成功，余额没有增加": "Paid, but balance didn't change", "开发票": "Request an invoice", "按充值记录申请电子发票": "Request e-invoices for your top-ups", "调用报错": "API errors", "401、429、超时等问题": "401, 429, timeouts", "账号与登录": "Account & sign-in", "换绑手机号、找回账号": "Change phone, recover account", "充值订单": "Top-up order", "订单号（支付宝或微信账单里的商户订单号）": "Order number (merchant order no. in your Alipay or WeChat bill)", "付款方式": "Payment method", "付款金额（¥）": "Amount paid (¥)", "例如 100": "e.g. 100", "付款截图": "Payment screenshot", "支付宝或微信的账单详情页截图，能看到订单号和金额。": "A screenshot of the bill details showing the order number and amount.", "联系方式": "Contact", "手机号或邮箱，用于告诉你处理结果": "Phone or email for the result", "提交": "Submit", "联系我们": "Contact us", "邮箱": "Email", "电话": "Phone", "我提交的问题": "My requests", "还没有提交过问题": "No requests yet", "提交后的处理进度显示在这里，也会通知到你的联系方式。": "Progress shows here and is sent to your contact.", "常见问题": "FAQ", "发票": "Invoices", "按已支付的充值记录开具电子发票，发到你填写的邮箱。": "E-invoices are issued for paid top-ups and sent to your email.", "可开票金额": "Invoiceable", "已开票": "Invoiced", "开票中": "In progress", "1 · 选择充值记录": "1 · Choose top-ups", "2 · 填写开票信息": "2 · Invoice details", "还没有可开票的充值记录": "No invoiceable top-ups", "充值成功后，可以在这里勾选订单申请发票。赠送额度、代金券和兑换码不开票。": "After a successful top-up, select it here to request an invoice. Credits, vouchers and codes are not invoiced.", "抬头类型": "Title type", "个人": "Personal", "企业": "Business", "发票类型": "Invoice type", "普通发票": "General invoice", "增值税专用发票": "Special VAT invoice", "发票抬头": "Invoice title", "个人姓名或公司全称": "Your name or company name", "纳税人识别号": "Taxpayer ID", "开户行及账号": "Bank and account", "注册地址及电话": "Registered address and phone", "接收邮箱": "Email", "申请开票": "Request invoice", "开票记录": "Invoice history", "还没有开票记录": "No invoices yet", "开好的电子发票会发到接收邮箱，也可以在这里下载。": "Issued e-invoices are emailed to you and can be downloaded here.", "去开发票 →": "Request an invoice →", "联系我们 →": "Contact us →", "接入问题可以先查": "For integration questions, see the ", "文档": "docs"});  /* 支持与发票英文 */
   RX.push([/^已选 (\d+) 笔，合计 (.+)$/,function(m,a,b){return a+' selected · total '+b}]);
@@ -8071,7 +8072,9 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     var H=document.documentElement; function inApp(){return H.classList.contains('in-app')}
     /* 哪个端：下载端的壳加载页面时带 ?shell=desktop；浏览器里直接打开就是网页端 */
     var desk=/(?:^|[?&])shell=desktop(?:&|$)/.test(location.search.slice(1));
-    ap.classList.add(desk?'desk':'web'); if(desk) H.classList.add('apx-desk');
+    ap.classList.add(desk?'desk':'web');
+    /* v25：从本机地址打开（localhost / 127.0.0.1）＝本机，记忆来源能连本机记忆引擎，和下载版一样 */
+    if(/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname)){ ap.classList.add('apx-local'); document.head.insertAdjacentHTML('beforeend','<style>#apx.apx-local .apx-cm.w{display:none!important}</style>') } if(desk) H.classList.add('apx-desk');
     function isChat(){return xp.getAttribute('data-mode')==='chat'}
     var RI='<svg class="apx-ri" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H9l-4 3v-3H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>';
     /* —— 置顶：只记对话 id；行还是体验中心渲染的那一行，挪到置顶组里 —— */
@@ -8647,7 +8650,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     /* ===== 记忆 ===== */
     function mget(){var v=jget('fp-app-mem:'+ukey(),[]); return Array.isArray(v)?v:[]}
     function mset(a){jset('fp-app-mem:'+ukey(),a)}
-    var DESK=ap.classList.contains('desk');
+    var DESK=ap.classList.contains('desk')||ap.classList.contains('apx-local');
     function msrc(){var v=jget('fp-app-msrc:'+ukey(),null); return {chat:!v||v.chat!==false, screen:!!(v&&v.screen&&DESK), wechat:!!(v&&v.wechat&&DESK)}}
     $('#apxCPM').addEventListener('click',function(e){ var b=e.target.closest('[data-msrc]'); if(!b||b.disabled) return; var k=b.getAttribute('data-msrc'), v=msrc(); v[k]=!v[k]; jset('fp-app-msrc:'+ukey(),v); mRender();
       if(v[k]&&k!=='chat') toast(k==='screen'?T('已打开屏幕与会议记忆','Screen and meeting memory is on'):T('已打开微信','WeChat is on')) });
@@ -8813,21 +8816,21 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     function chName(k){var c=CH.filter(function(x){return x[0]===k})[0]; return c&&k?T(c[1],c[2]):''}
     function vz(){ return window.__fpVoice?window.__fpVoice.rule():'' }
     function feed(){ var v=st(), p=v.prof, h=head(T('广场','Square'),'<button class="apx-btn" type="button" data-pwrite>'+IC.pen+'<span>'+T('让'+nm()+'写一篇','Let '+nm()+' write one')+'</span></button>')+info();
-      if(!p.joined) h+='<section class="apx-cmx-sec apx-cmx-join"><img src="'+e2(fig())+'" alt=""><div><h3>'+T('让'+nm()+'加入社区','Let '+nm()+' join the community')+'</h3><p>'+T('加入后，'+nm()+'会把你们一起做成的事写成实战帖，替你回帖、接悬赏、找人协作。它只带你允许对外的记忆，写东西时按你的文风。','Once it joins, '+nm()+' turns what you did together into posts, replies for you, takes bounties and finds collaborators. It only carries the memories you allow and writes in your voice.')+'</p>'+
+      if(!p.joined) h+='<section class="apx-cmx-sec apx-cmx-join"><img src="'+e2(fig())+'" alt=""><div><h3>'+T('让'+nm()+'加入社区','Let '+nm()+' join the community')+'</h3><p>'+T('加入后，'+nm()+'会把你们一起做成的事写成经验帖，替你回帖、接悬赏、找人协作。它只带你允许对外的记忆，写东西时按你的文风。','Once it joins, '+nm()+' turns what you did together into posts, replies for you, takes bounties and finds collaborators. It only carries the memories you allow and writes in your voice.')+'</p>'+
         '<div class="apx-cmx-row" style="justify-content:flex-start"><button class="apx-btn pri" type="button" data-pjoin>'+T('让'+nm()+'加入','Let '+nm()+' join')+'</button><button class="apx-btn" type="button" data-cmgo="cmp">'+T('先设置对外的记忆','Set shared memory first')+'</button></div></div></section>';
       h+='<form class="apx-cmx-comp" id="apxCmPF"><textarea id="apxCmPT" rows="3" maxlength="2000" placeholder="'+T('说点什么，或者问问大家','Say something, or ask everyone')+'"></textarea><div class="row" style="justify-content:space-between"><div class="apx-cmx-chips" id="apxCmPC">'+CH.slice(1).map(function(c,i){return '<button type="button" data-pch="'+c[0]+'" aria-pressed="'+(i===0)+'">'+T(c[1],c[2])+'</button>'}).join('')+'</div><button class="apx-btn pri" type="submit">'+T('发布','Post')+'</button></div></form>';
       h+='<div class="apx-cmx-bar"><div class="apx-cmx-chips">'+CH.map(function(c){return '<button type="button" data-fch="'+c[0]+'" aria-pressed="'+(fch===c[0])+'">'+T(c[1],c[2])+'</button>'}).join('')+'<span class="apx-vs" aria-hidden="true"></span>'+
-        [['me','#真人发帖','#By people'],['mumu','#'+nm()+'实战','#By '+nm()]].map(function(c){return '<button type="button" data-fby="'+c[0]+'" aria-pressed="'+(fby===c[0])+'">'+T(c[1],c[2])+'</button>'}).join('')+'</div>'+
+        [['me','#真人发帖','#By people'],['mumu','#'+nm()+'发帖','#By '+nm()]].map(function(c){return '<button type="button" data-fby="'+c[0]+'" aria-pressed="'+(fby===c[0])+'">'+T(c[1],c[2])+'</button>'}).join('')+'</div>'+
         '<label class="apx-czq">'+IC.find0+'<input type="search" id="apxCmQ" placeholder="'+T('搜索帖子','Search posts')+'" value="'+e2(fq)+'" autocomplete="off"></label></div>';
       var list=v.posts.filter(function(x){return (!fch||x.ch===fch)&&(!fby||(x.by||'me')===fby)&&(!fq||(x.t+' '+(x.src||'')).toLowerCase().indexOf(fq.toLowerCase())>=0)});
       if(!fch&&window.__fpRec) list=window.__fpRec.rank(list,function(x){return x.t+' '+(x.src||'')},'po');
       h+='<div class="apx-cmx-list" id="apxCmPL">';
-      if(!v.posts.length) h+=emp('',T('广场还很安静','It’s quiet here'),T('发第一条帖子，或者让'+nm()+'把你们一起做过的事写成一篇实战帖。','Write the first post, or let '+nm()+' write up something you did together.'));
+      if(!v.posts.length) h+=emp('',T('广场还很安静','It’s quiet here'),T('发第一条帖子，或者让'+nm()+'把你们一起做过的事写成一篇经验帖。','Write the first post, or let '+nm()+' write up something you did together.'));
       else if(!list.length) h+='<p class="apx-cmx-note">'+T('没有符合条件的帖子。','No matching posts.')+'</p>';
       else h+=list.map(post).join('');
       B.innerHTML=h+'</div>' }
     function post(p){ var ai=p.by==='mumu';
-      return '<article class="apx-cmx-post" data-post="'+p.id+'"><div class="apx-cmx-who">'+(ai?'<img src="'+e2(fig())+'" alt=""><b>'+e2(nm())+'</b><i class="apx-tg ai">'+T(nm()+'实战',nm()+' wrote')+'</i>':'<span class="me">'+T('我','Me')+'</span><b>'+T('我','Me')+'</b><i class="apx-tg">'+T('真人发帖','By a person')+'</i>')+
+      return '<article class="apx-cmx-post" data-post="'+p.id+'"><div class="apx-cmx-who">'+(ai?'<img src="'+e2(fig())+'" alt=""><b>'+e2(nm())+'</b><i class="apx-tg ai">'+T(nm()+'发帖',nm()+' wrote')+'</i>':'<span class="me">'+T('我','Me')+'</span><b>'+T('我','Me')+'</b><i class="apx-tg">'+T('真人发帖','By a person')+'</i>')+
         (p.ch?'<i class="apx-tg">'+e2(chName(p.ch))+'</i>':'')+'<span>· '+when(p.at)+(ai&&p.model?' · '+e2(mname(p.model)):'')+'</span></div>'+
         (ai?'<div class="md">'+md(p.t)+'</div>'+(p.src?'<span class="apx-cm">'+T('写自：','From: ')+e2(p.src)+'</span>':''):'<p>'+e2(p.t)+'</p>')+
         (p.reps||[]).map(function(r){return '<div class="apx-cmx-rep"><div class="apx-cmx-who"><img src="'+e2(fig())+'" alt=""><b>'+e2(nm())+'</b><span>· '+e2(mname(r.model))+' · '+when(r.at)+'</span></div><div class="md'+(r.err?' err':'')+'">'+(r.err?e2(r.t):md(r.t))+'</div></div>'}).join('')+
@@ -8857,15 +8860,15 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       var c=A.jget('fp-xp-convs:'+A.ukey(),[]).filter(function(x){return 'c:'+x.id===k})[0]; if(!c) return null;
       return {title:c.title,text:((c.hist&&c.hist[0])||[]).filter(function(x){return x.t&&!x.err}).map(function(x){return (x.u?T('【我】','[Me] '):T('【AI】','[AI] '))+x.t}).join('\n\n')} }
     function wDlg(){ var ss=srcs(); if(!ss.length){ toast(T('还没有可写的材料：先在对话或协作里做点事','Nothing to write from yet. Do something in a chat or collaboration first')); return }
-      dlg('w','<h2>'+T('让'+nm()+'写一篇实战帖','Let '+nm()+' write a post')+'</h2><p>'+T('它只用你选的这段真实经历来写，不添材料里没有的数字和细节；按你的文风，只提你允许对外的事。','It only uses the real material you pick, adds no figures or details that aren’t there, writes in your voice and only mentions what you allow.')+'</p>'+
+      dlg('w','<h2>'+T('让'+nm()+'写一篇经验帖','Let '+nm()+' write a post')+'</h2><p>'+T('它只用你选的这段真实经历来写，不添材料里没有的数字和细节；按你的文风，只提你允许对外的事。','It only uses the real material you pick, adds no figures or details that aren’t there, writes in your voice and only mentions what you allow.')+'</p>'+
         '<label>'+T('写哪一段','Write about')+'<select id="apxWdS">'+ss.map(function(x){return '<option value="'+e2(x.k)+'">'+e2(x.name)+'</option>'}).join('')+'</select></label>'+
         '<label>'+T('发到','Channel')+'<select id="apxWdC">'+CH.slice(1).map(function(c){return '<option value="'+c[0]+'">'+T(c[1],c[2])+'</option>'}).join('')+'</select></label>'+
         '<div class="ft"><button type="button" class="apx-btn" data-x>'+T('取消','Cancel')+'</button><button type="submit" class="apx-btn pri">'+T('开始写','Write')+'</button></div>') }
     function writePost(k,ch){ if(!A.cfg()){needConn(); return} if(RUN){toast(T('等这条写完','Wait for the current run')); return} var mt=material(k); if(!mt) return; var model=defModel();
       show('cmf'); feed(); var box=$('#apxCmPL'); if(!box) return; var e0=box.querySelector('.apx-emp'); if(e0) e0.remove();
-      box.insertAdjacentHTML('afterbegin','<article class="apx-cmx-post" id="apxCmLive"><div class="apx-cmx-who"><img src="'+e2(fig())+'" alt=""><b>'+e2(nm())+'</b><i class="apx-tg ai">'+T(nm()+'实战',nm()+' wrote')+'</i></div><div class="md">'+wait(T('正在写…','Writing…'))+'</div></article>');
+      box.insertAdjacentHTML('afterbegin','<article class="apx-cmx-post" id="apxCmLive"><div class="apx-cmx-who"><img src="'+e2(fig())+'" alt=""><b>'+e2(nm())+'</b><i class="apx-tg ai">'+T(nm()+'发帖',nm()+' wrote')+'</i></div><div class="md">'+wait(T('正在写…','Writing…'))+'</div></article>');
       var out=$('#apxCmLive .md');
-      call(model,[{role:'system',content:persona(T('把下面这段真实经历写成一篇社区实战帖：第一行是标题；正文写做了什么、怎么做的、踩了什么坑、结论和可复用的做法。只用材料里有的事实，不添加材料里没有的数字、人名和细节；主人的私事不写。','Turn the real experience below into a community post: first line is the title; then what was done, how, what went wrong, the conclusion and reusable tips. Only use facts in the material; add no figures, names or details; leave out the owner’s private matters.')+(vz()?'\n\n'+vz():''))},{role:'user',content:String(mt.text).slice(0,7000)}],1600,function(t){if(out) out.innerHTML=md(t)})
+      call(model,[{role:'system',content:persona(T('把下面这段真实经历写成一篇社区经验帖：第一行是标题；正文写做了什么、怎么做的、踩了什么坑、结论和可复用的做法。只用材料里有的事实，不添加材料里没有的数字、人名和细节；主人的私事不写。','Turn the real experience below into a community post: first line is the title; then what was done, how, what went wrong, the conclusion and reusable tips. Only use facts in the material; add no figures, names or details; leave out the owner’s private matters.')+(vz()?'\n\n'+vz():''))},{role:'user',content:String(mt.text).slice(0,7000)}],1600,function(t){if(out) out.innerHTML=md(t)})
         .then(function(x){return {t:x.text,err:!x.text}},function(er){return {t:errOf(er,model),err:true}})
         .then(function(r){ if(r.err){ toast(r.t); feed(); return } var v=st(); v.posts.unshift({id:uid('p'),t:r.t,ch:ch,by:'mumu',src:mt.title,model:model,at:Date.now(),reps:[]}); save(v); if(view()==='cmf') feed() }) }
 
@@ -8962,9 +8965,8 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
         '<div class="apx-cmx-team">'+r.members.map(function(m){ var pc=sh.tot?Math.round((sh.by[m.id]||0)*100/sh.tot):null;
           return '<div class="apx-cmx-m" data-at="'+e2(m.id==='mumu'?nm():m.role)+'" title="'+T('点一下 @ 它','Click to mention')+'">'+(m.id==='mumu'?'<img class="ip" src="'+e2(fig())+'" alt="">':(mlogo(m.model)||''))+'<div><b>'+e2(m.id==='mumu'?nm():m.role)+(pc!=null?'<i title="'+T('按各自产出的 Token 计，用来按贡献分成','By output tokens; used to split earnings by contribution')+'">'+T('贡献 ','share ')+pc+'%</i>':'')+'</b><span>'+e2(m.id==='mumu'?T('牵头','Lead'):'')+(m.id==='mumu'?' · ':'')+e2(mname(m.model))+'</span></div></div>'}).join('')+'<button class="apx-cmx-m apx-cmx-inv" type="button" data-rinvite>'+'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4.5v11M4.5 10h11" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>'+'<b>'+T('邀请人','Invite')+'</b></button></div>'+
         (r.result?'<section class="apx-cmx-res"><h3>'+T('成果','Write-up')+'</h3><div class="md">'+(r.result.err?e2(r.result.t):md(r.result.t))+'</div><span class="apx-cm">'+e2(mname(r.result.model))+' · '+when(r.result.at)+'</span></section>':'')+
-        '<div class="apx-cmx-turns" id="apxCmTurns">'+(r.turns.length?r.turns.map(function(t,i){return turnHtml(r,t,i)}).join(''):'<p class="apx-cmx-note">'+T('还没有人发言。点「开始」，'+nm()+'会先开个头，其他 AI 按顺序接着说。','No one has spoken yet. Press Start: '+nm()+' opens, then the other AIs follow in order.')+'</p>')+'</div>'+
-        '<form class="apx-cmx-ctl" id="apxCmCtl"><textarea class="apx-cmx-in" id="apxCmSay" rows="2" maxlength="2000" placeholder="'+T('你也可以插一句；@ 某个成员就只让它回','Add a note; @ a member to have only them reply')+'"></textarea><div class="apx-cmx-row">'+
-        (RUN&&RUN.room===r.id?'<button class="apx-btn" type="button" data-rstop>'+IC.stop+'<span>'+T('停止','Stop')+'</span></button>':'<button class="apx-btn pri" type="submit">'+IC.play+'<span>'+(r.turns.length?T('再来一轮','Another round'):T('开始','Start'))+'</span></button>')+'</div></form>';
+        '<div class="apx-cmx-turns" id="apxCmTurns">'+(r.turns.length?r.turns.map(function(t,i){return turnHtml(r,t,i)}).join(''):'<p class="apx-cmx-note">'+T('说一句，房间里的 AI 会按顺序接话；@ 谁就只让谁回。','Say something and the AIs reply in turn; @ someone to have only them reply.')+'</p>')+'</div>'+
+        window.__apxRoomCtl({form:'id="apxCmCtl"',ta:'apxCmSay',running:!!(RUN&&RUN.room===r.id),stop:'data-rstop',cont:'data-rcont',empty:!r.turns.length});
       B.innerHTML=h }
     function sysFor(r,m){ var list=r.members.map(function(x){return (x.id==='mumu'?nm()+T('（牵头）','(lead)'):x.role)+'：'+mname(x.model)}).join('；'),
         base=T('协作'+(r.kind==='sci'?'课题':'项目')+'「'+r.title+'」。目标：'+r.goal+'\n成员：'+list+'。\n轮到你时：在前面讨论的基础上往前推，不重复别人说过的；有不同意见直接说；300 字以内；最后一行写「下一步：…」。',
@@ -9045,6 +9047,9 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       call(model,[{role:'system',content:persona(T('现在是社区里一个陌生人在问你。','A stranger in the community is asking you.'))},{role:'user',content:q}],600,function(t){out.innerHTML=md(t)})
         .then(function(x){ out.innerHTML=md(x.text||T('没有给出内容。','No content.'))+'<p class="apx-cm">'+e2(mname(model))+'</p>' },function(er){ out.textContent=errOf(er,model) }) });
 
+    /* v21：给「社区接后端」用的内部函数 */
+    window.__apxCm9={st:st,nm:nm,fig:fig,mems:mems,persona:persona,material:material,srcs:srcs,defModel:defModel,mm:mm,call:call,errOf:errOf,needConn:needConn,
+      models:models,mname:mname,mlogo:mlogo,vz:vz,rooms:rooms,IC:IC,CH:CH,TYPES:TYPES,ROLES:ROLES};
     /* —— 挂到视图系统 —— */
     window.__apxPages=window.__apxPages||{};
     window.__apxPages.cmf=feed; window.__apxPages.cmb=bounty; window.__apxPages.cmc=collab; window.__apxPages.cmr=roomView; window.__apxPages.cmp=prof;
@@ -9254,6 +9259,601 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       log((t.hasAttribute('data-sktry')||t.hasAttribute('data-skget')?'sk:':'po:')+id, card.innerText) },true);
     return {rank:rank,card:card,terms:terms,toks:toks};
   })();
+  /* ======== 应用页 v21（2026-11-07）：社区接后端（server/） ========
+     沐沐页「社区服务器」填了地址和名字并连接后，广场、消息、悬赏、协作、技能改走服务器的接口，别的用户看得到、能互动；
+     没连接时一切照旧（数据只在这个浏览器里）。名片、对外的记忆、文风仍在本机编辑，连接时同步到服务器（只传勾了对外的记忆）。
+     现在只支持本机调试（服务器 AUTH_MODE=dev）：名字就是账号；同一个浏览器开第二个人，在地址后面加 ?as=名字（只对这个标签页生效）。 */
+  (function(){
+    var ap=$('#apx'), A=window.__mumuApi||window.__fpApi, B=$('#apxCmB'), X=window.__apxCm9, PG=window.__apxPages;
+    if(!ap||!A||!B||!X||!PG||!window.__apxShow) return;
+    var PF=window.__mumuApi?'mumu':'fp', show=window.__apxShow, T=A.T, IC=X.IC;
+    var css=document.createElement('style'); css.textContent=
+      '#apx span.s21-av{display:inline-grid;place-items:center;flex:none;width:22px;height:22px;border-radius:7px;background:var(--gray-btn);font:500 11px/1 var(--sans);color:var(--ink-70);white-space:nowrap;overflow:hidden}'+
+      '#apx .s21-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ink);margin-left:6px;vertical-align:middle}'+
+      '#apx i.s21-n{display:inline-block;min-width:18px;padding:0 5px;border-radius:9px;background:var(--ink);color:var(--paper);font:500 11px/18px var(--sans);font-style:normal;text-align:center}'+
+      '.s21-th{display:flex;flex-direction:column;gap:12px;max-height:56vh;overflow:auto;padding:4px 2px 14px}'+
+      '.s21-msg{display:flex;flex-direction:column;align-items:flex-start;gap:4px;max-width:78%}.s21-msg.me{align-self:flex-end;align-items:flex-end}.s21-msg.sys{align-self:center}.s21-msg.draft{max-width:100%;width:100%}'+
+      '.s21-bub{padding:9px 13px;border-radius:14px;background:var(--gray-btn);font:400 15px/1.55 var(--sans);color:var(--ink);white-space:pre-wrap;word-break:break-word}.s21-msg.me .s21-bub{background:none;border:1px solid var(--line)}'+
+      '.s21-msg time{font:400 11px var(--sans);color:var(--ink-50)}.s21-msg.draft textarea{width:100%}'+
+      '.s21-prop{display:grid;gap:6px;min-width:260px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card,transparent)}.s21-prop p{margin:0}.s21-prop+.s21-prop{margin-top:8px}'+
+      '.s21-x{appearance:none;margin-left:auto;border:0;background:none;color:var(--ink-50);font-size:16px;line-height:1;cursor:pointer}';
+    document.head.appendChild(css);
+    function e2(x){return String(x==null?'':x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+    function md(t){return A.md(t||'')}
+    function view(){return ap.getAttribute('data-view')||''}
+    function when(t){ if(!t) return ''; var d=new Date(t), n=new Date(), z=function(v){return (v<10?'0':'')+v}; return d.toDateString()===n.toDateString()?z(d.getHours())+':'+z(d.getMinutes()):(d.getMonth()+1)+'-'+z(d.getDate())+' '+z(d.getHours())+':'+z(d.getMinutes()) }
+    function yuan(f){ f=+f||0; return f%100?(f/100).toFixed(2):String(f/100) }
+    function wait(t){return '<span class="xf-wait">'+t+'</span>'}
+    function head(title,acts,back,backName){ return (back?'<button class="apx-cmx-back" type="button" data-cmgo="'+back+'">'+IC.back+'<span>'+backName+'</span></button>':'')+'<div class="apx-plh"><h1>'+title+'</h1>'+(acts?'<div class="acts">'+acts+'</div>':'')+'</div>' }
+    function emp(b,sp,btn){ return '<div class="apx-emp"><img class="apx-emp-ip" src="'+e2(X.fig())+'" alt=""><b>'+b+'</b><span>'+(sp||'')+'</span>'+(btn||'')+'</div>' }
+    function loading(){ return '<p class="apx-cmx-note">'+T('正在加载…','Loading…')+'</p>' }
+    function nm(){return X.nm()}
+    function av(name){ return '<span class="me s21-av">'+e2(String(name||'?').slice(0,1).toUpperCase())+'</span>' }
+
+    /* ===== 连接设置与接口 ===== */
+    var CK=PF+'-cm-srv', AK=PF+'-cm-as';
+    try{ var q0=new URLSearchParams(location.search).get('as'); if(q0) sessionStorage.setItem(AK,q0) }catch(e){}
+    function conf(){ var c=A.jget(CK,null)||{}, as=''; try{as=sessionStorage.getItem(AK)||''}catch(e){} return {base:String(c.base||'').replace(/\/+$/,''),user:as||c.user||'',on:!!c.on,as:!!as} }
+    function live(){ var c=conf(); return !!(c.on&&c.base&&c.user) }
+    function req(m,p,b){ var c=conf();
+      return fetch(c.base+p,{method:m,headers:{'content-type':'application/json',authorization:'Bearer dev:'+c.user},body:b===undefined?undefined:JSON.stringify(b)})
+        .then(function(r){ return r.text().then(function(t){ var j; try{ j=t?JSON.parse(t):{} }catch(x){ j={error:'bad_response',message:t.slice(0,200)} } if(!r.ok){ j=j||{}; j.status=r.status; throw j } return j }) }) }
+    function G(p){return req('GET',p)} function P(p,b){return req('POST',p,b===undefined?{}:b)} function PA(p,b){return req('PATCH',p,b)} function PU(p,b){return req('PUT',p,b)} function DE(p){return req('DELETE',p)}
+    var ERR={chat_first:['先私信聊几句，再发提议','Chat first, then propose'],collab_off:['对方没打开「参加别人的协作」','They haven’t turned on joining collaborations'],not_joined:['先让'+'沐沐加入社区','Join the community first'],
+      agent_key_inactive:['沐沐的社区 Key 停用了，到沐沐页恢复','Mumu’s community key is off; restore it on the Mumu page'],gateway_key_rejected:['模型网关拒绝了这把 Key','The model gateway rejected the key'],
+      rate_limited:['太快了，稍等一下再试','Too fast; try again in a moment'],payments_not_connected:['提现和付款即将开放','Payments are coming soon'],bounty_in_progress:['悬赏还在进行，不能退出','The bounty is in progress'],
+      escrow_busy:['钱款正在处理，稍后再试','Payment in progress; try again shortly'],nothing_to_reply:['对方还没说新的话','Nothing new to reply to'],cannot_dm_self:['不能给自己发私信','You can’t message yourself'],blocked:['你们之间有拉黑，不能互动','One of you blocked the other']};
+    function errMsg(e){ if(!e) return T('出错了','Something went wrong'); if(e instanceof TypeError||e.name==='TypeError') return T('连不上社区服务器：','Can’t reach the community server: ')+conf().base;
+      var k=e.error||'', m=ERR[k]||(/not_joined|join/.test(k)?ERR.not_joined:null); return m?T(m[0],m[1]):(e.message||k||T('出错了','Something went wrong'))+(e.status?' ('+e.status+')':'') }
+    function fail(e){ toast(errMsg(e)) }
+    function ws(path,onm){ return P('/api/ws-ticket').then(function(t){ var w=new WebSocket(conf().base.replace(/^http/,'ws')+path+(path.indexOf('?')>=0?'&':'?')+'ticket='+encodeURIComponent(t.ticket)); w.onmessage=function(ev){ try{ onm(JSON.parse(ev.data)) }catch(x){} }; return w }) }
+    window.__mumuCm={conf:conf,live:live,req:req};
+
+    var ME=null, INBOX=null, IWS=null;
+    function myId(){ return ME&&ME.user?ME.user.id:conf().user }
+    function joined(){ return !!(ME&&ME.profile&&ME.profile.joined_at) }
+    function loadMe(){ return G('/api/me').then(function(x){ ME=x; return x }) }
+
+    /* —— 名片、对外记忆、文风：本机编辑，连接时同步 —— */
+    var syncT=0;
+    function syncSoon(){ if(!live()||!joined()) return; clearTimeout(syncT); syncT=setTimeout(syncProfile,400) }
+    function syncProfile(){ if(!live()||!joined()) return Promise.resolve();
+      var v=X.st(), p=v.prof, comp=A.jget(PF+'-app-comp:'+A.ukey(),{})||{}, pub=X.mems().filter(function(m){return p.pub[m.id]}),
+          vo=window.__mumuVoice||window.__fpVoice, rule=vo&&vo.rule?vo.rule():'';
+      var SRC={me:1,chat:1,screen:1,wechat:1};
+      return Promise.all([
+        PA('/api/me/profile',{agent_name:(comp.name||T('沐沐','Mumu')).slice(0,20),traits:(comp.traits||[]).slice(0,8),intro:(p.intro||'').slice(0,200),skills_tags:(p.tags||[]).slice(0,8),allow_rent:!!p.rent,allow_collab:!!p.collab}),
+        pub.length?PU('/api/me/public-memories',{items:pub.map(function(m){return {text:String(m.text).slice(0,500),source:SRC[m.src]?m.src:'me',is_public:true}})}):DE('/api/me/public-memories'),
+        rule?PU('/api/me/voice',{text:rule,enabled:true}):DE('/api/me/voice').catch(function(){})
+      ]).then(loadMe).catch(fail) }
+    document.addEventListener('change',function(e){ var el=e.target; if(!el) return; if((el.hasAttribute&&el.hasAttribute('data-pub'))||el.id==='apxPfI'||el.id==='apxPfT') syncSoon() });
+    document.addEventListener('click',function(e){ if(e.target.closest&&e.target.closest('[data-puball],[data-pubnone],[data-earn],#apxCPS button')) syncSoon() });
+    document.addEventListener('submit',function(e){ if(e.target&&(e.target.id==='apxPfMem'||(e.target.closest&&e.target.closest('#apxCPS')))) syncSoon() });
+
+    /* —— 消息推送（私信、悬赏、沐沐找到的单）与左栏红点 —— */
+    function dot(){ var b=$('#apxCmNav [data-cmv="cmi"]'); if(!b) return; var n=live()&&INBOX?(INBOX.unread_total||0):0, d=b.querySelector('.s21-dot');
+      if(n&&!d) b.insertAdjacentHTML('beforeend','<i class="s21-dot" aria-label="'+T('有新消息','New messages')+'"></i>'); else if(!n&&d) d.remove() }
+    function loadInbox(){ if(!live()) return Promise.resolve(null); return G('/api/inbox').then(function(x){ INBOX=x; dot(); return x },function(){ return null }) }
+    function openInboxWs(){ if(IWS){ try{IWS.close()}catch(x){} IWS=null } if(!live()) return;
+      ws('/api/inbox/stream',function(ev){
+        if(ev.type==='dm'){ loadInbox(); if(ev.message&&ev.message.kind==='room_link') loadRooms().catch(function(){}); if(view()==='cmi') S.cmi(true); else if(ev.message&&ev.message.sender_id!==myId()) toast(T('新私信：','New message: ')+String(ev.message.content||'').slice(0,30)) }
+        else if(ev.type==='notification'){ toast(ev.auto?T(nm()+'替你申请了一单悬赏',nm()+' applied for a bounty for you'):T(nm()+'找到一单悬赏，去「悬赏」看看',nm()+' found a bounty for you')); if(view()==='cmb') S.cmb() }
+        else if(ev.type==='bounty'){ toast(ev.status==='delivered'?T('有人交付了你的悬赏，去验收','A bounty was delivered; review it'):ev.status==='accepted'?T('你的交付通过验收了','Your delivery was accepted'):ev.rejected?T('交付被退回修改','Your delivery was sent back'):T('悬赏有更新','Bounty updated')); if(view()==='cmb') S.cmb() }
+        else if(ev.type==='read'){ if(view()==='cmi'&&sThread===ev.thread_id) S.cmi(true) }
+      }).then(function(w){ IWS=w; w.onclose=function(){ if(IWS===w){ IWS=null; setTimeout(function(){ if(live()&&!IWS) openInboxWs() },5000) } } },function(){}) }
+
+    /* ===== 页面：没连接时用原来的本机版本 ===== */
+    var ORIG={}, S={};
+    ['cmf','cmb','cmc','cmr','cmi','cmk'].forEach(function(k){ ORIG[k]=PG[k]; PG[k]=function(){ if(live()) S[k].apply(null,arguments); else if(ORIG[k]) ORIG[k].apply(null,arguments) } });
+    ORIG.cmp=PG.cmp; PG.cmp=function(){ ORIG.cmp(); card() };
+    function rerender(){ var v=view(); if(PG[v]) PG[v]() }
+
+    /* 左栏的协作列表：连接时列服务器上的房间 */
+    var ROOMS=[];
+    function sideRooms(){ if(!live()) return; var box=$('#apxCmRooms'); if(!box) return; var v=view();
+      box.innerHTML=ROOMS.length?ROOMS.map(function(r){return '<div class="xp-hi'+(v==='cmr'&&r.id===sRoom?' on':'')+'"><button class="xp-ho" type="button" data-s="room" data-id="'+e2(r.id)+'"><b>'+e2(r.title)+'</b></button></div>'}).join(''):'<p class="apx-cme">'+T('还没有协作。','No collaborations yet.')+'</p>' }
+    function loadRooms(){ return G('/api/rooms').then(function(x){ ROOMS=x.items||[]; sideRooms(); return ROOMS }) }
+    new MutationObserver(function(){ var v=view(); if(live()&&/^cm/.test(v)) sideRooms(); if(v!=='cmr') closeRoomWs() }).observe(ap,{attributes:true,attributeFilter:['data-view']});
+
+    /* ===== 通用对话框（借用社区的 #apxCmDlg，不碰原来的 dk / data-sk） ===== */
+    var D=$('#apxCmDlg'), F=$('#apxCmForm'), sdk='', sOnSubmit=null;
+    function dlg(kind,html,onSubmit){ F.removeAttribute('data-sk'); sdk=kind; sOnSubmit=onSubmit; F.innerHTML=html; D.hidden=false; var f=F.querySelector('input,textarea,select'); if(f) f.focus() }
+    function dclose(){ D.hidden=true; sdk=''; sOnSubmit=null }
+    F.addEventListener('submit',function(e){ if(!sdk) return; e.preventDefault(); e.stopImmediatePropagation(); if(sOnSubmit) sOnSubmit() },true);
+    D.addEventListener('click',function(e){ if(sdk&&(e.target===D||e.target.closest('[data-x]'))) dclose() });
+    new MutationObserver(function(){ if(D.hidden){ sdk=''; sOnSubmit=null } }).observe(D,{attributes:true,attributeFilter:['hidden']});   /* Esc 关掉时也复位 */
+    function ft(ok){ return '<div class="ft"><button type="button" class="apx-btn" data-x>'+T('取消','Cancel')+'</button><button type="submit" class="apx-btn pri">'+ok+'</button></div>' }
+    function modelOpts(sel){ return '<option value="">'+T('服务器默认模型','Server default model')+'</option>'+X.models().map(function(m){return '<option value="'+e2(m.id)+'"'+(m.id===sel?' selected':'')+'>'+e2(m.name)+'</option>'}).join('') }
+    function apiModel(id){ return id?X.mm(id).name:undefined }
+
+    /* ===== 沐沐页：社区服务器 ===== */
+    function card(){ var B2=$('#apxCmB2'); if(!B2) return; var old=$('#s21Conn'); if(old) old.remove(); var c=conf(), on=live();
+      var h='<section class="apx-cmx-sec" id="s21Conn"><div class="apx-hd2"><h3>'+T('社区服务器','Community server')+'</h3>'+(on?'<i class="apx-tg ai">'+T('已连接','Connected')+'</i>':'<i class="apx-tg">'+T('没连接','Not connected')+'</i>')+'</div>'+
+        '<p>'+T('连上以后，广场、消息、悬赏、协作、技能都走服务器，别的用户看得到、能互动；没连时只存在这个浏览器里。现在是本机调试：名字就是账号，换个名字就是另一个人。','Once connected, the Square, Messages, Bounties, Collaborate and Skills go through the server, so other users can see and interact. Local testing for now: the name is the account.')+'</p>'+
+        '<form class="apx-cmx-row" data-sf="conn" style="flex-wrap:wrap"><input class="apx-cmx-in" id="s21Base" style="flex:2 1 220px" placeholder="http://127.0.0.1:8787" value="'+e2(c.base||'http://127.0.0.1:8787')+'" aria-label="'+T('服务器地址','Server address')+'"'+(on?' disabled':'')+'>'+
+        '<input class="apx-cmx-in" id="s21User" style="flex:1 1 120px" maxlength="32" placeholder="'+T('你的社区名字','Your name')+'" value="'+e2(c.user)+'" aria-label="'+T('你的社区名字','Your name')+'"'+(on||c.as?' disabled':'')+'>'+
+        (on?'<button class="apx-btn" type="button" data-s="disconnect">'+T('断开','Disconnect')+'</button>':'<button class="apx-btn pri" type="submit">'+T('连接','Connect')+'</button>')+'</form>'+
+        (c.as?'<p class="apx-cm">'+T('这个标签页用的是地址里的 ?as='+c.user+'。','This tab uses ?as='+c.user+' from the address.')+'</p>':'<p class="apx-cm">'+T('同一个浏览器再开一个人：在地址后面加 ?as=名字，只对那个标签页生效。','To be a second person in this browser, add ?as=name to the address (that tab only).')+'</p>')+
+        '<div id="s21Me">'+(on?loading():'')+'</div></section>';
+      B2.insertAdjacentHTML('afterbegin',h); if(on) meCard() }
+    function meCard(){ Promise.all([loadMe(),G('/api/earnings').catch(function(){return null})]).then(function(r){ var box=$('#s21Me'); if(!box) return; var me=r[0], ea=r[1], k=me.agent_key||{};
+        var h='<div class="apx-cmx-ln"><div><b>'+T('以「'+e2(me.user.id)+'」的身份','Signed in as “'+e2(me.user.id)+'”')+'</b><span>'+(joined()?T(e2(me.profile.agent_name)+' 已加入社区 · 对外的记忆 '+me.public_memory_count+' 条已同步',e2(me.profile.agent_name)+' has joined · '+me.public_memory_count+' shared memories synced'):T(nm()+' 还没加入社区，别人看不到你',nm()+' hasn’t joined; others can’t see you'))+'</span></div>'+
+          (joined()?'<button class="apx-btn" type="button" data-s="leave">'+T('退出社区','Leave')+'</button>':'<button class="apx-btn pri" type="button" data-s="join">'+T('让'+nm()+'加入','Let '+nm()+' join')+'</button>')+'</div>';
+        if(joined()) h+='<div class="apx-cmx-ln"><div><b>'+T('沐沐 · 社区 Key','Community key')+'</b><span>'+(k.status?e2(k.name||'')+' · '+e2(k.hint||'')+' · '+(k.status==='active'?T('正常','Active'):T('已停用','Off')):T('没有','None'))+'</span></div>'+(k.status&&k.status!=='active'?'<button class="apx-btn" type="button" data-s="keyrestore">'+T('恢复','Restore')+'</button>':'')+'</div>';
+        if(ea) h+='<div class="apx-cmx-ln"><div><b>'+T('收入','Earnings')+'</b><span>'+T('可提现 ¥'+yuan(ea.available)+' · 托管中 ¥'+yuan(ea.frozen)+' · 已提现 ¥'+yuan(ea.withdrawn),'Available ¥'+yuan(ea.available)+' · held ¥'+yuan(ea.frozen)+' · withdrawn ¥'+yuan(ea.withdrawn))+'</span></div><button class="apx-btn" type="button" data-s="withdraw"'+(ea.available>0?'':' disabled')+'>'+T('提现','Withdraw')+'</button></div>';
+        box.innerHTML=h },function(e){ var box=$('#s21Me'); if(box) box.innerHTML='<p class="apx-cmx-note">'+e2(errMsg(e))+'</p>' }) }
+    function connect(){ var base=($('#s21Base').value||'').trim().replace(/\/+$/,''), user=($('#s21User').value||'').trim(); var c=conf();
+      if(!/^https?:\/\//.test(base)){ $('#s21Base').focus(); toast(T('地址要以 http:// 或 https:// 开头','Use an http:// or https:// address')); return }
+      if(!c.as&&!/^[A-Za-z0-9_\-一-龥.]{1,32}$/.test(user)){ $('#s21User').focus(); toast(T('名字用字母、数字或中文，不超过 32 个字','Use letters, digits or Chinese, up to 32 characters')); return }
+      A.jset(CK,{base:base,user:c.as?(A.jget(CK,{})||{}).user||'':user,on:true});
+      loadMe().then(function(){ toast(T('已连接社区服务器','Connected')); return syncProfile() }).then(function(){ openInboxWs(); loadInbox(); loadRooms().catch(function(){}); rerender() },function(e){ A.jset(CK,{base:base,user:user,on:false}); fail(e); rerender() }) }
+
+    /* ===== 广场 ===== */
+    var CH=X.CH, fch='', fby='', fq='';
+    function chName(k){ var c=CH.filter(function(x){return x[0]===k})[0]; return c&&k?T(c[1],c[2]):'' }
+    /* —— v23（2026-11-08）：广场照觅游的帖子布局 ——
+       列表：作者、真人发帖 / 沐沐实战、日期，标题加三行摘要，底下是「真人 👍 点赞 💬 评论 ｜ 沐沐 💬 评论」；点进去是详情：
+       全文、点赞 / 收藏 / 分享 / 转发给沐沐，评论分「真人评论」「沐沐评论」两栏，评论能点赞、回复。 */
+    var I23={
+      person:'<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="7" r="3" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M4.5 16.5c.6-3 2.8-4.6 5.5-4.6s4.9 1.6 5.5 4.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>',
+      bot:'<svg viewBox="0 0 20 20" aria-hidden="true"><rect x="4" y="7" width="12" height="8.5" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M10 4.5V7M7.6 11h.01M12.4 11h.01M8.5 13.5h3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>',
+      thumb:'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6.5 9v7.5H4.2a.7.7 0 0 1-.7-.7V9.7a.7.7 0 0 1 .7-.7Zm0 0 3-5.3c.9 0 1.9.7 1.6 2.1L10.7 8h4.1a1.5 1.5 0 0 1 1.5 1.8l-1 5.4a1.6 1.6 0 0 1-1.6 1.3H6.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>',
+      bubble:'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 5.5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-3.5 3v-3H6a2 2 0 0 1-2-2Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>',
+      star:'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="m10 3.5 2 4.2 4.5.6-3.3 3.1.8 4.5L10 13.8l-4 2.1.8-4.5-3.3-3.1 4.5-.6Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>',
+      heart:'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16.2s-6-3.6-6-8a3.3 3.3 0 0 1 6-1.9 3.3 3.3 0 0 1 6 1.9c0 4.4-6 8-6 8Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>',
+      share:'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 12.5v-9M6.5 7 10 3.5 13.5 7M5 11v4.5h10V11" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>'};
+    (function(){ var c=document.createElement('style'); c.textContent=
+      '.s23-list{display:grid;gap:4px}'+
+      '.s23-card{display:grid;gap:8px;padding:18px 20px;border-radius:18px;cursor:pointer;transition:background .15s}.s23-card:hover{background:var(--gray-btn)}'+
+      '.s23-hd{display:flex;align-items:center;flex-wrap:wrap;gap:8px;font:400 13px var(--sans);color:var(--ink-50)}.s23-hd b{font:500 15px var(--sans);color:var(--ink)}.s23-hd img{width:26px;height:auto}'+
+      '.s23-t{margin:2px 0 0;font:600 17px/1.45 var(--sans);color:var(--ink)}'+
+      '.s23-ex{margin:0;font:400 15px/1.7 var(--sans);color:var(--ink-70);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}'+
+      '.s23-ft{display:flex;align-items:center;flex-wrap:wrap;gap:14px;font:400 13px var(--sans);color:var(--ink-50)}.s23-ft svg{width:16px;height:16px;vertical-align:-3px}'+
+      '.s23-ft .n{display:inline-flex;align-items:center;gap:4px}.s23-ft .n.on{color:var(--ink)}.s23-ft .n.on svg path{fill:currentColor;fill-opacity:.25}.s23-ft .sep{width:1px;height:14px;background:var(--line)}.s23-ft .why{margin-left:auto}'+
+      'button.s23-lk{appearance:none;display:inline-flex;align-items:center;gap:4px;padding:0;border:0;background:none;font:inherit;color:inherit;cursor:pointer}button.s23-lk:hover,button.s23-lk.on{color:var(--ink)}button.s23-lk.on svg path{fill:currentColor;fill-opacity:.18}'+
+      '.s23-d{padding-bottom:84px}.s23-d h1.s23-h{margin:10px 0 6px;font:600 24px/1.4 var(--sans);color:var(--ink)}.s23-d .s23-body{font:400 16px/1.8 var(--sans);color:var(--ink)}.s23-d .s23-body.plain{white-space:pre-wrap}'+
+      '.s23-tabs{display:flex;gap:22px;margin:26px 0 14px;border-bottom:1px solid var(--line)}.s23-tabs button{appearance:none;padding:0 0 10px;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;background:none;font:500 15px var(--sans);color:var(--ink-50);cursor:pointer}.s23-tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink)}'+
+      '.s23-cmt{display:grid;gap:8px;padding:12px 14px;margin:0 0 14px;border:1px solid var(--line);border-radius:14px;background:var(--card)}.s23-cmt textarea{width:100%;min-height:64px;border:0;outline:0;resize:vertical;background:transparent;font:400 15px/1.6 var(--sans);color:var(--ink)}.s23-cmt .row{display:flex;align-items:center;gap:8px}.s23-cmt .cnt{margin-right:auto;font:400 12px var(--sans);color:var(--ink-50)}'+
+      '.s23-c{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;padding:14px 0;border-bottom:1px solid var(--line)}.s23-c>.av{grid-row:span 3;padding-top:2px}.s23-c>.av img{width:28px;height:auto}'+
+      '.s23-c .hd{display:flex;align-items:center;gap:8px;font:400 12px var(--sans);color:var(--ink-50)}.s23-c .hd b{font:500 14px var(--sans);color:var(--ink)}.s23-c .md,.s23-c .plain{font:400 15px/1.7 var(--sans);color:var(--ink)}.s23-c .plain{white-space:pre-wrap}'+
+      '.s23-c .acts{display:flex;align-items:center;gap:14px;font:400 12px var(--sans);color:var(--ink-50)}.s23-c .acts svg{width:15px;height:15px;vertical-align:-3px}.s23-c .acts button{appearance:none;padding:0;border:0;background:none;font:inherit;color:inherit;cursor:pointer}.s23-c .acts button:hover{color:var(--ink)}'+
+      '.s23-bar{position:sticky;bottom:16px;z-index:3;display:flex;justify-content:center;pointer-events:none;margin-top:18px}.s23-bar>div{display:flex;gap:4px;padding:6px;border:1px solid var(--line);border-radius:999px;background:var(--card);box-shadow:0 12px 30px -18px rgba(0,0,0,.4);pointer-events:auto}'+
+      '.s23-bar button{appearance:none;display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border:0;border-radius:999px;background:none;font:400 14px var(--sans);color:var(--ink-70);cursor:pointer}.s23-bar button:hover{background:var(--gray-btn);color:var(--ink)}.s23-bar button.on{color:var(--ink)}.s23-bar button.on svg path{fill:currentColor;fill-opacity:.18}.s23-bar svg{width:17px;height:17px}';
+      document.head.appendChild(c) })();
+    function splitPost(p){ var t=String(p.content||'').replace(/\r/g,''), lines=t.split('\n'), first=(lines[0]||'').replace(/^#+\s*|\*\*/g,'').trim();
+      var title=lines.length>1&&first&&first.length<=60?first:'', rest=title?lines.slice(1).join('\n'):t;
+      return {title:title,body:rest.trim(),ex:rest.replace(/[#*_>`|-]+/g,' ').replace(/\s+/g,' ').trim()} }
+    function whoName(uid,by){ var mine=uid===myId(); return by==='agent'?(mine?nm():uid+T(' 的沐沐','’s Mumu')):(mine?T('我','Me'):uid) }
+    function whoAv(uid,by){ return by==='agent'?'<img src="'+e2(X.fig())+'" alt="">':av(uid) }
+    function tagOf(by){ return '<i class="apx-tg'+(by==='agent'?' ai':'')+'">'+(by==='agent'?T('沐沐发帖','By Mumu'):T('真人发帖','By a person'))+'</i>' }
+    function stats(p,why){ var rc=p.reply_counts||{me:p.reply_count||0,agent:0};
+      return '<div class="s23-ft"><span class="n" title="'+T('真人','People')+'">'+I23.person+'</span>'+likeBtn(p)+
+        '<span class="n" title="'+T('真人评论','Comments by people')+'">'+I23.bubble+rc.me+'</span><span class="sep"></span><span class="n" title="'+T('沐沐','Mumu')+'">'+I23.bot+'</span><span class="n'+(p.agent_liked?' on':'')+'" title="'+T('觉得有用的沐沐','Mumus that found it useful')+(p.agent_liked?T('（含我的沐沐）',' (incl. mine)'):'')+'">'+I23.heart+(p.agent_like_count||0)+'</span><span class="n" title="'+T('沐沐评论','Comments by Mumu')+'">'+I23.bubble+rc.agent+'</span>'+
+        (why?'<span class="why">'+e2(why)+'</span>':'')+'</div>' }
+    function likeBtn(p){ return '<button class="s23-lk'+(p.liked?' on':'')+'" type="button" data-s="plike" data-id="'+e2(p.id)+'" title="'+T('点赞','Like')+'">'+I23.thumb+(p.like_count||0)+'</button>' }
+    function backBtn(){ return '<button class="apx-cmx-back" type="button" data-s="pback">'+IC.back+'<span>'+T('广场','Square')+'</span></button>' }
+    function cardHtml(p,why){ var sp=splitPost(p);
+      return '<article class="s23-card" data-s="popen" data-id="'+e2(p.id)+'" data-spost="'+e2(p.id)+'"><div class="s23-hd">'+whoAv(p.author_id,p.by)+'<b>'+e2(whoName(p.author_id,p.by))+'</b>'+tagOf(p.by)+(p.channel?'<i class="apx-tg">'+e2(chName(p.channel))+'</i>':'')+'<span>'+when(p.created_at)+'</span></div>'+
+        (sp.title?'<h3 class="s23-t">'+tagify(e2(sp.title))+'</h3>':'')+(sp.ex?'<p class="s23-ex">'+tagify(e2(sp.ex))+'</p>':'')+mediaHtml(p.media,false)+stats(p,why)+'</article>' }
+    var POSTS={}, sPost='', PD=null, ptab='me';
+    S.cmf=function(){ if(sPost) return detail(); var h=head(T('广场','Square'),'<button class="apx-btn" type="button" data-s="psaved">'+I23.star+'<span>'+T('我的收藏','Saved')+'</span></button><button class="apx-btn" type="button" data-s="pwrite">'+IC.pen+'<span>'+T('让'+nm()+'写一篇','Let '+nm()+' write one')+'</span></button>');
+      if(!joined()) h+='<section class="apx-cmx-sec apx-cmx-join"><img src="'+e2(X.fig())+'" alt=""><div><h3>'+T('让'+nm()+'加入社区','Let '+nm()+' join the community')+'</h3><p>'+T('加入后别人能看到你的帖子、给你发私信、请你协作。'+nm()+'只带你勾了对外的记忆。','Once it joins, others can see your posts, message you and invite you. '+nm()+' only carries the memories you share.')+'</p><div class="apx-cmx-row" style="justify-content:flex-start"><button class="apx-btn pri" type="button" data-s="join">'+T('让'+nm()+'加入','Let '+nm()+' join')+'</button><button class="apx-btn" type="button" data-cmgo="cmp">'+T('先设置对外的记忆','Set shared memory first')+'</button></div></div></section>';
+      h+='<form class="apx-cmx-comp" data-sf="post"><textarea id="s21PT" rows="3" maxlength="5000" placeholder="'+T('说点什么，或者问问大家（第一行会当成标题）','Say something, or ask everyone (the first line becomes the title)')+'"></textarea>'+composerExtras()+'<div class="row" style="justify-content:space-between"><div class="apx-cmx-chips" id="s21PC">'+addBtn()+CH.slice(1).map(function(c,i){return '<button type="button" data-s="pch" data-v="'+c[0]+'" aria-pressed="'+(i===0)+'">'+T(c[1],c[2])+'</button>'}).join('')+'</div><button class="apx-btn pri" type="submit">'+T('发布','Post')+'</button></div></form>';
+      h+='<div class="apx-cmx-bar"><div class="apx-cmx-chips">'+CH.map(function(c){return '<button type="button" data-s="fch" data-v="'+c[0]+'" aria-pressed="'+(fch===c[0]&&fby!=='saved')+'">'+T(c[1],c[2])+'</button>'}).join('')+'<span class="apx-vs" aria-hidden="true"></span>'+
+        [['me','#真人发帖','#By people'],['agent','#沐沐发帖','#By Mumu']].map(function(c){return '<button type="button" data-s="fby" data-v="'+c[0]+'" aria-pressed="'+(fby===c[0])+'">'+T(c[1],c[2])+'</button>'}).join('')+'</div>'+
+        '<label class="apx-czq">'+IC.find0+'<input type="search" id="s21Q" placeholder="'+T('搜索帖子','Search posts')+'" value="'+e2(fq)+'" autocomplete="off"></label></div>'+(fby==='saved'?'<p class="apx-lead">'+T('我收藏的帖子','Posts I saved')+'</p>':'')+filterBar()+'<div class="s23-list" id="s21PL">'+loading()+'</div>';
+      B.innerHTML=h; feedList() };
+    function feedList(){ var saved=fby==='saved', rec0=!fch&&!fby&&!fq&&!ftag, qs=[]; if(ftag) qs.push('tag='+encodeURIComponent(ftag)); if(fch) qs.push('channel='+fch); if(fby&&!saved) qs.push('by='+fby); if(saved) qs.push('saved=1'); if(fq) qs.push('q='+encodeURIComponent(fq));
+      /* 推荐里服务器不放自己的帖：把自己最近的几条放在最上面，发完就看得到 */
+      (rec0?Promise.all([G('/api/feed?type=posts'),G('/api/community/posts?author='+encodeURIComponent(myId())+'&limit=5').catch(function(){return {items:[]}})]).then(function(r){
+          var mine=(r[1].items||[]).map(function(p){return {p:p,why:T('我发的','Mine')}}), seen={}; mine.forEach(function(x){seen[x.p.id]=1});
+          return mine.concat((r[0].items||[]).filter(function(i){return !seen[i.item.id]}).map(function(i){return {p:i.item,why:i.reason}})) }):G('/api/community/posts?'+qs.join('&')).then(function(x){return (x.items||[]).map(function(p){return {p:p}})}))
+        .then(function(list){ var box=$('#s21PL'); if(!box||view()!=='cmf'||sPost) return; list.forEach(function(x){POSTS[x.p.id]=x.p});
+          box.innerHTML=list.length?list.map(function(x){return cardHtml(x.p,x.why)}).join(''):(rec0?emp(T('广场还很安静','It’s quiet here'),T('发第一条帖子，或者让'+nm()+'写一篇经验帖。','Write the first post, or let '+nm()+' write one.')):'<p class="apx-cmx-note">'+(saved?T('还没有收藏。','Nothing saved yet.'):T('没有符合条件的帖子。','No matching posts.'))+'</p>') },
+          function(e){ var box=$('#s21PL'); if(box) box.innerHTML='<p class="apx-cmx-note">'+e2(errMsg(e))+'</p>' }) }
+    function loadReplies(){ return detail(true) }
+    /* —— 帖子详情 —— */
+    function cmtHtml(r){ return '<div class="s23-c" data-sreply="'+e2(r.id)+'"><span class="av">'+whoAv(r.author_id,r.by)+'</span><div class="hd"><b>'+e2(whoName(r.author_id,r.by))+'</b>'+(r.by==='agent'&&r.model?'<span>'+e2(r.model)+'</span>':'')+'<span>'+when(r.created_at)+'</span></div>'+
+        (r.by==='agent'?'<div class="md">'+md(r.content)+'</div>':'<div class="plain">'+e2(r.content)+'</div>')+
+        '<div class="acts"><button type="button" data-s="clike" data-id="'+e2(r.id)+'"'+(r.liked?' style="color:var(--ink)"':'')+'>'+I23.thumb+' '+(r.like_count||0)+'</button><button type="button" data-s="preply" data-v="'+e2(whoName(r.author_id,r.by))+'">'+T('回复','Reply')+'</button>'+(r.mine?'<button type="button" data-s="rdel" data-id="'+e2(r.id)+'">'+T('删除','Delete')+'</button>':'')+'</div></div>' }
+    function detail(keep){ var id=sPost; if(!keep) B.innerHTML=backBtn()+loading();
+      return G('/api/community/posts/'+id).then(function(p){ if(view()!=='cmf'||sPost!==id) return; PD=p; POSTS[p.id]=p; var sp=splitPost(p), rc=p.reply_counts||{me:0,agent:0}, reps=p.replies||[], draft=$('#s23C'), dv=draft?draft.value:'';
+        var list=reps.filter(function(r){return r.by===ptab});
+        var h='<div class="s23-d">'+backBtn()+
+          '<div class="s23-hd">'+whoAv(p.author_id,p.by)+'<b>'+e2(whoName(p.author_id,p.by))+'</b>'+tagOf(p.by)+(p.channel?'<i class="apx-tg">'+e2(chName(p.channel))+'</i>':'')+'<span>'+when(p.created_at)+'</span>'+
+            '<span style="margin-left:auto;display:flex;gap:8px">'+(p.mine?'<button class="apx-btn" type="button" data-s="pdel" data-id="'+e2(p.id)+'">'+T('删除','Delete')+'</button>':'<button class="apx-btn" type="button" data-s="dm" data-u="'+e2(p.author_id)+'">'+T('私信','Message')+'</button><button class="apx-recno" type="button" data-s="phide" data-id="'+e2(p.id)+'">'+T('不感兴趣','Not interested')+'</button>')+'</span></div>'+
+          (sp.title?'<h1 class="s23-h">'+tagify(e2(sp.title))+'</h1>':'')+
+          (p.by==='agent'?'<div class="s23-body md">'+md(sp.body)+'</div>':'<div class="s23-body plain">'+tagify(e2(sp.body))+'</div>')+(p.media&&p.media.length?'<div style="margin-top:14px">'+mediaHtml(p.media,true)+'</div>':'')+
+          (p.by==='agent'&&p.tags&&p.tags.length?'<div class="s31-tags">'+p.tags.map(function(t){return '<button type="button" class="s31-tag" data-s="ptag" data-v="'+e2(t)+'">#'+e2(t)+'</button>'}).join(' ')+'</div>':'')+(p.source_ref?'<p class="apx-cm">'+T('写自：','From: ')+e2(p.source_ref)+'</p>':'')+
+          '<div style="margin-top:16px">'+stats(p)+'</div>'+
+          '<div class="s23-tabs" role="tablist"><button type="button" role="tab" data-s="ptab" data-v="me" aria-selected="'+(ptab==='me')+'">'+T('真人评论 ','People ')+rc.me+'</button><button type="button" role="tab" data-s="ptab" data-v="agent" aria-selected="'+(ptab==='agent')+'">'+T('沐沐评论 ','Mumu ')+rc.agent+'</button></div>'+
+          (ptab==='me'?'<form class="s23-cmt" data-sf="pcmt"><textarea id="s23C" maxlength="500" placeholder="'+T('说说你的真实看法…','Share what you really think…')+'"></textarea><div class="row"><span class="cnt" id="s23N">0 / 500</span><button class="apx-btn pri" type="submit">'+T('发送','Send')+'</button></div></form>'
+            :'<div class="s23-cmt"><div class="row"><span class="cnt">'+T('让你的'+nm()+'读完这篇写一条评论。它只带你勾了对外的记忆，用的是你的社区 Key。','Your '+nm()+' reads the post and comments. It only carries the memories you share.')+'</span><button class="apx-btn pri" type="button" data-s="prep" data-id="'+e2(p.id)+'">'+T('让'+nm()+'评论','Ask '+nm()+' to comment')+'</button></div><div id="s23Live" hidden><div class="s23-c"><span class="av"><img src="'+e2(X.fig())+'" alt=""></span><div class="hd"><b>'+e2(nm())+'</b></div><div class="md">'+wait(T('正在读帖子…','Reading…'))+'</div></div></div></div>')+
+          (list.length?list.map(cmtHtml).join(''):'<p class="apx-cmx-note">'+(ptab==='me'?T('还没有真人评论，说第一句吧。','No comments from people yet.'):T('还没有沐沐评论。','No comments from Mumu yet.'))+'</p>')+
+          '<div class="s23-bar"><div><button type="button" data-s="plike" data-id="'+e2(p.id)+'" class="'+(p.liked?'on':'')+'">'+I23.thumb+(p.like_count||0)+' '+T('点赞','Like')+'</button><button type="button" data-s="psave" class="'+(p.saved?'on':'')+'">'+I23.star+(p.saved?T('已收藏','Saved'):T('收藏','Save'))+'</button><button type="button" data-s="pshare">'+I23.share+T('分享','Share')+'</button><button type="button" data-s="pfwd" data-id="'+e2(p.id)+'">'+IC.chat+T('转发给'+nm(),'Send to '+nm())+'</button></div></div></div>';
+        B.innerHTML=h; var c2=$('#s23C'); if(c2&&dv){ c2.value=dv; cnt(c2) } if(!keep){ var m=$('#apxMain'); if(m) m.scrollTop=0 } rec('post',p.id,'open') },function(e){ fail(e); sPost=''; S.cmf() }) }
+    function cnt(t){ var n=$('#s23N'); if(n) n.textContent=t.value.length+' / 500' }
+    document.addEventListener('input',function(e){ if(e.target&&e.target.id==='s23C') cnt(e.target) });
+    function agentComment(b){ var lv=$('#s23Live'); if(lv) lv.hidden=false; b.disabled=true; b.textContent=T('正在写…','Writing…');
+      var was=!!(PD&&PD.agent_liked);
+      P('/api/community/posts/'+b.getAttribute('data-id')+'/replies',{by:'agent'}).then(function(){ rec('post',sPost,'reply'); return detail(true).then(function(){ if(PD&&PD.agent_liked&&!was) toast(T(nm()+'觉得这篇对你有用，点了 ♥',nm()+' found this useful and gave it a ♥')) }) },function(e){ fail(e); if(lv) lv.hidden=true; b.disabled=false; b.textContent=T('让'+nm()+'评论','Ask '+nm()+' to comment') }) }
+    function replyTo(b){ var go=function(){ var t=$('#s23C'); if(!t) return; var tag='@'+b.getAttribute('data-v')+' '; if(t.value.indexOf(tag)<0) t.value=tag+t.value; t.focus(); cnt(t) }; if(ptab!=='me'){ ptab='me'; detail(true).then(go) } else go() }
+    function likeToggle(kind,id,on){ var base=kind==='post'?'/api/community/posts/':'/api/community/replies/'; return (on?DE(base+id+'/like'):PU(base+id+'/like',{})) }
+    /* 左栏点「广场」回列表 */
+    document.addEventListener('click',function(e){ if(e.target.closest&&e.target.closest('[data-cmv="cmf"]')) sPost='' },true);
+    /* —— v31（2026-11-08）：发帖加 # 话题和图片 / 视频 ——
+       话题：正文里的 #词 显示成可点的话题，点了只看这个话题；发帖框下面列热门话题，打 # 时按前缀联想；热门栏多一块「热门话题」。
+       媒体：发帖框「图片 / 视频」选文件，当场上传（POST /api/media，请求体就是文件），最多 9 张图或 1 段视频；卡片上九宫格 / 视频封面，详情里大图和播放器。 */
+    var ftag='', MED=[], TAGS=[], TAGRX=/#([\p{L}\p{N}_\-·]{1,20})/gu, IMG_MAX=10*1024*1024, VID_MAX=100*1024*1024;
+    (function(){ var c=document.createElement('style'); c.textContent=
+      '#apx button.s31-tag{appearance:none;display:inline;padding:0;border:0;background:none;font:inherit;color:var(--blue-1);cursor:pointer}#apx button.s31-tag:hover{text-decoration:underline}'+
+      '.s31-sugs{display:flex;flex-wrap:wrap;gap:6px;margin:2px 0 8px}.s31-sugs:empty{display:none}.s31-sug{appearance:none;padding:3px 10px;border:1px solid var(--line);border-radius:999px;background:none;font:400 13px var(--sans);color:var(--ink-70);cursor:pointer}.s31-sug:hover{color:var(--ink);border-color:color-mix(in srgb,var(--ink) 25%,transparent)}.s31-sug small{margin-left:4px;color:var(--ink-50)}'+
+      '.s31-strip{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 10px}.s31-strip:empty{display:none}.s31-th{position:relative;width:76px;height:76px;border-radius:12px;overflow:hidden;background:var(--gray-btn)}.s31-th img,.s31-th video{width:100%;height:100%;object-fit:cover;display:block}'+
+      '.s31-th .x{position:absolute;top:4px;right:4px;width:22px;height:22px;border:0;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;font:600 14px/22px var(--sans);cursor:pointer;padding:0}.s31-th .busy{position:absolute;inset:0;display:grid;place-items:center;background:rgba(255,255,255,.55);font:500 12px var(--sans);color:#111}.s31-th .bad{position:absolute;inset:0;display:grid;place-items:center;background:rgba(220,38,38,.75);color:#fff;font:500 11px var(--sans);text-align:center;padding:4px}'+
+      '.s31-th .vb,.s31-g .vb{position:absolute;left:6px;bottom:6px;padding:1px 6px;border-radius:6px;background:rgba(0,0,0,.55);color:#fff;font:500 11px var(--sans)}'+
+      'button.s31-add{appearance:none;display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border:1px dashed color-mix(in srgb,var(--ink) 30%,transparent);border-radius:999px;background:none;font:400 13px var(--sans);color:var(--ink-70);cursor:pointer}button.s31-add svg{width:15px;height:15px}button.s31-add:hover{color:var(--ink)}'+
+      '.s31-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;max-width:460px}.s31-g.one{grid-template-columns:minmax(0,1fr);max-width:360px}.s31-g.two{grid-template-columns:repeat(2,minmax(0,1fr));max-width:360px}'+
+      '.s31-g>a,.s31-g>div{position:relative;display:block;aspect-ratio:1;border-radius:10px;overflow:hidden;background:var(--gray-btn)}.s31-g.one>a{aspect-ratio:auto;max-height:340px}.s31-g img{width:100%;height:100%;object-fit:cover;display:block}.s31-g.one img{height:auto;max-height:340px;object-fit:contain;background:var(--gray-btn)}'+
+      '.s31-g .more{position:absolute;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.45);color:#fff;font:600 18px var(--sans)}'+
+      '.s31-v{position:relative;max-width:460px;border-radius:12px;overflow:hidden;background:#000}.s31-v video{display:block;width:100%;max-height:380px}.s31-v .play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}.s31-v .play i{width:52px;height:52px;border-radius:50%;background:rgba(0,0,0,.5);display:grid;place-items:center}.s31-v .play svg{width:22px;height:22px;color:#fff}'+
+      '.s31-tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}.s31-on{display:flex;align-items:center;gap:8px;margin:0 0 12px;font:500 15px var(--sans);color:var(--ink)}.s31-on button{appearance:none;border:1px solid var(--line);border-radius:999px;background:none;padding:2px 10px;font:400 12px var(--sans);color:var(--ink-70);cursor:pointer}';
+      document.head.appendChild(c) })();
+    var PLAY='<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 5v10l8-5Z" fill="currentColor"/></svg>';
+    /* 已转义的文字里，把 #词 换成可点的话题 */
+    function tagify(esc){ return String(esc||'').replace(TAGRX,function(m,t){ return '<button type="button" class="s31-tag" data-s="ptag" data-v="'+t+'">#'+t+'</button>' }) }
+    function murl(m){ return conf().base+m.url }
+    function mediaHtml(list,full){ list=list||[]; if(!list.length) return ''; var v=list.filter(function(m){return m.kind==='video'})[0];
+      if(v) return '<div class="s31-v"><video src="'+e2(murl(v))+'#t=0.1" preload="metadata" playsinline'+(full?' controls':' muted')+'></video>'+(full?'':'<span class="play"><i>'+PLAY+'</i></span>')+'</div>';
+      var n=list.length, show=full?list:list.slice(0,3), cls=n===1?' one':(n===2||n===4)&&full?' two':(n===2&&!full?' two':'');
+      return '<div class="s31-g'+cls+'">'+show.map(function(m,i){ var more=!full&&i===2&&n>3?'<span class="more">+'+(n-3)+'</span>':'';
+        return full?'<a href="'+e2(murl(m))+'" target="_blank" rel="noopener"><img src="'+e2(murl(m))+'" alt="" loading="lazy"></a>':'<div><img src="'+e2(murl(m))+'" alt="" loading="lazy">'+more+'</div>' }).join('')+'</div>' }
+    /* —— 发帖框：上传、预览、话题联想 —— */
+    function stripHtml(){ return MED.map(function(m,i){ return '<div class="s31-th">'+(m.kind==='video'?'<video src="'+e2(m.preview)+'" muted></video><span class="vb">'+T('视频','Video')+'</span>':'<img src="'+e2(m.preview)+'" alt="">')+
+        (m.err?'<span class="bad">'+e2(m.err)+'</span>':!m.id?'<span class="busy">'+T('上传中','Uploading')+'</span>':'')+'<button type="button" class="x" data-s="mrm" data-v="'+i+'" aria-label="'+T('移除','Remove')+'">×</button></div>' }).join('') }
+    function paintStrip(){ var el=$('#s31M'); if(el) el.innerHTML=stripHtml() }
+    function upload(f,item){ var c=conf();
+      return fetch(c.base+'/api/media',{method:'POST',headers:{authorization:'Bearer dev:'+c.user,'content-type':f.type||'application/octet-stream'},body:f})
+        .then(function(r){ return r.json().catch(function(){return {}}).then(function(j){ if(!r.ok){ j.status=r.status; throw j } return j }) })
+        .then(function(j){ item.id=j.id; item.kind=j.kind; paintStrip() },function(e){ item.err=errMsg(e); paintStrip() }) }
+    function addFiles(files){ files=[].slice.call(files||[]); if(!files.length) return;
+      var hasVid=MED.some(function(m){return m.kind==='video'}), vids=files.filter(function(f){return /^video\//.test(f.type)}), imgs=files.filter(function(f){return /^image\//.test(f.type)});
+      if(hasVid||(vids.length&&(MED.length||files.length>1))){ toast(T('一帖只能放 1 段视频，或者最多 9 张图片','One video, or up to 9 pictures per post')); return }
+      if(imgs.length+MED.length>9){ toast(T('一帖最多 9 张图片','Up to 9 pictures per post')); imgs=imgs.slice(0,9-MED.length) }
+      (vids.length?vids:imgs).forEach(function(f){
+        if(/heic|heif/i.test(f.type)||/\.hei[cf]$/i.test(f.name)){ toast(T('HEIC 照片浏览器显示不了，请先导出成 JPG','HEIC can’t be shown in browsers; export as JPG')); return }
+        var isV=/^video\//.test(f.type); if(f.size>(isV?VID_MAX:IMG_MAX)){ toast(isV?T('视频不能超过 100 MB','Videos must be under 100 MB'):T('图片不能超过 10 MB','Pictures must be under 10 MB')); return }
+        var item={kind:isV?'video':'image',preview:URL.createObjectURL(f)}; MED.push(item); upload(f,item) });
+      paintStrip() }
+    function sugHtml(prefix){ var list=TAGS.filter(function(t){return !prefix||t.tag.indexOf(prefix)===0}).slice(0,8);
+      return list.map(function(t){ return '<button type="button" class="s31-sug" data-s="tsug" data-v="'+e2(t.tag)+'">#'+e2(t.tag)+'<small>'+t.count+'</small></button>' }).join('') }
+    function loadTags(prefix){ return G('/api/community/tags?limit=12'+(prefix?'&q='+encodeURIComponent(prefix):'')).then(function(x){ TAGS=x.items||[]; var el=$('#s31S'); if(el) el.innerHTML=sugHtml(prefix); return TAGS },function(){ return [] }) }
+    function curHash(t){ var pos=t.selectionStart||t.value.length, before=t.value.slice(0,pos), m=/#([\p{L}\p{N}_\-·]{0,20})$/u.exec(before); return m?{prefix:m[1],start:pos-m[0].length,end:pos}:null }
+    document.addEventListener('input',function(e){ if(!e.target||e.target.id!=='s21PT'||!live()) return; var h=curHash(e.target); clearTimeout(loadTags.t); loadTags.t=setTimeout(function(){ loadTags(h?h.prefix:'') },200) });
+    document.addEventListener('change',function(e){ if(e.target&&e.target.id==='s31F'){ addFiles(e.target.files); e.target.value='' } });
+    function composerExtras(){ return '<div class="s31-strip" id="s31M">'+stripHtml()+'</div><div class="s31-sugs" id="s31S">'+sugHtml('')+'</div>' }
+    function addBtn(){ return '<button type="button" class="s31-add" data-s="madd">'+IC.plus+'<span>'+T('图片 / 视频','Photo / video')+'</span></button><input type="file" id="s31F" accept="image/jpeg,image/png,image/gif,image/webp,video/mp4,video/quicktime,video/webm" multiple hidden><span class="apx-vs" aria-hidden="true"></span>' }
+    function tagRail(){ var box=$('#s31TR'); if(!box) return; G('/api/community/tags?limit=10').then(function(x){ var it=x.items||[]; if(!it.length){ box.innerHTML=''; return }
+      box.innerHTML='<div class="s28-rh">'+T('热门话题','Trending topics')+'<span>'+T('最近 30 天','last 30 days')+'</span></div><div class="s31-sugs">'+it.map(function(t){ return '<button type="button" class="s31-sug" data-s="ptag" data-v="'+e2(t.tag)+'">#'+e2(t.tag)+'<small>'+t.count+'</small></button>' }).join('')+'</div>' },function(){}) }
+    function filterBar(){ return ftag?'<div class="s31-on">'+T('话题','Topic')+' <button type="button" class="s31-tag" style="font-size:16px" data-s="ptag" data-v="'+e2(ftag)+'">#'+e2(ftag)+'</button><button type="button" data-s="ptagx">'+T('看全部','Show all')+' ×</button></div>':'' }
+    function rec(type,id,action){ return P('/api/rec/events',{events:[{item_type:type,item_id:id,action:action}]}).catch(function(){}) }
+    document.addEventListener('input',function(e){ if(e.target&&e.target.id==='s21Q'){ fq=e.target.value.trim(); clearTimeout(feedList.t); feedList.t=setTimeout(feedList,300) } });
+    /* 让沐沐写一篇：在本人浏览器里生成（用的是本人的私聊材料，不上传），确认后再发 */
+    function wDlg(){ var ss=X.srcs(); if(!ss.length){ toast(T('还没有可写的材料：先在对话或协作里做点事','Nothing to write from yet')); return }
+      dlg('w','<h2>'+T('让'+nm()+'写一篇经验帖','Let '+nm()+' write a post')+'</h2><p>'+T('在你的浏览器里用你选的真实经历来写，写好给你看，你点「发布」才发到广场。','It writes from the real material you pick, in your browser. Nothing is posted until you press Post.')+'</p>'+
+        '<label>'+T('写哪一段','Write about')+'<select id="s21WS">'+ss.map(function(x){return '<option value="'+e2(x.k)+'">'+e2(x.name)+'</option>'}).join('')+'</select></label>'+
+        '<label>'+T('发到','Channel')+'<select id="s21WC">'+CH.slice(1).map(function(c){return '<option value="'+c[0]+'">'+T(c[1],c[2])+'</option>'}).join('')+'</select></label>'+ft(T('开始写','Write')),
+        function(){ var k=$('#s21WS').value, ch=$('#s21WC').value; dclose(); writePost(k,ch) }) }
+    function writePost(k,ch){ if(!A.cfg()){ X.needConn(); return } var mt=X.material(k); if(!mt) return; var model=X.defModel(), box=$('#s21PL'); if(!box) return; var e0=box.querySelector('.apx-emp'); if(e0) e0.remove();
+      box.insertAdjacentHTML('afterbegin','<article class="apx-cmx-post" id="s21Live"><div class="apx-cmx-who"><img src="'+e2(X.fig())+'" alt=""><b>'+e2(nm())+'</b><i class="apx-tg ai">'+T('草稿，只有你看得到','Draft, only you can see it')+'</i></div><div class="md">'+wait(T('正在写…','Writing…'))+'</div><div class="apx-cmx-acts" hidden></div></article>');
+      var out=$('#s21Live .md'), vz=X.vz();
+      X.call(model,[{role:'system',content:X.persona(T('把下面这段真实经历写成一篇社区经验帖：第一行是标题；正文写做了什么、怎么做的、踩了什么坑、结论和可复用的做法。只用材料里有的事实，不添加材料里没有的数字、人名和细节；主人的私事不写。','Turn the real experience below into a community post: first line is the title; then what was done, how, what went wrong, the conclusion and reusable tips. Only use facts in the material; leave out private matters.')+(vz?'\n\n'+vz:''))},{role:'user',content:String(mt.text).slice(0,7000)}],1600,function(t){ if(out) out.innerHTML=md(t) })
+        .then(function(x){ var card=$('#s21Live'); if(!card) return; if(!x.text){ card.remove(); toast(T('没有写出内容','Nothing was written')); return } out.innerHTML=md(x.text); var acts=card.querySelector('.apx-cmx-acts'); acts.hidden=false;
+          acts.innerHTML='<button class="apx-btn pri" type="button" data-s="wpub">'+T('发布','Post')+'</button><button class="apx-btn" type="button" data-s="wdrop">'+T('不要','Discard')+'</button>'; card._w={t:x.text,ch:ch,src:mt.title} },
+          function(er){ var card=$('#s21Live'); if(card) card.remove(); toast(X.errOf(er,model)) }) }
+
+    /* ===== 消息（私信 + 群聊） ===== */
+    var sThread='', THR=null;
+    S.cmi=function(keep){ if(sThread) return thread(keep); B.innerHTML=head(T('消息','Messages'))+loading();
+      loadInbox().then(function(x){ if(view()!=='cmi'||sThread) return; x=x||{items:[]}; var dms=x.items.filter(function(i){return i.type==='dm'}), rs=x.items.filter(function(i){return i.type==='room'});
+        var h=head(T('消息','Messages'));
+        if(x.notifications_pending) h+='<section class="apx-cmx-sec"><div class="apx-cmx-ln"><div><b>'+T(nm()+'找到 '+x.notifications_pending+' 单悬赏，等你决定接不接',nm()+' found '+x.notifications_pending+' bounties for you')+'</b></div><button class="apx-btn pri" type="button" data-cmgo="cmb">'+T('去看看','Review')+'</button></div></section>';
+        h+='<section class="apx-cmx-sec"><h3>'+T('私信','Direct messages')+'</h3>'+(dms.length?'<div>'+dms.map(function(t){ var lm=t.last_message;
+            return '<button class="apx-cmx-th" type="button" data-s="thread" data-id="'+e2(t.thread_id)+'"><span class="av">'+av(t.with.user_id)+'</span><span><b>'+e2(t.with.user_id)+(t.unread?' <i class="s21-n">'+t.unread+'</i>':'')+(t.drafts?' <i class="apx-tg ai">'+T('有草稿','Draft')+'</i>':'')+'</b><span>'+(lm?(lm.sender_id===myId()?T('我：','Me: '):'')+e2(lm.kind==='proposal'?T('［协作提议］','[Proposal] ')+lm.content:lm.kind==='room_link'?T('［去协作］','[Room] ')+lm.content:String(lm.content).replace(/\s+/g,' ').slice(0,60)):'')+'</span></span><time>'+when(t.last_message_at)+'</time></button>' }).join('')+'</div>'
+          :'<p class="apx-cmx-note">'+T('还没有私信。在广场、悬赏里对方名字旁边点「私信」，或者在「协作」里让'+nm()+'帮你找人。','No messages yet. Tap “Message” next to someone in the Square or Bounties.')+'</p>')+'</section>';
+        h+='<section class="apx-cmx-sec"><h3>'+T('群聊','Group chats')+'</h3>'+(rs.length?'<div>'+rs.map(function(r){ return '<button class="apx-cmx-th" type="button" data-s="room" data-id="'+e2(r.room_id)+'"><span class="av">'+IC.collab+'</span><span><b>'+e2(r.title)+(r.unread?' <i class="s21-n">'+r.unread+'</i>':'')+'</b><span>'+(r.kind==='research'?T('科研','Research'):r.kind==='bounty'?T('悬赏','Bounty'):T('项目','Project'))+'</span></span><time>'+when(r.last_message_at)+'</time></button>' }).join('')+'</div>'
+          :'<p class="apx-cmx-note">'+T('还没有群聊。新建协作、或者对方同意了你的提议，就会出现在这里。','No group chats yet.')+'</p>')+'</section>';
+        B.innerHTML=h },fail) };
+    function thread(keep){ var id=sThread; if(!keep) B.innerHTML=head(T('私信','Message'),'', 'cmi',T('消息','Messages'))+loading();
+      G('/api/dm/'+id+'/messages').then(function(x){ if(view()!=='cmi'||sThread!==id) return; THR=x; var other=x.with.user_id, items=x.items||[];
+        var dr=$('#s21Say'), draftTxt=dr?dr.value:'';
+        var h=head(e2(other),'<button class="apx-btn" type="button" data-s="propose">'+IC.collab+'<span>'+T('发起协作','Propose collaboration')+'</span></button>','cmi',T('消息','Messages'))+
+          '<p class="apx-cm" style="margin:-6px 0 12px">'+e2(x.with.agent_name||T('沐沐','Mumu'))+(x.with.intro?' · '+e2(x.with.intro):'')+(x.with.skills_tags&&x.with.skills_tags.length?' · '+e2(x.with.skills_tags.join('、')):'')+(x.with.allow_collab?'':' · '+T('没开「参加别人的协作」','Not taking collaborations'))+'</p>'+
+          '<div class="s21-th" id="s21Th">'+(items.length?items.map(msgHtml).join(''):'<p class="apx-cmx-note">'+T('还没有消息。','No messages yet.')+'</p>')+'</div>'+
+          '<form class="apx-cmx-ctl" data-sf="say"><textarea class="apx-cmx-in" id="s21Say" rows="2" maxlength="4000" placeholder="'+T('写消息，回车发送（Shift+回车换行）','Write a message. Enter to send, Shift+Enter for a new line')+'"></textarea><div class="apx-cmx-row"><button class="apx-btn" type="button" data-s="draft">'+T('让'+nm()+'起草','Let '+nm()+' draft')+'</button><button class="apx-btn pri" type="submit">'+T('发送','Send')+'</button></div></form>';
+        B.innerHTML=h; var s2=$('#s21Say'); if(s2&&draftTxt) s2.value=draftTxt; var th=$('#s21Th'); if(th) th.scrollTop=th.scrollHeight;
+        items.filter(function(m){return m.kind==='proposal'}).forEach(function(m){ loadProposal(m.ref_id) });
+        if(items.some(function(m){return m.sender_id!==myId()&&!m.read_at})) P('/api/dm/'+id+'/read').then(loadInbox).catch(function(){}) },function(e){ fail(e); sThread=''; S.cmi() }) }
+    function msgHtml(m){ var mine=m.sender_id===myId(), draft=m.status==='draft';
+      if(m.kind==='proposal') return '<div class="s21-msg'+(mine?' me':'')+'"><div class="s21-prop" data-sprop="'+e2(m.ref_id)+'">'+wait(T('正在加载提议…','Loading proposal…'))+'</div><time>'+when(m.created_at)+'</time></div>';
+      if(m.kind==='room_link') return '<div class="s21-msg sys"><button class="apx-btn pri" type="button" data-s="room" data-id="'+e2(m.ref_id)+'">'+IC.collab+'<span>'+T('去协作','Open room')+(m.content&&!/^去协作$|^Open room$/.test(m.content)?'：'+e2(m.content):'')+'</span></button></div>';
+      return '<div class="s21-msg'+(mine?' me':'')+(draft?' draft':'')+'">'+(draft?'<span class="apx-cm">'+T(nm()+'起草的，只有你看得到','Drafted by '+nm()+', only you can see it')+'</span><textarea class="apx-cmx-in" rows="3" data-draft="'+e2(m.id)+'">'+e2(m.content)+'</textarea><div class="apx-cmx-row"><button class="apx-btn pri" type="button" data-s="dsend" data-id="'+e2(m.id)+'">'+T('发送','Send')+'</button><button class="apx-btn" type="button" data-s="ddrop" data-id="'+e2(m.id)+'">'+T('不要','Discard')+'</button></div>'
+        :'<div class="s21-bub">'+e2(m.content)+'</div>')+'<time>'+when(m.created_at)+(mine&&m.read_at?' · '+T('已读','Read'):'')+'</time></div>' }
+    var PST={pending:['等回复','Pending'],accepted:['已同意','Accepted'],declined:['已婉拒','Declined'],countered:['已改条件','Countered'],expired:['已过期','Expired']};
+    function loadProposal(id){ G('/api/proposals/'+id).then(function(p){ var el=$('[data-sprop="'+id+'"]'); if(!el) return; var toMe=p.to_id===myId(), st=PST[p.status]||[p.status,p.status];
+      el.innerHTML='<b>'+(p.kind==='bounty'?T('接单申请：','Bounty application: '):T('协作提议：','Proposal: '))+e2(p.title)+'</b><p>'+e2(p.goal)+'</p><span class="apx-cm">'+(p.kind==='research'?T('科研','Research'):p.kind==='bounty'?T('悬赏','Bounty'):T('项目','Project'))+' · '+T('分成：','Split: ')+(p.split&&p.split.mode==='fixed'?T('固定比例','Fixed'):T('按贡献','By contribution'))+' · '+T(st[0],st[1])+'</span>'+
+        (p.status==='pending'&&toMe?'<div class="apx-cmx-row"><button class="apx-btn pri" type="button" data-s="pacc" data-id="'+e2(p.id)+'">'+T('同意','Accept')+'</button><button class="apx-btn" type="button" data-s="pdec" data-id="'+e2(p.id)+'">'+T('婉拒','Decline')+'</button></div>':'')+
+        (p.room_id?'<div class="apx-cmx-row"><button class="apx-btn" type="button" data-s="room" data-id="'+e2(p.room_id)+'">'+T('去协作','Open room')+'</button></div>':'') },function(){}) }
+    function openDm(uid,text){ dlg('dm','<h2>'+T('私信 ','Message ')+e2(uid)+'</h2><label>'+T('说点什么','Message')+'<textarea id="s21DmT" rows="4" maxlength="4000">'+e2(text||'')+'</textarea></label>'+ft(T('发送','Send')),
+      function(){ var t=$('#s21DmT').value.trim(); if(!t){ $('#s21DmT').focus(); return } P('/api/dm',{to:uid,content:t}).then(function(x){ dclose(); sThread=x.thread_id; show('cmi') },fail) }) }
+    function proposeDlg(){ if(!THR) return; var other=THR.with.user_id;
+      dlg('pr','<h2>'+T('发起协作','Propose a collaboration')+'</h2><p>'+T(e2(other)+' 同意后会开一个协作房间：你们俩、各自的'+nm()+'一起推进，按各自 AI 的产出分成。',e2(other)+' gets a card; when they accept, a room opens with both of you and your AIs.')+'</p>'+
+        '<label>'+T('题目','Title')+'<input id="s21PrT" maxlength="60" autocomplete="off"></label><label>'+T('要做成什么','Goal')+'<textarea id="s21PrG" rows="4" maxlength="2000"></textarea></label>'+
+        '<div class="apx-row2"><label>'+T('类型','Type')+'<select id="s21PrK"><option value="project">'+T('项目','Project')+'</option><option value="research">'+T('科研','Research')+'</option></select></label><label>'+T('我的'+nm()+'用的模型','My AI’s model')+'<select id="s21PrM">'+modelOpts('')+'</select></label></div>'+ft(T('发给 '+e2(other),'Send')),
+        function(){ var ti=$('#s21PrT').value.trim(), g=$('#s21PrG').value.trim(); if(!ti){$('#s21PrT').focus(); return} if(!g){$('#s21PrG').focus(); return}
+          P('/api/dm/'+sThread+'/proposals',{title:ti,goal:g,kind:$('#s21PrK').value,seats:[{owner:myId(),type:'agent',role:T('成员','Member'),model:apiModel($('#s21PrM').value)},{owner:other,type:'agent',role:T('成员','Member')}],split:{mode:'contribution'}})
+            .then(function(){ dclose(); toast(T('提议已发出，等对方同意','Proposal sent')); thread(true) },fail) }) }
+    document.addEventListener('keydown',function(e){ if(e.target&&e.target.id==='s21Say'&&e.key==='Enter'&&!e.shiftKey&&!e.isComposing){ e.preventDefault(); var f=e.target.closest('form'); if(f) f.requestSubmit() } });
+
+    /* ===== 悬赏 ===== */
+    var bseg='all', TYPES=X.TYPES, BST={pending_payment:['等付款','Awaiting payment'],open:['开放中','Open'],taken:['进行中','In progress'],delivered:['已交付，等验收','Delivered'],accepted:['已验收','Accepted'],cancelled:['已撤下','Cancelled'],refunded:['已退款','Refunded']};
+    S.cmb=function(){ var tk=(ME&&ME.profile&&ME.profile.take_bounty)||{on:false,types:[],min:null,ask:true};
+      var h=head(T('悬赏','Bounties'),'<button class="apx-btn pri" type="button" data-s="bnew">'+IC.plus+'<span>'+T('发悬赏','Post a bounty')+'</span></button>')+'<p class="apx-lead">'+T('你出报酬，别人和他的 AI 帮你做完，交付验收后才付款。','You set a reward; someone and their AI do it, and you pay after accepting the work.')+'</p>'+
+        '<div class="apx-czb" style="margin:0 0 16px"><div class="apx-seg"><button type="button" data-s="bseg" data-v="all" aria-pressed="'+(bseg==='all')+'">'+T('大家的','Everyone’s')+'</button><button type="button" data-s="bseg" data-v="mine" aria-pressed="'+(bseg==='mine')+'">'+T('我发的和我接的','Mine')+'</button></div></div>'+
+        '<div id="s21BN"></div><div class="apx-cmx-list" id="s21BL">'+loading()+'</div>'+
+        '<div class="apx-cmx-sec" style="margin-top:22px"><div class="apx-cmx-ln"><div><b>'+T('让'+nm()+'接悬赏','Let '+nm()+' take bounties')+'</b><span>'+T('有符合下面设置的新单时，'+nm()+'会找到它。','When a new bounty fits, '+nm()+' finds it for you.')+'</span></div><button class="apx-sw" type="button" role="switch" data-s="tk" data-v="on" aria-checked="'+!!tk.on+'" aria-label="'+T('接悬赏','Take bounties')+'"></button></div>'+
+        '<div class="apx-cmx-ln"><div><b>'+T('能接的类型','Types it can take')+'</b><div class="apx-cmx-chips" style="margin-top:6px">'+TYPES.map(function(t){return '<button type="button" data-s="tkt" data-v="'+t[0]+'" aria-pressed="'+((tk.types||[]).indexOf(t[0])>=0)+'">'+T(t[0],t[1])+'</button>'}).join('')+'</div></div></div>'+
+        '<div class="apx-cmx-ln"><div><b>'+T('最低报酬（元）','Minimum reward (CNY)')+'</b><span>'+T('低于这个数的不接。','Bounties below this are skipped.')+'</span></div><input class="apx-cmx-in" style="width:120px" type="number" min="0" step="1" id="s21TkMin" value="'+(tk.min!=null?e2(yuan(tk.min)):'')+'"></div>'+
+        '<div class="apx-cmx-ln"><div><b>'+T('接单前先问我','Ask me before taking one')+'</b><span>'+T('关掉后'+nm()+'会直接替你申请（每天有上限），对方同意前不动钱。','When off, '+nm()+' applies for you (daily cap). No money moves until the poster agrees.')+'</span></div><button class="apx-sw" type="button" role="switch" data-s="tk" data-v="ask" aria-checked="'+(tk.ask!==false)+'" aria-label="'+T('接单前先问我','Ask me first')+'"></button></div></div>';
+      B.innerHTML=h;
+      G('/api/notifications?status=pending').then(function(x){ var it=(x.items||[]); var el=$('#s21BN'); if(!el||!it.length) return;
+        el.innerHTML='<section class="apx-cmx-sec"><h3>'+T(nm()+'找到的单','Found by '+nm())+'</h3>'+it.map(function(n){ var b=n.bounty||{}; return '<div class="apx-cmx-ln"><div><b>'+e2(b.title||n.ref_id)+(b.reward!=null?' · ¥'+yuan(b.reward):'')+'</b><span>'+e2(b.description||'')+'</span></div><div class="apx-cmx-row"><button class="apx-btn pri" type="button" data-s="nacc" data-id="'+e2(n.id)+'">'+T('接','Take')+'</button><button class="apx-btn" type="button" data-s="ndis" data-id="'+e2(n.id)+'">'+T('不接','Skip')+'</button></div></div>' }).join('')+'</section>' },function(){});
+      G('/api/bounties?tab='+bseg).then(function(x){ var box=$('#s21BL'); if(!box||view()!=='cmb') return; var it=x.items||[];
+        box.innerHTML=it.length?it.map(bHtml).join(''):(bseg==='all'?emp(T('还没有开放的悬赏','No open bounties'),T('别人发的悬赏会出现在这里。','Bounties from others appear here.')):emp(T('你还没发过或接过悬赏','No bounties yet'),T('把要做的事、报酬和截止时间写清楚，大家的'+nm()+'会来接。','Describe the job, reward and deadline.'),'<button class="apx-btn" type="button" data-s="bnew">'+IC.plus+'<span>'+T('发悬赏','Post a bounty')+'</span></button>')) },function(e){ var box=$('#s21BL'); if(box) box.innerHTML='<p class="apx-cmx-note">'+e2(errMsg(e))+'</p>' }) };
+    function bHtml(b){ var mine=b.mine, taker=b.taker_id===myId(), st=BST[b.status]||[b.status,b.status];
+      return '<article class="apx-cmx-post" data-sbty="'+e2(b.id)+'"><div class="apx-cmx-who">'+(mine?av(myId())+'<b>'+T('我发的','Mine')+'</b>':av(b.poster_id)+'<b>'+e2(b.poster_id)+'</b>')+'<i class="apx-tg'+(b.status==='open'?' ai':'')+'">'+T(st[0],st[1])+'</i><span>· '+when(b.created_at)+'</span></div>'+
+        '<h3 style="margin:6px 0 2px;font-size:16px">'+e2(b.title)+' <span class="apx-cm">¥'+yuan(b.reward)+(b.due_date?' · '+T('截止 ','Due ')+e2(b.due_date):'')+'</span></h3><p>'+e2(b.description)+'</p>'+
+        (b.types&&b.types.length?'<div class="apx-cmx-mem">'+b.types.map(function(t){return '<i class="apx-tg">'+e2(t)+'</i>'}).join('')+'</div>':'')+
+        (b.taker_id?'<p class="apx-cm">'+T('接单人：','Taken by: ')+(taker?T('我','Me'):e2(b.taker_id))+'</p>':'')+
+        (b.reject_note&&b.status==='taken'?'<p class="apx-cm">'+T('退回意见：','Sent back: ')+e2(b.reject_note)+'</p>':'')+
+        (b.delivery?'<details class="apx-cmx-sub" open><summary>'+T('交付的成果','Delivered work')+'</summary><div class="md">'+md(b.delivery)+'</div></details>':'')+
+        '<div data-sbprops></div><div class="apx-cmx-acts">'+
+          (!mine&&b.status==='open'?'<button class="apx-btn pri" type="button" data-s="btake" data-id="'+e2(b.id)+'">'+T('接下这单','Take this bounty')+'</button><button class="apx-btn" type="button" data-s="dm" data-u="'+e2(b.poster_id)+'">'+T('私信','Message')+'</button>':'')+
+          (mine&&b.status==='open'?'<button class="apx-btn" type="button" data-s="bprops" data-id="'+e2(b.id)+'">'+T('看接单申请','See applications')+'</button><button class="apx-btn" type="button" data-s="bcancel" data-id="'+e2(b.id)+'">'+T('撤下','Cancel')+'</button>':'')+
+          (b.room_id?'<button class="apx-btn'+(b.status==='taken'?' pri':'')+'" type="button" data-s="room" data-id="'+e2(b.room_id)+'">'+T('去协作','Open room')+'</button>':'')+
+          (taker&&b.status==='taken'?'<button class="apx-btn" type="button" data-s="bdeliver" data-id="'+e2(b.id)+'">'+T('交付（用房间成果）','Deliver room result')+'</button>':'')+
+          (mine&&b.status==='delivered'?'<button class="apx-btn pri" type="button" data-s="baccept" data-id="'+e2(b.id)+'">'+T('验收通过，付款','Accept and pay')+'</button><button class="apx-btn" type="button" data-s="breject" data-id="'+e2(b.id)+'">'+T('退回修改','Send back')+'</button>':'')+
+        '</div></article>' }
+    function tkSave(f){ var tk=JSON.parse(JSON.stringify((ME&&ME.profile&&ME.profile.take_bounty)||{on:false,types:[],min:null,ask:true})); tk.types=tk.types||[]; f(tk);
+      return PA('/api/me/profile',{take_bounty:tk}).then(loadMe).then(function(){ if(view()==='cmb') S.cmb() },fail) }
+    document.addEventListener('change',function(e){ if(e.target&&e.target.id==='s21TkMin'&&live()){ var v=e.target.value.trim(); tkSave(function(t){ t.min=v===''?null:Math.round(+v*100) }) } });
+    function bDlg(){ dlg('b','<h2>'+T('发悬赏','Post a bounty')+'</h2><p>'+T('报酬发布时先冻结（本机调试用的是假支付，不动真钱），验收通过再付给接单的人。','The reward is held when you post (fake payments in local testing) and paid when you accept the work.')+'</p>'+
+        '<label>'+T('标题','Title')+'<input id="s21BT" maxlength="60" autocomplete="off"></label><label>'+T('要做什么','What needs doing')+'<textarea id="s21BD" rows="5" maxlength="4000"></textarea></label>'+
+        '<div class="apx-row2"><label>'+T('报酬（元）','Reward (CNY)')+'<input id="s21BP" type="number" min="1" step="1"></label><label>'+T('截止日期','Deadline')+'<input id="s21BE" type="date"></label></div>'+
+        '<label>'+T('类型','Type')+'<div class="apx-cmx-chips" id="s21BK">'+TYPES.map(function(t){return '<button type="button" data-s="tog" data-v="'+t[0]+'" aria-pressed="false">'+T(t[0],t[1])+'</button>'}).join('')+'</div></label>'+ft(T('发布','Post')),
+      function(){ var ti=$('#s21BT').value.trim(), de=$('#s21BD').value.trim(), pay=+$('#s21BP').value; if(!ti){$('#s21BT').focus(); return} if(!de){$('#s21BD').focus(); return} if(!(pay>0)){$('#s21BP').focus(); return}
+        var body={title:ti,description:de,reward:Math.round(pay*100),types:$$('#s21BK [aria-pressed="true"]').map(function(x){return x.getAttribute('data-v')})}; if($('#s21BE').value) body.due_date=$('#s21BE').value;
+        P('/api/bounties',body).then(function(b){ dclose(); if(b.escrow&&b.escrow.pay_url) window.open(b.escrow.pay_url,'_blank'); bseg='mine'; toast(T('悬赏已发布','Bounty posted')); S.cmb() },fail) }) }
+    function takeDlg(id){ dlg('t','<h2>'+T('接下这单','Take this bounty')+'</h2><p>'+T('会给发悬赏的人发一张接单申请，对方同意后才开协作房间。','This sends an application; a room opens once the poster agrees.')+'</p><label>'+T('给对方留句话','Note to the poster')+'<textarea id="s21TN" rows="3" maxlength="1000" placeholder="'+T('比如：我做过类似的，三天内交付','e.g. I’ve done similar work and can deliver in three days')+'"></textarea></label>'+ft(T('发出申请','Apply')),
+      function(){ P('/api/bounties/'+id+'/take',{note:$('#s21TN').value.trim()||undefined}).then(function(){ dclose(); toast(T('已申请，等对方同意','Applied; waiting for the poster')); S.cmb() },fail) }) }
+
+    /* ===== 协作 ===== */
+    S.cmc=function(){ var h=head(T('协作','Collaborate'),'<button class="apx-btn" type="button" data-s="find">'+IC.find+'<span>'+T('让'+nm()+'帮我找人','Let '+nm()+' find people')+'</span></button><button class="apx-btn pri" type="button" data-s="cnew">'+IC.plus+'<span>'+T('新建协作','New collaboration')+'</span></button>')+'<p class="apx-lead">'+T('几个人各带自己的 AI 一起做，成果共享，按贡献分。要拉别人：先私信聊几句，再在私信里「发起协作」。','People bring their own AIs and work together. To bring someone in, message them first, then propose a collaboration.')+'</p><div id="s21People"></div><div id="s21RL">'+loading()+'</div>';
+      B.innerHTML=h;
+      loadRooms().then(function(a){ var box=$('#s21RL'); if(!box||view()!=='cmc') return;
+        box.innerHTML=a.length?'<div class="apx-cmx-grid">'+a.map(function(r){ var ppl=r.members.filter(function(m){return m.type==='person'}).map(function(m){return m.user_id});
+          return '<button class="apx-cmx-card" type="button" data-s="room" data-id="'+e2(r.id)+'"><span class="apx-cmx-mem"><i class="apx-tg'+(r.bounty_id?' ai':'')+'">'+(r.bounty_id?T('悬赏','Bounty'):r.kind==='research'?T('科研','Research'):T('项目','Project'))+'</i></span><b>'+e2(r.title)+'</b><p>'+e2(r.goal)+'</p><span class="apx-cmx-mem">'+ppl.map(av).join('')+'</span><span class="apx-cm">'+e2(ppl.join('、'))+' · '+when(r.updated_at)+'</span></button>' }).join('')+'</div>'
+          :emp(T('还没有协作','No collaborations yet'),T('建一个项目或科研课题，让'+nm()+'和不同模型的 AI 一起推进。','Start a project and let '+nm()+' work with AIs on different models.'),'<button class="apx-btn" type="button" data-s="cnew">'+IC.plus+'<span>'+T('新建协作','New collaboration')+'</span></button>') },function(e){ var box=$('#s21RL'); if(box) box.innerHTML='<p class="apx-cmx-note">'+e2(errMsg(e))+'</p>' }) };
+    function cDlg(){ var R=X.ROLES;
+      dlg('c','<h2>'+T('新建协作','New collaboration')+'</h2><p>'+T(nm()+' 牵头，几个 AI 各管一摊，在服务器上一轮轮推进；你随时可以插话。之后可以邀请别人加入。',nm()+' leads, several AIs each take a role and move it forward on the server. You can invite people later.')+'</p>'+
+        '<label>'+T('题目','Title')+'<input id="s21CT" maxlength="60" autocomplete="off"></label><label>'+T('要做成什么','Goal')+'<textarea id="s21CG" rows="4" maxlength="2000"></textarea></label>'+
+        '<div class="apx-row2"><label>'+T('类型','Type')+'<select id="s21CK"><option value="project">'+T('项目','Project')+'</option><option value="research">'+T('科研','Research')+'</option></select></label><label>'+T(nm()+' 用的模型',nm()+'’s model')+'<select id="s21CM">'+modelOpts('')+'</select></label></div>'+
+        '<label>'+T('一起协作的 AI','AIs working with it')+'<div id="s21CR" style="display:grid;gap:8px">'+R.map(function(r){return seatRow(T(r[0],r[1]))}).join('')+'</div></label>'+
+        '<div class="apx-cmx-row"><button type="button" class="apx-btn" data-s="cadd">'+IC.plus+'<span>'+T('再加一个 AI','Add an AI')+'</span></button></div>'+ft(T('建好了','Create')),
+      function(){ var ti=$('#s21CT').value.trim(), g=$('#s21CG').value.trim(); if(!ti){$('#s21CT').focus(); return} if(!g){$('#s21CG').focus(); return}
+        var seats=[{owner:myId(),type:'agent',role:T('牵头','Lead'),model:apiModel($('#s21CM').value)}].concat($$('#s21CR [data-srow]').map(function(r,i){return {owner:myId(),type:'model',role:r.querySelector('input').value.trim()||T('成员','Member')+(i+1),model:apiModel(r.querySelector('select').value)}}));
+        P('/api/rooms',{title:ti,goal:g,kind:$('#s21CK').value,seats:seats}).then(function(r){ dclose(); sRoom=r.id; loadRooms().catch(function(){}); show('cmr') },fail) }) }
+    function seatRow(role){ return '<div class="apx-cmx-mrow" data-srow><input class="apx-cmx-in" value="'+e2(role)+'" maxlength="20" aria-label="'+T('分工','Role')+'"><select class="apx-cmx-in" aria-label="'+T('模型','Model')+'">'+modelOpts('')+'</select><button class="x" type="button" data-s="crm" aria-label="'+T('移除','Remove')+'">'+IC.trash+'</button></div>' }
+
+    /* 协作房间：消息、成员、成果；跑一轮时通过 WebSocket 逐字看到每个 AI 说话 */
+    var sRoom='', R=null, RWS=null, RRUN=false, RWATCH=false, RIDLE=0, LIVE={}, CONTRIB=null, BTY=null;
+    function closeRoomWs(){ if(RWS){ try{RWS.close()}catch(x){} RWS=null } }
+    function mem(id){ return (R&&R.members.filter(function(m){return m.id===id})[0])||{id:id,type:'model',label:'?'} }
+    function mName(m){ return m.type==='person'?(m.user_id===myId()?T('我','Me'):m.user_id):m.type==='agent'?(m.owner_user_id===myId()?nm():m.owner_user_id+T(' 的沐沐','’s Mumu')):(m.role||m.label) }
+    function mIcon(m){ return m.type==='person'?av(m.user_id):m.type==='agent'?'<img class="ip" src="'+e2(X.fig())+'" alt="">':'<span class="lg">'+(X.mlogo(m.model)||IC.collab)+'</span>' }
+    function rmHtml(m){ var mb=mem(m.member_id), person=mb.type==='person', me=person&&mb.user_id===myId(), lv=LIVE[m.id];
+      return '<article class="apx-cmx-turn'+(me?' me':'')+'" data-smsg="'+e2(m.id)+'"><div class="apx-cmx-who">'+mIcon(mb)+'<b>'+e2(mName(mb))+'</b>'+(person?'':'<span>· '+e2(mb.type==='agent'?(mb.role||T('沐沐','Mumu')):T(mb.owner_user_id+' 派的',mb.owner_user_id+'’s'))+(m.model||mb.model?' · '+e2(m.model||mb.model):'')+'</span>')+'</div>'+
+        '<div class="md">'+(lv&&!m.content?wait(T('正在想…','Thinking…')):person?'<p>'+e2(m.content)+'</p>':md(m.content))+'</div>'+(m.output_tokens?'<span class="met">'+T('产出 ','Output ')+m.output_tokens+' Token'+(m.ttft_ms!=null?' · '+T('首字 ','first token ')+(m.ttft_ms/1000).toFixed(2)+' s':'')+'</span>':'')+'</article>' }
+    S.cmr=function(){ if(!sRoom){ show('cmc'); return } var id=sRoom; B.innerHTML=head(T('协作','Collaborate'),'','cmc',T('协作','Collaborate'))+loading();
+      Promise.all([G('/api/rooms/'+id),G('/api/rooms/'+id+'/contributions').catch(function(){return null})]).then(function(x){ if(view()!=='cmr'||sRoom!==id) return; R=x[0]; CONTRIB=x[1];
+        (R.bounty_id?G('/api/bounties/'+R.bounty_id).catch(function(){return null}):Promise.resolve(null)).then(function(b){ BTY=b; if(view()==='cmr'&&sRoom===id){ paintRoom(); if(!RWS||RWS._room!==id) openRoomWs(id) } });
+        P('/api/rooms/'+id+'/read').then(loadInbox).catch(function(){}) },function(e){ fail(e); sRoom=''; show('cmc') }) };
+    function paintRoom(){ var r=R, me=myId(), share={}; if(CONTRIB) (CONTRIB.members||[]).forEach(function(c){share[c.member_id]=c.share});
+      var b=BTY, taker=b&&b.taker_id===me, poster=b&&b.poster_id===me;
+      var acts=(taker&&b.status==='taken'&&r.result?'<button class="apx-btn pri" type="button" data-s="bdeliver" data-id="'+e2(b.id)+'">'+T('交付','Deliver')+'</button>':'')+(poster&&b.status==='delivered'?'<button class="apx-btn pri" type="button" data-s="baccept" data-id="'+e2(b.id)+'">'+T('验收通过','Accept')+'</button>':'')+
+        '<button class="apx-btn" type="button" data-s="rsum">'+IC.doc+'<span>'+T('整理成果','Write up')+'</span></button><button class="apx-btn" type="button" data-s="rleave">'+IC.trash+'<span>'+(r.members.filter(function(m){return m.type==='person'}).length>1?T('退出','Leave'):T('删除','Delete'))+'</span></button>';
+      var h=head(e2(r.title),acts,'cmc',T('协作','Collaborate'))+
+        '<p class="apx-cmx-goal"><i class="apx-tg'+(r.bounty_id?' ai':'')+'">'+(r.bounty_id?T('悬赏','Bounty'):r.kind==='research'?T('科研','Research'):T('项目','Project'))+'</i> '+e2(r.goal)+'</p>'+
+        (b?'<p class="apx-cm" style="margin:-4px 0 12px">'+T('报酬 ¥','Reward ¥')+yuan(b.reward)+(b.due_date?' · '+T('截止 ','Due ')+e2(b.due_date):'')+' · '+T((BST[b.status]||[b.status])[0],(BST[b.status]||[b.status,b.status])[1])+(taker&&b.status==='taken'?' · '+T('做完点「整理成果」，再点「交付」','Write up, then deliver'):'')+'</p>':'')+
+        (r.missing_keys&&r.missing_keys.length?'<p class="apx-cm">'+T('这些人的 AI 没配 Key，轮到时会跳过：','These owners’ AIs have no key and will be skipped: ')+e2(r.missing_keys.join('、'))+'</p>':'')+
+        '<div class="apx-cmx-team">'+r.members.map(function(m){ var pc=share[m.id]!=null&&CONTRIB&&CONTRIB.total_output_tokens?Math.round(share[m.id]*100):null;
+          return '<div class="apx-cmx-m" data-s="at" data-v="'+e2(mName(m))+'" title="'+T('点一下 @ 它','Click to mention')+'">'+mIcon(m)+'<div><b>'+e2(mName(m))+(pc!=null?'<i>'+T('贡献 ','share ')+pc+'%</i>':'')+'</b><span>'+(m.type==='person'?T('人','Person'):m.type==='agent'?T('沐沐','Mumu')+(m.role?' · '+e2(m.role):''):e2(m.model||''))+(m.type!=='person'&&m.owner_user_id!==me?' · '+e2(m.owner_user_id):'')+'</span></div></div>' }).join('')+
+          '<button class="apx-cmx-m apx-cmx-inv" type="button" data-s="rinvite">'+IC.plus+'<b>'+T('邀请人','Invite')+'</b></button></div>'+
+        (r.result?'<section class="apx-cmx-res"><h3>'+T('成果','Write-up')+'</h3><div class="md">'+md(r.result)+'</div><span class="apx-cm">'+when(r.result_at)+'</span></section>':'')+
+        '<div class="apx-cmx-turns" id="s21Turns">'+(r.messages&&r.messages.length?r.messages.map(rmHtml).join(''):'<p class="apx-cmx-note">'+T('说一句，房间里的 AI 会按顺序接话；@ 谁就只让谁回。','Say something and the AIs reply in turn; @ someone to have only them reply.')+'</p>')+'</div>'+
+        window.__apxRoomCtl({form:'data-sf="rsay"',ta:'s21RSay',running:RRUN,stop:'data-s="rstop"',cont:'data-s="rcont"',empty:!(r.messages&&r.messages.length)});
+      var keep=$('#s21RSay'), kv=keep?keep.value:''; B.innerHTML=h; if(kv){ var t2=$('#s21RSay'); t2.value=kv; t2.dispatchEvent(new Event('input',{bubbles:true})) } }
+    function addMsg(m){ if(!R) return; var i=-1; R.messages=R.messages||[]; R.messages.forEach(function(x,k){ if(x.id===m.id) i=k }); if(i>=0) R.messages[i]=m; else R.messages.push(m);
+      if(view()!=='cmr'||sRoom!==R.id) return; var el=$('[data-smsg="'+m.id+'"]'), box=$('#s21Turns'); if(el) el.outerHTML=rmHtml(m); else if(box){ var n=box.querySelector('.apx-cmx-note'); if(n) n.remove(); box.insertAdjacentHTML('beforeend',rmHtml(m)) } }
+    function openRoomWs(id){ closeRoomWs(); ws('/api/rooms/'+id+'/stream',function(ev){ if(!R||R.id!==id) return;
+        clearTimeout(RIDLE);
+        if(ev.type==='turn_start'){ LIVE[ev.message_id]=1; addMsg({id:ev.message_id,room_id:id,member_id:ev.member_id,content:'',created_at:Date.now()}); if(!RRUN){ RRUN=true; RWATCH=true; paintCtl() } }
+        else if(ev.type==='delta'){ var m=(R.messages||[]).filter(function(x){return x.id===ev.message_id})[0]; if(!m) return; m.content=(m.content||'')+ev.text; if(!m._raf) m._raf=requestAnimationFrame(function(){ m._raf=0; addMsg(m) }) }
+        else if(ev.type==='message'){ delete LIVE[ev.message.id]; addMsg(ev.message);
+          /* 别人点的「开始」：服务器不发「这一轮结束」，下一个 AI 3 秒内没开口就当这一轮说完了 */
+          if(RWATCH) RIDLE=setTimeout(function(){ if(RWATCH){ RWATCH=false; RRUN=false; G('/api/rooms/'+id+'/contributions').then(function(c){ CONTRIB=c },function(){}).then(paintCtl) } },3000) }
+        else if(ev.type==='turn_skipped'){ var mb=mem(ev.member_id); if(ev.message_id){ R.messages=(R.messages||[]).filter(function(x){return x.id!==ev.message_id}); var el=$('[data-smsg="'+ev.message_id+'"]'); if(el) el.remove() } toast(T(mName(mb)+' 这次没说：','Skipped '+mName(mb)+': ')+(ev.reason==='no_key'||ev.reason==='missing_key'?T('主人没配 Key','owner has no key'):ev.reason)) }
+        else if(ev.type==='round_stopped'){ RRUN=false; RWATCH=false; paintCtl() }
+        else if(ev.type==='result'||ev.type==='member_left'){ S.cmr() } }).then(function(w){ w._room=id; RWS=w },function(){}) }
+    function paintCtl(){ if(view()==='cmr'&&R) paintRoom() }
+    function runRound(){ if(!R||RRUN) return; var id=R.id; RRUN=true; RWATCH=false; paintCtl();
+      P('/api/rooms/'+id+'/rounds').then(function(x){ (x.messages||[]).forEach(function(m){ delete LIVE[m.id]; addMsg(m) }); if(x.skipped&&x.skipped.length&&!RWS) toast(T('有 '+x.skipped.length+' 个 AI 跳过了','Some AIs were skipped')) },fail)
+        .then(function(){ RRUN=false; if(sRoom===id) return G('/api/rooms/'+id+'/contributions').then(function(c){ CONTRIB=c; paintCtl() },function(){ paintCtl() }) }) }
+    function inviteDlg(){ dlg('i','<h2>'+T('邀请人','Invite someone')+'</h2><p>'+T('会在私信里给对方发一张邀请卡，对方同意后带着他的'+nm()+'进来。要先和对方私信聊过。','They get an invitation card in their messages and join with their AI once they accept. You need to have messaged them first.')+'</p><label>'+T('对方的名字','Their name')+'<input id="s21IU" maxlength="64" autocomplete="off"></label>'+ft(T('发邀请','Invite')),
+      function(){ var u=$('#s21IU').value.trim(); if(!u){$('#s21IU').focus(); return} P('/api/rooms/'+R.id+'/invites',{user_id:u,seats:[{owner:u,type:'agent',role:T('成员','Member')}]}).then(function(){ dclose(); toast(T('邀请已发出','Invitation sent')) },fail) }) }
+
+    /* ===== 技能 ===== */
+    var kseg='featured', kcat='', kq='', CATS=[['写作','Writing'],['编程','Coding'],['翻译','Translation'],['分析','Analysis'],['客服','Support'],['调研','Research'],['设计','Design'],['办公','Office']];
+    function price(s){ return s.price_mode==='once'?T('买断 ¥','Buy ¥')+yuan(s.price):s.price_mode==='per'?'¥'+yuan(s.price)+T(' / 次',' / use'):T('免费','Free') }
+    S.cmk=function(){ var h=head(T('技能','Skills'),'<button class="apx-btn pri" type="button" data-s="knew">'+IC.plus+'<span>'+T('发布技能','Publish a skill')+'</span></button>')+
+        '<div class="apx-czb" style="margin:0 0 14px"><div class="apx-seg">'+[['featured','精选','Featured'],['all','全部','All'],['mine','我的','Mine']].map(function(x){return '<button type="button" data-s="kseg" data-v="'+x[0]+'" aria-pressed="'+(kseg===x[0])+'">'+T(x[1],x[2])+'</button>'}).join('')+'</div></div>'+
+        '<div class="apx-cmx-bar"><div class="apx-cmx-chips"><button type="button" data-s="kcat" data-v="" aria-pressed="'+(!kcat)+'">'+T('全部分类','All types')+'</button>'+CATS.map(function(c){return '<button type="button" data-s="kcat" data-v="'+c[0]+'" aria-pressed="'+(kcat===c[0])+'">'+T(c[0],c[1])+'</button>'}).join('')+'</div>'+
+        '<label class="apx-czq">'+IC.find0+'<input type="search" id="s21KQ" placeholder="'+T('搜索技能','Search skills')+'" value="'+e2(kq)+'" autocomplete="off"></label></div><div id="s21KL">'+loading()+'</div>';
+      B.innerHTML=h; kList() };
+    function kList(){ var qs=['tab='+kseg]; if(kcat) qs.push('category='+encodeURIComponent(kcat)); if(kq) qs.push('q='+encodeURIComponent(kq));
+      G('/api/skills?'+qs.join('&')).then(function(x){ var box=$('#s21KL'); if(!box||view()!=='cmk') return; var it=x.items||[];
+        box.innerHTML=it.length?'<div class="apx-skx-feat">'+it.map(kCard).join('')+'</div>':emp(kseg==='featured'?T('还没有精选技能','No featured skills yet'):kseg==='mine'?T('你还没有技能','No skills yet'):T('没有找到相关技能','No matching skills'),kseg==='mine'?T('把常用的一段提示词做成技能，发布出来，别人就能获取。','Turn a prompt you use often into a skill.'):'') },function(e){ var box=$('#s21KL'); if(box) box.innerHTML='<p class="apx-cmx-note">'+e2(errMsg(e))+'</p>' }) }
+    var SKS={};
+    function kCard(s){ SKS[s.id]=s; var pubd=!!s.published_at;
+      return '<div class="apx-skx-card"><span class="apx-cmx-mem">'+(s.official?'<i class="apx-tg ai">'+T('精选','Featured')+'</i>':'')+(s.category?'<i class="apx-tg">'+e2(s.category)+'</i>':'')+(s.mine?'<i class="apx-tg">'+(pubd?(s.visibility==='private'?T('只有自己','Only me'):T('公开','Public')):T('没发布','Not published'))+'</i>':'')+'</span>'+
+        '<b>'+e2(s.name)+'</b><p>'+e2(s.when_to_use||s.prompt||'')+'</p><span class="apx-cm">'+(s.mine?T('我','Me'):e2(s.author_id))+' · <span class="price">'+e2(price(s))+'</span>'+(s.downloads?' · '+T(s.downloads+' 次获取',s.downloads+' gets'):'')+'</span>'+
+        '<div class="acts">'+(s.mine?(pubd?'<button class="apx-btn" type="button" data-s="koff" data-id="'+e2(s.id)+'">'+T('撤下','Unpublish')+'</button>':'<button class="apx-btn pri" type="button" data-s="kon" data-id="'+e2(s.id)+'">'+T('发布','Publish')+'</button>'):
+          '<button class="apx-btn'+(s.in_mine?'':' pri')+'" type="button" data-s="kget" data-id="'+e2(s.id)+'">'+(s.in_mine?T('移出我的','Remove'):T('获取','Get'))+'</button><button class="apx-btn" type="button" data-s="dm" data-u="'+e2(s.author_id)+'">'+T('私信','Message')+'</button>')+
+          '<button class="apx-btn" type="button" data-s="ktry" data-id="'+e2(s.id)+'">'+T('试试','Try')+'</button></div></div>' }
+    document.addEventListener('input',function(e){ if(e.target&&e.target.id==='s21KQ'){ kq=e.target.value.trim(); clearTimeout(kList.t); kList.t=setTimeout(kList,300) } });
+    function kDlg(){ dlg('k','<h2>'+T('发布技能','Publish a skill')+'</h2>'+
+        '<label>'+T('名称','Name')+'<input id="s21KN" maxlength="40" autocomplete="off"></label><label>'+T('什么时候用','When to use it')+'<input id="s21KW" maxlength="120" autocomplete="off"></label><label>'+T('提示词','Prompt')+'<textarea id="s21KP" rows="5" maxlength="8000"></textarea></label>'+
+        '<div class="apx-row2"><label>'+T('分类','Type')+'<select id="s21KC">'+CATS.map(function(k){return '<option value="'+k[0]+'">'+T(k[0],k[1])+'</option>'}).join('')+'</select></label><label>'+T('谁能看到','Who can see it')+'<select id="s21KV"><option value="public">'+T('公开','Public')+'</option><option value="private">'+T('只有自己','Only me')+'</option></select></label></div>'+
+        '<div class="apx-row2"><label>'+T('收不收钱','Pricing')+'<select id="s21KM"><option value="free">'+T('免费','Free')+'</option><option value="once">'+T('买断','One-off')+'</option><option value="per">'+T('按次','Per use')+'</option></select></label><label>'+T('价格（元）','Price (CNY)')+'<input id="s21KA" type="number" min="0" step="0.01" placeholder="0"></label></div>'+ft(T('发布','Publish')),
+      function(){ var n=$('#s21KN').value.trim(), p=$('#s21KP').value.trim(), mode=$('#s21KM').value, amt=+$('#s21KA').value||0; if(!n){$('#s21KN').focus(); return} if(!p){$('#s21KP').focus(); return} if(mode!=='free'&&!(amt>0)){$('#s21KA').focus(); return}
+        P('/api/skills',{name:n,when_to_use:$('#s21KW').value.trim(),prompt:p,category:$('#s21KC').value,visibility:$('#s21KV').value,price_mode:mode,price:mode==='free'?0:Math.round(amt*100),publish:true}).then(function(){ dclose(); kseg='mine'; toast(T('技能已发布','Skill published')); S.cmk() },fail) }) }
+    function tryPrompt(t){ show(''); var nb=$('#xpNew'); if(nb) nb.click(); setTimeout(function(){ var q=$('#xpQ'); if(!q) return; q.value=t; q.dispatchEvent(new Event('input',{bubbles:true})); q.focus() },150) }
+
+    /* ===== 点击与表单 ===== */
+    var ACT={
+      disconnect:function(){ var c=A.jget(CK,{})||{}; c.on=false; A.jset(CK,c); closeRoomWs(); if(IWS){ var w=IWS; IWS=null; try{w.close()}catch(x){} } ME=null; INBOX=null; dot(); toast(T('已断开，社区回到只在本机','Disconnected')); rerender(); if(X.rooms) X.rooms() },
+      join:function(){ P('/api/me/join').then(loadMe).then(syncProfile).then(function(){ toast(T(nm()+'加入社区了',nm()+' joined')); rerender() },fail) },
+      leave:function(b){ if(!b.classList.contains('sure')){ b.classList.add('sure'); b.textContent=T('确认退出','Confirm'); return } P('/api/me/leave').then(loadMe).then(function(){ toast(T('已退出社区','Left the community')); rerender() },fail) },
+      keyrestore:function(){ P('/api/me/agent-key/restore').then(function(){ toast(T('已恢复','Restored')); rerender() },fail) },
+      withdraw:function(){ P('/api/withdrawals',{amount:1}).then(function(){},fail) },
+      pch:function(b){ $$('#s21PC [data-s="pch"]').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))}) },
+      fch:function(b){ fch=b.getAttribute('data-v'); if(fby==='saved') fby=''; S.cmf() }, fby:function(b){ var k=b.getAttribute('data-v'); fby=fby===k?'':k; S.cmf() },
+      pwrite:function(){ wDlg() },
+      wpub:function(){ var c=$('#s21Live'); if(!c||!c._w) return; P('/api/community/posts',{channel:c._w.ch,content:c._w.t,by:'agent',source_ref:c._w.src}).then(function(){ toast(T('已发布','Posted')); feedList() },fail) },
+      wdrop:function(){ var c=$('#s21Live'); if(c) c.remove() },
+      prep:function(b){ agentComment(b) },
+      madd:function(){ var f=$('#s31F'); if(f) f.click() },
+      mrm:function(b){ var i=+b.getAttribute('data-v'), m=MED[i]; if(m&&m.preview) URL.revokeObjectURL(m.preview); MED.splice(i,1); paintStrip() },
+      tsug:function(b){ var t=$('#s21PT'); if(!t) return; var tag=b.getAttribute('data-v'), h=curHash(t);
+        if(h) t.value=t.value.slice(0,h.start)+'#'+tag+' '+t.value.slice(h.end); else t.value=(t.value&&!/\s$/.test(t.value)?t.value+' ':t.value)+'#'+tag+' ';
+        t.focus(); loadTags('') },
+      ptag:function(b){ ftag=b.getAttribute('data-v'); sPost=''; PD=null; fch=''; fby=''; fq=''; if(view()!=='cmf') show('cmf'); else S.cmf(); var m=$('#apxMain'); if(m) m.scrollTop=0 },
+      ptagx:function(){ ftag=''; S.cmf() },
+      preply:function(b){ replyTo(b) },
+      popen:function(b){ sPost=b.getAttribute('data-id'); ptab='me'; detail() },
+      pback:function(){ sPost=''; PD=null; S.cmf() },
+      psaved:function(){ fby=fby==='saved'?'':'saved'; fch=''; S.cmf() },
+      ptab:function(b){ ptab=b.getAttribute('data-v'); detail(true) },
+      plike:function(b){ var id=b.getAttribute('data-id'), p=POSTS[id]||PD; if(!p) return; b.disabled=true;
+        likeToggle('post',id,!!p.liked).then(function(np){ var old=POSTS[id]; POSTS[id]=np; if(sPost===id) return detail(true); var nb=document.createElement('span'); nb.innerHTML=likeBtn(np); b.replaceWith(nb.firstChild); if(old) old.liked=np.liked },function(e){ b.disabled=false; fail(e) }) },
+      psave:function(){ if(!PD) return; (PD.saved?DE('/api/community/posts/'+PD.id+'/save'):PU('/api/community/posts/'+PD.id+'/save',{})).then(function(np){ toast(np.saved?T('已收藏','Saved'):T('已取消收藏','Removed from saved')); detail(true) },fail) },
+      pshare:function(){ if(!PD) return; var sp=splitPost(PD), txt=(sp.title?sp.title+'\n\n':'')+sp.body+'\n\n'+T('—— 来自沐沐社区 · ','— from the Mumu community · ')+whoName(PD.author_id,PD.by);
+        (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(function(){ toast(T('已复制，可以贴给别人','Copied')) },function(){ toast(T('复制不了，请手动选中文字','Couldn’t copy')) }) },
+      clike:function(b){ var id=b.getAttribute('data-id'), r=PD&&(PD.replies||[]).filter(function(x){return x.id===id})[0]; if(!r) return; likeToggle('reply',id,!!r.liked).then(function(){ detail(true) },fail) },
+      pdel:function(b){ if(!b.classList.contains('sure')){ b.classList.add('sure'); b.textContent=T('确认删除','Confirm delete'); return } DE('/api/community/posts/'+b.getAttribute('data-id')).then(function(){ sPost=''; PD=null; S.cmf() },fail) },
+      rdel:function(b){ DE('/api/community/replies/'+b.getAttribute('data-id')).then(function(){ detail(true) },fail) },
+      phide:function(b){ rec('post',b.getAttribute('data-id'),'hide').then(function(){ toast(T('以后少推这类','You’ll see fewer like this')); sPost=''; PD=null; S.cmf() }) },
+      pfwd:function(b){ var p=POSTS[b.getAttribute('data-id')]; if(!p) return; rec('post',p.id,'forward'); show('cp'); setTimeout(function(){ var q=$('#xpQ'); if(!q) return; q.value=T('看看这篇帖子，对我们有什么用？','Have a look at this post. How could it help us?')+'\n\n'+p.content; q.dispatchEvent(new Event('input',{bubbles:true})); q.focus() },120) },
+      dm:function(b){ var u=b.getAttribute('data-u'); if(u===myId()){ toast(ERR.cannot_dm_self[0]); return } var hit=INBOX&&INBOX.items.filter(function(i){return i.type==='dm'&&i.with.user_id===u})[0]; if(hit){ sThread=hit.thread_id; show('cmi') } else openDm(u) },
+      thread:function(b){ sThread=b.getAttribute('data-id'); S.cmi() },
+      draft:function(b){ b.disabled=true; b.textContent=T('正在起草…','Drafting…'); P('/api/dm/'+sThread+'/drafts').then(function(){ thread(true) },function(e){ fail(e); b.disabled=false; b.textContent=T('让'+nm()+'起草','Let '+nm()+' draft') }) },
+      dsend:function(b){ var id=b.getAttribute('data-id'), ta=$('[data-draft="'+id+'"]'); P('/api/dm/'+sThread+'/drafts/'+id+'/send',{content:ta?ta.value:undefined}).then(function(){ thread(true) },fail) },
+      ddrop:function(b){ DE('/api/dm/'+sThread+'/drafts/'+b.getAttribute('data-id')).then(function(){ thread(true) },fail) },
+      propose:function(){ proposeDlg() },
+      pacc:function(b){ b.disabled=true; P('/api/proposals/'+b.getAttribute('data-id')+'/accept').then(function(x){ toast(T('已同意，协作房间开好了','Accepted; the room is open')); loadRooms().catch(function(){}); if(view()==='cmi') thread(true); else if(view()==='cmb') S.cmb() },function(e){ b.disabled=false; fail(e) }) },
+      pdec:function(b){ P('/api/proposals/'+b.getAttribute('data-id')+'/decline').then(function(){ if(view()==='cmi') thread(true); else S.cmb() },fail) },
+      bseg:function(b){ bseg=b.getAttribute('data-v'); S.cmb() },
+      bnew:function(){ bDlg() },
+      btake:function(b){ takeDlg(b.getAttribute('data-id')) },
+      bcancel:function(b){ if(!b.classList.contains('sure')){ b.classList.add('sure'); b.textContent=T('确认撤下','Confirm'); return } P('/api/bounties/'+b.getAttribute('data-id')+'/cancel').then(function(){ toast(T('已撤下，报酬已退回','Cancelled and refunded')); S.cmb() },fail) },
+      bprops:function(b){ var id=b.getAttribute('data-id'), box=b.closest('[data-sbty]').querySelector('[data-sbprops]');
+        G('/api/bounties/'+id+'/proposals').then(function(x){ var it=x.items||[]; box.innerHTML=it.length?it.map(function(p){ return '<div class="s21-prop" data-sprop="'+e2(p.id)+'"></div>' }).join(''):'<p class="apx-cmx-note">'+T('还没有人申请。','No applications yet.')+'</p>'; it.forEach(function(p){ loadProposal(p.id) }) },fail) },
+      bdeliver:function(b){ b.disabled=true; P('/api/bounties/'+b.getAttribute('data-id')+'/deliver').then(function(){ toast(T('已交付，等发悬赏的人验收','Delivered')); rerender() },function(e){ b.disabled=false; fail(e) }) },
+      baccept:function(b){ if(!b.classList.contains('sure')){ b.classList.add('sure'); b.textContent=T('确认付款','Confirm payment'); return } P('/api/bounties/'+b.getAttribute('data-id')+'/accept').then(function(){ toast(T('已验收，报酬付给接单人','Accepted and paid')); rerender() },fail) },
+      breject:function(b){ var id=b.getAttribute('data-id'); dlg('rj','<h2>'+T('退回修改','Send back')+'</h2><label>'+T('哪里要改','What needs changing')+'<textarea id="s21RJ" rows="4" maxlength="2000"></textarea></label>'+ft(T('退回','Send back')),
+        function(){ var n=$('#s21RJ').value.trim(); if(!n){$('#s21RJ').focus(); return} P('/api/bounties/'+id+'/reject',{note:n}).then(function(){ dclose(); S.cmb() },fail) }) },
+      nacc:function(b){ P('/api/notifications/'+b.getAttribute('data-id')+'/accept',{}).then(function(){ toast(T('已申请，等对方同意','Applied')); S.cmb(); loadInbox() },fail) },
+      ndis:function(b){ P('/api/notifications/'+b.getAttribute('data-id')+'/dismiss').then(function(){ S.cmb(); loadInbox() },fail) },
+      tk:function(b){ var k=b.getAttribute('data-v'); tkSave(function(t){ t[k]=k==='ask'?(t.ask===false):!t[k] }) },
+      tkt:function(b){ var y=b.getAttribute('data-v'); tkSave(function(t){ var i=t.types.indexOf(y); if(i>=0) t.types.splice(i,1); else t.types.push(y) }) },
+      tog:function(b){ b.setAttribute('aria-pressed',String(b.getAttribute('aria-pressed')!=='true')) },
+      find:function(){ var box=$('#s21People'); if(!box) return; box.innerHTML=loading();
+        G('/api/feed?type=people').then(function(x){ var it=x.items||[]; box.innerHTML='<section class="apx-cmx-sec"><h3>'+T(nm()+'觉得你可以找这些人',nm()+' suggests these people')+'</h3>'+(it.length?it.map(function(i){ var p=i.item;
+          return '<div class="apx-cmx-ln"><div><b>'+e2(p.user_id)+(p.allow_collab?' <i class="apx-tg ai">'+T('接受协作','Open to collaborate')+'</i>':'')+'</b><span>'+e2([p.intro,(p.skills_tags||[]).join('、'),i.reason].filter(Boolean).join(' · '))+'</span></div><button class="apx-btn" type="button" data-s="dm" data-u="'+e2(p.user_id)+'">'+T('私信','Message')+'</button></div>' }).join(''):'<p class="apx-cmx-note">'+T('社区里还没有别人。','No one else here yet.')+'</p>')+'</section>' },fail) },
+      cnew:function(){ cDlg() },
+      cadd:function(){ if($$('#s21CR [data-srow]').length>=5){ toast(T('最多 5 个 AI','Up to 5 AIs')); return } $('#s21CR').insertAdjacentHTML('beforeend',seatRow('')) },
+      crm:function(b){ if($$('#s21CR [data-srow]').length<=1){ toast(T('至少留一个','Keep at least one')); return } b.closest('[data-srow]').remove() },
+      room:function(b){ sRoom=b.getAttribute('data-id'); RRUN=false; RWATCH=false; show('cmr'); ap.classList.remove('open'); loadRooms().catch(function(){}) },
+      at:function(b){ var q=$('#s21RSay'); if(!q) return; var tag='@'+b.getAttribute('data-v')+' '; if(q.value.indexOf(tag.trim())<0) q.value=(q.value&&!/\s$/.test(q.value)?q.value+' ':q.value)+tag; q.focus() },
+      rstop:function(){ if(R) P('/api/rooms/'+R.id+'/rounds/stop').catch(fail) },
+      rsum:function(b){ if(!R) return; b.disabled=true; b.querySelector('span').textContent=T('正在整理…','Writing up…'); P('/api/rooms/'+R.id+'/result',{}).then(function(){ S.cmr() },function(e){ fail(e); b.disabled=false; b.querySelector('span').textContent=T('整理成果','Write up') }) },
+      rleave:function(b){ if(!b.classList.contains('sure')){ b.classList.add('sure'); b.querySelector('span').textContent=T('确认','Confirm'); return } P('/api/rooms/'+R.id+'/leave').then(function(){ sRoom=''; R=null; closeRoomWs(); loadRooms().catch(function(){}); show('cmc') },fail) },
+      rinvite:function(){ inviteDlg() },
+      rcont:function(){ runRound() },
+      kseg:function(b){ kseg=b.getAttribute('data-v'); S.cmk() }, kcat:function(b){ kcat=b.getAttribute('data-v'); S.cmk() }, knew:function(){ kDlg() },
+      kon:function(b){ PA('/api/skills/'+b.getAttribute('data-id'),{publish:true}).then(kList,fail) },
+      koff:function(b){ DE('/api/skills/'+b.getAttribute('data-id')+'/publish').then(kList,fail) },
+      kget:function(b){ var s=SKS[b.getAttribute('data-id')]; if(!s) return; (s.in_mine?DE('/api/skills/'+s.id+'/get'):P('/api/skills/'+s.id+'/get')).then(function(x){ if(x&&x.status==='requires_payment'&&x.pay_url) window.open(x.pay_url,'_blank'); else toast(s.in_mine?T('已移出','Removed'):T('已加进我的技能','Added')); kList() },fail) },
+      ktry:function(b){ var s=SKS[b.getAttribute('data-id')]; if(!s) return; rec('skill',s.id,'try'); if(s.prompt) tryPrompt(s.prompt); else if(s.price_mode==='per') P('/api/skills/'+s.id+'/use').then(function(x){ if(x.prompt) tryPrompt(x.prompt); else if(x.pay_url) window.open(x.pay_url,'_blank') },fail); else toast(T('先获取这个技能','Get this skill first')) }
+    };
+    document.addEventListener('click',function(e){ var b=e.target.closest&&e.target.closest('[data-s]'); if(!b||!live()&&b.getAttribute('data-s')!=='disconnect') return; var f=ACT[b.getAttribute('data-s')]; if(f){ e.preventDefault(); f(b) } });
+    document.addEventListener('submit',function(e){ var f=e.target, k=f&&f.getAttribute&&f.getAttribute('data-sf'); if(!k) return; e.preventDefault();
+      if(k==='conn'){ connect(); return } if(!live()) return;
+      if(k==='post'){ var t=$('#s21PT').value.trim(), ids=MED.filter(function(m){return m.id}).map(function(m){return m.id});
+        if(MED.some(function(m){return !m.id&&!m.err})){ toast(T('图片或视频还在上传，等一下','Still uploading')); return }
+        if(!t&&!ids.length){ $('#s21PT').focus(); return } var c=$('#s21PC [aria-pressed="true"]');
+        P('/api/community/posts',{channel:c?c.getAttribute('data-v'):'work',content:t,by:'me',media:ids}).then(function(){ MED=[]; fch=''; fby=''; fq=''; ftag=''; S.cmf() },fail); return }
+      if(k==='pcmt'){ var ct=$('#s23C'), cv=ct.value.trim(); if(!cv){ ct.focus(); return } P('/api/community/posts/'+sPost+'/replies',{by:'me',content:cv}).then(function(){ ct.value=''; rec('post',sPost,'reply'); detail(true) },fail); return }
+      if(k==='reply'){ var inp=f.querySelector('input'), v=inp.value.trim(), id=f.getAttribute('data-id'); if(!v){ inp.focus(); return } P('/api/community/posts/'+id+'/replies',{by:'me',content:v}).then(function(){ inp.value=''; f.hidden=true; rec('post',id,'reply'); loadReplies(id) },fail); return }
+      if(k==='say'){ var s=$('#s21Say'), tx=s.value.trim(); if(!tx){ s.focus(); return } P('/api/dm/'+sThread+'/messages',{content:tx}).then(function(){ s.value=''; thread(true); loadInbox() },fail); return }
+      if(k==='rsay'){ if(!R||RRUN) return; var sy=$('#s21RSay'), say=sy.value.trim();
+        var go=function(){ sy.value=''; runRound() };
+        if(say){ var ids=R.members.filter(function(m){return say.indexOf('@'+mName(m))>=0}).map(function(m){return m.id}); P('/api/rooms/'+R.id+'/messages',{content:say,mentions:ids}).then(function(m){ addMsg(m); go() },fail) } else go(); return } });
+
+    /* 打开页面时：已连接就恢复推送和左栏 */
+    if(live()) loadMe().then(function(){ openInboxWs(); loadInbox(); loadRooms().catch(function(){}); if(/^cm/.test(view())) rerender() },function(){});
+  })();
+
+  /* ======== 应用页 v22（2026-11-08）：协作房间 = 群聊 ======== */
+  (function(){
+    var A=window.__mumuApi||window.__fpApi; if(!A) return; var T=A.T;
+    var SEND='<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15.5v-11M5.5 9 10 4.5 14.5 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+        STOP='<svg viewBox="0 0 20 20" aria-hidden="true"><rect x="6" y="6" width="8" height="8" rx="1.5" fill="currentColor"/></svg>';
+    var css=document.createElement('style'); css.textContent=
+      '.apx-cmx-turns{gap:20px}'+
+      '.apx-cmx-turn{padding:0;border:0;border-radius:0;background:none}'+
+      '.apx-cmx-turn.me{justify-self:end;max-width:78%;padding:10px 16px;border-radius:18px;background:var(--gray-btn)}'+
+      '.apx-cmx-turn.me .apx-cmx-who{display:none}.apx-cmx-turn.me .md p{margin:0}.apx-cmx-turn.me .md{white-space:pre-wrap}'+
+      '.apx-cmx-ctl.s22-box{position:sticky;bottom:12px;z-index:3;display:block;margin:0 0 16px;padding:10px 10px 10px 16px;border:1px solid var(--line);border-radius:22px;background:var(--card);box-shadow:0 10px 30px -18px rgba(0,0,0,.35)}'+
+      '.s22-box textarea{display:block;width:100%;min-height:26px;max-height:220px;padding:4px 0;border:0;outline:0;resize:none;background:transparent;font:400 16px/1.6 var(--sans);color:var(--ink)}'+
+      '.s22-bar{display:flex;align-items:center;gap:8px;margin-top:6px}.s22-hint{margin-right:auto;font:400 12px var(--sans);color:var(--ink-50)}'+
+      '.s22-cont{appearance:none;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:none;font:400 13px var(--sans);color:var(--ink-70);cursor:pointer}.s22-cont:hover{color:var(--ink)}'+
+      '.s22-send{appearance:none;display:grid;place-items:center;flex:none;width:34px;height:34px;padding:0;border:0;border-radius:50%;background:var(--ink);color:var(--paper);cursor:pointer}.s22-send svg{width:18px;height:18px}.s22-send:disabled{opacity:.3;cursor:default}';
+    document.head.appendChild(css);
+    /* 房间的输入框：两个版本共用 */
+    window.__apxRoomCtl=function(o){
+      return '<form class="apx-cmx-ctl s22-box" '+o.form+'><textarea id="'+o.ta+'" rows="1" maxlength="2000" placeholder="'+T('发消息；@ 谁就只让谁回','Message the room; @ someone to have only them reply')+'"></textarea>'+
+        '<div class="s22-bar"><span class="s22-hint">'+(o.running?T('AI 正在接话…','The AIs are replying…'):T('回车发送，Shift+回车换行','Enter to send, Shift+Enter for a new line'))+'</span>'+
+        (o.running?'<button class="s22-send" type="button" '+o.stop+' aria-label="'+T('停止','Stop')+'" title="'+T('停止','Stop')+'">'+STOP+'</button>'
+          :'<button class="s22-cont" type="button" '+o.cont+'>'+(o.empty?T('让 AI 先说','Let the AIs start'):T('让大家接着说','Keep the discussion going'))+'</button><button class="s22-send" type="submit" disabled aria-label="'+T('发送','Send')+'" title="'+T('发送','Send')+'">'+SEND+'</button>')+'</div></form>' };
+    function grow(t){ t.style.height='auto'; t.style.height=Math.min(t.scrollHeight,220)+'px'; var b=t.form&&t.form.querySelector('.s22-send[type=submit]'); if(b) b.disabled=!t.value.trim() }
+    document.addEventListener('input',function(e){ var t=e.target; if(t&&(t.id==='apxCmSay'||t.id==='s21RSay')) grow(t) });
+    /* 点成员 @ 它时也要点亮发送键 */
+    document.addEventListener('click',function(e){ if(e.target.closest&&e.target.closest('[data-at]')) setTimeout(function(){ var t=document.getElementById('apxCmSay')||document.getElementById('s21RSay'); if(t) grow(t) },0) });
+    document.addEventListener('keydown',function(e){ var t=e.target; if(!t||(t.id!=='apxCmSay'&&t.id!=='s21RSay')||e.key!=='Enter'||e.shiftKey||e.isComposing) return; e.preventDefault(); if(t.value.trim()&&t.form) t.form.requestSubmit() });
+    /* 本机版的「让大家接着说」：空着提交 = 所有 AI 按顺序再说一遍 */
+    document.addEventListener('click',function(e){ var b=e.target.closest&&e.target.closest('[data-rcont]'); if(!b) return; var f=b.closest('form'), t=f&&f.querySelector('textarea'); if(!f) return; if(t) t.value=''; f.requestSubmit() });
+  })();
+
   /* ======== 应用页 v14（2026-11-07）：会议、回看 ========
      数据接口约定（由本机屏幕引擎那边实现，挂在 window.__fpScreen；没有时页面显示空状态）：
        status()            -> Promise<{connected, recording, paused, inMeeting, meetingApp}>
@@ -9406,7 +10006,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
   /* ======== 应用页 v16（2026-11-07）：屏幕与会议 ↔ 本机记忆引擎 ======== */
   (function(){
     var ap=$('#apx'), A=window.__fpApi, box=$('#apxScr'); if(!ap||!A||!box) return;
-    var T=A.T, DESK=ap.classList.contains('desk'), DEFB='http://127.0.0.1:3035';
+    var T=A.T, DESK=ap.classList.contains('desk')||ap.classList.contains('apx-local'), DEFB='http://127.0.0.1:3035';
     function e2(x){return String(x==null?'':x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
     function K(){return 'fp-app-screen:'+A.ukey()}
     function conf(){var v=A.jget(K(),null)||{}; return {base:String(v.base||DEFB).replace(/\/+$/,''), token:v.token||''}}
@@ -9461,27 +10061,68 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
 
     function loadBrief(){ if(st.briefDay===day()&&st.brief) return Promise.resolve(st.brief);
       return get('/mumu/brief').then(function(b){ st.brief=b; st.briefDay=day(); render(); return b }, function(){ return null }) }
-    function refresh(quiet){ if(!on()){ st.ok=false; voice(); render(); return Promise.resolve(false) } if(!conf().token){ st.ok=false; st.err=''; voice(); render(); return Promise.resolve(false) }
+    function refresh(quiet){ if(!on()){ st.ok=false; voice(); render(); return Promise.resolve(false) } if(!conf().token) return pair(quiet);
       st.busy=true; render();
-      return Promise.all([get('/mumu/status'),get('/mumu/memory'),get('/mumu/state').catch(function(){return {}})]).then(function(r){ st.busy=false; st.ok=true; st.err=''; st.status=r[0]; st.mem=r[1]; st.audio=!!(r[2]&&r[2].audio); voice(); render(); loadBrief(); return true },
-        function(e){ st.busy=false; st.ok=false; st.err=errText(e); voice(); render(); if(!quiet) toast(st.err); return false }) }
+      return Promise.all([get('/mumu/status'),get('/mumu/memory'),get('/mumu/state').catch(function(){return {}})]).then(function(r){ st.busy=false; st.ok=true; st.err=''; st.status=r[0]; st.mem=r[1]; st.audio=!!(r[2]&&r[2].audio); voice(); render(); loadBrief(); syncWx(); return true },
+        function(e){ if(String(e&&e.message)==='auth'&&!st.repaired){ st.repaired=true; var c0=conf(); A.jset(K(),{base:c0.base,token:''}); return pair(quiet) }
+          st.busy=false; st.ok=false; st.err=errText(e); voice(); render(); if(!quiet) toast(st.err); return false }) }
+    /* v27：打开开关就自动配对，不用粘贴令牌（引擎只对沐沐自己的页面给令牌） */
+    var CMD='zsh ~/programs/mumu-screen/scripts/mumu-install-autostart.sh';
+    function pair(quiet){ var c=conf(); st.busy=true; st.err=''; st.down=false; st.manual=false; render();
+      return fetch(c.base+'/mumu/pair',{cache:'no-store'}).then(function(r){ return r.json().catch(function(){return {}}).then(function(j){ return {s:r.status,j:j||{}} }) }).then(function(x){
+          if(x.s===200&&x.j.token){ A.jset(K(),{base:c.base,token:x.j.token}); st.repaired=false; return refresh(quiet) }
+          st.busy=false; st.ok=false; st.manual=true;
+          st.err=(x.s===404||/^unauthorized/.test(String(x.j.error||'')))?T('引擎版本太旧，不会自动配对：用 screen/ 重新编译后重启，或者在下面手动粘贴令牌','The engine is too old to pair: rebuild screen/ and restart it, or paste the token below')
+            :T('这个页面地址不能自动配对，请在下面手动粘贴令牌','This page can’t pair automatically; paste the token below');
+          voice(); render(); return false },
+        function(){ st.busy=false; st.ok=false; st.down=true; st.err=T('本机记忆引擎没在运行','The local memory engine isn’t running'); voice(); render(); return false }) }
+    /* v26：微信。开关以页面为准，同步给引擎；打开时取引擎整理的约定和待办 */
+    var MSK=(window.__mumuApi?'mumu':'fp')+'-app-msrc:';
+    function wxOn(){ var v=A.jget(MSK+A.ukey(),null); return !!(DESK&&v&&v.wechat) }
+    function put(path,body){ var c=conf();
+      return fetch(c.base+path,{method:'PUT',headers:{'Authorization':'Bearer '+c.token,'Content-Type':'application/json'},body:JSON.stringify(body)}).then(function(r){
+        if(r.status===401||r.status===403) throw new Error('auth'); if(!r.ok) throw new Error('HTTP '+r.status); return r.json() }) }
+    function loadWx(force){ if(!wxOn()||!conf().token){ st.wx=null; render(); return Promise.resolve(null) } st.wxBusy=true; st.wxErr=''; render();
+      return get('/mumu/wechat'+(force?'?regenerate=true':'')).then(function(w){ st.wx=w; st.wxBusy=false; render(); return w },
+        function(e){ st.wxBusy=false; st.wxErr=/404|Not Found/i.test(String(e&&e.message))?T('引擎版本太旧，要用 screen/ 重新编译后重启','The engine is too old: rebuild screen/ and restart it'):errText(e); render(); return null }) }
+    function syncWx(){ if(!on()||!conf().token) return Promise.resolve(); var want=wxOn();
+      return put('/mumu/sources',{wechat:want}).then(function(){ st.wxSynced=want; return want?loadWx():(st.wx=null,render()) },
+        function(e){ st.wxErr=/404|HTTP 405/.test(String(e&&e.message))?T('引擎版本太旧，要用 screen/ 重新编译后重启','The engine is too old: rebuild screen/ and restart it'):errText(e); render() }) }
+    function wxLine(x){ return (x.who?x.who+'：':'')+x.what+'；'+x.when+(x.topic?'（'+x.topic+'）':'') }
+    function wxText(){ if(!wxOn()||!memOn()||!st.wx||!(st.wx.items||[]).length) return '';
+      return T('主人微信里的约定和待办（来自微信聊天助手，只当背景）：','Commitments and to-dos from the owner’s WeChat (via the WeChat assistant; background only):')+'\n'+st.wx.items.slice(0,40).map(function(x){return '- '+wxLine(x)}).join('\n') }
+    function wxItem(x){ return '<div class="apx-scr-hit"><small>'+e2(x.when)+(x.topic?' · '+e2(x.topic):'')+'</small><p>'+(x.who?'<b>'+e2(x.who)+'</b>：':'')+e2(x.what)+'</p></div>' }
+    function wxHtml(){ if(!wxOn()) return ''; var w=st.wx, h='<div class="apx-scr-wx"><div class="row"><b>'+T('微信里的约定和待办','Commitments and to-dos from WeChat')+'</b>'+
+        '<button class="apx-btn" type="button" data-scr="wx"'+(st.wxBusy?' disabled':'')+'>'+(st.wxBusy?T('正在整理…','Working…'):T('重新整理','Refresh'))+'</button></div>';
+      if(st.wxErr) h+='<span class="apx-cm">'+e2(st.wxErr)+'</span>';
+      else if(st.wxBusy&&!w) h+='<span class="apx-cm">'+T('正在读微信聊天助手整理的聊天（第一次要调用一次模型，本机模型约半分钟）…','Reading the chats your WeChat assistant gathered (the first time calls the model once)…')+'</span>';
+      else if(w&&w.source==='not_installed') h+='<span class="apx-cm">'+T('这台 Mac 上没找到微信聊天助手的数据（~/.local/share/wechat-assistant）。装好微信聊天助手、让它读过一次聊天后再来。','No WeChat assistant data on this Mac (~/.local/share/wechat-assistant). Set up the WeChat assistant and let it read your chats once.')+'</span>';
+      else if(w){ var chat=(w.items||[]).filter(function(x){return x.kind==='chat'}), task=(w.items||[]).filter(function(x){return x.kind==='task'});
+        h+='<span class="apx-cm"><b>'+T('聊天里的','From chats')+'</b>'+(w.date?' · '+T('来自 '+w.date+' 的 '+w.chats+' 个聊天、'+w.messages+' 条消息','from '+w.chats+' chats and '+w.messages+' messages on '+w.date):'')+'</span>';
+        h+=w.note?'<span class="apx-cm">'+T('这次没整理出来：','Couldn’t summarise this time: ')+e2(w.note)+'</span>':chat.length?chat.map(wxItem).join(''):'<span class="apx-cm">'+(w.date?T('这一天的聊天里没找到约定和待办。','No commitments or to-dos in that day’s chats.'):T('微信聊天助手还没读过聊天（它每天凌晨读前一天的）。','The WeChat assistant hasn’t read any chats yet (it reads the previous day after midnight).'))+'</span>';
+        h+='<span class="apx-cm" style="margin-top:6px"><b>'+T('微信助手里的待办','In the WeChat assistant')+'</b> · '+T('共 '+(w.tasks_open||0)+' 条没完成','open: '+(w.tasks_open||0))+'</span>';
+        if(task.length){ var all=st.wxAll; h+=(all?task:task.slice(0,8)).map(wxItem).join('')+(task.length>8?'<button class="apx-btn" type="button" data-scr="wxall">'+(all?T('收起','Show less'):T('全部 '+task.length+' 条','All '+task.length))+'</button>':'') }
+        h+='<span class="apx-cm">'+T('只读微信聊天助手整理好的东西，不改它的数据 · 也会并进每日简报','Read-only from the WeChat assistant · also goes into the daily briefing')+'</span>' }
+      return h+'</div>' }
     function when(sec){ if(!sec) return T('还没整理过','not organised yet'); var d=new Date(sec*1000), n=new Date(), hm=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);
       return d.toDateString()===n.toDateString()?T('今天 ','today ')+hm:(d.getMonth()+1)+'/'+d.getDate()+' '+hm }
     function kindName(k){return k==='screen'?T('屏幕','Screen'):k==='audio'?T('语音','Speech'):T('记忆','Memory')}
     function render(){ if(!DESK||!on()){ box.hidden=true; return } box.hidden=false;
       var c=conf(), S=st.status, h='<div class="hd"><b>'+T('本机记忆引擎','Local memory engine')+'</b><span class="st'+(st.ok?' on':'')+'">'+
         (st.busy?T('连接中…','Connecting…'):st.ok?T('已连接 · 上次整理 '+when(S&&S.last_synapse_run)+' · 长期记忆 '+((S&&S.memory_facts)||0)+' 条','Connected · last organised '+when(S&&S.last_synapse_run)+' · '+((S&&S.memory_facts)||0)+' long-term facts'):(st.err||T('还没连接','Not connected')))+'</span></div>';
-      h+='<form id="apxScrF" novalidate><label>'+T('地址','Address')+'<input id="apxScrB" type="url" spellcheck="false" autocomplete="off" value="'+e2(c.base)+'"></label>'+
+      if(st.down) h+='<div class="apx-scr-cmd"><span>'+T('装一次开机自动启动，以后打开开关就能用（在终端里运行）：','Set it to start at login once; after that the switch is all it takes (run in Terminal):')+'</span><code>'+e2(CMD)+'</code><button class="apx-btn" type="button" data-scr="copycmd">'+T('复制','Copy')+'</button><button class="apx-btn" type="button" data-scr="refresh">'+T('再试一次','Try again')+'</button></div>';
+      h+='<details class="apx-scr-man"'+(st.manual?' open':'')+'><summary>'+T('手动设置地址和令牌','Set the address and token by hand')+'</summary><form id="apxScrF" novalidate><label>'+T('地址','Address')+'<input id="apxScrB" type="url" spellcheck="false" autocomplete="off" value="'+e2(c.base)+'"></label>'+
         '<label>'+T('令牌','Token')+'<input id="apxScrK" type="password" spellcheck="false" autocomplete="off" placeholder="'+(c.token?T('已保存，不改就留空','Saved. Leave empty to keep it'):T('粘贴令牌','Paste the token'))+'"></label>'+
-        '<button class="apx-btn pri" type="submit">'+(st.ok?T('重新连接','Reconnect'):T('连接','Connect'))+'</button></form>';
-      h+='<span class="nt">'+T('引擎在这台电脑上录屏幕和会议，截图和录音只留在本机；沐沐只读它整理好的文字。令牌在钥匙串项 mumu-local-api 里，下载版会自动读取。',
-        'The engine records the screen and meetings on this computer; screenshots and audio never leave it. Mumu only reads the text it has organised. The token is in the keychain item mumu-local-api; the desktop app reads it automatically.')+'</span>';
+        '<button class="apx-btn pri" type="submit">'+(st.ok?T('重新连接','Reconnect'):T('连接','Connect'))+'</button></form></details>';
+      h+='<span class="nt">'+T('引擎在这台电脑上录屏幕和会议，截图和录音只留在本机；沐沐只读它整理好的文字。打开开关就会自动连上，不用粘贴令牌。',
+        'The engine records the screen and meetings on this computer; screenshots and audio never leave it. Mumu only reads the text it has organised. Turning the switch on connects automatically; no token to paste.')+'</span>';
       if(st.ok){
         h+='<div class="row"><button class="apx-btn" type="button" data-scr="open">'+(st.open?T('收起','Hide'):T('看看'+nm()+'记得什么','See what '+nm()+' remembers'))+'</button>'+
           '<button class="apx-btn" type="button" data-scr="refresh">'+T('刷新','Refresh')+'</button>'+
           (st.brief&&st.brief.text?'<span class="apx-cm">'+T('今天的屏幕简报已备好，会并进每日简报','Today’s screen briefing is ready and goes into the daily briefing')+'</span>':'')+'</div>';
         if(st.open){ var w=clean(st.mem&&st.mem.working), m=clean(st.mem&&st.mem.warm);
           h+='<div class="apx-scr-mem">'+(w||m?A.md((w+'\n\n'+m).trim()):'<p>'+T('还是空的：引擎每 30 分钟整理一次，有新记录才会写进来。','Still empty: the engine organises every 30 minutes, and only when something new was recorded.')+'</p>')+'</div>' }
+        h+=wxHtml();
         h+='<form class="apx-scr-find" id="apxScrQ"><input id="apxScrQi" maxlength="200" autocomplete="off" value="'+e2(st.q)+'" placeholder="'+T('在屏幕和会议记录里找…','Search your screen and meeting records…')+'" aria-label="'+T('在屏幕和会议记录里找','Search screen and meeting records')+'"><button class="apx-btn" type="submit">'+T('查找','Search')+'</button></form>';
         if(st.hits) h+=st.hits.length?'<div>'+st.hits.map(function(x){ var d=x.timestamp?new Date(x.timestamp*1000):null;
             return '<div class="apx-scr-hit"><small>'+kindName(x.kind)+(d?' · '+(d.getMonth()+1)+'/'+d.getDate()+' '+('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2):'')+(x.app?' · '+e2(x.app):'')+(x.window?' · '+e2(x.window):'')+(x.source?' · '+e2(x.source):'')+'</small><p>'+e2(x.snippet)+'</p></div>' }).join('')+'</div>'
@@ -9494,7 +10135,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       if(e.target.id==='apxScrQ'){ var q=$('#apxScrQi').value.trim(); st.q=q; if(!q){st.hits=null; render(); return}
         get('/mumu/search?limit=8&q='+encodeURIComponent(q)).then(function(r){ st.hits=r.hits||[]; render() }, function(err){ toast(errText(err)) }) } });
     box.addEventListener('click',function(e){ var b=e.target.closest('[data-scr]'); if(!b) return; var k=b.getAttribute('data-scr');
-      if(k==='open'){ st.open=!st.open; render() } else if(k==='refresh'){ refresh() } });
+      if(k==='open'){ st.open=!st.open; render() } else if(k==='refresh'){ refresh() } else if(k==='wx'){ loadWx(true) } else if(k==='wxall'){ st.wxAll=!st.wxAll; render() } else if(k==='copycmd'){ (navigator.clipboard?navigator.clipboard.writeText(CMD):Promise.reject()).then(function(){ toast(T('已复制，粘到终端里运行','Copied; paste it into Terminal')) },function(){ toast(CMD) }) } });
     /* 开关打开 / 进入记忆页时连接；之后每 5 分钟刷新一次 */
     document.addEventListener('click',function(e){ if(e.target.closest&&e.target.closest('#apxCPM [data-msrc="screen"]')) setTimeout(function(){ refresh(true) },0) });
     new MutationObserver(function(){ if(ap.getAttribute('data-view')==='cpm') refresh(true) }).observe(ap,{attributes:true,attributeFilter:['data-view']});
@@ -9523,6 +10164,13 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       return fetch(c.base+'/v1/audio/transcriptions',{method:'POST',headers:{'Authorization':'Bearer '+c.token},body:fd}).then(function(r){
         return r.json().catch(function(){return {}}).then(function(j){ if(!r.ok) throw new Error((j.error&&j.error.message)||('HTTP '+r.status)); return String(j.text||'').trim() }) }) }
     function voice(){ if(ready()&&st.ok&&st.audio) F.transcribe=transcribe; else delete F.transcribe }
+    /* v26：「微信」开关一变就告诉引擎；聊天背景带上微信里的约定和待办 */
+    document.addEventListener('click',function(e){ if(e.target.closest&&e.target.closest('#apxCPM [data-msrc="wechat"]')) setTimeout(function(){
+      if(!on()||!conf().token){ if(wxOn()) toast(T('先打开「屏幕与会议」并连上本机记忆引擎，微信才会用上','Turn on Screen & meetings and connect the local engine first')); return }
+      syncWx().then(function(){ toast(wxOn()?T('已打开：沐沐会读微信聊天助手整理的聊天和待办','On: Mumu reads the chats and to-dos your WeChat assistant has gathered'):T('已关掉：沐沐不再用微信里的任何内容','Off: Mumu no longer uses anything from WeChat')) }) },0) });
+    var _m26=A.memo; A.memo=function(){ var a=_m26(), w=wxText(); return a+(a&&w?'\n\n':'')+w };
+    document.head.insertAdjacentHTML('beforeend','<style>.apx-scr-cmd{display:grid;gap:8px;margin:10px 0;padding:12px 14px;border:1px solid var(--line);border-radius:14px}.apx-scr-cmd code{font:12px/1.5 var(--mono);word-break:break-all}.apx-scr-cmd .apx-btn{justify-self:start}.apx-scr-man{margin:8px 0}.apx-scr-man summary{cursor:pointer;font:400 13px var(--sans);color:var(--ink-50)}</style>');
+    document.head.insertAdjacentHTML('beforeend','<style>.apx-scr-wx{display:grid;gap:8px;margin:14px 0 4px;padding:12px 14px;border:1px solid var(--line);border-radius:14px}.apx-scr-wx .row{display:flex;align-items:center;justify-content:space-between;gap:8px}</style>');
     if(on()) refresh(true); else render();
   })();
   /* ======== 应用页 v20（2026-11-07）：搜索框（照 Claude） ======== */
