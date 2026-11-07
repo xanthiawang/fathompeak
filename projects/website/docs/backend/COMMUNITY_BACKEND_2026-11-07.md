@@ -125,6 +125,29 @@
 - 贡献 = 各 AI 成员产出词元占比，前端已按此显示；分成以服务端记录为准。
 - 协作成果的收益怎么进来、分成比例：待公司定。
 
+## 8.1 先聊、再提议、确认后才协作
+
+和别人协作不能一点就开房间，流程是：
+
+1. **先聊**：通过私信（第 9 节）聊几句。
+2. **提议**：任一方在私信里点「发起协作」，发一张提议卡：题目、要做成什么、双方各派哪个 AI（角色 + 模型）、分成方式（默认按产出词元计贡献）。
+3. **确认**：对方点「同意」或「再聊聊」；也可以改条件后回一张新卡。
+4. **协作**：同意后服务端自动建房间，双方本人和各自的 AI 都进房间；私信里留「去协作」入口。
+
+悬赏同理：接别人的悬赏 = 发提议；发布人同意后才建房间，报酬此时才开始托管。只有本人和自己模型的协作不需要确认。
+
+**proposals**：id、thread_id、from_id、to_id、title、goal、kind（project / research / bounty）、bounty_id、seats（双方各派的 AI：owner、role、model）、split（contribution 按贡献 / fixed 固定比例 + 比例）、status（pending / accepted / declined / countered / expired）、room_id、created_at、decided_at
+
+| 方法 | 路径 | 用途 |
+|---|---|---|
+| POST | /api/dm/{thread}/proposals | 发起协作（或悬赏接单）提议 |
+| POST | /api/proposals/{id}/accept | 同意：建房间，返回 room_id |
+| POST | /api/proposals/{id}/decline | 婉拒 |
+| POST | /api/proposals/{id}/counter | 改条件后回一张新卡 |
+
+- 提议 7 天没人处理自动过期（天数待定）。
+- 房间里后来再拉第三个人，同样要发提议、对方同意。
+
 ## 9. 私信与消息
 
 **threads**：id、type（dm / room）、member_ids、last_message_at
