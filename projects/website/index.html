@@ -2916,18 +2916,16 @@ html.in-app .xf-who{display:none}
 
 <style id="app-page-v9-20261107">
 /* 应用页 v9：社区。变量沿用 .apx */
-.apx:not(.desk) .apx-brand{flex-wrap:wrap}
-.apx-mode{order:9;display:flex;flex:1 0 100%;gap:2px;margin:12px 0 0;padding:2px;border-radius:11px;background:var(--gray-btn)}
-.apx-mode button{appearance:none;flex:1;display:flex;align-items:center;justify-content:center;gap:6px;height:32px;padding:0 10px;border:0;border-radius:9px;background:transparent;font:400 14px var(--sans);color:var(--ink-50);cursor:pointer;transition:background-color .15s,color .15s}
-.apx.desk .apx-mode{order:0;flex:none;margin:0 0 0 auto}
-.apx.desk .apx-mode button{flex:none;width:34px;height:28px;padding:0}
-.apx.desk .apx-mode button span{display:none}
+.apx-brand .apx-logo{flex:0 1 auto;min-width:0}
+.apx-mode{display:flex;flex:none;gap:1px;margin-left:auto;padding:2px;border-radius:9px;background:var(--gray-btn)}
+.apx-mode button{appearance:none;display:grid;place-items:center;width:26px;height:26px;padding:0;border:0;border-radius:7px;background:transparent;color:var(--ink-50);cursor:pointer;transition:background-color .15s,color .15s}
+.apx-mode button span{display:none}
 .apx-mode button:hover{color:var(--ink)}
 .apx-mode button[aria-selected="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.1)}
-.apx-mode svg{width:18px;height:18px}
+.apx-mode svg{width:16px;height:16px}
 .apx .apx-side .apx-cmnav,.apx .apx-side .apx-cmside{display:none}
 .apx[data-view^="cm"] .apx-side .apx-cmnav{display:grid}
-.apx[data-view^="cm"] .apx-side .apx-cmside{display:flex}
+.apx[data-view^="cm"] .apx-side .apx-cmside{display:flex;flex:1 1 0%;min-height:0}
 .apx[data-view^="cm"] .apx-side>.bt-nav:not(.apx-cmnav),.apx[data-view^="cm"] #apxLists{display:none!important}
 .apx-cmside{flex-direction:column;min-height:0;overflow:auto}
 .apx-cmnav .apx-mascot{width:26px;height:auto}
@@ -4244,10 +4242,10 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
         <button type="button" id="apxTbN" data-nav-view="tb" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8.5a1.5 1.5 0 0 1 1.5-1.5h11A1.5 1.5 0 0 1 17 8.5V15a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 3 15Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 7V5.2A1.7 1.7 0 0 1 9.2 3.5h1.6a1.7 1.7 0 0 1 1.7 1.7V7M3 11.2h14M8.6 10.2v2M11.4 10.2v2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>工具箱</span></button>
       </nav>
       <nav class="bt-nav apx-cmnav" id="apxCmNav" aria-label="社区">
+        <button type="button" data-cmv="cmp" aria-pressed="false"><img class="apx-mascot apx-cpav" src="art/brand/fathompeak-companion-walk_2026-11-07.webp" alt="" width="26" height="26"><span id="apxCmMeL">沐沐</span></button>
         <button type="button" data-cmv="cmf" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v5.5a2 2 0 0 1-2 2H9.5L6 16.5v-3h-.5a2 2 0 0 1-2-2Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 7.6h6M7 10h4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>广场</span></button>
         <button type="button" data-cmv="cmb" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M11.8 7.4c-.4-.6-1.1-.9-1.9-.9-1.1 0-1.9.6-1.9 1.4 0 1.9 3.9 1 3.9 3 0 .9-.9 1.5-2 1.5-.9 0-1.7-.4-2.1-1M10 5.4v1.1M10 13.4v1.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>悬赏</span></button>
         <button type="button" data-cmv="cmc" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="5.5" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14.5" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="14.5" r="2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.4 6h5.2M6.5 7.8l2.5 4.9M13.5 7.8 11 12.7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>协作</span></button>
-        <button type="button" data-cmv="cmp" aria-pressed="false"><img class="apx-mascot apx-cpav" src="art/brand/fathompeak-companion-walk_2026-11-07.webp" alt="" width="26" height="26"><span id="apxCmMeL">我的沐沐</span></button>
       </nav>
       <div class="apx-cmside" id="apxCmSide"><button class="apx-sec" type="button" id="apxCmRH" aria-expanded="true" aria-controls="apxCmRooms"><span>我的协作</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5.5 8 10 12.5 14.5 8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div id="apxCmRooms"></div></div>
       <div class="apx-lists" id="apxLists">
@@ -8613,7 +8611,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     function sync(){ var v=view(), c=isCm(v);
       $$('[data-amode]').forEach(function(b){b.setAttribute('aria-selected',String((b.getAttribute('data-amode')==='cm')===c))});
       $$('[data-cmv]').forEach(function(b){var k=b.getAttribute('data-cmv'); b.setAttribute('aria-pressed',String(v===k||(v==='cmr'&&k==='cmc')))});
-      if(c) lastCm=v; else lastChat=v; $('#apxCmMeL').textContent=T('我的','My ')+nm(); rooms() }
+      if(c) lastCm=v; else lastChat=v; $('#apxCmMeL').textContent=nm(); rooms() }
     new MutationObserver(sync).observe(ap,{attributes:true,attributeFilter:['data-view']});
     $$('[data-amode]').forEach(function(b){b.addEventListener('click',function(){ var c=b.getAttribute('data-amode')==='cm'; if(c===isCm(view())) return;
       if(c) show(lastCm==='cmr'&&!room(curRoom)?'cmc':lastCm); else show(lastChat); ap.classList.remove('open') })});
