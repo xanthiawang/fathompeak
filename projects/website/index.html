@@ -3145,6 +3145,28 @@ html.in-app #xpBox .xp-send{margin-left:2px!important}
 @keyframes apxwave{0%,100%{height:3px}50%{height:14px}}
 @media (prefers-reduced-motion:reduce){#xpBox.dictating .apx-wave i{animation:none;height:8px}}
 </style>
+
+<style id="app-page-v16-20261107">
+/* 应用页 v16：屏幕与会议 ↔ 本机记忆引擎 */
+.apx-card.apx-scr{display:grid;gap:12px;margin:0 0 14px}
+.apx-scr[hidden]{display:none}
+.apx-conn.apx-scr #apxScrF{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) auto;gap:10px;align-items:end;margin:0}
+.apx-scr .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.apx-scr .apx-btn{height:34px;padding:0 14px;font-size:13.5px}
+.apx-scr-mem{max-height:360px;overflow:auto;padding:12px 16px;border:1px solid var(--line);border-radius:14px;background:var(--card);font:400 14px/1.65 var(--sans);color:var(--ink)}
+.apx-scr-mem h1,.apx-scr-mem h2,.apx-scr-mem h3{margin:10px 0 4px;font:500 14px/1.5 var(--sans);color:var(--ink)}
+.apx-scr-mem p,.apx-scr-mem ul{margin:0 0 6px}
+.apx-scr-find{display:flex;gap:8px}
+.apx-scr-find input{appearance:none;flex:1;min-width:0;height:38px;box-sizing:border-box;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:var(--card);outline:0;font:400 14px var(--sans);color:var(--ink)}
+.apx-scr-find input:focus{border-color:var(--frame)}
+.apx-scr-hit{padding:10px 2px;border-bottom:1px solid var(--line)}
+.apx-scr-hit:first-child{border-top:1px solid var(--line)}
+.apx-scr-hit small{display:block;font:400 12px/1.5 var(--sans);color:var(--ink-50)}
+.apx-scr-hit p{margin:3px 0 0;font:400 14px/1.6 var(--sans);color:var(--ink)}
+.apx-conn.apx-scr .apx-scr-find{display:flex;gap:8px;margin:0}
+.apx-scr-find .apx-btn{flex:none}
+@media (max-width:720px){.apx-conn.apx-scr #apxScrF{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 
@@ -4454,6 +4476,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
           <div class="apx-card"><div class="apx-hd2"><h3>屏幕与会议</h3><button class="apx-sw" type="button" role="switch" data-msrc="screen" aria-checked="false" aria-label="屏幕与会议"></button></div><span class="apx-cm">记下你在这台电脑上看过的内容和开过的会，整理成文字记忆，只存在本机。</span><span class="apx-cm k">第一次打开时，系统会请你允许屏幕录制和麦克风。</span><span class="apx-cm w">只能在下载版里打开。</span></div>
           <div class="apx-card"><div class="apx-hd2"><h3>微信​</h3><button class="apx-sw" type="button" role="switch" data-msrc="wechat" aria-checked="false" aria-label="微信​"></button></div><span class="apx-cm">微信聊天里提到的约定和待办；简报也能发到你的微信。</span><span class="apx-cm k">第一次打开时会出现一个二维码，用微信扫一扫就绑好了。</span><span class="apx-cm w">只能在下载版里打开。</span></div>
         </div>
+        <section class="apx-card apx-conn apx-scr" id="apxScr" hidden></section>
         <section class="apx-card apx-voice" id="apxVoice" aria-label="你的文风"></section>
         <form class="apx-memadd" id="apxMemF"><input id="apxMemQ" maxlength="200" placeholder="手动添加一条，例如你的称呼或写作习惯" aria-label="添加一条记忆" autocomplete="off"><button class="apx-btn pri" type="submit"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4.5v11M4.5 10h11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>添加</span></button></form>
         <div id="apxMemL"></div>
@@ -8543,7 +8566,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       return L.join('\n\n') }
     function today(){var n=new Date(); return n.getFullYear()+'-'+z(n.getMonth()+1)+'-'+z(n.getDate())}
     /* 主动发：到点后把简报作为沐沐的一条消息放进伙伴那条长期对话，同时留一份在简报页 */
-    function deliver(){ var text=brief(), a=bget(); a.unshift({at:Date.now(),text:text}); jset('fp-app-brief:'+ukey(),a.slice(0,30));
+    function deliver(){ var text=brief(); if(window.__fpScreen) text=window.__fpScreen.merge(text,cfg().s3!==false); var a=bget(); a.unshift({at:Date.now(),text:text}); jset('fp-app-brief:'+ukey(),a.slice(0,30));
       var key='fp-xp-convs:'+ukey(), list=jget(key,[]); if(!Array.isArray(list)) list=[]; var c=comp(), conv=c.conv?list.filter(function(x){return x.id===c.conv})[0]:null;
       var mc=$('#xpChips [aria-pressed="true"]')||$('#xpChips .xp-chip'), mid=mc?mc.getAttribute('data-id'):'';
       if(!conv){ conv={id:'cmp'+Date.now().toString(36),title:c.name||T('沐沐','Mumu'),models:mid?[mid]:[],hist:[[]],at:Date.now()}; c.conv=conv.id; c.at=c.at||Date.now(); compSet(c) } else list=list.filter(function(x){return x!==conv});
@@ -9321,6 +9344,123 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     box.addEventListener('submit',function(){ if(on) stop() },true);
     var _s15=window.__apxSync; window.__apxSync=function(o){ _s15(o); if(!o&&on) stop() };
     window.__apxDictate={start:start,stop:stop,on:function(){return on}};
+  })();
+  /* ======== 应用页 v16（2026-11-07）：屏幕与会议 ↔ 本机记忆引擎 ======== */
+  (function(){
+    var ap=$('#apx'), A=window.__fpApi, box=$('#apxScr'); if(!ap||!A||!box) return;
+    var T=A.T, DESK=ap.classList.contains('desk'), DEFB='http://127.0.0.1:3035';
+    function e2(x){return String(x==null?'':x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+    function K(){return 'fp-app-screen:'+A.ukey()}
+    function conf(){var v=A.jget(K(),null)||{}; return {base:String(v.base||DEFB).replace(/\/+$/,''), token:v.token||''}}
+    function on(){var v=A.jget('fp-app-msrc:'+A.ukey(),null); return !!(DESK&&v&&v.screen)}
+    function memOn(){return A.jget('fp-app-memon:'+A.ukey(),true)!==false}
+    var st={ok:false,busy:false,err:'',status:null,mem:null,brief:null,briefDay:'',hits:null,q:'',open:false};
+    function day(){var n=new Date(); return n.getFullYear()+'-'+('0'+(n.getMonth()+1)).slice(-2)+'-'+('0'+n.getDate()).slice(-2)}
+    function get(path){ var c=conf();
+      return fetch(c.base+path,{headers:{'Authorization':'Bearer '+c.token}}).then(function(r){
+        if(r.status===401||r.status===403) throw new Error('auth');
+        if(!r.ok) return r.json().catch(function(){return {}}).then(function(j){throw new Error(j.error||('HTTP '+r.status))});
+        return r.json() }) }
+    function errText(e){ var m=String(e&&e.message||e);
+      if(m==='auth') return T('令牌不对，请重新粘贴','The token was rejected. Paste it again');
+      if(/Failed to fetch|NetworkError|Load failed/i.test(m)) return T('连不上本机记忆引擎：它没在运行，或地址不对','Can’t reach the local memory engine: it isn’t running, or the address is wrong');
+      return m }
+    /* 记忆文件 → 给模型 / 给人看的干净文字：去掉 frontmatter、注释和占位行 */
+    var PH=/^\s*[-*]?\s*(\(will be inferred|\(awaiting first sync|\(people you|\(none yet|\(none\)|—\s*$)/i;
+    function clean(md){ md=String(md||'').replace(/^---\n[\s\S]*?\n---\n?/,'').replace(/<!--[\s\S]*?-->/g,'');
+      var out=[], prevRow=false;
+      md.split('\n').forEach(function(l){ var t=l.trim();
+        if(/^\|.*\|$/.test(t)){ var c=t.slice(1,-1).split('|').map(function(x){return x.trim()});
+          var sep=c.every(function(x){return /^:?-+:?$/.test(x)}), was=prevRow; prevRow=true;
+          if(sep||!was) return;                      /* 表头和分隔行不要 */
+          c=c.filter(function(x){return x&&x!=='—'}); if(c.length) out.push('- '+c.join(' · ')); return }
+        prevRow=false;
+        if(/^---+$/.test(t)||PH.test(l)||/^\*\*(Secondary|Tertiary)\*\*:\s*—\s*$/.test(t)) return;
+        out.push(l) });
+      /* 没有内容的标题整段去掉 */
+      var res=[], i=0; while(i<out.length){ var l=out[i];
+        if(/^#{1,3} /.test(l)){ var j=i+1, body=[]; while(j<out.length&&!/^#{1,3} /.test(out[j])){ body.push(out[j]); j++ }
+          if(body.join('').trim()){ res.push(l); res=res.concat(body) } i=j; continue }
+        res.push(l); i++ }
+      return res.join('\n').replace(/\n{3,}/g,'\n\n').trim() }
+    function memoText(){ if(!on()||!st.ok||!st.mem||!memOn()) return ''; var t=(clean(st.mem.working)+'\n\n'+clean(st.mem.warm)).trim(); if(!t) return '';
+      return T('屏幕与会议记忆（本机记忆引擎从这台电脑上看过的内容和开过的会整理出的文字；只当背景，不要逐条复述）：',
+               'Screen and meeting memory (text the local memory engine distilled from what was on this computer and from meetings; use as background, don’t recite it):')+'\n'+t.slice(0,6000) }
+    var _memo=A.memo; A.memo=function(){ var a=_memo(), s2=memoText(); return a+(a&&s2?'\n\n':'')+s2 };
+
+    /* 简报合并：两份都是四章格式，按章拼起来，组号和条目号重新编 */
+    var CN=['（一）','（二）','（三）','（四）','（五）','（六）','（七）','（八）','（九）'];
+    function chap(l){ var m=/^(一|二|三|四)、/.exec(l)||/^(I|II|III|IV)\. /.exec(l); return m?({'一':0,'二':1,'三':2,'四':3,'I':0,'II':1,'III':2,'IV':3})[m[1]]:-1 }
+    function isEmpty(l){return /^(暂无需关注事项。?|Nothing needs attention\.?)$/.test(l)}
+    function parse(t,sep){ var L=String(t||'').split(sep).map(function(x){return x.trim()}).filter(Boolean), head=[], ch=[[],[],[],[]], heads=['','','',''], cur=-1;
+      L.forEach(function(l){ var c=chap(l); if(c>=0){cur=c; heads[c]=l; return} if(cur<0) head.push(l); else if(!isEmpty(l)) ch[cur].push(l) }); return {head:head,ch:ch,heads:heads} }
+    function merge(text,use){ if(!use||!on()||!st.brief||!st.brief.text||st.briefDay!==day()) return text;
+      var a=parse(text,/\n\n/), b=parse(st.brief.text,/\n+/), out=a.head.slice(0,2);
+      for(var i=0;i<4;i++){ var items=a.ch[i].concat(b.ch[i]); out.push(a.heads[i]||b.heads[i]); if(!items.length){out.push(T('暂无需关注事项。','Nothing needs attention.')); continue}
+        var g=0, n=0; items.forEach(function(l){ if(/^(（[一二三四五六七八九]）|\(\d+\) )/.test(l)){ out.push((CN[g]||'（'+(g+1)+'）')+l.replace(/^(（[一二三四五六七八九]）|\(\d+\) )/,'')); g++; n=0; return }
+          out.push((++n)+'. '+l.replace(/^\d+[.、]\s*/,'')) }) }
+      return out.join('\n\n') }
+
+    function loadBrief(){ if(st.briefDay===day()&&st.brief) return Promise.resolve(st.brief);
+      return get('/mumu/brief').then(function(b){ st.brief=b; st.briefDay=day(); render(); return b }, function(){ return null }) }
+    function refresh(quiet){ if(!on()){ render(); return Promise.resolve(false) } if(!conf().token){ st.ok=false; st.err=''; render(); return Promise.resolve(false) }
+      st.busy=true; render();
+      return Promise.all([get('/mumu/status'),get('/mumu/memory')]).then(function(r){ st.busy=false; st.ok=true; st.err=''; st.status=r[0]; st.mem=r[1]; render(); loadBrief(); return true },
+        function(e){ st.busy=false; st.ok=false; st.err=errText(e); render(); if(!quiet) toast(st.err); return false }) }
+    function when(sec){ if(!sec) return T('还没整理过','not organised yet'); var d=new Date(sec*1000), n=new Date(), hm=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);
+      return d.toDateString()===n.toDateString()?T('今天 ','today ')+hm:(d.getMonth()+1)+'/'+d.getDate()+' '+hm }
+    function kindName(k){return k==='screen'?T('屏幕','Screen'):k==='audio'?T('语音','Speech'):T('记忆','Memory')}
+    function render(){ if(!DESK||!on()){ box.hidden=true; return } box.hidden=false;
+      var c=conf(), S=st.status, h='<div class="hd"><b>'+T('本机记忆引擎','Local memory engine')+'</b><span class="st'+(st.ok?' on':'')+'">'+
+        (st.busy?T('连接中…','Connecting…'):st.ok?T('已连接 · 上次整理 '+when(S&&S.last_synapse_run)+' · 长期记忆 '+((S&&S.memory_facts)||0)+' 条','Connected · last organised '+when(S&&S.last_synapse_run)+' · '+((S&&S.memory_facts)||0)+' long-term facts'):(st.err||T('还没连接','Not connected')))+'</span></div>';
+      h+='<form id="apxScrF" novalidate><label>'+T('地址','Address')+'<input id="apxScrB" type="url" spellcheck="false" autocomplete="off" value="'+e2(c.base)+'"></label>'+
+        '<label>'+T('令牌','Token')+'<input id="apxScrK" type="password" spellcheck="false" autocomplete="off" placeholder="'+(c.token?T('已保存，不改就留空','Saved. Leave empty to keep it'):T('粘贴令牌','Paste the token'))+'"></label>'+
+        '<button class="apx-btn pri" type="submit">'+(st.ok?T('重新连接','Reconnect'):T('连接','Connect'))+'</button></form>';
+      h+='<span class="nt">'+T('引擎在这台电脑上录屏幕和会议，截图和录音只留在本机；沐沐只读它整理好的文字。令牌在钥匙串项 mumu-local-api 里，下载版会自动读取。',
+        'The engine records the screen and meetings on this computer; screenshots and audio never leave it. Mumu only reads the text it has organised. The token is in the keychain item mumu-local-api; the desktop app reads it automatically.')+'</span>';
+      if(st.ok){
+        h+='<div class="row"><button class="apx-btn" type="button" data-scr="open">'+(st.open?T('收起','Hide'):T('看看'+nm()+'记得什么','See what '+nm()+' remembers'))+'</button>'+
+          '<button class="apx-btn" type="button" data-scr="refresh">'+T('刷新','Refresh')+'</button>'+
+          (st.brief&&st.brief.text?'<span class="apx-cm">'+T('今天的屏幕简报已备好，会并进每日简报','Today’s screen briefing is ready and goes into the daily briefing')+'</span>':'')+'</div>';
+        if(st.open){ var w=clean(st.mem&&st.mem.working), m=clean(st.mem&&st.mem.warm);
+          h+='<div class="apx-scr-mem">'+(w||m?A.md((w+'\n\n'+m).trim()):'<p>'+T('还是空的：引擎每 30 分钟整理一次，有新记录才会写进来。','Still empty: the engine organises every 30 minutes, and only when something new was recorded.')+'</p>')+'</div>' }
+        h+='<form class="apx-scr-find" id="apxScrQ"><input id="apxScrQi" maxlength="200" autocomplete="off" value="'+e2(st.q)+'" placeholder="'+T('在屏幕和会议记录里找…','Search your screen and meeting records…')+'" aria-label="'+T('在屏幕和会议记录里找','Search screen and meeting records')+'"><button class="apx-btn" type="submit">'+T('查找','Search')+'</button></form>';
+        if(st.hits) h+=st.hits.length?'<div>'+st.hits.map(function(x){ var d=x.timestamp?new Date(x.timestamp*1000):null;
+            return '<div class="apx-scr-hit"><small>'+kindName(x.kind)+(d?' · '+(d.getMonth()+1)+'/'+d.getDate()+' '+('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2):'')+(x.app?' · '+e2(x.app):'')+(x.window?' · '+e2(x.window):'')+(x.source?' · '+e2(x.source):'')+'</small><p>'+e2(x.snippet)+'</p></div>' }).join('')+'</div>'
+          :'<span class="apx-cm">'+T('没找到','No matches')+'</span>' }
+      box.innerHTML=h }
+    function nm(){var c=A.jget('fp-app-comp:'+A.ukey(),{})||{}; return c.name||T('沐沐','Mumu')}
+    box.addEventListener('submit',function(e){ e.preventDefault();
+      if(e.target.id==='apxScrF'){ var c=conf(), b=$('#apxScrB').value.trim()||DEFB, k=$('#apxScrK').value.trim(); A.jset(K(),{base:b.replace(/\/+$/,''),token:k||c.token});
+        st.brief=null; st.briefDay=''; refresh().then(function(ok){ if(ok) toast(T('已连上本机记忆引擎','Connected to the local memory engine')) }); return }
+      if(e.target.id==='apxScrQ'){ var q=$('#apxScrQi').value.trim(); st.q=q; if(!q){st.hits=null; render(); return}
+        get('/mumu/search?limit=8&q='+encodeURIComponent(q)).then(function(r){ st.hits=r.hits||[]; render() }, function(err){ toast(errText(err)) }) } });
+    box.addEventListener('click',function(e){ var b=e.target.closest('[data-scr]'); if(!b) return; var k=b.getAttribute('data-scr');
+      if(k==='open'){ st.open=!st.open; render() } else if(k==='refresh'){ refresh() } });
+    /* 开关打开 / 进入记忆页时连接；之后每 5 分钟刷新一次 */
+    document.addEventListener('click',function(e){ if(e.target.closest&&e.target.closest('#apxCPM [data-msrc="screen"]')) setTimeout(function(){ refresh(true) },0) });
+    new MutationObserver(function(){ if(ap.getAttribute('data-view')==='cpm') refresh(true) }).observe(ap,{attributes:true,attributeFilter:['data-view']});
+    setInterval(function(){ if(on()&&conf().token) refresh(true) },300000);
+    /* v14 约定的接口：只读文字。截图相关先不给（见文件头说明）。 */
+    function nope(){ return Promise.reject(new Error(T('这个版本还不支持','Not available in this version'))) }
+    function ready(){ return on()&&!!conf().token }
+    var F=window.__fpScreen=Object.assign(window.__fpScreen||{},{
+      merge:merge, refresh:refresh, memo:memoText, state:st,
+      status:function(){ if(!ready()) return Promise.resolve({connected:false,recording:false,paused:false,inMeeting:false,meetingApp:''});
+        return get('/mumu/state').then(function(s2){ return {connected:true,recording:!!s2.recording,paused:!!s2.paused,inMeeting:!!s2.in_meeting,meetingApp:s2.meeting_app||''} },
+          function(){ return {connected:false,recording:false,paused:false,inMeeting:false,meetingApp:''} }) },
+      meetings:function(o){ if(!ready()) return Promise.resolve([]); var q=(o&&o.q)||'';
+        return get('/mumu/meetings?days=90&q='+encodeURIComponent(q)).then(function(r){ return r.meetings||[] }) },
+      meeting:function(id){ return ready()?get('/mumu/meetings/'+encodeURIComponent(id)):nope() },
+      search:function(o){ o=o||{}; var q=(o.q||'').trim(); if(!ready()||!q) return Promise.resolve([]);
+        var from=o.from?+new Date(o.from):0, to=o.to?+new Date(o.to):0, days=from?Math.max(1,Math.ceil((Date.now()-from)/864e5)):30;
+        return get('/mumu/search?kind=screen,audio&limit=40&days='+days+'&q='+encodeURIComponent(q)).then(function(r){
+          return (r.hits||[]).map(function(h,i){ return {id:h.kind+':'+h.timestamp+':'+i, at:h.timestamp*1000, app:h.app||(h.kind==='audio'?T('语音','Speech'):''), window:h.window||'', text:h.snippet||'', thumb:''} })
+            .filter(function(h){ return (!o.app||h.app===o.app)&&(!from||h.at>=from)&&(!to||h.at<=to) }) }) },
+      hours:function(){ return Promise.resolve([]) },
+      frame:nope, frameAt:nope, pause:nope, setExcluded:nope, deleteRange:nope
+    });
+    if(on()) refresh(true); else render();
   })();
   window.addEventListener('hashchange',route); route();
   function openOasisPreview(){if(new URLSearchParams(location.search).get('oasis')==='1'&&logged&&location.hash==='#console'&&me.role!=='root'){window.fpOasis?.sync();csTab('oasis');}}
