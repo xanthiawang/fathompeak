@@ -7670,7 +7670,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     function hsync(){if(!curId) return; var list=hload(), c=list.filter(function(x){return x.id===curId})[0]; if(!c) return; c.models=sel.slice(); c.hist=JSON.parse(JSON.stringify(hist)); c.up=Date.now(); list=[c].concat(list.filter(function(x){return x!==c})); hsave(list)}
     function hwhen(t){var d=new Date(t), n=new Date(), p=function(v){return (v<10?'0':'')+v}, day=Math.floor((new Date(n.getFullYear(),n.getMonth(),n.getDate())-new Date(d.getFullYear(),d.getMonth(),d.getDate()))/864e5); return day===0?p(d.getHours())+':'+p(d.getMinutes()):(d.getMonth()+1)+'-'+p(d.getDate())}
     function hgroup(t){var d=new Date(t), n=new Date(), day=Math.floor((new Date(n.getFullYear(),n.getMonth(),n.getDate())-new Date(d.getFullYear(),d.getMonth(),d.getDate()))/864e5); return day<=0?'今天':day===1?'昨天':day<7?'近 7 天':'更早'}
-    function hopen(id){var c=hload().filter(function(x){return x.id===id})[0]; if(!c) return false; sel=(c.models||[]).filter(function(m){return byId[m]||XM[m]}); if(!sel.length) sel=['glm-5-3-flash']; hist=sel.map(function(m,i){return (c.hist&&c.hist[i])||[]}); curId=c.id; hcur(c.id); xp.setAttribute('data-mode','chat'); pills(); cols(); chips(); code(); recent(); return true}
+    function hopen(id){var c=hload().filter(function(x){return x.id===id})[0]; if(!c) return false; sel=(c.models||[]).filter(function(m){return byId[m]||XM[m]}); if(!sel.length) sel=['glm-5-3-flash']; fitSel(); hist=sel.map(function(m,i){return (c.hist&&c.hist[i])||[]}); curId=c.id; hcur(c.id); xp.setAttribute('data-mode','chat'); pills(); cols(); chips(); code(); recent(); return true}
     function hrender(){var q=($('#xpHQ').value||'').trim().toLowerCase(), list=hload().filter(function(c){return !q||(c.title+' '+JSON.stringify(c.hist||[])).toLowerCase().indexOf(q)>=0}), g='', out='';
       list.forEach(function(c){var gg=hgroup(c.up||c.at); if(gg!==g){g=gg; out+='<div class="xp-hg">'+gg+'</div>'} out+='<div class="xp-hi'+(c.id===curId?' on':'')+'"><button class="xp-ho" type="button" data-open="'+c.id+'"><b>'+esc(c.title)+'</b><span>'+(c.models||[]).map(function(m){return esc(mm(m).name)}).join(' · ')+' · '+hwhen(c.up||c.at)+'</span></button><button class="xp-hd" type="button" data-del="'+c.id+'" aria-label="删除这条对话">删除</button></div>'});
       $('#xpHL').innerHTML=out||'<p class="xp-he">'+(q?'没有找到相关对话':'还没有历史对话。<br>发送第一个问题后，对话会保存在这里。')+'</p>';
@@ -7690,6 +7690,11 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     function T8(zh,e){return (typeof lang!=='undefined'&&lang==='en')?e:zh}
     function api(){return window.__fpApi}
     function xmSync(){ XM={}; var A=api(), c=A&&A.cfg(); ((c&&c.ids)||[]).forEach(function(id){ if(!byId[id]) XM[id]={id:id,name:id,vendor:A.vendor(id),type:['对话'],ext:1} }) }
+    /* 已拿到接入地址的模型清单时，把不在清单里的模型换成能用的 */
+    function avail(){ var A=api(), c=A&&inApp8()&&A.cfg(); return (c&&c.ids&&c.ids.length)?c.ids:null }
+    function fitSel(){ var ids=avail(); if(!ids) return; var d=(window.__fpApi&&window.__fpApi.jget('fp-app-defm',''))||'', alt=ids.indexOf(d)>=0?d:ids.filter(function(x){return byId[x]||XM[x]})[0]||ids[0], changed=null;
+      sel=sel.map(function(id){ var nm=(byId[id]||XM[id]||{}).name||id; if(ids.indexOf(nm)>=0||ids.indexOf(id)>=0) return id; changed=changed||nm; return alt });
+      if(changed&&alt) toast(T8('「'+changed+'」在当前接入的地址上没有，已换成 '+((byId[alt]||XM[alt]||{}).name||alt),'“'+changed+'” isn’t available on this endpoint. Switched to '+((byId[alt]||XM[alt]||{}).name||alt))) }
     function AM(){ var a=[]; if(inApp8()) for(var k in XM) a.push(XM[k]); return M.concat(a) }
     function live(){ return inApp8()&&!!api() }
     function wait(t){return '<span class="xf-wait">'+t+'</span>'}
@@ -7737,7 +7742,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       $$('#xpPills [data-slot]').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation(); var open=$('#xpMPop').hidden||slot!==+b.getAttribute('data-slot'); closePop(); if(!open) return; slot=+b.getAttribute('data-slot'); $('#xpMQ').value=''; mlist(); $('#xpMPop').hidden=false; $('#xpMQ').focus()})});
       $$('#xpPills [data-rm]').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation(); var i=+b.getAttribute('data-rm'); sel.splice(i,1); hist.splice(i,1); pills(); cols(); chips(); code(); hsync()})}) }
     function mlist(){var q=($('#xpMQ').value||'').trim().toLowerCase();
-      $('#xpML').innerHTML=AM().filter(function(m){return !q||(m.name+' '+m.vendor+' '+m.type.join(' ')).toLowerCase().indexOf(q)>=0}).map(function(m){return '<button class="xp-mi" type="button" role="option" data-id="'+m.id+'" aria-selected="'+(sel[slot]===m.id)+'">'+vlogo(m.vendor,18)+'<b>'+esc(m.name)+'</b><span class="bt-tag g">'+m.type.join(' · ')+'</span><span class="m2">'+esc(m.vendor)+' · 上下文 '+m.ctx+' · 输出 ¥'+m.mkt.toFixed(2)+' / 百万 Token</span></button>'}).join('')||'<p class="m2" style="padding:10px;color:var(--ink-50)">没有符合条件的模型</p>';
+      $('#xpML').innerHTML=AM().filter(function(m){return !q||(m.name+' '+m.vendor+' '+m.type.join(' ')).toLowerCase().indexOf(q)>=0}).map(function(m){return '<button class="xp-mi" type="button" role="option" data-id="'+m.id+'" aria-selected="'+(sel[slot]===m.id)+'">'+vlogo(m.vendor,18)+'<b>'+esc(m.name)+'</b><span class="bt-tag g">'+m.type.join(' · ')+'</span><span class="m2">'+(m.ext?T8('这个地址上的模型','On this endpoint'):esc(m.vendor)+' · 上下文 '+m.ctx+' · 输出 ¥'+m.mkt.toFixed(2)+' / 百万 Token')+'</span></button>'}).join('')||'<p class="m2" style="padding:10px;color:var(--ink-50)">没有符合条件的模型</p>';
       $$('#xpML [data-id]').forEach(function(b){b.addEventListener('click',function(){sel[slot]=b.getAttribute('data-id'); closePop(); pills(); cols(); chips(); code(); $('#xpQ').focus()})}) }
     $('#xpMQ').addEventListener('input',mlist);
     function chips(){ $('#xpChips').innerHTML=AM().map(function(m){return '<button class="xp-chip" type="button" data-id="'+m.id+'" aria-pressed="'+(sel[0]===m.id)+'">'+vlogo(m.vendor,18)+'<span>'+esc(m.name)+'</span></button>'}).join('');
@@ -7790,7 +7795,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!$('#xpHist').hidden){hclose(); $('#xpHistB').focus()}});
     window.supPlaySet=function(id){if(!byId[id]) return; sel=[id]; hist=[[]]; curId=null; hcur(null); xp.setAttribute('data-mode','empty'); pills(); cols(); chips(); code(); recent()};
     window.__xpRecent=recent; window.__xpHist=hrender;
-    window.__xpLive={refresh:function(){ xmSync(); if(sel.some(function(id){return !byId[id]&&!XM[id]})) sel=sel.map(function(id){return byId[id]||XM[id]?id:M[0].id}); pills(); chips(); cols() }, bg:bg, busy:function(){return BUSY}};
+    window.__xpLive={refresh:function(){ xmSync(); if(sel.some(function(id){return !byId[id]&&!XM[id]})) sel=sel.map(function(id){return byId[id]||XM[id]?id:M[0].id}); fitSel(); pills(); chips(); cols() }, bg:bg, busy:function(){return BUSY}};
     pills(); chips(); cards(); code();
     (function(){var id=null; try{id=sessionStorage.getItem('fp-xp-cur')}catch(e){} if(!(id&&hopen(id))) recent()})();
   })();
