@@ -2928,7 +2928,8 @@ html.in-app .xf-who{display:none}
 .apx[data-view^="cm"] .apx-side .apx-cmside{display:flex;flex:1 1 0%;min-height:0}
 .apx[data-view^="cm"] .apx-side>.bt-nav:not(.apx-cmnav),.apx[data-view^="cm"] #apxLists{display:none!important}
 .apx-cmside{flex-direction:column;min-height:0;overflow:auto}
-.apx-cmnav .apx-mascot{width:26px;height:auto}
+.apx-side .bt-nav [data-cmv="cmp"]{overflow:visible;color:var(--ink)}
+.apx-side .bt-nav [data-cmv="cmp"] .apx-mascot{width:40px;height:auto;max-width:none;margin:-12px -11px -6px -9px;flex:none;display:block;filter:drop-shadow(0 3px 3px rgba(0,0,0,.14))}
 .apx-cmside .xp-ho b{font:400 15px/1.4 var(--sans);color:var(--ink-50);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .apx-cmside .xp-hi.on .xp-ho,.apx-cmside .xp-ho:hover{background:var(--gray-btn)}
 .apx-cmside .xp-hi.on .xp-ho b{color:var(--ink)}
@@ -8725,17 +8726,18 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       else if(!v.bounties.length) h+=emp('',T('你还没发过悬赏','You haven’t posted a bounty'),T('把要做的事、报酬和截止时间写清楚，大家的'+nm()+'会来接。','Describe the job, the reward and the deadline, and people’s AIs will pick it up.'),'<button class="apx-btn" type="button" data-bnew>'+IC.plus+'<span>'+T('发悬赏','Post a bounty')+'</span></button>');
       else h+='<div class="apx-cmx-list">'+v.bounties.map(function(b){ return '<article class="apx-cmx-post" data-bty="'+b.id+'"><div class="apx-cmx-who"><b>'+e2(b.title)+'</b><span>· ¥'+e2(b.pay)+(b.due?' · '+T('截止 ','Due ')+e2(b.due):'')+'</span></div><p>'+e2(b.desc)+'</p>'+
           (b.types&&b.types.length?'<div class="apx-cmx-mem">'+b.types.map(function(t){return '<i class="apx-tg">'+e2(t)+'</i>'}).join('')+'</div>':'')+
-          (b.sub?'<details class="apx-cmx-sub"'+(b.open?' open':'')+'><summary>'+T(nm()+' 试做的结果','What '+nm()+' produced')+' · '+e2(mname(b.sub.model))+' · '+when(b.sub.at)+'</summary><div class="md'+(b.sub.err?' err':'')+'">'+(b.sub.err?e2(b.sub.t):md(b.sub.t))+'</div></details>':'')+
+          (b.sub?'<details class="apx-cmx-sub"'+(b.open?' open':'')+'><summary>'+(b.done?T('交付的成果','Delivered work'):T(nm()+' 试做的结果','What '+nm()+' produced'))+' · '+e2(mname(b.sub.model))+' · '+when(b.sub.at)+'</summary><div class="md'+(b.sub.err?' err':'')+'">'+(b.sub.err?e2(b.sub.t):md(b.sub.t))+'</div></details>':'')+
           '<div class="apx-cmx-rep" data-live hidden><div class="md">'+wait(T(nm()+' 正在做…',nm()+' is working…'))+'</div></div>'+
-          '<div class="apx-cmx-acts"><button class="apx-btn" type="button" data-btry="'+b.id+'">'+T('让'+nm()+'先试做','Let '+nm()+' try it')+'</button><button class="apx-btn" type="button" data-bdel="'+b.id+'">'+T('删除','Delete')+'</button></div></article>' }).join('')+'</div>';
+          '<div class="apx-cmx-acts">'+(b.room&&room(b.room)?'<i class="apx-tg ai">'+(b.done?T('已交付','Delivered'):T('协作中','In progress'))+'</i><button class="apx-btn pri" type="button" data-room="'+b.room+'">'+(b.done?T('看成果','View result'):T('去协作','Open collaboration'))+'</button>':'<button class="apx-btn pri" type="button" data-btake="'+b.id+'">'+T('接下这单','Take this bounty')+'</button>')+'<button class="apx-btn" type="button" data-bdel="'+b.id+'">'+T('删除','Delete')+'</button></div></article>' }).join('')+'</div>';
       h+='<div class="apx-cmx-sec" style="margin-top:22px"><div class="apx-cmx-ln"><div><b>'+T('让'+nm()+'接悬赏','Let '+nm()+' take bounties')+'</b><span>'+T('报酬进你的余额。','Rewards go to your balance.')+'</span></div><button class="apx-sw" type="button" role="switch" data-tk="on" aria-checked="'+!!tk.on+'" aria-label="'+T('接悬赏','Take bounties')+'"></button></div>'+
         '<div class="apx-cmx-ln"><div><b>'+T('能接的类型','Types it can take')+'</b><div class="apx-cmx-chips" style="margin-top:6px">'+TYPES.map(function(t){return '<button type="button" data-tkt="'+t[0]+'" aria-pressed="'+(tk.types.indexOf(t[0])>=0)+'">'+T(t[0],t[1])+'</button>'}).join('')+'</div></div></div>'+
         '<div class="apx-cmx-ln"><div><b>'+T('最低报酬（元）','Minimum reward (CNY)')+'</b><span>'+T('低于这个数的不接。','Bounties below this are skipped.')+'</span></div><input class="apx-cmx-in" style="width:120px" type="number" min="0" step="1" id="apxTkMin" value="'+e2(tk.min)+'"></div>'+
         '<div class="apx-cmx-ln"><div><b>'+T('接单前先问我','Ask me before taking one')+'</b></div><button class="apx-sw" type="button" role="switch" data-tk="ask" aria-checked="'+(tk.ask!==false)+'" aria-label="'+T('接单前先问我','Ask me first')+'"></button></div></div>';
       B.innerHTML=h }
     function tkSet(f){var v=st(); f(v.prof.take); save(v)}
-    document.addEventListener('click',function(e){ var t=e.target.closest&&e.target.closest('[data-bseg],[data-tk],[data-tkt],[data-bdel],[data-btry],[data-bnew]'); if(!t) return;
+    document.addEventListener('click',function(e){ var t=e.target.closest&&e.target.closest('[data-bseg],[data-tk],[data-tkt],[data-bdel],[data-btry],[data-bnew],[data-btake]'); if(!t) return;
       if(t.hasAttribute('data-bnew')){bDlg(); return}
+      if(t.hasAttribute('data-btake')){ var bt=st().bounties.filter(function(x){return x.id===t.getAttribute('data-btake')})[0]; if(bt) cDlg(bt); return }
       if(t.hasAttribute('data-bseg')){bseg=t.getAttribute('data-bseg'); bounty(); return}
       if(t.hasAttribute('data-tk')){var k=t.getAttribute('data-tk'); tkSet(function(x){x[k]=k==='ask'?(x.ask===false):!x[k]}); bounty(); return}
       if(t.hasAttribute('data-tkt')){var y=t.getAttribute('data-tkt'); tkSet(function(x){var i=x.types.indexOf(y); if(i>=0) x.types.splice(i,1); else x.types.push(y)}); bounty(); return}
@@ -8761,13 +8763,17 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
         '<div class="ft"><button type="button" class="apx-btn" data-x>'+T('取消','Cancel')+'</button><button type="submit" class="apx-btn pri">'+T('发布','Post')+'</button></div>') }
     var ROLES=[['研究','Research','查资料、拆问题、给出方案。','Gathers facts, breaks down the problem and proposes approaches.'],['质疑','Critique','挑漏洞、找反例、指出风险。','Finds gaps, counterexamples and risks.'],['执笔','Writing','把讨论落成文字和可交付的东西。','Turns the discussion into text and deliverables.']];
     function mrow(r,m){ return '<div class="apx-cmx-mrow" data-mrow><input class="apx-cmx-in" data-mrole value="'+e2(r)+'" maxlength="20" aria-label="'+T('分工','Role')+'"><select class="apx-cmx-in" data-mmodel aria-label="'+T('模型','Model')+'">'+opts(m)+'</select><button class="x" type="button" data-mrm aria-label="'+T('移除','Remove')+'">'+IC.trash+'</button></div>' }
-    function cDlg(){ var ms=models(), d=defModel(), pick=function(i){var others=ms.filter(function(m){return m.id!==d}); return (others[i%Math.max(1,others.length)]||ms[0]||{}).id||''};
+    var cSeed='';
+    function cDlg(seed){ var ms=models(), d=defModel(), pick=function(i){var others=ms.filter(function(m){return m.id!==d}); return (others[i%Math.max(1,others.length)]||ms[0]||{}).id||''};
       dlg('c','<h2>'+T('新建协作','New collaboration')+'</h2><p>'+T(nm()+' 牵头，几个不同模型的 AI 各管一摊，一轮轮推进；你随时可以插话。',nm()+' leads, AIs on different models each take a role and move it forward round by round. You can step in any time.')+'</p>'+
         '<label>'+T('题目','Title')+'<input id="apxCdT" maxlength="60" autocomplete="off"></label><label>'+T('要做成什么','Goal')+'<textarea id="apxCdG" rows="4" maxlength="2000" placeholder="'+T('比如：写一份面向高校实验室的绿电算力合作方案，含报价思路和风险','e.g. a proposal for green-power compute with university labs, with pricing ideas and risks')+'"></textarea></label>'+
         '<div class="apx-row2"><label>'+T('类型','Type')+'<select id="apxCdK"><option value="proj">'+T('项目','Project')+'</option><option value="sci">'+T('科研','Research')+'</option></select></label><label>'+T(nm()+' 用的模型',nm()+'’s model')+'<select id="apxCdM">'+opts(d)+'</select></label></div>'+
         '<label>'+T('一起协作的 AI','AIs working with it')+'<div id="apxCdR" style="display:grid;gap:8px">'+ROLES.map(function(r,i){return mrow(T(r[0],r[1]),pick(i))}).join('')+'</div></label>'+
         '<div class="apx-cmx-row" style="justify-content:space-between"><button type="button" class="apx-btn" data-madd>'+IC.plus+'<span>'+T('再加一个 AI','Add an AI')+'</span></button><button type="button" class="apx-btn" data-invite>'+T('邀请别人的'+nm(),'Invite someone’s AI')+'</button></div>'+
-        '<div class="ft"><button type="button" class="apx-btn" data-x>'+T('取消','Cancel')+'</button><button type="submit" class="apx-btn pri">'+T('建好了','Create')+'</button></div>') }
+        '<div class="ft"><button type="button" class="apx-btn" data-x>'+T('取消','Cancel')+'</button><button type="submit" class="apx-btn pri">'+T('建好了','Create')+'</button></div>');
+      cSeed=seed&&seed.id?seed.id:'';
+      if(cSeed){ F.querySelector('h2').textContent=T('接下这单悬赏','Take this bounty'); F.querySelector('p').textContent=T('接下后会在「协作」里开一个房间，'+nm()+' 牵头，配几个 AI 一起做；做完整理成果就能交付。','A room opens under Collaborate. '+nm()+' leads with a few AIs; write up the result and deliver it.');
+        $('#apxCdT').value=seed.title; $('#apxCdG').value=seed.desc; F.querySelector('[type=submit]').textContent=T('接下，开始协作','Take it and start') } }
     F.addEventListener('click',function(e){ var t=e.target.closest('[data-bkt],[data-madd],[data-mrm],[data-invite]'); if(!t) return;
       if(t.hasAttribute('data-bkt')){t.setAttribute('aria-pressed',String(t.getAttribute('aria-pressed')!=='true')); return}
       if(t.hasAttribute('data-madd')){ if($$('#apxCdR [data-mrow]').length>=5){toast(T('最多 5 个 AI','Up to 5 AIs')); return} $('#apxCdR').insertAdjacentHTML('beforeend',mrow('',defModel())); return }
@@ -8779,12 +8785,14 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       if(dk==='w'){ var k=$('#apxWdS').value, ch=$('#apxWdC').value; dclose(); writePost(k,ch); return }
       if(dk==='c'){ var t2=$('#apxCdT').value.trim(), g=$('#apxCdG').value.trim(); if(!t2){$('#apxCdT').focus(); return} if(!g){$('#apxCdG').focus(); return}
         var mem=[{id:'mumu',role:T('牵头','Lead'),model:$('#apxCdM').value}].concat($$('#apxCdR [data-mrow]').map(function(r,i){return {id:'a'+i,role:r.querySelector('[data-mrole]').value.trim()||T('成员','Member')+(i+1),model:r.querySelector('[data-mmodel]').value}}));
-        var r={id:uid('r'),title:t2,goal:g,kind:$('#apxCdK').value,members:mem,turns:[],at:Date.now(),up:Date.now()}; v.rooms.unshift(r); save(v); dclose(); curRoom=r.id; show('cmr') } });
+        var r={id:uid('r'),title:t2,goal:g,kind:$('#apxCdK').value,members:mem,turns:[],at:Date.now(),up:Date.now()};
+        if(cSeed){ var bb=v.bounties.filter(function(x){return x.id===cSeed})[0]; if(bb){ r.bounty={id:bb.id,pay:bb.pay,due:bb.due}; bb.room=r.id } cSeed='' }
+        v.rooms.unshift(r); save(v); dclose(); curRoom=r.id; show('cmr'); setTimeout(function(){var x=$('#apxCmSay'); if(x) x.focus()},80) } });
 
     /* ===== 协作 ===== */
     function collab(){ var a=st().rooms.slice().sort(function(x,y){return (y.up||0)-(x.up||0)}), h=head(T('协作','Collaborate'),'<button class="apx-btn" type="button" data-cfind>'+IC.find+'<span>'+T('让'+nm()+'帮我找人','Let '+nm()+' find people')+'</span></button><button class="apx-btn pri" type="button" data-cnew>'+IC.plus+'<span>'+T('新建协作','New collaboration')+'</span></button>')+info();
       if(!a.length) h+=emp('',T('还没有协作','No collaborations yet'),T('建一个项目或科研课题，让'+nm()+'和不同模型的 AI 一起推进。','Start a project or research topic and let '+nm()+' work on it with AIs on different models.'),'<button class="apx-btn" type="button" data-cnew>'+IC.plus+'<span>'+T('新建协作','New collaboration')+'</span></button>');
-      else h+='<div class="apx-cmx-grid">'+a.map(function(r){return '<button class="apx-cmx-card" type="button" data-room="'+r.id+'"><span class="apx-cmx-mem"><i class="apx-tg">'+(r.kind==='sci'?T('科研','Research'):T('项目','Project'))+'</i></span><b>'+e2(r.title)+'</b><p>'+e2(r.goal)+'</p><span class="apx-cmx-mem">'+team(r,true)+'</span><span class="apx-cm">'+T(r.turns.length+' 次发言',r.turns.length+' turns')+' · '+when(r.up)+'</span></button>'}).join('')+'</div>';
+      else h+='<div class="apx-cmx-grid">'+a.map(function(r){return '<button class="apx-cmx-card" type="button" data-room="'+r.id+'"><span class="apx-cmx-mem"><i class="apx-tg'+(r.bounty?' ai':'')+'">'+(r.bounty?T('悬赏 ¥','Bounty ¥')+e2(r.bounty.pay):r.kind==='sci'?T('科研','Research'):T('项目','Project'))+'</i></span><b>'+e2(r.title)+'</b><p>'+e2(r.goal)+'</p><span class="apx-cmx-mem">'+team(r,true)+'</span><span class="apx-cm">'+T(r.turns.length+' 次发言',r.turns.length+' turns')+' · '+when(r.up)+'</span></button>'}).join('')+'</div>';
       B.innerHTML=h }
     function team(r,small){ return r.members.map(function(m){return m.id==='mumu'?'<img class="ip" src="'+e2(fig())+'" alt="'+e2(nm())+'" title="'+e2(nm())+'">':'<span title="'+e2(m.role+' · '+mname(m.model))+'">'+(mlogo(m.model)||'<i class="apx-tg">'+e2(m.role)+'</i>')+'</span>'}).join('') }
     document.addEventListener('click',function(e){ var t=e.target.closest&&e.target.closest('[data-cnew],[data-cfind]'); if(!t) return;
@@ -8795,9 +8803,10 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     function turnHtml(r,t,i){ var m=memOf(r,t.by), x=t.met||{};
       return '<article class="apx-cmx-turn'+(t.by==='me'?' me':'')+(t.err?' err':'')+'" data-turn="'+i+'"><div class="apx-cmx-who">'+(t.by==='mumu'?'<img src="'+e2(fig())+'" alt="">':t.by==='me'?'<span class="me">'+T('我','Me')+'</span>':'<span class="lg">'+mlogo(m.model)+'</span>')+'<b>'+e2(who(r,m))+'</b>'+(t.by!=='me'?'<span>· '+e2(t.by==='mumu'?T('牵头','Lead'):'')+(t.by==='mumu'?' · ':'')+e2(mname(m.model))+'</span>':'')+'</div>'+
         '<div class="md">'+(t.live&&!t.t?wait(T('正在想…','Thinking…')):t.err?e2(t.t):(t.by==='me'?'<p>'+e2(t.t)+'</p>':md(t.t)))+'</div>'+(x.ct?'<span class="met">'+T('产出 ','Output ')+x.ct+' Token'+(x.ttft!=null?' · '+T('首字 ','first token ')+x.ttft.toFixed(2)+' s':'')+'</span>':'')+'</article>' }
-    function roomView(){ var r=room(curRoom); if(!r){show('cmc'); return} var sh=share(r);
-      var h=head(e2(r.title),'<button class="apx-btn" type="button" data-rsum>'+IC.doc+'<span>'+T('整理成果','Write up')+'</span></button><button class="apx-btn" type="button" data-rdel>'+IC.trash+'<span>'+T('删除','Delete')+'</span></button>','cmc')+
-        '<p class="apx-cmx-goal"><i class="apx-tg">'+(r.kind==='sci'?T('科研','Research'):T('项目','Project'))+'</i> '+e2(r.goal)+'</p>'+
+    function roomView(){ var r=room(curRoom); if(!r){show('cmc'); return} var sh=share(r), bo=r.bounty?st().bounties.filter(function(x){return x.id===r.bounty.id})[0]:null;
+      var h=head(e2(r.title),(r.bounty&&r.result&&!r.result.err&&!r.delivered&&bo?'<button class="apx-btn pri" type="button" data-rdeliver>'+T('交付','Deliver')+'</button>':'')+'<button class="apx-btn" type="button" data-rsum>'+IC.doc+'<span>'+T('整理成果','Write up')+'</span></button><button class="apx-btn" type="button" data-rdel>'+IC.trash+'<span>'+T('删除','Delete')+'</span></button>','cmc')+
+        '<p class="apx-cmx-goal"><i class="apx-tg'+(r.bounty?' ai':'')+'">'+(r.bounty?T('悬赏','Bounty'):r.kind==='sci'?T('科研','Research'):T('项目','Project'))+'</i> '+e2(r.goal)+'</p>'+
+        (r.bounty?'<p class="apx-cm" style="margin:-4px 0 12px">'+T('报酬 ¥','Reward ¥')+e2(r.bounty.pay)+(r.bounty.due?' · '+T('截止 ','Due ')+e2(r.bounty.due):'')+' · '+(r.delivered?T('已交付','Delivered'):bo?T('做完点「整理成果」，再点「交付」','When done, write up and then deliver'):T('这单悬赏已被删除','This bounty was deleted'))+'</p>':'')+
         '<div class="apx-cmx-team">'+r.members.map(function(m){ var pc=sh.tot?Math.round((sh.by[m.id]||0)*100/sh.tot):null;
           return '<div class="apx-cmx-m">'+(m.id==='mumu'?'<img class="ip" src="'+e2(fig())+'" alt="">':(mlogo(m.model)||''))+'<div><b>'+e2(m.id==='mumu'?nm():m.role)+(pc!=null?'<i title="'+T('按各自产出的 Token 计，用来按贡献分成','By output tokens; used to split earnings by contribution')+'">'+T('贡献 ','share ')+pc+'%</i>':'')+'</b><span>'+e2(m.id==='mumu'?T('牵头','Lead'):'')+(m.id==='mumu'?' · ':'')+e2(mname(m.model))+'</span></div></div>'}).join('')+'</div>'+
         (r.result?'<section class="apx-cmx-res"><h3>'+T('成果','Write-up')+'</h3><div class="md">'+(r.result.err?e2(r.result.t):md(r.result.t))+'</div><span class="apx-cm">'+e2(mname(r.result.model))+' · '+when(r.result.at)+'</span></section>':'')+
@@ -8829,6 +8838,9 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       next() }
     document.addEventListener('submit',function(e){ if(!e.target||e.target.id!=='apxCmCtl') return; e.preventDefault(); var r=room(curRoom); if(!r) return; var say=$('#apxCmSay').value.trim();
       if(!A.cfg()){needConn(); return} if(RUN) return; if(say){ r.turns.push({by:'me',t:say,at:Date.now()}); persistRoom(r) } round(r) });
+    document.addEventListener('click',function(e){ var t=e.target.closest&&e.target.closest('[data-rdeliver]'); if(!t) return; var r=room(curRoom); if(!r||!r.bounty||!r.result||r.result.err) return; var v=st();
+      v.bounties.forEach(function(b){ if(b.id===r.bounty.id){ b.done=Date.now(); b.sub={t:r.result.t,model:r.result.model,at:Date.now()} } }); v.rooms.forEach(function(x){ if(x.id===r.id) x.delivered=Date.now() }); save(v);
+      toast(T('已交付，等发悬赏的人验收','Delivered. Waiting for the poster to accept')); roomView() });
     document.addEventListener('click',function(e){ var t=e.target.closest&&e.target.closest('[data-rstop],[data-rdel],[data-rsum]'); if(!t) return; var r=room(curRoom); if(!r) return;
       if(t.hasAttribute('data-rstop')){ if(RUN&&RUN.ctl) RUN.ctl.abort(); return }
       if(t.hasAttribute('data-rdel')){ if(RUN&&RUN.room===r.id) return; if(!t.classList.contains('sure')){t.classList.add('sure'); t.querySelector('span').textContent=T('确认删除','Confirm delete'); return} var v=st(); v.rooms=v.rooms.filter(function(x){return x.id!==r.id}); save(v); show('cmc'); return }
