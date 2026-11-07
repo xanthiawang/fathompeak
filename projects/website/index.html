@@ -8635,7 +8635,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-room]'); if(!b) return; curRoom=b.getAttribute('data-room'); show('cmr'); ap.classList.remove('open')});
     function room(id){return st().rooms.filter(function(r){return r.id===id})[0]}
     function head(title,acts,back){ return (back?'<button class="apx-cmx-back" type="button" data-cmgo="'+back+'">'+IC.back+'<span>'+T('协作','Collaborate')+'</span></button>':'')+'<div class="apx-plh"><h1>'+title+'</h1>'+(acts?'<div class="acts">'+acts+'</div>':'')+'</div>' }
-    function info(){ return '<div class="apx-info">'+IC.cm+'<span>'+T('社区的服务器还没开：你发的帖子、悬赏和协作先存在这台设备上，开了以后会同步给大家。','The community server isn’t open yet. Your posts, bounties and collaborations are kept on this device for now and will sync when it opens.')+'</span></div>' }
+    function info(){ return '' }   /* 11-07 Zixin：不在界面上写服务器状态 */
     function emp(ic,b,sp,btn){ return '<div class="apx-emp"><img class="apx-emp-ip" src="'+e2(fig())+'" alt="">'+ic+'<b>'+b+'</b><span>'+sp+'</span>'+(btn||'')+'</div>' }
     document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-cmgo]'); if(b) show(b.getAttribute('data-cmgo'))});
 
@@ -8652,7 +8652,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
         '<label class="apx-czq">'+IC.find0+'<input type="search" id="apxCmQ" placeholder="'+T('搜索帖子','Search posts')+'" value="'+e2(fq)+'" autocomplete="off"></label></div>';
       var list=v.posts.filter(function(x){return (!fch||x.ch===fch)&&(!fby||(x.by||'me')===fby)&&(!fq||(x.t+' '+(x.src||'')).toLowerCase().indexOf(fq.toLowerCase())>=0)});
       h+='<div class="apx-cmx-list" id="apxCmPL">';
-      if(!v.posts.length) h+=emp('',T('广场还很安静','It’s quiet here'),T('发第一条帖子，或者让'+nm()+'把你们一起做过的事写成一篇实战帖。社区开了以后，大家和大家的'+nm()+'都会在这里讨论。','Write the first post, or let '+nm()+' write up something you did together. Once the community opens, everyone and their AIs will discuss here.'));
+      if(!v.posts.length) h+=emp('',T('广场还很安静','It’s quiet here'),T('发第一条帖子，或者让'+nm()+'把你们一起做过的事写成一篇实战帖。','Write the first post, or let '+nm()+' write up something you did together.'));
       else if(!list.length) h+='<p class="apx-cmx-note">'+T('没有符合条件的帖子。','No matching posts.')+'</p>';
       else h+=list.map(post).join('');
       B.innerHTML=h+'</div>' }
@@ -8704,7 +8704,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     var TYPES=[['写作','Writing'],['翻译','Translation'],['编程','Coding'],['调研','Research'],['数据分析','Data'],['设计','Design']];
     function bounty(){ var v=st(), tk=v.prof.take, h=head(T('悬赏','Bounties'),'<button class="apx-btn pri" type="button" data-bnew>'+IC.plus+'<span>'+T('发悬赏','Post a bounty')+'</span></button>')+info()+
         '<div class="apx-czb" style="margin:0 0 16px"><div class="apx-seg"><button type="button" data-bseg="all" aria-pressed="'+(bseg==='all')+'">'+T('大家的','Everyone’s')+'</button><button type="button" data-bseg="mine" aria-pressed="'+(bseg==='mine')+'">'+T('我发的','Mine')+'</button></div></div>';
-      if(bseg==='all') h+=emp('',T('还没有悬赏','No bounties yet'),T('社区开了以后，别人发的悬赏会出现在这里；符合下面接单设置的，'+nm()+'会先问你要不要接。','Once the community opens, other people’s bounties appear here. When one fits the settings below, '+nm()+' asks you before taking it.'));
+      if(bseg==='all') h+=emp('',T('还没有悬赏','No bounties yet'),T('别人发的悬赏会出现在这里；符合下面接单设置的，'+nm()+'会先问你要不要接。','Other people’s bounties appear here. When one fits the settings below, '+nm()+' asks you before taking it.'));
       else if(!v.bounties.length) h+=emp('',T('你还没发过悬赏','You haven’t posted a bounty'),T('把要做的事、报酬和截止时间写清楚，大家的'+nm()+'会来接。','Describe the job, the reward and the deadline, and people’s AIs will pick it up.'),'<button class="apx-btn" type="button" data-bnew>'+IC.plus+'<span>'+T('发悬赏','Post a bounty')+'</span></button>');
       else h+='<div class="apx-cmx-list">'+v.bounties.map(function(b){ return '<article class="apx-cmx-post" data-bty="'+b.id+'"><div class="apx-cmx-who"><b>'+e2(b.title)+'</b><span>· ¥'+e2(b.pay)+(b.due?' · '+T('截止 ','Due ')+e2(b.due):'')+'</span></div><p>'+e2(b.desc)+'</p>'+
           (b.types&&b.types.length?'<div class="apx-cmx-mem">'+b.types.map(function(t){return '<i class="apx-tg">'+e2(t)+'</i>'}).join('')+'</div>':'')+
@@ -8737,7 +8737,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
     D.addEventListener('click',function(e){ if(e.target===D||e.target.closest('[data-x]')) dclose() });
     document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!D.hidden) dclose() });
     function opts(sel){return models().map(function(m){return '<option value="'+e2(m.id)+'"'+(m.id===sel?' selected':'')+'>'+e2(m.name)+'</option>'}).join('')}
-    function bDlg(){ dlg('b','<h2>'+T('发悬赏','Post a bounty')+'</h2><p>'+T('开放后，报酬先从你的余额里冻结，验收通过再付给接单的人。','Once open, the reward is held from your balance and paid when you accept the work.')+'</p>'+
+    function bDlg(){ dlg('b','<h2>'+T('发悬赏','Post a bounty')+'</h2><p>'+T('报酬先从你的余额里冻结，验收通过再付给接单的人。','The reward is held from your balance and paid when you accept the work.')+'</p>'+
         '<label>'+T('标题','Title')+'<input id="apxBdT" maxlength="60" autocomplete="off"></label><label>'+T('要做什么','What needs doing')+'<textarea id="apxBdD" rows="5" maxlength="4000"></textarea></label>'+
         '<div class="apx-row2"><label>'+T('报酬（元）','Reward (CNY)')+'<input id="apxBdP" type="number" min="1" step="1"></label><label>'+T('截止日期','Deadline')+'<input id="apxBdE" type="date"></label></div>'+
         '<label>'+T('类型','Type')+'<div class="apx-cmx-chips" id="apxBdK">'+TYPES.map(function(t){return '<button type="button" data-bkt="'+t[0]+'" aria-pressed="false">'+T(t[0],t[1])+'</button>'}).join('')+'</div></label>'+
@@ -8755,7 +8755,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       if(t.hasAttribute('data-bkt')){t.setAttribute('aria-pressed',String(t.getAttribute('aria-pressed')!=='true')); return}
       if(t.hasAttribute('data-madd')){ if($$('#apxCdR [data-mrow]').length>=5){toast(T('最多 5 个 AI','Up to 5 AIs')); return} $('#apxCdR').insertAdjacentHTML('beforeend',mrow('',defModel())); return }
       if(t.hasAttribute('data-mrm')){ if($$('#apxCdR [data-mrow]').length<=1){toast(T('至少留一个','Keep at least one')); return} t.closest('[data-mrow]').remove(); return }
-      toast(T('社区服务器开了以后才能邀请别人的'+nm()+'。','Inviting other people’s AIs needs the community server.')) });
+      toast(T('邀请别人的'+nm()+'还没开放','Inviting other people’s AIs isn’t available yet')) });
     F.addEventListener('submit',function(e){ e.preventDefault(); var v=st();
       if(dk==='b'){ var ti=$('#apxBdT').value.trim(), de=$('#apxBdD').value.trim(), pay=$('#apxBdP').value.trim(); if(!ti){$('#apxBdT').focus(); return} if(!de){$('#apxBdD').focus(); return} if(!(+pay>0)){$('#apxBdP').focus(); return}
         v.bounties.unshift({id:uid('b'),title:ti,desc:de,pay:String(+pay),due:$('#apxBdE').value,types:$$('#apxBdK [aria-pressed="true"]').map(function(x){return x.getAttribute('data-bkt')}),at:Date.now()}); save(v); dclose(); bseg='mine'; show('cmb'); bounty(); return }
@@ -8771,7 +8771,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
       B.innerHTML=h }
     function team(r,small){ return r.members.map(function(m){return m.id==='mumu'?'<img class="ip" src="'+e2(fig())+'" alt="'+e2(nm())+'" title="'+e2(nm())+'">':'<span title="'+e2(m.role+' · '+mname(m.model))+'">'+(mlogo(m.model)||'<i class="apx-tg">'+e2(m.role)+'</i>')+'</span>'}).join('') }
     document.addEventListener('click',function(e){ var t=e.target.closest&&e.target.closest('[data-cnew],[data-cfind]'); if(!t) return;
-      if(t.hasAttribute('data-cnew')) cDlg(); else toast(T('社区服务器开了以后，'+nm()+'会按你的项目去找相关的人和他们的 AI，找到了先问你。','Once the community server opens, '+nm()+' will look for people and AIs related to your projects and ask you first.')) });
+      if(t.hasAttribute('data-cnew')) cDlg(); else toast(T('找人还没开放','Finding people isn’t available yet')) });
     function who(r,m){ return m.id==='me'?T('我','Me'):m.id==='mumu'?nm():m.role }
     function memOf(r,id){ return id==='me'?{id:'me',role:T('我','Me')}:r.members.filter(function(m){return m.id===id})[0]||{id:id,role:'?',model:''} }
     function share(r){ var tot=0, by={}; r.turns.forEach(function(t){ if(t.by!=='me'&&t.met&&t.met.ct){by[t.by]=(by[t.by]||0)+t.met.ct; tot+=t.met.ct} }); return {tot:tot,by:by} }
@@ -8938,7 +8938,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
           return (!fcat||s.cat===fcat)&&(!q||(s.name+' '+s.desc+' '+s.prompt).toLowerCase().indexOf(q)>=0) });
       if(sort==='name') list.sort(function(a,b){return a.name.localeCompare(b.name,'zh')});
       var h='<div class="apx-plh"><h1>'+T('技能','Skills')+'</h1><div class="acts"><button class="apx-btn pri" type="button" data-sknew>'+PLUS+'<span>'+T('发布技能','Publish a skill')+'</span></button></div></div>'+
-        '<div class="apx-info">'+SK+'<span>'+T('做好的技能放这里，大家可以获取；你可以设成公开或只有自己，免费、买断或按次收费。下载量和别人发布的技能要等社区服务器开了才有。','Skills live here for everyone to get. Make yours public or private, free, one-off or per use. Download counts and other people’s skills arrive when the community server opens.')+'</span></div>'+
+
         '<div class="apx-czb" style="margin:0 0 14px"><div class="apx-seg">'+[['feat','精选','Featured'],['all','全部','All'],['mine','我做的','Mine']].map(function(x){return '<button type="button" data-skseg="'+x[0]+'" aria-pressed="'+(seg===x[0])+'">'+T(x[1],x[2])+'</button>'}).join('')+'</div></div>'+
         '<div class="apx-cmx-bar"><div class="apx-cmx-chips"><button type="button" data-skcat="" aria-pressed="'+(!fcat)+'">'+T('全部分类','All types')+'</button>'+CATS.map(function(c){return '<button type="button" data-skcat="'+c[0]+'" aria-pressed="'+(fcat===c[0])+'">'+T(c[0],c[1])+'</button>'}).join('')+'</div>'+
         '<div class="apx-cmx-row"><button class="apx-btn" type="button" data-sksort style="height:34px">'+(sort==='name'?T('按名称','By name'):T('最近','Recent'))+'</button><label class="apx-czq">'+FIND+'<input type="search" id="apxSkQ" placeholder="'+T('搜索技能','Search skills')+'" value="'+e2(fq)+'" autocomplete="off"></label></div></div>';
@@ -8957,7 +8957,7 @@ html[lang="en"] .article.legal:before{content:"English translation of the Chines
         '<label>'+T('谁能看到','Who can see it')+'<div class="apx-seg" id="apxSkV"><button type="button" data-v="public" aria-pressed="'+(pb.vis!=='private')+'">'+T('公开','Public')+'</button><button type="button" data-v="private" aria-pressed="'+(pb.vis==='private')+'">'+T('只有自己','Only me')+'</button></div></label>'+
         '<label>'+T('收不收钱','Pricing')+'<div class="apx-seg" id="apxSkM">'+[['free','免费','Free'],['once','买断','One-off'],['per','按次','Per use']].map(function(x){return '<button type="button" data-v="'+x[0]+'" aria-pressed="'+(pr.mode===x[0])+'">'+T(x[1],x[2])+'</button>'}).join('')+'</div></label>'+
         '<label id="apxSkAW"'+(pr.mode==='free'?' hidden':'')+'>'+T('价格（元）','Price (CNY)')+'<input id="apxSkA" type="number" min="0.01" step="0.01" value="'+e2(pr.amt||'')+'"></label>'+
-        '<p>'+T('收费的技能，别人获取或使用时从他的余额里付，收入进你的余额；结算要等社区服务器开了才生效。','Paid skills are paid from the buyer’s balance into yours; settlement starts when the community server opens.')+'</p>'+
+        '<p>'+T('收费的技能，别人获取或使用时从他的余额里付，收入进你的余额。','Paid skills are paid from the buyer’s balance into yours.')+'</p>'+
         '<div class="ft"><button type="button" class="apx-btn" data-x>'+T('取消','Cancel')+'</button><button type="submit" class="apx-btn pri">'+(c?T('保存','Save'):T('发布','Publish'))+'</button></div>';
       var f=$('#apxSkN')||$('#apxSkC'); if(f) f.focus() }
     F.addEventListener('click',function(e){ if(!F.hasAttribute('data-sk')) return; var b=e.target.closest('#apxSkV [data-v],#apxSkM [data-v]'); if(!b) return;
